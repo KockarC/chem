@@ -66,6 +66,23 @@
   }
   .toolbar::-webkit-scrollbar{height:5px}
   .toolbar::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:999px}
+  #restoreToolbarBtn{
+    position:fixed;
+    right:14px;
+    bottom:14px;
+    z-index:5000;
+    border:1px solid #93c5fd;
+    background:#2563eb;
+    color:#fff;
+    padding:10px 12px;
+    border-radius:999px;
+    font-weight:800;
+    font-size:13px;
+    box-shadow:0 10px 30px rgba(15,23,42,.25);
+    cursor:pointer;
+  }
+  #restoreToolbarBtn:hover{background:#1d4ed8}
+
   button, .fileLabel{
     flex:0 0 auto;
     border:1px solid #cbd5e1;
@@ -438,6 +455,16 @@
     button,.fileLabel{padding:8px 9px;font-size:12px}
     main{height:calc(100vh - 60px);height:calc(100dvh - 60px);margin-top:60px;grid-template-columns:240px 1fr}
   }
+
+  header.force-visible{
+    display:flex!important;
+    visibility:visible!important;
+    opacity:1!important;
+    transform:none!important;
+    top:0!important;
+    z-index:5000!important;
+  }
+
 </style>
 </head>
 <body>
@@ -526,6 +553,8 @@
     </div>
   </aside>
 </main>
+<button id="restoreToolbarBtn" type="button" title="Werkzeugleiste wieder anzeigen">Tools anzeigen</button>
+
 
 <div class="modalBackdrop" id="modalBackdrop">
   <div class="modal">
@@ -1455,6 +1484,37 @@
   function escapeXml(str){
     return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[m]));
   }
+
+
+  function restoreToolbar(){
+    const header = document.querySelector("header");
+    const toolbar = document.querySelector(".toolbar");
+    if(header){
+      header.style.display = "flex";
+      header.style.visibility = "visible";
+      header.style.opacity = "1";
+      header.style.transform = "none";
+      header.style.top = "0";
+      header.style.left = "0";
+      header.style.right = "0";
+      header.style.zIndex = "5000";
+      header.style.position = "fixed";
+    }
+    if(toolbar){
+      toolbar.style.display = "flex";
+      toolbar.style.visibility = "visible";
+      toolbar.style.opacity = "1";
+      toolbar.style.transform = "none";
+      toolbar.scrollLeft = 0;
+    }
+    showToast("Werkzeugleiste wurde wieder eingeblendet.");
+  }
+
+  const restoreToolbarBtn = document.getElementById("restoreToolbarBtn");
+  if(restoreToolbarBtn){
+    restoreToolbarBtn.addEventListener("click", restoreToolbar);
+  }
+
 
   initWorkSetSelector();
   render();

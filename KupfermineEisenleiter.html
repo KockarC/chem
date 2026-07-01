@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang='de'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Hilf Lumi bei der Versuchsplanung</title>
+<style>
+:root{--bg:#edf0f5;--card:#fff;--line:#cfd7e6;--text:#16233f;--sub:#394a73;--accent:#676fe8;--accent2:#4b58d4;--soft:#f5f7fc}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.wrap{max-width:1240px;margin:22px auto 28px;padding:0 18px}
+h1{margin:0 0 6px;font-size:4rem;line-height:1.02;letter-spacing:-.03em;font-weight:900;color:#1a2542}
+.subtitle{font-size:1.15rem;color:#3848b8;font-weight:800;margin-bottom:18px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 10px 24px rgba(22,35,63,.06)}
+.panel-top{padding:18px 22px 14px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;justify-content:space-between;gap:18px;font-size:1rem;font-weight:800;color:#566483;margin-bottom:8px}
+.progress{height:14px;background:#e7ecf5;border-radius:999px;overflow:hidden}.progress>div{height:100%;width:50%;background:linear-gradient(90deg,var(--accent2),#8a78ff);border-radius:999px}
+.content{padding:28px 26px 22px}
+.stephead{display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:start;margin-bottom:18px}
+.stepnum{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;background:#ececfb;color:#4a54d2;font-weight:900;font-size:1.45rem}
+.steptitle{font-size:2.15rem;line-height:1.06;font-weight:900;margin:6px 0 6px;letter-spacing:-.03em}
+.steplead{color:#495a7b;font-size:1.15rem;font-weight:700;margin:0}
+.grid{display:grid;gap:18px}
+.hero{position:relative;min-height:410px;border-radius:24px;overflow:hidden;border:1px solid #33415f;background:
+radial-gradient(ellipse at 18% 26%, rgba(20,31,54,.55) 0 19%, transparent 20%),
+radial-gradient(ellipse at 49% 20%, rgba(20,31,54,.42) 0 16%, transparent 17%),
+radial-gradient(ellipse at 80% 28%, rgba(20,31,54,.45) 0 18%, transparent 19%),
+radial-gradient(ellipse at 28% 63%, rgba(46,124,120,.18) 0 12%, transparent 13%),
+radial-gradient(ellipse at 72% 61%, rgba(46,124,120,.18) 0 14%, transparent 15%),
+linear-gradient(180deg,#34465f 0%, #15233d 55%, #08162f 100%)}
+.hero:before{content:'';position:absolute;inset:0;background:
+linear-gradient(180deg, rgba(255,255,255,.12), transparent 18%),
+radial-gradient(ellipse at 18% 78%, rgba(54,146,121,.12), transparent 28%),
+radial-gradient(ellipse at 83% 77%, rgba(54,146,121,.12), transparent 26%)}
+.droplet{position:absolute;width:10px;height:32px;border-radius:8px;background:linear-gradient(180deg,#9dd3ff,#67a8df);opacity:.95}
+.droplet:after{content:'';position:absolute;inset:-1px 2px auto 2px;height:10px;border-radius:8px;background:rgba(255,255,255,.28)}
+.drop1{left:48%;top:58px}.drop2{left:38%;top:132px;height:28px}.drop3{left:58%;top:182px;height:26px;opacity:.35}
+.ladder{position:absolute;left:37%;bottom:62px;width:250px;height:122px;transform:rotate(-11deg)}
+.rail,.rung,.copper{position:absolute;background:#c8cfdb;border-radius:4px;box-shadow:inset 0 -1px 0 rgba(0,0,0,.15)}
+.rail.one{width:214px;height:10px;top:14px;left:8px}.rail.two{width:214px;height:10px;bottom:12px;left:0}
+.r1{left:24px;top:15px;width:10px;height:94px}.r2{left:70px;top:15px;width:10px;height:94px}.r3{left:116px;top:15px;width:10px;height:94px}.r4{left:162px;top:15px;width:10px;height:94px}
+.copper{background:linear-gradient(180deg,#f3ab5b,#cf6e2c)}.cu1{left:69px;top:52px;width:10px;height:41px}.cu2{left:138px;top:14px;width:10px;height:41px}.cu3{left:182px;top:16px;width:10px;height:44px}
+.crystal-group{position:absolute;bottom:78px;display:flex;align-items:flex-end;gap:8px}.left-crystals{left:70px}.right-crystals{right:84px}
+.crystal{width:18px;position:relative;clip-path:polygon(50% 0,100% 40%,74% 100%,26% 100%,0 40%);box-shadow:inset 0 -8px 12px rgba(0,0,0,.18), inset 8px 0 14px rgba(255,255,255,.35)}
+.blue{background:linear-gradient(180deg,#8db7ff,#2d61d8)}.green{background:linear-gradient(180deg,#84ffc8,#25b35c)}
+.crystal.small{height:42px}.crystal.med{height:58px}.crystal.large{height:78px}.crystal.tiny{height:34px;width:15px}
+.box{border:1px solid var(--line);border-radius:24px;background:var(--soft);padding:16px 18px}
+.label{font-weight:900;font-size:1.15rem;margin-bottom:10px}
+.options{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.option{border:2px solid #cfd7e6;background:#fff;border-radius:20px;padding:18px 16px;cursor:pointer;transition:.15s ease;display:flex;align-items:center;gap:12px;font-weight:900;font-size:1.15rem}
+.option:hover{transform:translateY(-1px)}.option.selected{border-color:#3aa86e;background:#edf8f1}
+.bubbleicon{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:1.2rem;flex:0 0 28px}.water{background:linear-gradient(180deg,#b6e1ff,#6aa7e8)}.sulfate{background:linear-gradient(180deg,#85b9ff,#3f79de)}.carbonate{background:linear-gradient(180deg,#95f2b8,#39b966)}
+.mascot{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:center;margin-top:18px}.face{width:92px;height:92px;border-radius:50%;background:#fff4bf;border:3px solid #efc84a;display:grid;place-items:center;font-size:2.55rem}
+.speech{border:1px solid var(--line);border-radius:18px;background:#fff;padding:16px 18px;font-size:1rem;font-weight:800;color:#123e67}
+.actions{margin-top:18px;display:flex;justify-content:space-between;gap:12px;align-items:center}.btnrow{display:flex;gap:12px}
+.btn{border:none;cursor:pointer;border-radius:999px;padding:14px 26px;font-size:1rem;font-weight:900}.btn.secondary{background:#eef1f7;color:#7e8798}.btn.primary{background:linear-gradient(90deg,var(--accent2),var(--accent));color:#fff;box-shadow:0 6px 18px rgba(103,111,232,.28)}
+.hidden{display:none !important}.chips{display:flex;flex-wrap:wrap;gap:10px}.chip{background:#fff;border:1px solid #cfd7e6;border-radius:999px;padding:8px 14px;font-weight:800;color:#324065}
+.planner{display:grid;grid-template-columns:1.15fr .95fr;gap:18px}.beakerarea{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.beakercard{border:1px solid var(--line);background:var(--soft);border-radius:22px;padding:14px}.beakercard.active{outline:3px solid rgba(103,111,232,.18);border-color:#7c83ec}
+.beakerhead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}.beakerhead h3{margin:0;font-size:1.2rem;font-weight:900}.choosehint{font-size:.92rem;font-weight:800;color:#6a7694}
+.beaker{position:relative;height:280px;margin:8px auto 6px;width:210px;border:4px solid #aeb8cc;border-top:none;border-radius:0 0 24px 24px;background:linear-gradient(180deg, rgba(255,255,255,.72), rgba(244,247,252,.95));overflow:hidden}
+.beaker:before,.beaker:after{content:'';position:absolute;top:-18px;width:48px;height:18px;border:4px solid #aeb8cc;border-bottom:none;border-radius:14px 14px 0 0;background:transparent}.beaker:before{left:-4px}.beaker:after{right:-4px}
+.liquid{position:absolute;left:0;right:0;bottom:0;height:0%;transition:.2s ease;background:rgba(125,183,255,.18)}.liquid.blue{background:rgba(75,133,230,.38)}.liquid.clear{background:rgba(138,196,255,.15)}
+.sediment{position:absolute;left:16px;right:16px;bottom:8px;height:0;display:flex;gap:6px;align-items:flex-end;justify-content:center}
+.lump{width:20px;height:18px;border-radius:50% 50% 40% 40%;background:linear-gradient(180deg,#7ddf99,#30b35e);box-shadow:inset 0 -3px 6px rgba(0,0,0,.18)}
+.nail{position:absolute;width:132px;height:12px;background:#b7bfcd;border-radius:7px;top:122px;left:36px;transform:rotate(74deg);box-shadow:inset 0 -2px 0 rgba(0,0,0,.15)}.nail:after{content:'';position:absolute;right:-3px;top:-3px;width:18px;height:18px;border-radius:50%;background:#c5ccda}
+.contents{min-height:46px;border:1px dashed #c8d0df;border-radius:16px;background:#fff;padding:10px}.contents .chip{padding:7px 12px;font-size:.95rem}
+.tray .option{padding:14px 14px;font-size:1.05rem}.tray .option.selected{border-color:#7c83ec;background:#eef0ff}
+.summary{border:1px solid var(--line);border-radius:22px;background:#fff;padding:16px 18px;margin-top:18px}.summary h4{margin:0 0 10px;font-size:1.1rem;font-weight:900}.summary p{margin:6px 0;font-weight:800;color:#334066}.note{font-size:.98rem;font-weight:800;color:#5b6988}
+@media (max-width:1050px){h1{font-size:3.2rem}.planner{grid-template-columns:1fr}}
+@media (max-width:760px){.options,.beakerarea{grid-template-columns:1fr}.stephead{grid-template-columns:1fr}.stepnum{margin-bottom:6px}.hero{min-height:320px}.ladder{left:25%;width:210px}.mascot{grid-template-columns:1fr}.actions{flex-direction:column;align-items:stretch}.btnrow{width:100%;justify-content:space-between}}
+
+/* wiederhergestellte Höhlenanimation */
+.scene.imageOnly{display:grid;grid-template-columns:1fr;margin-bottom:14px}
+.heroImage{width:100%;max-width:860px;display:block;border:1px solid var(--line);border-radius:22px;box-shadow:0 10px 28px rgba(23,32,51,.10)}
+.cave{
+  width:100%;
+  max-width:860px;
+  min-height:430px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:
+    radial-gradient(ellipse at 18% 72%,rgba(77,128,125,.22) 0 12%,transparent 13%),
+    radial-gradient(ellipse at 31% 63%,rgba(64,122,116,.20) 0 10%,transparent 11%),
+    radial-gradient(ellipse at 67% 28%,rgba(63,105,121,.18) 0 11%,transparent 12%),
+    radial-gradient(ellipse at 79% 62%,rgba(56,115,111,.17) 0 12%,transparent 13%),
+    radial-gradient(ellipse at 88% 40%,rgba(49,88,108,.16) 0 9%,transparent 10%),
+    linear-gradient(180deg,#354252 0,#1d2734 62%,#111827 100%);
+  position:relative;
+  overflow:hidden;
+  box-shadow:inset 0 -18px 42px rgba(0,0,0,.35);
+}
+.cave:before{content:"";position:absolute;inset:-35px 0 auto 0;height:92px;background:radial-gradient(ellipse at 20% 0,#617085 0 40%,transparent 43%),radial-gradient(ellipse at 65% 0,#4b596b 0 45%,transparent 47%)}
+.cave:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 12% 84%,rgba(78,145,133,.12) 0 16%,transparent 17%),radial-gradient(ellipse at 45% 78%,rgba(44,97,101,.10) 0 14%,transparent 15%),radial-gradient(ellipse at 73% 70%,rgba(63,131,124,.10) 0 16%,transparent 17%),radial-gradient(ellipse at 18% 28%,rgba(5,10,20,.22) 0 16%,transparent 17%),radial-gradient(ellipse at 46% 20%,rgba(10,18,31,.18) 0 20%,transparent 21%),radial-gradient(ellipse at 84% 26%,rgba(7,12,24,.20) 0 16%,transparent 17%),radial-gradient(ellipse at 88% 74%,rgba(4,8,18,.20) 0 18%,transparent 19%),radial-gradient(ellipse at 8% 68%,rgba(8,14,25,.18) 0 16%,transparent 17%);box-shadow:inset 0 -36px 48px rgba(2,8,20,.24),inset 0 26px 34px rgba(255,255,255,.03),inset 26px 0 38px rgba(0,0,0,.12),inset -26px 0 38px rgba(0,0,0,.14);pointer-events:none}
+.drop{position:absolute;z-index:4;width:9px;height:28px;background:#9dd4ff;border-radius:999px;opacity:.9;left:38%;top:18px;animation:fall 2.6s infinite}
+.drop.d2{left:48%;top:18px;animation-delay:.6s}
+.drop.d3{left:58%;top:10px;animation-delay:1.1s}
+@keyframes fall{0%{transform:translateY(0);opacity:.15}25%{opacity:.95}100%{transform:translateY(195px);opacity:.06}}
+.ladder{position:absolute;z-index:3;left:50%;bottom:52px;width:230px;height:72px;transform:translateX(-50%) rotate(-10deg);transform-origin:center center;border-top:11px solid #8f98a4;border-bottom:11px solid #8f98a4;border-left:none;border-right:none}
+.ladder:before{content:"";position:absolute;left:92px;top:-11px;width:90px;height:11px;background:linear-gradient(90deg,#8f98a4 0 8%,#bc6a37 8% 22%,#d89a63 22% 31%,#8f98a4 31% 43%,#c77840 43% 61%,#e0a06f 61% 67%,#8f98a4 67% 76%,#bb6736 76% 92%,#8f98a4 92% 100%);border-radius:999px;box-shadow:0 0 6px rgba(199,120,64,.18)}
+.ladder:after{content:"";position:absolute;left:164px;top:-12px;width:24px;height:13px;background:linear-gradient(90deg,#bc6a37,#e0a06f,#c77840);border-radius:999px 999px 7px 7px;transform:rotate(-4deg);opacity:.95}
+.ladder span{position:absolute;top:-6px;bottom:-6px;width:11px;background:#8f98a4;border-radius:999px}
+.ladder span:nth-child(1){left:24px;background:#8f98a4}
+.ladder span:nth-child(2){left:75px;background:linear-gradient(180deg,#8f98a4 0 38%,#c77840 38% 100%)}
+.ladder span:nth-child(3){left:126px;background:#a2aab4}
+.ladder span:nth-child(4){left:177px;background:linear-gradient(180deg,#d48a4b 0 58%,#8f98a4 58% 100%)}
+
+.crystalPiece{position:absolute;z-index:2;border-radius:4px 4px 7px 7px;clip-path:polygon(50% 0,100% 25%,82% 100%,18% 100%,0 25%);opacity:.96;filter:drop-shadow(0 10px 8px rgba(0,0,0,.18))}
+.crystalPiece:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.30),transparent 38%,rgba(0,0,0,.18));clip-path:polygon(50% 0,100% 25%,82% 100%,18% 100%,0 25%)}
+.crystalPiece.sulfate{background:linear-gradient(135deg,#93c5fd 0,#2563eb 46%,#dbeafe 48%,#1d4ed8 100%)}
+.crystalPiece.carbonate{background:linear-gradient(135deg,#86efac 0,#16a34a 46%,#dcfce7 48%,#15803d 100%)}
+.crystalPiece.s1{left:144px;bottom:88px;width:30px;height:98px}
+.crystalPiece.s2{left:118px;bottom:88px;width:22px;height:76px;transform:rotate(-16deg)}
+.crystalPiece.s3{left:170px;bottom:88px;width:23px;height:80px;transform:rotate(14deg)}
+.crystalPiece.s4{left:94px;bottom:88px;width:18px;height:52px;transform:rotate(-24deg)}
+.crystalPiece.s5{left:198px;bottom:88px;width:18px;height:56px;transform:rotate(22deg)}
+.crystalPiece.s6{left:78px;bottom:88px;width:14px;height:38px;transform:rotate(-12deg)}
+.crystalPiece.s7{left:218px;bottom:88px;width:14px;height:40px;transform:rotate(10deg)}
+.crystalPiece.s8{left:184px;bottom:88px;width:12px;height:34px;transform:rotate(-6deg)}
+.crystalPiece.c1{right:160px;bottom:96px;width:26px;height:92px}
+.crystalPiece.c2{right:136px;bottom:96px;width:20px;height:68px;transform:rotate(-12deg)}
+.crystalPiece.c3{right:186px;bottom:96px;width:20px;height:74px;transform:rotate(12deg)}
+.crystalPiece.c4{right:114px;bottom:96px;width:16px;height:48px;transform:rotate(-22deg)}
+.crystalPiece.c5{right:206px;bottom:96px;width:16px;height:50px;transform:rotate(20deg)}
+.crystalPiece.c6{right:100px;bottom:96px;width:13px;height:34px;transform:rotate(-10deg)}
+.crystalPiece.c7{right:223px;bottom:96px;width:13px;height:36px;transform:rotate(8deg)}
+.crystalPiece.c8{right:149px;bottom:96px;width:11px;height:30px;transform:rotate(-6deg)}
+</style>
+</head>
+<body>
+<div class='wrap'>
+<h1>Hilf Lumi bei der Versuchsplanung</h1>
+<div class='subtitle'>Röderstollen: Warum hat die Eisenleiter einen rötlichen Glanz?</div>
+<div class='panel'>
+<div class='panel-top'>
+<div class='toprow'><div id='progressLabel'>Schritt 1 von 3</div><div id='progressDone'>0 von 3 Schritten abgeschlossen</div></div>
+<div class='progress'><div id='progressBar'></div></div>
+</div>
+<div class='content'>
+<section id='step1'>
+<div class='stephead'>
+<div class='stepnum'>1</div>
+<div><div class='steptitle'>Wählt Stoffe aus dem Kontext aus</div><p class='steplead'>Welche Stoffe könnten für die Versuchsplanung eine Rolle spielen?</p></div>
+</div>
+<div class='grid'>
+<div class="scene imageOnly">
+      <div class="cave" aria-label="Abbildung eines Stollens mit alter Eisenleiter, Tropfwasser und unterschiedlichen Kristallstrukturen">
+        <div class="crystalPiece sulfate s1"></div><div class="crystalPiece sulfate s2"></div><div class="crystalPiece sulfate s3"></div><div class="crystalPiece sulfate s4"></div><div class="crystalPiece sulfate s5"></div><div class="crystalPiece sulfate s6"></div><div class="crystalPiece sulfate s7"></div><div class="crystalPiece sulfate s8"></div>
+        <div class="crystalPiece carbonate c1"></div><div class="crystalPiece carbonate c2"></div><div class="crystalPiece carbonate c3"></div><div class="crystalPiece carbonate c4"></div><div class="crystalPiece carbonate c5"></div><div class="crystalPiece carbonate c6"></div><div class="crystalPiece carbonate c7"></div><div class="crystalPiece carbonate c8"></div>
+        <div class="drop"></div>
+        <div class="drop d2"></div>
+        <div class="drop d3"></div>
+        <div class="ladder"><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+<div class='box'>
+<div class='label'>Mögliche Stoffe</div>
+<div class='options' id='factorOptions'>
+<button class='option' data-factor='Tropfwasser'><span class='bubbleicon water'>💧</span><span>Tropfwasser</span></button>
+<button class='option' data-factor='Kupfersulfat'><span class='bubbleicon sulfate'>🔵</span><span>Kupfersulfat</span></button>
+<button class='option' data-factor='Kupfercarbonat'><span class='bubbleicon carbonate'>🟢</span><span>Kupfercarbonat</span></button>
+</div>
+<div class='note' id='factorFeedback' style='margin-top:10px;min-height:24px'></div>
+</div>
+<div class='mascot'><div class='face'>🧑‍🔬</div><div class='speech'>Wählt Tropfwasser und einen kupferhaltigen Stoff aus dem Kontext aus.</div></div>
+</div>
+</section>
+
+<section id='step2' class='hidden'>
+<div class='stephead'>
+<div class='stepnum'>2</div>
+<div><div class='steptitle'>Stellt zwei Versuchsansätze zusammen</div><p class='steplead'>Legt mit Bechergläsern, frischem Eisennagel, Wasser und Salzen einen möglichst sinnvollen Versuch an.</p></div>
+</div>
+<div class='box' style='margin-bottom:18px'><div class='label'>Gewählte Stoffe aus Schritt 1</div><div class='chips' id='selectedFactorsChips'></div></div>
+<div class='planner'>
+<div class='beakerarea'>
+<div class='beakercard' id='cardA'><div class='beakerhead'><h3>Versuch A</h3><div class='choosehint'>Becherglas zuerst auswählen</div></div><div class='beaker' id='beakerA'><div class='liquid' id='liquidA'></div><div class='sediment' id='sedimentA'></div><div class='nail hidden' id='nailA'></div></div><div class='contents' id='contentsA'></div></div>
+<div class='beakercard' id='cardB'><div class='beakerhead'><h3>Versuch B</h3><div class='choosehint'>Becherglas zuerst auswählen</div></div><div class='beaker' id='beakerB'><div class='liquid' id='liquidB'></div><div class='sediment' id='sedimentB'></div><div class='nail hidden' id='nailB'></div></div><div class='contents' id='contentsB'></div></div>
+</div>
+<div class='box tray'>
+<div class='label'>Materialkarten</div>
+<div class='grid'>
+<button class='option materialCard' data-material='Eisennagel'><span class='bubbleicon' style='background:#ececf3'>🔩</span><span>Eisennagel</span></button>
+<button class='option materialCard' data-material='Wasser'><span class='bubbleicon water'>💧</span><span>Wasser</span></button>
+<button class='option materialCard' data-material='Kupfersulfat'><span class='bubbleicon sulfate'>🔵</span><span>Kupfersulfat</span></button>
+<button class='option materialCard' data-material='Kupfercarbonat'><span class='bubbleicon carbonate'>🟢</span><span>Kupfercarbonat</span></button>
+</div>
+<div class='mascot'><div class='face'>🧑‍🔬</div><div class='speech' id='lumiPlanTip'>Tipp: Ein fairer Vergleich braucht in beiden Bechergläsern ein frisches Stück Eisen. Verändert dann gezielt, womit das Eisen in Kontakt kommt.</div></div>
+</div>
+</div>
+<div class='summary'><h4>Eure Zusammenstellung</h4><p id='sumA'>Versuch A: —</p><p id='sumB'>Versuch B: —</p></div>
+</section>
+
+<section id='step3' class='hidden'>
+<div class='stephead'>
+<div class='stepnum'>3</div>
+<div><div class='steptitle'>Ergebnisse eurer Versuchsplanung</div><p class='steplead'>Hier bekommt ihr eure geplanten Ansätze als Bild und Übersicht.</p></div>
+</div>
+<div class='box' style='margin-bottom:18px'><div class='label'>Stoffe aus Schritt 1</div><div class='chips' id='resultFactorsChips'></div></div>
+
+<div class='beakerarea' style='margin-bottom:18px'>
+<div class='beakercard'>
+<div class='beakerhead'><h3>Versuch A</h3></div>
+<div class='beaker' id='resultBeakerA'><div class='liquid' id='resultLiquidA'></div><div class='sediment' id='resultSedimentA'></div><div class='nail hidden' id='resultNailA'></div></div>
+<div class='contents' id='resultContentsA'></div>
+</div>
+<div class='beakercard'>
+<div class='beakerhead'><h3>Versuch B</h3></div>
+<div class='beaker' id='resultBeakerB'><div class='liquid' id='resultLiquidB'></div><div class='sediment' id='resultSedimentB'></div><div class='nail hidden' id='resultNailB'></div></div>
+<div class='contents' id='resultContentsB'></div>
+</div>
+</div>
+
+<div class='summary'>
+<h4>Eure Versuchsansätze</h4>
+<p id='resultA'>Versuch A: —</p>
+<p id='resultB'>Versuch B: —</p>
+</div>
+<div class='mascot'><div class='face'>🧑‍🔬</div><div class='speech' id='lumiResultTip'>Lumi prüft eure Planung.</div></div>
+</section>
+
+<div class='actions'><button class='btn secondary' id='backBtn'>zurück</button><div class='btnrow'><button class='btn primary' id='nextBtn'>weiter</button></div></div>
+</div></div></div>
+
+<script>
+const state={step:1,selectedFactors:[],activeBeaker:null,beakers:{A:[],B:[]}};
+const factorButtons=[...document.querySelectorAll('#factorOptions .option')];
+const materialButtons=[...document.querySelectorAll('.materialCard[data-material]')];
+const step1=document.getElementById('step1'), step2=document.getElementById('step2'), step3=document.getElementById('step3');
+const nextBtn=document.getElementById('nextBtn'), backBtn=document.getElementById('backBtn');
+const progressBar=document.getElementById('progressBar'), progressLabel=document.getElementById('progressLabel'), progressDone=document.getElementById('progressDone');
+const selectedFactorsChips=document.getElementById('selectedFactorsChips');
+const resultFactorsChips=document.getElementById('resultFactorsChips');
+
+function updateTop(){
+ progressLabel.textContent=`Schritt ${state.step} von 3`;
+ progressDone.textContent=`${state.step-1} von 3 Schritten abgeschlossen`;
+ progressBar.style.width=(state.step/3*100)+'%';
+ step1.classList.toggle('hidden',state.step!==1);
+ step2.classList.toggle('hidden',state.step!==2);
+ step3.classList.toggle('hidden',state.step!==3);
+ backBtn.style.visibility=state.step===1?'hidden':'visible';
+ nextBtn.textContent=state.step===3?'neu starten':'weiter';
+}
+function renderFactors(){
+ factorButtons.forEach(btn=>btn.classList.toggle('selected',state.selectedFactors.includes(btn.dataset.factor)));
+ selectedFactorsChips.innerHTML='';
+ state.selectedFactors.forEach(f=>{let c=document.createElement('div');c.className='chip';c.textContent=f;selectedFactorsChips.appendChild(c);});
+}
+function setFactorFeedback(msg){
+ const el = document.getElementById('factorFeedback');
+ if(el) el.textContent = msg || '';
+}
+function toggleFactor(v){
+ const i=state.selectedFactors.indexOf(v);
+ if(i>=0){
+   state.selectedFactors.splice(i,1);
+   setFactorFeedback('');
+   renderFactors();
+   return;
+ }
+
+ if(state.selectedFactors.length >= 2){
+   setFactorFeedback('Wählt genau zwei Stoffe aus. Entfernt zuerst eine Auswahl, wenn ihr wechseln wollt.');
+   return;
+ }
+
+ const saltValues = ['Kupfersulfat','Kupfercarbonat'];
+ if(saltValues.includes(v) && state.selectedFactors.some(x => saltValues.includes(x))){
+   setFactorFeedback('Wählt nicht beide Kupferstoffe zusammen. Kombiniert Tropfwasser mit einem Kupferstoff.');
+   return;
+ }
+
+ state.selectedFactors.push(v);
+ setFactorFeedback('');
+ renderFactors();
+}
+factorButtons.forEach(btn=>btn.onclick=()=>toggleFactor(btn.dataset.factor));
+
+function allowedMaterials(){
+ const allowed = ['Eisennagel'];
+ if(state.selectedFactors.includes('Tropfwasser')) allowed.push('Wasser');
+ if(state.selectedFactors.includes('Kupfersulfat')) allowed.push('Kupfersulfat');
+ if(state.selectedFactors.includes('Kupfercarbonat')) allowed.push('Kupfercarbonat');
+ return allowed;
+}
+function sameSet(a,b){
+ if(a.length !== b.length) return false;
+ return a.every(x => b.includes(x));
+}
+function hasAll(which, list){
+ return list.every(item => state.beakers[which].includes(item));
+}
+function beakerHas(which, item){
+ return state.beakers[which].includes(item);
+}
+function updateLumiPlanTip(){
+ const el = document.getElementById('lumiPlanTip');
+ if(!el) return;
+
+ const selected = state.selectedFactors;
+ const a = state.beakers.A;
+ const b = state.beakers.B;
+ const bothEmpty = a.length === 0 && b.length === 0;
+ const onlyOneFilled = (a.length > 0 && b.length === 0) || (b.length > 0 && a.length === 0);
+ const missingNail = !beakerHas('A','Eisennagel') || !beakerHas('B','Eisennagel');
+ const bothFilled = a.length > 0 && b.length > 0;
+
+ if(selected.includes('Kupfercarbonat')){
+   if(bothEmpty){
+     el.textContent = 'Lumi-Tipp: Prüft die Idee mit Kupfercarbonat so, dass ihr vergleichen könnt. In beide Ansätze gehört ein frischer Eisennagel.';
+     return;
+   }
+   if(onlyOneFilled){
+     el.textContent = 'Lumi-Tipp: Ein einzelner Ansatz reicht noch nicht zum Vergleichen. Legt einen zweiten Ansatz an.';
+     return;
+   }
+   if(missingNail){
+     el.textContent = 'Lumi-Tipp: Der rötliche Glanz wurde an Eisen beobachtet. Ohne Eisennagel kann ein Ansatz die Eisenleiter nicht gut modellieren.';
+     return;
+   }
+   if(bothFilled && sameSet(a,b)){
+     el.textContent = 'Lumi-Tipp: In beiden Bechergläsern liegen gerade dieselben Stoffe. So könnt ihr nichts vergleichen. Verändert einen Ansatz gezielt.';
+     return;
+   }
+   if((hasAll('A',['Eisennagel','Wasser','Kupfercarbonat']) || hasAll('B',['Eisennagel','Wasser','Kupfercarbonat']))){
+     el.textContent = 'Lumi-Tipp: Kupfercarbonat löst sich kaum in Wasser. Es liegt im Becherglas als grüner Feststoff unten. Könnt ihr euch vorstellen, welches Problem das für den Kontakt mit dem Eisennagel sein könnte?';
+     return;
+   }
+   if((hasAll('A',['Eisennagel','Kupfercarbonat']) || hasAll('B',['Eisennagel','Kupfercarbonat'])) && !selected.includes('Tropfwasser')){
+     el.textContent = 'Lumi-Tipp: Im Stollen spielt Tropfwasser eine Rolle. Überlegt, ob ein trockener Feststoff ohne Wasser gut zur Situation passt.';
+     return;
+   }
+   el.textContent = 'Lumi-Tipp: Achtet darauf, ob Kupfercarbonat im Wasser verteilt oder gelöst vorliegt.';
+   return;
+ }
+
+ if(selected.includes('Kupfersulfat')){
+   if(bothEmpty){
+     el.textContent = 'Lumi-Tipp: Prüft, ob Wasser allein reicht oder ob Kupfersulfat im Wasser eine Rolle spielt. Dafür braucht ihr zwei vergleichbare Ansätze.';
+     return;
+   }
+   if(onlyOneFilled){
+     el.textContent = 'Lumi-Tipp: Ein einzelner Ansatz reicht noch nicht zum Vergleichen. Legt einen zweiten Ansatz an, der sich nur in einem Punkt unterscheidet.';
+     return;
+   }
+   if(missingNail){
+     el.textContent = 'Lumi-Tipp: Der rötliche Glanz wurde an Eisen beobachtet. In jedem sinnvollen Ansatz sollte deshalb ein frischer Eisennagel liegen.';
+     return;
+   }
+   if(bothFilled && sameSet(a,b)){
+     el.textContent = 'Lumi-Tipp: In beiden Bechergläsern liegen gerade dieselben Stoffe. So könnt ihr nichts vergleichen. Verändert einen Ansatz gezielt.';
+     return;
+   }
+   const waterOnlyA = sameSet(a,['Eisennagel','Wasser']);
+   const waterOnlyB = sameSet(b,['Eisennagel','Wasser']);
+   const sulfateA = sameSet(a,['Eisennagel','Wasser','Kupfersulfat']);
+   const sulfateB = sameSet(b,['Eisennagel','Wasser','Kupfersulfat']);
+   if((waterOnlyA && sulfateB) || (waterOnlyB && sulfateA)){
+     el.textContent = 'Lumi-Tipp: Das ist ein sinnvoller Vergleich. Beide Ansätze enthalten Eisen und Wasser. Nur Kupfersulfat ist unterschiedlich.';
+     return;
+   }
+   if((beakerHas('A','Kupfersulfat') && !beakerHas('A','Wasser')) || (beakerHas('B','Kupfersulfat') && !beakerHas('B','Wasser'))){
+     el.textContent = 'Lumi-Tipp: Überlegt, ob Kupfersulfat im Stollen trocken zur Leiter gelangt oder mit Tropfwasser in Kontakt kommt.';
+     return;
+   }
+   el.textContent = 'Lumi-Tipp: Verändert möglichst nur einen Stoff zwischen Versuch A und Versuch B.';
+   return;
+ }
+
+ el.textContent = 'Lumi-Tipp: Achtet darauf, dass eure beiden Ansätze vergleichbar bleiben.';
+}
+function removeDisallowedMaterials(){
+ const allowed = allowedMaterials();
+ ['A','B'].forEach(which=>{
+   state.beakers[which] = state.beakers[which].filter(item => allowed.includes(item));
+ });
+}
+
+function setActiveBeaker(which){
+ state.activeBeaker=which;
+ document.getElementById('cardA').classList.toggle('active',which==='A');
+ document.getElementById('cardB').classList.toggle('active',which==='B');
+ renderTray();
+}
+document.getElementById('cardA').onclick=()=>setActiveBeaker('A');
+document.getElementById('cardB').onclick=()=>setActiveBeaker('B');
+
+function toggleMaterial(which, material){
+ const arr=state.beakers[which];
+ const idx=arr.indexOf(material);
+ if(idx>=0){arr.splice(idx,1);}
+ else{arr.push(material);}
+ renderBeaker(which); renderSummary(); renderTray();
+}
+materialButtons.forEach(btn=>btn.onclick=()=>{if(!state.activeBeaker) return; toggleMaterial(state.activeBeaker,btn.dataset.material);});
+
+function renderTray(){
+ updateLumiPlanTip();
+ const allowed = allowedMaterials();
+ materialButtons.forEach(btn=>{
+   const material = btn.dataset.material;
+   const isAllowed = allowed.includes(material);
+   btn.classList.toggle('hidden', !isAllowed);
+   btn.classList.remove('selected');
+   if(isAllowed && state.activeBeaker && state.beakers[state.activeBeaker].includes(material)) btn.classList.add('selected');
+ });
+}
+function renderBeaker(which){
+ const arr=state.beakers[which];
+ const contents=document.getElementById('contents'+which);
+ const liquid=document.getElementById('liquid'+which);
+ const sediment=document.getElementById('sediment'+which);
+ const nail=document.getElementById('nail'+which);
+ contents.innerHTML='';
+ if(arr.length===0){contents.innerHTML='<span class="note">noch leer</span>';}
+ else{arr.forEach(item=>{let chip=document.createElement('div');chip.className='chip';chip.textContent=item;contents.appendChild(chip);});}
+ const hasWater=arr.includes('Wasser'), hasSulfate=arr.includes('Kupfersulfat'), hasCarbonate=arr.includes('Kupfercarbonat'), hasNail=arr.includes('Eisennagel');
+ nail.classList.toggle('hidden',!hasNail);
+ if(hasWater&&hasSulfate){liquid.className='liquid blue';liquid.style.height='50%';}
+ else if(hasWater){liquid.className='liquid clear';liquid.style.height='46%';}
+ else{liquid.className='liquid';liquid.style.height='0%';}
+ sediment.innerHTML='';
+ if(hasCarbonate){sediment.style.height='28px';for(let i=0;i<5;i++){let lump=document.createElement('div');lump.className='lump';lump.style.height=(14+(i%3)*4)+'px';sediment.appendChild(lump);}}
+ else{sediment.style.height='0';}
+}
+function nice(arr){
+ return arr.length?arr.join(' + '):'—';
+}
+function renderSummary(){
+ document.getElementById('sumA').textContent='Versuch A: '+nice(state.beakers.A);
+ document.getElementById('sumB').textContent='Versuch B: '+nice(state.beakers.B);
+}
+function planningComment(){
+ const a = state.beakers.A;
+ const b = state.beakers.B;
+ const bothEmpty = a.length === 0 && b.length === 0;
+ const onlyOneFilled = (a.length > 0 && b.length === 0) || (b.length > 0 && a.length === 0);
+ const bothFilled = a.length > 0 && b.length > 0;
+ const missingNail = !beakerHas('A','Eisennagel') || !beakerHas('B','Eisennagel');
+
+ if(bothEmpty) return 'Lumi-Hinweis: Eure Planung ist noch leer. Geht zurück und legt zwei Ansätze an.';
+ if(onlyOneFilled) return 'Lumi-Hinweis: Ihr habt bisher nur einen Ansatz. Für einen Vergleich braucht ihr zwei Ansätze.';
+ if(missingNail) return 'Lumi-Hinweis: Der rötliche Glanz wurde an Eisen beobachtet. Deshalb sollte in beiden Ansätzen ein frisches Stück Eisen liegen.';
+ if(bothFilled && sameSet(a,b)) return 'Lumi-Hinweis: In beiden Bechergläsern liegen dieselben Stoffe. So könnt ihr keinen Unterschied prüfen. Geht zurück und verändert einen Ansatz gezielt.';
+
+ const waterOnlyA = sameSet(a,['Eisennagel','Wasser']);
+ const waterOnlyB = sameSet(b,['Eisennagel','Wasser']);
+ const sulfateA = sameSet(a,['Eisennagel','Wasser','Kupfersulfat']);
+ const sulfateB = sameSet(b,['Eisennagel','Wasser','Kupfersulfat']);
+ if((waterOnlyA && sulfateB) || (waterOnlyB && sulfateA)){
+   return 'Lumi-Hinweis: Eure Planung ist ein klarer Vergleich: Wasser allein gegen Wasser mit Kupfersulfat. Übertragt diese beiden Ansätze in die Versuchsanweisung.';
+ }
+
+ if(state.selectedFactors.includes('Kupfercarbonat')){
+   if(hasAll('A',['Eisennagel','Wasser','Kupfercarbonat']) || hasAll('B',['Eisennagel','Wasser','Kupfercarbonat'])){
+     return 'Lumi-Hinweis: Eure Planung prüft die Idee mit Kupfercarbonat. Achtet darauf: Kupfercarbonat liegt als grüner Feststoff unten. Überlegt, ob es dadurch gut mit der Eisenoberfläche in Kontakt kommt.';
+   }
+   return 'Lumi-Hinweis: Eure Planung enthält Kupfercarbonat. Prüft noch einmal, ob Wasser und Eisen in beiden Ansätzen sinnvoll berücksichtigt sind.';
+ }
+
+ if(state.selectedFactors.includes('Kupfersulfat')){
+   return 'Lumi-Hinweis: Eure Planung enthält Kupfersulfat. Prüft noch einmal, ob der Vergleich fair ist: Eisen in beiden Ansätzen, ein gezielter Unterschied zwischen A und B.';
+ }
+
+ return 'Lumi-Hinweis: Prüft, ob eure beiden Ansätze vergleichbar sind und sich gezielt in einem Stoff unterscheiden.';
+}
+function renderResultBeaker(which){
+ const arr = state.beakers[which];
+ const contents = document.getElementById('resultContents'+which);
+ const liquid = document.getElementById('resultLiquid'+which);
+ const sediment = document.getElementById('resultSediment'+which);
+ const nail = document.getElementById('resultNail'+which);
+ if(!contents || !liquid || !sediment || !nail) return;
+
+ contents.innerHTML='';
+ if(arr.length===0){
+   contents.innerHTML='<span class="note">noch leer</span>';
+ }else{
+   arr.forEach(item=>{
+     let chip=document.createElement('div');
+     chip.className='chip';
+     chip.textContent=item;
+     contents.appendChild(chip);
+   });
+ }
+
+ const hasWater=arr.includes('Wasser');
+ const hasSulfate=arr.includes('Kupfersulfat');
+ const hasCarbonate=arr.includes('Kupfercarbonat');
+ const hasNail=arr.includes('Eisennagel');
+
+ nail.classList.toggle('hidden',!hasNail);
+
+ if(hasWater&&hasSulfate){
+   liquid.className='liquid blue';
+   liquid.style.height='50%';
+ }else if(hasWater){
+   liquid.className='liquid clear';
+   liquid.style.height='46%';
+ }else{
+   liquid.className='liquid';
+   liquid.style.height='0%';
+ }
+
+ sediment.innerHTML='';
+ if(hasCarbonate){
+   sediment.style.height='28px';
+   for(let i=0;i<5;i++){
+     let lump=document.createElement('div');
+     lump.className='lump';
+     lump.style.height=(14+(i%3)*4)+'px';
+     sediment.appendChild(lump);
+   }
+ }else{
+   sediment.style.height='0';
+ }
+}
+
+function renderResults(){
+ if(resultFactorsChips){
+   resultFactorsChips.innerHTML='';
+   state.selectedFactors.forEach(f=>{let c=document.createElement('div');c.className='chip';c.textContent=f;resultFactorsChips.appendChild(c);});
+ }
+ renderResultBeaker('A');
+ renderResultBeaker('B');
+ document.getElementById('resultA').textContent='Versuch A: '+nice(state.beakers.A);
+ document.getElementById('resultB').textContent='Versuch B: '+nice(state.beakers.B);
+ const tip=document.getElementById('lumiResultTip');
+ if(tip) tip.textContent=planningComment();
+}
+function resetAll(){
+ state.step=1; state.selectedFactors=[]; state.activeBeaker=null; state.beakers={A:[],B:[]}; setFactorFeedback('');
+ renderFactors(); renderBeaker('A'); renderBeaker('B'); renderSummary(); renderResults(); updateLumiPlanTip(); renderTray(); updateTop();
+ setActiveBeaker(null);
+}
+nextBtn.onclick=()=>{
+ if(state.step===1){
+   if(state.selectedFactors.length!==2){
+     setFactorFeedback('Bitte wählt genau zwei Stoffe aus.');
+     return;
+   }
+   if(!state.selectedFactors.includes('Tropfwasser')){
+     setFactorFeedback('Kombiniert Tropfwasser mit einem Kupferstoff.');
+     return;
+   }
+   if(!(state.selectedFactors.includes('Kupfersulfat') || state.selectedFactors.includes('Kupfercarbonat'))){
+     setFactorFeedback('Wählt zusätzlich einen Kupferstoff aus.');
+     return;
+   }
+   removeDisallowedMaterials();
+   renderBeaker('A');
+   renderBeaker('B');
+   renderSummary();
+   state.step=2; renderFactors(); updateTop(); updateLumiPlanTip(); renderTray();
+ }else if(state.step===2){
+   if(state.selectedFactors.includes('Kupfercarbonat')){
+     updateLumiPlanTip();
+     const tip = document.getElementById('lumiPlanTip');
+     if(tip){
+       tip.textContent = 'Lumi-Tipp: Mit Kupfercarbonat geht es nicht weiter zur Ergebnisübersicht. Kupfercarbonat liegt als grüner Feststoff unten und ist für den geplanten Vergleich nicht geeignet. Geht zurück und wählt Tropfwasser mit Kupfersulfat.';
+     }
+     return;
+   }
+   renderSummary();
+   renderResults();
+   state.step=3; updateTop();
+ }else resetAll();
+};
+backBtn.onclick=()=>{if(state.step>1){state.step-=1;updateTop();updateLumiPlanTip();renderTray();}};
+resetAll();
+</script>
+</body>
+</html>

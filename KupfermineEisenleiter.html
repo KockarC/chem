@@ -162,7 +162,7 @@ radial-gradient(ellipse at 83% 77%, rgba(54,146,121,.12), transparent 26%)}
 </div>
 <div class='note' id='factorFeedback' style='margin-top:10px;min-height:24px'></div>
 </div>
-<div class='mascot'><div class='face'>🧑‍🔬</div><div class='speech'>Wählt Tropfwasser und einen kupferhaltigen Stoff aus dem Kontext aus.</div></div>
+<div class='mascot'><div class='face'>🧑‍🔬</div><div class='speech'>Wählt Stoffe aus, die im Kontext erwähnt werden.</div></div>
 </div>
 </section>
 
@@ -185,7 +185,7 @@ radial-gradient(ellipse at 83% 77%, rgba(54,146,121,.12), transparent 26%)}
 <button class='option materialCard' data-material='Kupfersulfat'><span class='bubbleicon sulfate'>🔵</span><span>Kupfersulfat</span></button>
 <button class='option materialCard' data-material='Kupfercarbonat'><span class='bubbleicon carbonate'>🟢</span><span>Kupfercarbonat</span></button>
 </div>
-<div class='mascot'><div class='face'>🧑‍🔬</div><div class='speech' id='lumiPlanTip'>Tipp: Ein fairer Vergleich braucht in beiden Bechergläsern ein frisches Stück Eisen. Verändert dann gezielt, womit das Eisen in Kontakt kommt.</div></div>
+<div class='mascot'><div class='face'>🧑‍🔬</div><div class='speech' id='lumiPlanTip'>Lumi-Tipp: In der Experimentierkiste liegen Bechergläser, frische Eisennägel, Wasser und die gewählten Salze. Stellt daraus zwei Ansätze zusammen.</div></div>
 </div>
 </div>
 <div class='summary'><h4>Eure Zusammenstellung</h4><p id='sumA'>Versuch A: —</p><p id='sumB'>Versuch B: —</p></div>
@@ -308,7 +308,7 @@ function updateLumiPlanTip(){
 
  if(selected.includes('Kupfercarbonat')){
    if(bothEmpty){
-     el.textContent = 'Lumi-Tipp: Prüft die Idee mit Kupfercarbonat so, dass ihr vergleichen könnt. In beide Ansätze gehört ein frischer Eisennagel.';
+     el.textContent = 'Lumi-Tipp: In der Experimentierkiste liegen Bechergläser, frische Eisennägel, Wasser und die gewählten Salze. Stellt daraus zwei Ansätze zusammen.';
      return;
    }
    if(onlyOneFilled){
@@ -337,7 +337,7 @@ function updateLumiPlanTip(){
 
  if(selected.includes('Kupfersulfat')){
    if(bothEmpty){
-     el.textContent = 'Lumi-Tipp: Prüft, ob Wasser allein reicht oder ob Kupfersulfat im Wasser eine Rolle spielt. Dafür braucht ihr zwei vergleichbare Ansätze.';
+     el.textContent = 'Lumi-Tipp: In der Experimentierkiste liegen Bechergläser, frische Eisennägel, Wasser und die gewählten Salze. Stellt daraus zwei Ansätze zusammen.';
      return;
    }
    if(onlyOneFilled){

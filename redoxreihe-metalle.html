@@ -117,11 +117,6 @@
   .particle-head strong{font-size:.88rem}
   .particle-head span{font-size:.78rem;color:var(--muted)}
   canvas{display:block;width:100%;height:230px;background:#fbfdff}
-  .result{
-    margin-top:14px;border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff;
-  }
-  .result strong{display:block;margin-bottom:6px}
-  .obs{line-height:1.48;color:#344054}
   .equations{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-family:"Segoe UI",sans-serif}
   .equations.show{display:block}
   .eq{background:#f7f9fc;border-radius:10px;padding:8px 10px;margin:6px 0}
@@ -137,7 +132,6 @@
   .cell-btn{border:1px solid #cfd6df;background:#fff;border-radius:9px;padding:6px 12px;cursor:pointer;font-weight:900;min-width:42px}
   .cell-btn[data-v="+"]{background:#ecfdf3;border-color:#a6e1bf;color:#087443}
   .cell-btn[data-v="-"]{background:#f2f4f7;color:#475467}
-  textarea{width:100%;min-height:78px;border:1px solid var(--line);border-radius:12px;padding:10px;resize:vertical;font:inherit}
   .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin-top:10px}
   .legend span{display:flex;align-items:center;gap:6px}
   .mini-ion{width:14px;height:14px;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.16)}
@@ -155,7 +149,6 @@
     <div>
       <div class="eyebrow">Station 6 · Virtueller Versuch</div>
       <h1>Die Redoxreihe der Metalle</h1>
-      <div class="sub">Untersuche, welche Metallbleche mit welchen Metallsalzlösungen reagieren. Beobachte zuerst nur die sichtbaren Veränderungen. Die Teilchenebene und Reaktionsgleichungen kannst du anschließend gezielt einblenden.</div>
     </div>
     <div class="badge">Zn · Fe · Cu · Ag</div>
   </header>
@@ -220,11 +213,7 @@
         <canvas id="particleCanvas" width="780" height="230"></canvas>
       </div>
 
-      <div class="result">
-        <strong>Beobachtung</strong>
-        <div class="obs" id="observation">Führe zuerst den Versuch durch und notiere anschließend deine eigene Beobachtung.</div>
-        <div class="equations" id="equations"></div>
-      </div>
+      <div class="equations" id="equations"></div>
     </main>
   </div>
 
@@ -245,7 +234,6 @@
       </table>
     </div>
     <p class="tiny">Trage „+“ ein, wenn sich ein neues Metall abscheidet. Trage „–“ ein, wenn keine entsprechende sichtbare Reaktion auftritt. Die Animation ist qualitativ: Geschwindigkeit und Stärke von Farbänderungen werden nicht quantitativ simuliert.</p>
-    <textarea id="studentNotes" placeholder="Eigene Beobachtungen, z. B. Farbe des Belags oder Veränderung der Lösung …"></textarea>
   </section>
 </div>
 
@@ -343,7 +331,6 @@ const deposit = $("#deposit");
 const statusEl = $("#status");
 const setupLabel = $("#setupLabel");
 const timerEl = $("#timer");
-const observation = $("#observation");
 const equations = $("#equations");
 const particleCard = $("#particleCard");
 const canvas = $("#particleCanvas");
@@ -384,7 +371,6 @@ function selectSolution(key){
 function refreshSetup(){
   completed=false;
   currentReaction=null;
-  observation.textContent="Führe zuerst den Versuch durch und notiere anschließend deine eigene Beobachtung.";
   equations.classList.remove("show");
   equations.innerHTML="";
   particleCard.hidden=true;
@@ -444,7 +430,6 @@ function runExperiment(){
   particleCard.hidden=true;
   particleVisible=false;
   $("#particleBtn").textContent="Teilchenebene";
-  observation.textContent="Beobachte den Versuch. Notiere deine Beobachtung erst nach dem Ablauf.";
   clearDeposit();
   liquid.style.background=solutions[selectedSolution].color;
   let t0=performance.now(), duration=7000;
@@ -472,8 +457,7 @@ function runExperiment(){
 function finishExperiment(){
   running=false; completed=true;
   $("#startBtn").disabled=false;
-  statusEl.textContent="Versuch beendet. Halte jetzt deine eigene Beobachtung fest, bevor du die Deutung einblendest.";
-  observation.textContent="Beschreibe mit eigenen Worten, was du am Metallblech und an der Lösung beobachtet hast.";
+  statusEl.textContent="Versuch beendet. Notiere deine Beobachtungen, bevor du die Deutung einblendest.";
   prepareEquations();
 }
 
@@ -524,7 +508,6 @@ function resetAll(){
   statusEl.textContent="Baue links einen Versuch auf.";
   setupLabel.textContent="Metall und Lösung auswählen";
   timerEl.textContent="00:00";
-  observation.textContent="Führe zuerst den Versuch durch und notiere anschließend deine eigene Beobachtung.";
   equations.innerHTML=""; equations.classList.remove("show");
   particleCard.hidden=true; particleVisible=false;
   $("#particleBtn").textContent="Teilchenebene";

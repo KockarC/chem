@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chemie – interaktive Materialien</title>
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --ink:#172033;
+      --muted:#667085;
+      --line:#d9e0ea;
+      --accent:#2b59c3;
+      --accent-soft:#eef3ff;
+      --shadow:0 10px 28px rgba(23,32,51,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%,#eaf0ff 0,transparent 28rem),
+        var(--bg);
+      color:var(--ink);
+    }
+    .page{max-width:1100px;margin:auto;padding:46px 22px 60px}
+    header{margin-bottom:28px}
+    .eyebrow{
+      display:inline-block;
+      color:var(--accent);
+      background:var(--accent-soft);
+      border:1px solid #d9e4ff;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+    h1{
+      margin:14px 0 8px;
+      font-size:clamp(2.2rem,6vw,4.3rem);
+      line-height:1;
+      letter-spacing:-.045em;
+    }
+    .intro{margin:0;color:var(--muted);font-size:1.08rem;max-width:720px;line-height:1.55}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;
+    }
+    .card{
+      display:flex;
+      flex-direction:column;
+      min-height:205px;
+      padding:22px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      text-decoration:none;
+      color:inherit;
+      transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;
+    }
+    .card:hover{
+      transform:translateY(-3px);
+      border-color:#aebfe9;
+      box-shadow:0 14px 34px rgba(23,32,51,.12);
+    }
+    .tag{
+      align-self:flex-start;
+      font-size:.76rem;
+      font-weight:850;
+      color:var(--accent);
+      background:var(--accent-soft);
+      border-radius:999px;
+      padding:5px 9px;
+      margin-bottom:18px;
+    }
+    h2{margin:0 0 9px;font-size:1.25rem;line-height:1.2}
+    .desc{margin:0;color:var(--muted);line-height:1.45}
+    .open{
+      margin-top:auto;
+      padding-top:20px;
+      color:var(--accent);
+      font-weight:850;
+    }
+    footer{margin-top:28px;color:var(--muted);font-size:.88rem}
+    @media(max-width:600px){
+      .page{padding:28px 14px 42px}
+      .card{min-height:180px;border-radius:18px}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <span class="eyebrow">Chemie</span>
+      <h1>Interaktive Materialien</h1>
+      <p class="intro">Übersicht der veröffentlichten Animationen, Versuchsplanungen und Lernmaterialien.</p>
+    </header>
+
+    <section class="grid" aria-label="Materialien">
+      <a class="card" href="./redoxreihev1">
+        <span class="tag">Redox</span>
+        <h2>Virtueller Versuch – Redoxreihe der Metalle</h2>
+        <p class="desc">Interaktiver Versuch zur Redoxreihe der Metalle.</p>
+        <span class="open">Öffnen →</span>
+      </a>
+
+      <a class="card" href="./KupfermineEisenleiter.html">
+        <span class="tag">Redox</span>
+        <h2>Kupfermine &amp; Eisenleiter</h2>
+        <p class="desc">Interaktives Material rund um den Versuch im Kontext der Kupfermine.</p>
+        <span class="open">Öffnen →</span>
+      </a>
+
+      <a class="card" href="./CU2Sanimation.html">
+        <span class="tag">Stoffumwandlung</span>
+        <h2>Kupfer und Schwefel – Modellanimation</h2>
+        <p class="desc">Modellanimation zur Reaktion von Kupfer und Schwefel.</p>
+        <span class="open">Öffnen →</span>
+      </a>
+
+      <a class="card" href="./lumiplanungCU2S.html">
+        <span class="tag">Versuchsplanung</span>
+        <h2>Hilf Lumi bei der Versuchsplanung</h2>
+        <p class="desc">Interaktive Planung einer Versuchsreihe mit Kupfer und Schwefel.</p>
+        <span class="open">Öffnen →</span>
+      </a>
+
+      <a class="card" href="./MehratomigeIonen.html">
+        <span class="tag">Ionen</span>
+        <h2>Lumis Vermutungswerkstatt</h2>
+        <p class="desc">Vom Alltagskontext zum Petrischalenversuch.</p>
+        <span class="open">Öffnen →</span>
+      </a>
+
+      <a class="card" href="./concept_map_salze_ionen.html">
+        <span class="tag">Salze &amp; Ionen</span>
+        <h2>Concept-Map Salze und Ionen</h2>
+        <p class="desc">Interaktiver Arbeitsbereich zur Vernetzung zentraler Begriffe.</p>
+        <span class="open">Öffnen →</span>
+      </a>
+
+      <a class="card" href="./Lumi.html">
+        <span class="tag">Analytik</span>
+        <h2>Gehalt an Magnesium in einer Tablette</h2>
+        <p class="desc">Interaktives Lernmaterial zur Untersuchung einer Magnesiumtablette.</p>
+        <span class="open">Öffnen →</span>
+      </a>
+    </section>
+
+    <footer>Die Seite wird automatisch über GitHub Pages bereitgestellt.</footer>
+  </main>
+</body>
+</html>

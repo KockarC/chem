@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gehalt an Magnesium in einer Tablette</title>
+<style>
+:root{--bg:#f6f8fb;--card:#fff;--ink:#172033;--muted:#5f6b7a;--blue:#2d9cdb;--ok:#1f9d55;--wrong:#c2410c;--shadow:0 10px 28px rgba(23,32,51,.12)}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui;background:var(--bg);color:var(--ink)}
+header{max-width:1200px;margin:auto;padding:22px}
+h1{margin:0}.subtitle{color:var(--muted);margin-top:6px}
+main{max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 320px;gap:20px;padding:20px}
+.board,.side{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:20px}
+.steps{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.stepbtn{margin:0;padding:8px 12px;border-radius:999px;border:0;background:#dfe7ee;color:#172033;font-weight:750;cursor:pointer}.stepbtn.locked{opacity:.45;cursor:not-allowed}.stepbtn.active{background:#172033;color:white}
+.slide{display:none}.slide.active{display:block}
+.workarea{position:relative;height:520px;border:2px solid #e2eaf1;border-radius:18px;overflow:hidden;padding-top:18px}
+
+.mystery-box{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:18px}.mystery-card{touch-action:none;min-height:120px;border:3px solid #dfe7ee;border-radius:18px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;font-weight:800;cursor:grab}.mystery-card .icon{font-size:42px;margin-bottom:8px}.mystery-target{position:absolute;left:24px;right:24px;top:215px;height:140px;border:3px dashed #89a9ba;border-radius:18px;background:#f8fcff;display:flex;align-items:center;justify-content:center;text-align:center;color:#557082;font-weight:800;padding:12px}.mystery-target.dragover{background:#eef7fc}.mystery-target.correct{border-color:var(--ok);background:#ecfbf2}.mystery-target.wrong{border-color:var(--wrong);background:#fff3ed}
+.mascot{position:absolute;left:24px;right:24px;bottom:10px;display:grid;grid-template-columns:86px 1fr;gap:14px;align-items:end;z-index:5}.mascot-face{width:82px;height:82px;border-radius:50%;background:#fff7d6;border:3px solid #e7c85b;display:flex;align-items:center;justify-content:center;font-size:40px}.mascot-bubble{min-height:78px;background:#fff;border:2px solid #e2eaf1;border-radius:18px;padding:14px;font-weight:750;color:#184b63;line-height:1.35;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:10px}.nextbtn{display:none;margin:0;padding:8px 14px;border-radius:999px;border:0;background:#172033;color:white;font-weight:800;cursor:pointer}.nextbtn.show{display:inline-block}
+.axis{position:absolute;left:60px;right:60px;top:92px;height:30px;background:linear-gradient(90deg,#eef8fd,#7fd0ec);border-radius:999px;display:flex;align-items:center;justify-content:center}.axis:after{content:"";position:absolute;right:-30px;top:-15px;border-left:40px solid #7fd0ec;border-top:30px solid transparent;border-bottom:30px solid transparent}.axis-title{font-weight:800;color:#184b63;font-size:15px;z-index:1}.bulb{position:absolute;top:40px;font-size:46px}.bulb.off{opacity:.12}.bulb.high{opacity:1}.bulb.mid{opacity:.55}
+.slot{position:absolute;top:165px;transform:translateX(-50%);width:130px;height:150px;border:3px dashed #89a9ba;border-radius:18px;display:flex;align-items:center;justify-content:center}
+.compare-zone{position:absolute;left:44px;right:44px;top:185px;height:160px;border:3px dashed rgba(137,169,186,.55);border-radius:20px;background:rgba(248,252,255,.35)}
+.compare-guide{position:absolute;top:40px;transform:translateX(-50%);width:100px;opacity:.75;transition:opacity .2s ease;pointer-events:none;display:flex;flex-direction:column;align-items:center}.compare-guide .beaker{width:70px;height:92px;border-color:#b7c5d3}.compare-guide .label{font-size:10px;color:#3f5f75;font-weight:700}
+.compare-zone.dragover{background:rgba(238,247,252,.8);border-color:#89a9ba}
+.compare-slot{z-index:2;background:rgba(255,255,255,.7);display:none}.slot[data-slot="verylittle"]{left:10%}.slot[data-slot="little"]{left:50%}.slot[data-slot="much"]{left:90%}.slot.correct{border-color:var(--ok)}.slot.wrong{border-color:var(--wrong)}
+.beaker{width:85px;height:115px;border:3px solid #cfd8e3;border-radius:10px 10px 20px 20px;position:relative;background:linear-gradient(#ffffff,#e6f4fb);overflow:hidden}.liquid{position:absolute;bottom:0;left:0;width:100%;height:70%;background:rgba(173,216,230,.35);border-radius:0 0 16px 16px}.tablet-icon{position:absolute;left:50%;top:50%;transform:translate(-50%,-35%);font-size:28px;z-index:2}
+.pile{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:64px;height:40px;clip-path:polygon(50% 0%,0% 100%,100% 100%);background:radial-gradient(circle at 20% 80%,rgba(255,255,255,.6) 0 2px,transparent 2px 100%),radial-gradient(circle at 60% 70%,rgba(255,255,255,.5) 0 2px,transparent 2px 100%),linear-gradient(#dcdcdc,#cfcfcf)}.pile[data-size="large"]{height:40px}.pile[data-size="small"]{height:18px}.pile[data-size="single"]{height:6px;clip-path:none;background:#cfcfcf;border-radius:2px;width:6px}
+.cards{display:flex;flex-wrap:wrap;gap:12px;min-height:150px;border:2px dashed transparent;border-radius:14px;padding:6px}.cards.dragover{border-color:#89a9ba;background:#f5fbff}.card{touch-action:none;cursor:grab;width:112px;display:flex;flex-direction:column;align-items:center}.label{text-align:center;font-size:12px;margin-top:4px}
+.dilution-row{position:absolute;left:36px;right:36px;top:42px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.content-bridge{position:absolute;left:42px;right:42px;top:24px;display:grid;grid-template-columns:1fr 60px 1fr;gap:18px;align-items:center}.memory-card{min-height:110px;background:#fff;border:3px solid #dfe7ee;border-radius:18px;display:grid;grid-template-columns:60px 1fr;gap:12px;align-items:center;padding:16px}.memory-card span{color:var(--muted);font-weight:700}.memory-icon{font-size:38px;text-align:center}.memory-arrow{text-align:center;font-size:32px;color:#184b63;font-weight:900}.content-puzzle{position:absolute;left:70px;right:70px;top:205px;display:grid;grid-template-columns:auto 1fr auto 1fr;gap:18px;align-items:center;z-index:2}.sentence{font-size:20px;font-weight:900;color:#184b63}.content-slot{height:92px;border:3px dashed #89a9ba;border-radius:18px;background:#f8fcff;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;color:#557082;padding:14px}.content-slot.correct{border-color:var(--ok);background:#ecfbf2}.content-slot.wrong{border-color:var(--wrong);background:#fff3ed}.content-cards{position:absolute;left:70px;right:70px;top:330px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;z-index:1}.slide[data-slide="3"] .workarea{height:590px}
+.slide[data-slide="5"] .workarea{height:700px}.slide[data-slide="3"] .mascot{bottom:10px}.slide[data-slide="3"] .mascot-bubble{min-height:72px;font-size:15px}.content-card{min-height:70px;background:#fff;border:3px solid #dfe7ee;border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;padding:10px;cursor:grab;touch-action:none}.dilution-card{background:#fff;border:3px solid #dfe7ee;border-radius:18px;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px;font-weight:800}.choicebtn{width:100%;margin:6px 0;padding:10px 12px;border-radius:12px;border:2px solid #dfe7ee;background:#fff;font-weight:800;cursor:pointer}.choicebtn:hover{background:#f4fbff}.choicebtn.correct{border-color:var(--ok);background:#ecfbf2}.choicebtn.wrong{border-color:var(--wrong);background:#fff3ed}.dilution-target{border-style:dashed}.dilution-target.correct{border-color:var(--ok);background:#ecfbf2}.dilution-card small{color:var(--muted);font-weight:700;margin-top:6px;line-height:1.25}.dilution-arrow{font-size:28px;color:#184b63;margin:4px 0}.tablet-card{position:absolute;z-index:4;cursor:grab;background:rgba(255,255,255,.85);padding:4px;border-radius:12px}.cards .tablet-card{position:static}.compare-slot .tablet-card{position:static;transform:none}.compare-slot .tablet-card .beaker{width:80px!important;height:105px!important}.compare-slot .tablet-card .label{font-size:11px}
+.compare-zone.has-tablet .compare-guide{opacity:.25}
+</style>
+</head>
+<body>
+<header><h1>Gehalt an Magnesium in einer Tablette</h1><div class="subtitle">Wie können wir eine Gehaltsangabe mit bereits bekannten Methoden einordnen? Hilf Lumi, den Fall mithilfe deines Vorwissens zu lösen.</div></header>
+<main>
+<section class="board">
+<div class="steps"><button class="stepbtn active" data-step="1">1 Prüfmethode finden</button><button class="stepbtn locked" data-step="2" disabled>2 Zusammenhang ordnen</button><button class="stepbtn locked" data-step="3" disabled>3 Gehalt klären</button><button class="stepbtn locked" data-step="4" disabled>4 Vergleichsproblem erkennen</button><button class="stepbtn locked" data-step="5" disabled>5 Vergleichslösungen entwickeln</button><button class="stepbtn locked" data-step="6" disabled>6 Tablettenlösung einordnen</button></div>
+
+<div class="slide active" data-slide="1"><div class="workarea">
+  <div class="mystery-box" id="mysteryCards">
+    <div class="mystery-card" draggable="true" data-mystery="sehen"><div class="icon">👁️</div><div>Sehen</div></div>
+    <div class="mystery-card" draggable="true" data-mystery="wiegen"><div class="icon">⚖️</div><div>Wiegen</div></div>
+    <div class="mystery-card" draggable="true" data-mystery="geschmack"><div class="icon">👅</div><div>Schmecken</div></div>
+    <div class="mystery-card" draggable="true" data-mystery="temperatur"><div class="icon">🌡️</div><div>Temperatur beim Lösevorgang messen</div></div>
+    <div class="mystery-card" draggable="true" data-mystery="leitfaehigkeit"><div class="icon">💡</div><div>Leitfähigkeit prüfen</div></div>
+  </div>
+  <div class="mystery-target" id="mysteryTarget">Ziehe eine Idee hierhin.</div>
+  <div class="mascot"><div class="mascot-face">🧑‍🔬</div><div class="mascot-bubble"><div id="mysteryFeedback">Ich bin Lumi. Ich frage mich, wie man den Gehalt an Magnesium in einer Tablette zumindest grob einordnen könnte. Welche Idee hilft uns weiter?</div><button class="nextbtn" id="nextFromMystery">weiter</button></div></div>
+</div></div>
+
+<div class="slide" data-slide="2"><div class="workarea">
+  <div class="mascot"><div class="mascot-face">🧑‍🔬</div><div class="mascot-bubble"><div id="orderFeedback">Wie war das nochmal mit den gelösten Ionen in Lösung – erinnerst du dich an den Versuch? Ziehe die Karten von rechts in die Kästchen: links die geringste, rechts die größte Menge gelöster Ionen.</div><button class="nextbtn show" id="checkOrder">prüfen</button><button class="nextbtn" id="nextFromOrder">weiter</button></div></div>
+  <div class="axis"><span class="axis-title">Menge der gelösten Ionen</span></div><div class="bulb off" style="left:10%">💡</div><div class="bulb mid" style="left:50%">💡</div><div class="bulb high" style="left:90%">💡</div>
+  <div class="slot" data-slot="verylittle"></div><div class="slot" data-slot="little"></div><div class="slot" data-slot="much"></div>
+</div></div>
+
+<div class="slide" data-slide="3"><div class="workarea">
+  <div class="content-bridge">
+    <div class="memory-card">
+      <div class="memory-icon">🍕</div>
+      <div><b>Vorwissen: Pizza</b><br><span>Speisesalz- bzw. NaCl-Gehalt bezogen auf eine Pizza</span></div>
+    </div>
+    <div class="memory-arrow">➜</div>
+    <div class="memory-card">
+      <div class="memory-icon">🧪</div>
+      <div><b>Neuer Fall: Tablette</b><br><span>gesuchte Masse an Magnesiumchlorid der gelösten Tablette bezogen auf 100 mL Lösung</span></div>
+    </div>
+  </div>
+
+  <div class="content-puzzle">
+    <div class="sentence">Wir brauchen:</div>
+    <div class="content-slot" data-content-slot="portion">?</div>
+    <div class="sentence">bezogen auf</div>
+    <div class="content-slot" data-content-slot="bezug">?</div>
+  </div>
+
+  <div class="content-cards" id="contentCards">
+    <div class="content-card" draggable="true" data-content="portion">Magnesiummasse bzw. Magnesiumchloridmasse</div>
+    <div class="content-card" draggable="true" data-content="bezug">100 mL Lösung</div>
+    <div class="content-card" draggable="true" data-content="tablette">Anzahl der Tabletten</div>
+    <div class="content-card" draggable="true" data-content="leuchten">Helligkeit der Glühbirne</div>
+  </div>
+
+  <div class="mascot"><div class="mascot-face">🧑‍🔬</div><div class="mascot-bubble"><div id="contentFeedback">Bei der Pizza haben wir nicht nur gefragt, wie viel Speisesalz enthalten ist, sondern worauf sich die Angabe bezieht. Übertrage diese Idee auf die gelöste Tablette: Welche Massenangabe brauchen wir, und worauf beziehen wir sie?</div><button class="nextbtn" id="nextFromContent">weiter</button></div></div>
+</div></div>
+
+
+<div class="slide" data-slide="4"><div class="workarea">
+  <div class="dilution-row" style="grid-template-columns:1fr 1fr 1fr">
+    <div class="dilution-card">
+      <div class="beaker"><div class="liquid"></div><div class="pile" data-size="large"></div></div>
+      <div>250 mg</div>
+      <small>bekannte Lösung<br>in 100 mL</small>
+    </div>
+
+    <div class="dilution-card" id="problemCard">
+      <div style="font-size:22px;font-weight:900;color:#184b63;margin-bottom:8px">💭</div>
+      <div>Wie können wir auch kleinere Gehalte vergleichen?</div>
+      <small style="margin-top:10px">Ziehe die passende Idee hinein.</small>
+    </div>
+
+    <div class="dilution-card dilution-target" id="problemTarget">
+      <div style="font-size:38px">?</div>
+      <small>Idee für weitere Vergleichslösungen</small>
+    </div>
+  </div>
+
+  <div class="content-cards" id="problemCards" style="top:285px;grid-template-columns:repeat(3,1fr)">
+    <div class="content-card problem-option" draggable="true" data-problem="verdünnen">Lösung mit Wasser verdünnen</div>
+    <div class="content-card problem-option" draggable="true" data-problem="erhitzen">Lösung erhitzen</div>
+    <div class="content-card problem-option" draggable="true" data-problem="mehrsalz">Mehr Salz zugeben</div>
+  </div>
+
+  <div class="mascot"><div class="mascot-face">🧑‍🔬</div><div class="mascot-bubble"><div id="problemFeedback">Jetzt haben wir eine bekannte Lösung mit 250 mg Magnesiumchlorid in 100 mL. Aber wie kommen wir zu kleineren Gehalten, damit wir später vergleichen können?</div><button class="nextbtn" id="nextFromCompareProblem">weiter</button></div></div>
+</div></div>
+
+<div class="slide" data-slide="5"><div class="workarea">
+  <div class="dilution-row" style="grid-template-columns:repeat(3,1fr)">
+    <div class="dilution-card dilution-target" data-dilution="2.5">
+      <div class="beaker"><div class="liquid"></div><div class="pile" data-size="single"></div></div>
+      <div>2,5 mg</div><small>Vergleichslösung<br>in 100 mL</small>
+    </div>
+    <div class="dilution-card dilution-target" data-dilution="25">
+      <div class="beaker"><div class="liquid"></div><div class="pile" data-size="small"></div></div>
+      <div>25 mg</div><small>Vergleichslösung<br>in 100 mL</small>
+    </div>
+    <div class="dilution-card" style="border-color:#1f9d55;background:#ecfbf2">
+      <div class="beaker"><div class="liquid"></div><div class="pile" data-size="large"></div></div>
+      <div>250 mg</div><small>Ausgangslösung<br>in 100 mL</small>
+    </div>
+  </div>
+
+  <div style="position:absolute;left:80px;right:80px;top:360px;text-align:center;font-size:22px;font-weight:900;color:#184b63">
+    Welche Vergleichslösung entsteht nach dem ersten bzw. zweiten Verdünnungsschritt?
+  </div>
+
+  <div class="content-cards" id="dilutionCards" style="top:430px;grid-template-columns:repeat(2,1fr);left:180px;right:180px">
+    <div class="content-card dilution-option" draggable="true" data-match="25">1:10 verdünnt</div>
+    <div class="content-card dilution-option" draggable="true" data-match="2.5">nochmals 1:10 verdünnt</div>
+  </div>
+
+  <div class="mascot"><div class="mascot-face">🧑‍🔬</div><div class="mascot-bubble"><div id="compareIdeaFeedback">Die 250-mg-Lösung ist unsere Ausgangslösung. Überlege: Welche Vergleichslösung entsteht nach dem ersten Verdünnungsschritt – und welche erst nach einer weiteren Verdünnung?</div><button class="nextbtn" id="nextFromCompareIdea">weiter</button></div></div>
+</div></div>
+
+<div class="slide" data-slide="6"><div class="workarea" id="compareArea">
+  <div class="mascot"><div class="mascot-face">🧑‍🔬</div><div class="mascot-bubble"><div>Jetzt fehlt uns nur noch der Vergleich mit der Tablettenlösung: Wenn Lösungen mit bekanntem Gehalt unterschiedlich stark leiten, könnten wir dann die Tablettenlösung über ihr Leitfähigkeitsverhalten ungefähr einordnen? Ziehe die Tablettenlösung auf den Strahl und halte deine Vermutung als Screenshot fest.</div></div></div>
+  <div class="axis"><span class="axis-title">Masse an Magnesiumchlorid in 100 mL Lösung</span></div><div class="bulb off" style="left:10%">💡</div><div class="bulb mid" style="left:50%">💡</div><div class="bulb high" style="left:90%">💡</div>
+  <div class="compare-zone" id="compareZone">
+    <div class="compare-guide" style="left:12%"><div class="beaker"><div class="liquid"></div><div class="pile" data-size="single"></div></div><div class="label">2,5 mg</div></div>
+    <div class="compare-guide" style="left:50%"><div class="beaker"><div class="liquid"></div><div class="pile" data-size="small"></div></div><div class="label">25 mg</div></div>
+    <div class="compare-guide" style="left:88%"><div class="beaker"><div class="liquid"></div><div class="pile" data-size="large"></div></div><div class="label">250 mg</div></div>
+  </div>
+  
+</div></div>
+</section>
+
+<aside class="side" id="sideArea"><h3>Karten zum Ziehen</h3><div class="cards" id="cards">
+  <div class="card salt-card" draggable="true" data-card="much"><div class="beaker"><div class="liquid"></div><div class="pile" data-size="large"></div></div><div class="label">große Portion eines Salzes</div></div>
+  <div class="card salt-card" draggable="true" data-card="little"><div class="beaker"><div class="liquid"></div><div class="pile" data-size="small"></div></div><div class="label">kleine Portion eines Salzes</div></div>
+  <div class="card salt-card" draggable="true" data-card="verylittle"><div class="beaker"><div class="liquid"></div><div class="pile" data-size="single"></div></div><div class="label">ein Salzkorn</div></div>
+  <div class="card tablet-card" draggable="true" id="tabletCard" style="display:none"><div class="beaker" style="width:95px;height:130px;border-width:4px"><div class="liquid"></div><div class="tablet-icon">💊</div></div><div class="label">1 Tablette Magnesium chloratum in 100 mL</div></div>
+</div></aside>
+</main>
+
+<script>
+let dragged=null, draggedMystery=null, draggedTablet=null, ideaUnlocked=false, orderUnlocked=false;
+const side=document.getElementById('sideArea'), cardsBox=document.getElementById('cards'), tablet=document.getElementById('tabletCard'), compareArea=document.getElementById('compareArea');
+function showStep(step){
+  if(step==='2'&&!ideaUnlocked)return; if(step==='3'&&!orderUnlocked)return; if(step==='4'&&document.querySelector('.stepbtn[data-step="4"]').disabled)return; if(step==='5'&&document.querySelector('.stepbtn[data-step="5"]').disabled)return; if(step==='6'&&document.querySelector('.stepbtn[data-step="6"]').disabled)return;
+  document.querySelectorAll('.stepbtn').forEach(b=>b.classList.toggle('active',b.dataset.step===step));
+  document.querySelectorAll('.slide').forEach(s=>s.classList.toggle('active',s.dataset.slide===step));
+  if(step==='1'){side.style.visibility='hidden';resetOrderStep();tablet.style.display='none'}
+  if(step==='2'){side.style.visibility='visible';resetOrderStep();document.querySelectorAll('.salt-card').forEach(c=>c.style.display='flex');tablet.style.display='none'}
+  if(step==='3'){side.style.visibility='hidden';tablet.style.display='none'}
+  if(step==='4'){side.style.visibility='hidden';tablet.style.display='none'}
+  if(step==='5'){side.style.visibility='hidden';tablet.style.display='none'}
+  if(step==='6'){side.style.visibility='visible';document.querySelectorAll('.salt-card').forEach(c=>c.style.display='none');resetTablet();tablet.style.display='flex'}
+}
+document.querySelectorAll('.stepbtn').forEach(btn=>btn.addEventListener('click',()=>showStep(btn.dataset.step)));
+window.addEventListener('DOMContentLoaded',()=>{side.style.visibility='hidden';tablet.style.display='none'});
+const mysteryMessages={sehen:'Da müsstest du schon sehr gute Augen haben :-). Wie viel Magnesiumchlorid in einer Tablette steckt, können wir nicht sehen.',wiegen:'Aber Tabletten enthalten neben dem angegebenen Stoff auch weitere Stoffe, zum Beispiel Stärke. Die Masse der Tablette allein hilft uns nicht sicher weiter.',geschmack:'Nicht probieren! Im Chemieunterricht wird nicht geschmeckt. Außerdem: Könntest du den Unterschied zwischen wenig und sehr wenig Salz wirklich unterscheiden?',temperatur:'Du willst wirklich wieder Energiediagramme zeichnen :D? Keine schlechte Idee, allerdings ist das aktuell ein sehr komplexer Zusammenhang, den wir gegenwärtig nicht beleuchten.',leitfaehigkeit:'Das könnte eine brauchbare Idee sein. Aber kannst du auch erklären, wie das aussehen könnte?'};
+document.querySelectorAll('.mystery-card').forEach(c=>c.addEventListener('dragstart',()=>draggedMystery=c));
+const mysteryBox=document.getElementById('mysteryCards'), mysteryTarget=document.getElementById('mysteryTarget');
+mysteryTarget.addEventListener('dragover',e=>{e.preventDefault();mysteryTarget.classList.add('dragover')});
+mysteryTarget.addEventListener('dragleave',()=>mysteryTarget.classList.remove('dragover'));
+mysteryTarget.addEventListener('drop',e=>{e.preventDefault();if(!draggedMystery)return;const old=mysteryTarget.querySelector('.mystery-card');if(old)mysteryBox.appendChild(old);mysteryTarget.innerHTML='';mysteryTarget.appendChild(draggedMystery);const key=draggedMystery.dataset.mystery;mysteryTarget.className='mystery-target '+(key==='leitfaehigkeit'?'correct':'wrong');document.getElementById('mysteryFeedback').textContent=mysteryMessages[key];document.getElementById('nextFromMystery').classList.toggle('show',key==='leitfaehigkeit');if(key==='leitfaehigkeit')unlockSteps();draggedMystery=null});
+mysteryBox.addEventListener('dragover',e=>e.preventDefault());
+mysteryBox.addEventListener('drop',()=>{if(draggedMystery)mysteryBox.appendChild(draggedMystery);draggedMystery=null;mysteryTarget.className='mystery-target';document.getElementById('mysteryFeedback').textContent='Ich bin Lumi. Ich frage mich, wie man den Gehalt an Magnesium in einer Tablette zumindest grob einordnen könnte. Welche Idee hilft uns weiter?';document.getElementById('nextFromMystery').classList.remove('show')});
+function unlockSteps(){ideaUnlocked=true;const b=document.querySelector('.stepbtn[data-step="2"]');b.disabled=false;b.classList.remove('locked')}
+document.getElementById('nextFromMystery').addEventListener('click',()=>showStep('2'));
+
+document.querySelectorAll('#cards .card').forEach(c=>c.addEventListener('dragstart',()=>dragged=c));
+cardsBox.addEventListener('dragover',e=>{e.preventDefault();cardsBox.classList.add('dragover')});cardsBox.addEventListener('dragleave',()=>cardsBox.classList.remove('dragover'));cardsBox.addEventListener('drop',e=>{e.preventDefault();if(dragged)cardsBox.appendChild(dragged);cardsBox.classList.remove('dragover');dragged=null;clearMarks()});
+document.querySelectorAll('.slot[data-slot]').forEach(s=>{s.addEventListener('dragover',e=>e.preventDefault());s.addEventListener('drop',()=>{if(!dragged)return;const existing=s.querySelector('.card');if(existing)cardsBox.appendChild(existing);s.innerHTML='';s.appendChild(dragged);dragged=null;clearMarks();document.getElementById('orderFeedback').textContent='Vergleiche die Portionen des Salzes: Eine größere Portion Magnesiumchlorid kann in Wasser mehr gelöste Ionen bilden.'})});
+function resetOrderStep(){document.querySelectorAll('#cards .card, .slot[data-slot] .card').forEach(card=>cardsBox.appendChild(card));document.querySelectorAll('.slot[data-slot]').forEach(slot=>{slot.innerHTML='';slot.classList.remove('correct','wrong')});document.getElementById('orderFeedback').textContent='Wie war das nochmal mit den gelösten Ionen in Lösung – erinnerst du dich an den Versuch? Ziehe die Karten von rechts in die Kästchen: links die geringste, rechts die größte Menge gelöster Ionen.';document.getElementById('checkOrder').classList.add('show');document.getElementById('nextFromOrder').classList.remove('show');orderUnlocked=false;document.querySelector('.stepbtn[data-step="3"]').disabled=true;document.querySelector('.stepbtn[data-step="3"]').classList.add('locked');document.querySelector('.stepbtn[data-step="4"]').disabled=true;document.querySelector('.stepbtn[data-step="4"]').classList.add('locked');document.querySelector('.stepbtn[data-step="5"]').disabled=true;document.querySelector('.stepbtn[data-step="5"]').classList.add('locked');document.querySelector('.stepbtn[data-step="6"]').disabled=true;document.querySelector('.stepbtn[data-step="6"]').classList.add('locked')}
+function clearMarks(){document.querySelectorAll('.slot[data-slot]').forEach(s=>s.classList.remove('correct','wrong'))}
+function unlockOrder(){orderUnlocked=true;const b=document.querySelector('.stepbtn[data-step="3"]');b.disabled=false;b.classList.remove('locked')}
+function unlockCompareProblem(){const b=document.querySelector('.stepbtn[data-step="4"]');b.disabled=false;b.classList.remove('locked')}
+function unlockDilution(){const b=document.querySelector('.stepbtn[data-step="5"]');b.disabled=false;b.classList.remove('locked')}
+function unlockTabletStep(){const b=document.querySelector('.stepbtn[data-step="6"]');b.disabled=false;b.classList.remove('locked')}
+
+document.querySelectorAll('.choicebtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.choicebtn').forEach(b=>b.classList.remove('correct','wrong'));
+
+    if(btn.dataset.choice==='water'){
+      btn.classList.add('correct');
+      document.getElementById('dilutionResult').classList.add('correct');
+      document.getElementById('dilutionResult').innerHTML='<div class="beaker"><div class="liquid"></div><div class="pile" data-size="small"></div></div><div>25 mg</div><small>verdünnte Vergleichslösung<br>in 100 mL</small>';
+      document.getElementById('dilutionFeedback').textContent='Genau: Ergänzen wir Wasser, verteilt sich dieselbe Menge Magnesiumchlorid auf mehr Wasser. Dadurch entstehen Vergleichslösungen mit unterschiedlichem Gehalt. Diese könnten wir später mit der Tablettenlösung vergleichen.';
+      document.getElementById('nextFromDilution').classList.add('show');
+      unlockCompare();
+    } else if(btn.dataset.choice==='salt'){
+      btn.classList.add('wrong');
+      document.getElementById('dilutionFeedback').textContent='Mehr Salz würde den Gehalt der Lösung erhöhen – wir suchen aber Vergleichslösungen mit kleinerem Gehalt.';
+    } else {
+      btn.classList.add('wrong');
+      document.getElementById('dilutionFeedback').textContent='Durch Erhitzen konzentrieren wir das Magnesiumchlorid eher in der Lösung, sodass mehr Salz pro Volumen vorhanden ist. Überlege nochmal, wie man den Gehalt gezielt verkleinern könnte.';
+    }
+  });
+});
+document.getElementById('checkOrder').addEventListener('click',()=>{let correct=0,filled=0;document.querySelectorAll('.slot[data-slot]').forEach(s=>{const c=s.querySelector('.card');if(c)filled++;const good=c&&c.dataset.card===s.dataset.slot;s.classList.toggle('correct',good);s.classList.toggle('wrong',c&&!good);if(good)correct++});if(filled<3){document.getElementById('orderFeedback').textContent='Ziehe zuerst alle drei Karten in die Kästchen.';return}if(correct===3){document.getElementById('orderFeedback').textContent='Die Ordnung passt: Je größer die Portion des Salzes, desto mehr gelöste Ionen können in der Lösung vorhanden sein. Das hatten wir daran festgemacht, dass beim letzten Versuch zur Leitfähigkeit die Glühbirne unterschiedlich stark leuchtete – je nach Menge der gelösten Ionen eben.';unlockOrder();document.getElementById('checkOrder').classList.remove('show');document.getElementById('nextFromOrder').classList.add('show')}else{document.getElementById('orderFeedback').textContent='Überlege nochmal: Was genau leitet den Strom in der Lösung?'}});
+document.getElementById('nextFromOrder').addEventListener('click',()=>showStep('3'));
+
+let draggedContent=null;
+document.querySelectorAll('.content-card').forEach(c=>{
+  c.addEventListener('dragstart',()=>draggedContent=c);
+});
+
+document.querySelectorAll('.content-slot').forEach(slot=>{
+  slot.addEventListener('dragover',e=>e.preventDefault());
+  slot.addEventListener('drop',()=>{
+    if(!draggedContent)return;
+    const old=slot.querySelector('.content-card');
+    if(old)document.getElementById('contentCards').appendChild(old);
+    slot.innerHTML='';
+    slot.appendChild(draggedContent);
+    draggedContent=null;
+
+    document.querySelectorAll('.content-slot').forEach(s=>s.classList.remove('correct','wrong'));
+    const filled=document.querySelectorAll('.content-slot .content-card').length;
+    if(filled===2){
+      let correct=true;
+      document.querySelectorAll('.content-slot').forEach(s=>{
+        const card=s.querySelector('.content-card');
+        const good=card && card.dataset.content===s.dataset.contentSlot;
+        s.classList.add(good?'correct':'wrong');
+        if(!good)correct=false;
+      });
+      if(correct){
+        document.getElementById('contentFeedback').textContent='Genau: Wie bei der Pizza brauchen wir eine Massenangabe und eine Bezugsgröße. Hier ordnen wir die Magnesiummasse bzw. Magnesiumchloridmasse der gelösten Tablette bezogen auf 100 mL Lösung ein.';
+        document.getElementById('nextFromContent').classList.add('show');
+        unlockCompareProblem();
+      }else{
+        document.getElementById('contentFeedback').textContent='Überlege nochmal: Welche Angaben beschreiben wirklich den Gehalt der Lösung – und welche gehören eigentlich erst zur späteren Untersuchung mit der Leitfähigkeit?';
+      }
+    }
+  });
+});
+document.getElementById('contentCards').addEventListener('dragover',e=>e.preventDefault());
+document.getElementById('contentCards').addEventListener('drop',()=>{if(draggedContent){document.getElementById('contentCards').appendChild(draggedContent);draggedContent=null}});
+document.addEventListener('click',e=>{if(e.target&&e.target.id==='nextFromContent'){unlockCompareProblem();showStep('4')}});
+document.addEventListener('click',e=>{if(e.target&&e.target.id==='nextFromCompareProblem'){unlockDilution();showStep('5')}});
+document.addEventListener('click',e=>{if(e.target&&e.target.id==='nextFromCompareIdea'){unlockTabletStep();showStep('6')}});
+function resetTablet(){cardsBox.appendChild(tablet);tablet.style.display='flex'}
+tablet.addEventListener('dragstart',()=>{
+  draggedTablet=tablet;
+});
+
+const compareZone=document.getElementById('compareZone');
+compareZone.addEventListener('dragover',e=>{
+  e.preventDefault();
+  compareZone.classList.add('dragover');
+});
+compareZone.addEventListener('dragleave',()=>compareZone.classList.remove('dragover'));
+compareZone.addEventListener('drop',e=>{
+  e.preventDefault();
+  compareZone.classList.remove('dragover');
+  if(!draggedTablet)return;
+
+  const zoneRect=compareZone.getBoundingClientRect();
+  const x=e.clientX-zoneRect.left;
+  const percent=Math.max(0,Math.min(1,x/zoneRect.width));
+
+  compareZone.appendChild(draggedTablet);
+  compareZone.classList.add('has-tablet');
+  draggedTablet.style.display='flex';
+  draggedTablet.style.left=(percent*100)+'%';
+  draggedTablet.style.top='50%';
+  draggedTablet.style.transform='translate(-50%, -50%)';
+
+  draggedTablet=null;
+});
+
+// --- iPad-/Touch-kompatibles Ziehen zusätzlich zum normalen Drag & Drop ---
+let touchClone=null;
+let touchSource=null;
+let touchType=null;
+
+function getDropTarget(x,y){
+  const el=document.elementFromPoint(x,y);
+  if(!el) return null;
+  return el.closest('.mystery-target, .slot[data-slot], #cards, #compareZone, #dilutionTarget');
+}
+
+function startTouchDrag(card,type,e){
+  if(e.pointerType==='mouse') return;
+  touchSource=card;
+  touchType=type;
+  touchClone=card.cloneNode(true);
+  touchClone.style.position='fixed';
+  touchClone.style.left=e.clientX+'px';
+  touchClone.style.top=e.clientY+'px';
+  touchClone.style.transform='translate(-50%,-50%)';
+  touchClone.style.zIndex='9999';
+  touchClone.style.pointerEvents='none';
+  touchClone.style.opacity='.9';
+  document.body.appendChild(touchClone);
+  card.style.opacity='.35';
+  card.setPointerCapture(e.pointerId);
+}
+
+function moveTouchDrag(e){
+  if(!touchClone) return;
+  e.preventDefault();
+  touchClone.style.left=e.clientX+'px';
+  touchClone.style.top=e.clientY+'px';
+}
+
+function endTouchDrag(e){
+  if(!touchClone || !touchSource) return;
+  const target=getDropTarget(e.clientX,e.clientY);
+  touchSource.style.opacity='1';
+  touchClone.remove();
+  touchClone=null;
+
+  if(touchType==='mystery' && target && target.classList.contains('mystery-target')){
+    const old=target.querySelector('.mystery-card');
+    if(old)mysteryBox.appendChild(old);
+    target.innerHTML='';
+    target.appendChild(touchSource);
+    const key=touchSource.dataset.mystery;
+    target.className='mystery-target '+(key==='leitfaehigkeit'?'correct':'wrong');
+    document.getElementById('mysteryFeedback').textContent=mysteryMessages[key];
+    document.getElementById('nextFromMystery').classList.toggle('show',key==='leitfaehigkeit');
+    if(key==='leitfaehigkeit')unlockSteps();
+  }
+
+  if(touchType==='salt' && target){
+    if(target.matches('.slot[data-slot]')){
+      const existing=target.querySelector('.card');
+      if(existing)cardsBox.appendChild(existing);
+      target.innerHTML='';
+      target.appendChild(touchSource);
+      clearMarks();
+      document.getElementById('orderFeedback').textContent='Vergleiche die Portionen des Salzes: Eine größere Portion Magnesiumchlorid kann in Wasser mehr gelöste Ionen bilden.';
+    }else if(target.id==='cards'){
+      cardsBox.appendChild(touchSource);
+      clearMarks();
+    }
+  }
+
+  if(touchType==='tablet' && target && target.id==='compareZone'){
+    const zoneRect=compareZone.getBoundingClientRect();
+    const x=e.clientX-zoneRect.left;
+    const percent=Math.max(0,Math.min(1,x/zoneRect.width));
+    compareZone.appendChild(touchSource);
+    compareZone.classList.add('has-tablet');
+    touchSource.style.display='flex';
+    touchSource.style.left=(percent*100)+'%';
+    touchSource.style.top='50%';
+    touchSource.style.transform='translate(-50%, -50%)';
+  }
+
+  if(touchType==='dilution' && target && target.id==='dilutionTarget'){
+    dilutionTarget.classList.add('correct');
+    dilutionTarget.innerHTML='<div class="beaker"><div class="liquid"></div><div class="pile" data-size="small"></div></div><div>25 mg</div><small>verdünnte Vergleichslösung<br>in 100 mL</small>';
+    document.getElementById('dilutionFeedback').textContent='Genau: Wenn wir Wasser ergänzen, verteilt sich dieselbe Menge Magnesiumchlorid auf mehr Wasser. Dadurch entsteht eine Vergleichslösung mit kleinerem Gehalt.';
+    document.getElementById('nextFromDilution').classList.add('show');
+    unlockCompare();
+  }
+
+  touchSource=null;
+  touchType=null;
+}
+
+function enableTouchDrag(selector,type){
+  document.querySelectorAll(selector).forEach(card=>{
+    card.addEventListener('pointerdown',e=>startTouchDrag(card,type,e));
+    card.addEventListener('pointermove',moveTouchDrag);
+    card.addEventListener('pointerup',endTouchDrag);
+    card.addEventListener('pointercancel',endTouchDrag);
+  });
+}
+
+enableTouchDrag('.mystery-card','mystery');
+enableTouchDrag('.salt-card','salt');
+enableTouchDrag('#tabletCard','tablet');
+
+let draggedProblem=null;
+document.querySelectorAll('.problem-option').forEach(c=>c.addEventListener('dragstart',()=>draggedProblem=c));
+const problemTarget=document.getElementById('problemTarget');
+if(problemTarget){
+problemTarget.addEventListener('dragover',e=>e.preventDefault());
+problemTarget.addEventListener('drop',()=>{
+ if(!draggedProblem)return;
+ problemTarget.innerHTML='';
+ problemTarget.appendChild(draggedProblem);
+ if(draggedProblem.dataset.problem==='verdünnen'){
+   problemTarget.classList.add('correct');
+   document.getElementById('problemFeedback').textContent='Genau: Durch Verdünnen können wir Vergleichslösungen mit kleinerem Gehalt herstellen.';
+   document.getElementById('nextFromCompareProblem').classList.add('show');
+   unlockDilution();
+ } else {
+   problemTarget.classList.add('wrong');
+   document.getElementById('problemFeedback').textContent='Überlege nochmal: Wir wollen kleinere Gehalte herstellen, nicht größere.';
+ }
+ draggedProblem=null;
+});}
+
+let draggedDilution=null;
+document.querySelectorAll('.dilution-option').forEach(c=>c.addEventListener('dragstart',()=>draggedDilution=c));
+document.querySelectorAll('.slide[data-slide="5"] .dilution-target').forEach(t=>{
+ t.addEventListener('dragover',e=>e.preventDefault());
+ t.addEventListener('drop',()=>{
+   if(!draggedDilution)return;
+   const existing=t.querySelector('.dilution-option');
+   if(existing)document.getElementById('dilutionCards').appendChild(existing);
+   t.appendChild(draggedDilution);
+   draggedDilution=null;
+
+   let correct=true;
+   let filled=0;
+   document.querySelectorAll('.slide[data-slide="5"] .dilution-target').forEach(target=>{
+      const card=target.querySelector('.dilution-option');
+      if(card)filled++;
+      target.classList.remove('correct','wrong');
+      if(card && card.dataset.match===target.dataset.dilution){target.classList.add('correct');target.classList.remove('wrong')} else if(card){target.classList.add('wrong');target.classList.remove('correct');correct=false;}
+   });
+
+   if(filled===2 && correct){
+      document.getElementById('compareIdeaFeedback').textContent='Genau: Durch die Verdünnung entstehen Vergleichslösungen mit kleinerem Gehalt. Jetzt kannst du die Tablettenlösung mit diesen bekannten Lösungen vergleichen.';
+      document.getElementById('nextFromCompareIdea').classList.add('show');
+      unlockTabletStep();
+   }
+ });
+});
+</script>
+<footer style="text-align:center;font-size:12px;color:#5f6b7a;margin:20px 0;">Kockar C. 2026</footer>
+</body>
+</html>

@@ -53,12 +53,11 @@
   .dot{width:18px;height:18px;border-radius:50%;border:1px solid rgba(0,0,0,.18);flex:0 0 auto}
   .metal-dot{border-radius:4px;height:10px;width:34px}
   .action-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .primary,.secondary,.ghost{
+  .primary,.ghost{
     border:0;border-radius:12px;padding:11px 13px;font-weight:800;cursor:pointer;
   }
   .primary{background:var(--accent);color:white}
   .primary:hover{background:var(--accent2)}
-  .secondary{background:#e9eefb;color:#173b8f}
   .ghost{background:#f2f4f7;color:#344054}
   .primary:disabled{opacity:.45;cursor:not-allowed}
   .lab{padding:18px;overflow:hidden}
@@ -112,14 +111,6 @@
   }
   .progress{height:6px;background:#e5e9f0;border-radius:999px;overflow:hidden;margin-top:8px}
   .progress > div{height:100%;width:0;background:var(--accent);transition:width .08s linear}
-  .particle-card{margin-top:14px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
-  .particle-head{padding:10px 12px;background:#f8fafc;display:flex;justify-content:space-between;align-items:center;gap:10px}
-  .particle-head strong{font-size:.88rem}
-  .particle-head span{font-size:.78rem;color:var(--muted)}
-  canvas{display:block;width:100%;height:230px;background:#fbfdff}
-  .equations{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-family:"Segoe UI",sans-serif}
-  .equations.show{display:block}
-  .eq{background:#f7f9fc;border-radius:10px;padding:8px 10px;margin:6px 0}
   .tiny{font-size:.78rem;color:var(--muted);line-height:1.45}
   .notes{margin-top:18px;padding:18px}
   .matrix-wrap{overflow:auto}
@@ -175,14 +166,6 @@
         </div>
       </div>
 
-      <div class="section">
-        <div class="section-title">Auswertung</div>
-        <div class="action-row">
-          <button class="secondary" id="particleBtn">Teilchenebene</button>
-          <button class="secondary" id="equationBtn">Gleichungen</button>
-        </div>
-        <p class="tiny">Die Auswertung bleibt bis nach dem Versuch verborgen. So kann die Beobachtung zunächst unabhängig von der Deutung notiert werden.</p>
-      </div>
     </aside>
 
     <main class="card lab">
@@ -205,15 +188,6 @@
         <div class="status" id="status">Baue links einen Versuch auf.</div>
       </div>
 
-      <div class="particle-card" id="particleCard" hidden>
-        <div class="particle-head">
-          <strong>Teilchenebene am Metallrand</strong>
-          <span>schematisch, nicht maßstabsgetreu</span>
-        </div>
-        <canvas id="particleCanvas" width="780" height="230"></canvas>
-      </div>
-
-      <div class="equations" id="equations"></div>
     </main>
   </div>
 
@@ -260,57 +234,26 @@ const reactions = {
   "Zn-Fe":{
     deposit:"#5f6265",
     finalLiquid:"rgba(223,232,225,.72)",
-    obs:"Auf dem Zinkblech bildet sich allmählich ein dunkelgrauer Eisenbelag. Die blassgrüne Färbung der Lösung wird schwächer.",
-    ox:"Zn → Zn²⁺ + 2 e⁻",
-    red:"Fe²⁺ + 2 e⁻ → Fe",
-    total:"Zn + Fe²⁺ → Zn²⁺ + Fe",
-    electronCount:2, productAtoms:1
   },
   "Zn-Cu":{
     deposit:"#b8613f",
     finalLiquid:"rgba(181,211,229,.58)",
-    obs:"Auf dem Zinkblech bildet sich ein rotbrauner Kupferbelag. Die blaue Färbung der Lösung wird schwächer.",
-    ox:"Zn → Zn²⁺ + 2 e⁻",
-    red:"Cu²⁺ + 2 e⁻ → Cu",
-    total:"Zn + Cu²⁺ → Zn²⁺ + Cu",
-    electronCount:2, productAtoms:1
   },
   "Fe-Cu":{
     deposit:"#b8613f",
     finalLiquid:"rgba(129,190,168,.62)",
-    obs:"Auf dem Eisenblech bildet sich ein rotbrauner Kupferbelag. Gleichzeitig wird die blaue Färbung schwächer; durch entstehende Fe²⁺-Ionen kann die Lösung zunehmend blassgrün erscheinen.",
-    ox:"Fe → Fe²⁺ + 2 e⁻",
-    red:"Cu²⁺ + 2 e⁻ → Cu",
-    total:"Fe + Cu²⁺ → Fe²⁺ + Cu",
-    electronCount:2, productAtoms:1
   },
   "Zn-Ag":{
     deposit:"#c8ccd1",
     finalLiquid:"rgba(239,242,246,.78)",
-    obs:"Auf dem Zinkblech bildet sich ein silbergrauer bis kristalliner Silberbelag. Die Lösung bleibt farblos.",
-    ox:"Zn → Zn²⁺ + 2 e⁻",
-    red:"2 Ag⁺ + 2 e⁻ → 2 Ag",
-    total:"Zn + 2 Ag⁺ → Zn²⁺ + 2 Ag",
-    electronCount:2, productAtoms:2
   },
   "Fe-Ag":{
     deposit:"#c8ccd1",
     finalLiquid:"rgba(232,236,228,.74)",
-    obs:"Auf dem Eisenblech bildet sich ein silbergrauer bis kristalliner Silberbelag. Eine bestimmte Farbe der Lösung wird hier bewusst nicht als eindeutiges Auswertungsmerkmal verwendet.",
-    ox:"Fe → Fe²⁺ + 2 e⁻",
-    red:"2 Ag⁺ + 2 e⁻ → 2 Ag",
-    total:"Fe + 2 Ag⁺ → Fe²⁺ + 2 Ag",
-    electronCount:2, productAtoms:2,
-    caveat:"Vereinfachtes Schulmodell: Die Einordnung erfolgt hier über das Redoxpaar Fe²⁺/Fe. In Silbernitrat-Lösung kann Fe²⁺ unter geeigneten Bedingungen durch Ag⁺ teilweise weiter zu Fe³⁺ oxidiert werden."
   },
   "Cu-Ag":{
     deposit:"#c8ccd1",
     finalLiquid:"rgba(104,171,216,.62)",
-    obs:"Auf dem Kupferblech bilden sich silbergraue bis kristalline Silberabscheidungen. Die zunächst farblose Lösung färbt sich durch entstehende Cu²⁺-Ionen blau.",
-    ox:"Cu → Cu²⁺ + 2 e⁻",
-    red:"2 Ag⁺ + 2 e⁻ → 2 Ag",
-    total:"Cu + 2 Ag⁺ → Cu²⁺ + 2 Ag",
-    electronCount:2, productAtoms:2
   }
 };
 
@@ -319,8 +262,6 @@ let selectedSolution = null;
 let running = false;
 let completed = false;
 let currentReaction = null;
-let particleVisible = false;
-let animationId = null;
 
 const $ = s => document.querySelector(s);
 const metalOptions = $("#metalOptions");
@@ -331,10 +272,6 @@ const deposit = $("#deposit");
 const statusEl = $("#status");
 const setupLabel = $("#setupLabel");
 const timerEl = $("#timer");
-const equations = $("#equations");
-const particleCard = $("#particleCard");
-const canvas = $("#particleCanvas");
-const ctx = canvas.getContext("2d");
 
 Object.entries(metals).forEach(([key,m])=>{
   const b=document.createElement("button");
@@ -371,11 +308,6 @@ function selectSolution(key){
 function refreshSetup(){
   completed=false;
   currentReaction=null;
-  equations.classList.remove("show");
-  equations.innerHTML="";
-  particleCard.hidden=true;
-  particleVisible=false;
-  $("#particleBtn").textContent="Teilchenebene";
   timerEl.textContent="00:00";
   if(selectedMetal && selectedSolution){
     setupLabel.textContent=`${metals[selectedMetal].name} in ${solutions[selectedSolution].name}`;
@@ -418,18 +350,12 @@ function hash(str){let h=2166136261;for(let i=0;i<str.length;i++){h^=str.charCod
 
 $("#startBtn").onclick=runExperiment;
 $("#resetBtn").onclick=resetAll;
-$("#particleBtn").onclick=toggleParticles;
-$("#equationBtn").onclick=toggleEquations;
 
 function runExperiment(){
   if(running || !selectedMetal || !selectedSolution) return;
   running=true; completed=false;
   currentReaction=getReaction();
   $("#startBtn").disabled=true;
-  equations.classList.remove("show");
-  particleCard.hidden=true;
-  particleVisible=false;
-  $("#particleBtn").textContent="Teilchenebene";
   clearDeposit();
   liquid.style.background=solutions[selectedSolution].color;
   let t0=performance.now(), duration=7000;
@@ -457,45 +383,7 @@ function runExperiment(){
 function finishExperiment(){
   running=false; completed=true;
   $("#startBtn").disabled=false;
-  statusEl.textContent="Versuch beendet. Notiere deine Beobachtungen, bevor du die Deutung einblendest.";
-  prepareEquations();
-}
-
-function prepareEquations(){
-  if(!completed) return;
-  if(currentReaction){
-    equations.innerHTML=`
-      <div class="tiny">Deutung auf Teilchenebene</div>
-      <div class="eq"><b>Oxidation:</b> ${currentReaction.ox}</div>
-      <div class="eq"><b>Reduktion:</b> ${currentReaction.red}</div>
-      <div class="eq"><b>Gesamt:</b> ${currentReaction.total}</div>
-      <div class="tiny">${solutions[selectedSolution].anion}-Ionen sind in diesem vereinfachten Reaktionsschema Zuschauerionen und erscheinen deshalb nicht in der verkürzten Ionengleichung.</div>
-      ${currentReaction.caveat ? `<div class="tiny" style="margin-top:7px"><b>Modellgrenze:</b> ${currentReaction.caveat}</div>` : ""}`;
-  }else{
-    equations.innerHTML=`
-      <div class="eq"><b>Keine beobachtbare Metallabscheidung.</b></div>
-      <div class="tiny">Für diese Kombination wird unter den hier betrachteten Bedingungen keine gerichtete Netto-Redoxreaktion beobachtet, die zur Abscheidung eines neuen Metalls führt.</div>`;
-  }
-}
-
-function toggleEquations(){
-  if(!completed){
-    statusEl.textContent="Führe zuerst den Versuch durch.";
-    return;
-  }
-  equations.classList.toggle("show");
-}
-
-function toggleParticles(){
-  if(!completed){
-    statusEl.textContent="Führe zuerst den Versuch durch.";
-    return;
-  }
-  particleVisible=!particleVisible;
-  particleCard.hidden=!particleVisible;
-  $("#particleBtn").textContent=particleVisible ? "Teilchenebene aus" : "Teilchenebene";
-  if(particleVisible) animateParticles();
-  else cancelAnimationFrame(animationId);
+  statusEl.textContent="Versuch beendet.";
 }
 
 function resetAll(){
@@ -508,100 +396,7 @@ function resetAll(){
   statusEl.textContent="Baue links einen Versuch auf.";
   setupLabel.textContent="Metall und Lösung auswählen";
   timerEl.textContent="00:00";
-  equations.innerHTML=""; equations.classList.remove("show");
-  particleCard.hidden=true; particleVisible=false;
-  $("#particleBtn").textContent="Teilchenebene";
   $("#startBtn").disabled=true;
-  cancelAnimationFrame(animationId);
-}
-
-function animateParticles(){
-  const W=canvas.width,H=canvas.height;
-  let start=performance.now();
-  const m=metals[selectedMetal];
-  const s=solutions[selectedSolution];
-  const react=!!currentReaction;
-
-  function ion(x,y,r,fill,text,stroke="#4b5563"){
-    ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fillStyle=fill;ctx.fill();
-    ctx.lineWidth=1.4;ctx.strokeStyle=stroke;ctx.stroke();
-    ctx.fillStyle="#172033";ctx.font="700 13px system-ui";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(text,x,y);
-  }
-  function electron(x,y){
-    ctx.beginPath();ctx.arc(x,y,8,0,Math.PI*2);ctx.fillStyle="#ffe066";ctx.fill();
-    ctx.strokeStyle="#7a6110";ctx.stroke();
-    ctx.fillStyle="#172033";ctx.font="700 10px system-ui";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText("e⁻",x,y+1);
-  }
-  function depositedAtom(x,y){
-    ctx.beginPath();ctx.arc(x,y,14,0,Math.PI*2);
-    ctx.fillStyle=currentReaction.deposit;ctx.fill();
-    ctx.strokeStyle="rgba(0,0,0,.35)";ctx.stroke();
-  }
-  function frame(now){
-    if(!particleVisible) return;
-    const t=(now-start)/1000;
-    ctx.clearRect(0,0,W,H);
-
-    ctx.fillStyle="rgba(236,244,249,.78)";
-    ctx.fillRect(0,0,W,H);
-
-    // Metallphase links
-    ctx.fillStyle="#808996";
-    ctx.fillRect(0,0,145,H);
-    ctx.fillStyle="rgba(255,255,255,.18)";
-    for(let y=18;y<H;y+=34){ctx.fillRect(18+(y%3)*12,y,90,2)}
-    ctx.fillStyle="#fff";ctx.font="700 14px system-ui";ctx.textAlign="left";
-    ctx.fillText(`${m.name}-Metall`,18,22);
-
-    // Ionen der Ausgangslösung: bei AgNO3 1:1, bei M2+/SO4^2- ebenfalls 1:1.
-    const cationColor=metals[selectedSolution].ionColor;
-    const cationPts=[[238,140],[332,62],[500,152],[590,94],[718,70]];
-    const anionPts=[[250,48],[420,88],[610,48],[690,170],[360,188]];
-    cationPts.forEach(([x,y],i)=>{
-      ion(x+Math.sin(t*1.2+i)*8,y+Math.cos(t*.9+i)*7,18,cationColor,s.ion);
-    });
-    anionPts.forEach(([x,y],i)=>{
-      ion(x+Math.sin(t+i)*4,y+Math.cos(t*.8+i)*4,18,s.anionColor,s.anion,"#8b7d38");
-    });
-
-    if(react){
-      const cyc=(t%4)/4;
-      const isSilverIon = selectedSolution==="Ag";
-      const targets = isSilverIon ? 2 : 1;
-
-      // Reduzierte Metall-Ionen bewegen sich zur Grenzfläche.
-      for(let j=0;j<targets;j++){
-        const ix=330-(cyc*170);
-        const iy=100+j*42+Math.sin(cyc*Math.PI+j)*10;
-        ion(ix,iy,19,cationColor,s.ion);
-
-        // Bei Ag+ nimmt jedes Ion ein Elektron auf; bei M2+ nimmt ein Ion zwei auf.
-        const electronsForTarget = isSilverIon ? 1 : 2;
-        for(let k=0;k<electronsForTarget;k++){
-          const idx=isSilverIon ? j : k;
-          const eProg=Math.max(0,Math.min(1,(cyc-.55)*3));
-          const sx=96+idx*20, sy=104+idx*30;
-          const ex=sx+(145-sx)*eProg;
-          const ey=sy+(iy-sy)*eProg;
-          electron(ex,ey);
-        }
-        if(cyc>.77) depositedAtom(151,iy);
-      }
-
-      // Ein Atom des unedleren Blechs wird zu einem zweifach positiv geladenen Ion.
-      const outProg=Math.max(0,Math.min(1,(cyc-.62)*2.6));
-      const outX=126+outProg*145, outY=185-outProg*30;
-      ion(outX,outY,18,m.ionColor,m.ion);
-
-      ctx.fillStyle="#344054";ctx.font="700 13px system-ui";ctx.textAlign="left";
-      ctx.fillText("Elektronen werden an der Metalloberfläche vom unedleren Metall auf Metall-Ionen übertragen.",185,215);
-    }else{
-      ctx.fillStyle="#344054";ctx.font="700 13px system-ui";ctx.textAlign="left";
-      ctx.fillText("Keine gerichtete Netto-Elektronenübertragung mit sichtbarer Metallabscheidung.",185,215);
-    }
-    animationId=requestAnimationFrame(frame);
-  }
-  animationId=requestAnimationFrame(frame);
 }
 
 // protocol matrix

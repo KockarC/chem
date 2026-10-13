@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Lumis Vermutungswerkstatt</title>
+<style>
+:root{
+  --bg:#f6f8fb;--card:#fff;--ink:#10213b;--ink2:#00384c;--muted:#5f6b7a;--line:#dbe7f0;--line2:#9fc0d4;--blue:#2d9cdb;--deep:#142033;--soft:#eef4f8;--ok:#1f8f55;--warn:#b66a00;--shadow:0 12px 34px rgba(16,33,59,.12);--radius:20px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.35;-webkit-text-size-adjust:100%} button,input,textarea{font:inherit} button{touch-action:manipulation}
+header{max-width:1160px;margin:0 auto;padding:26px 20px 14px} h1{margin:0;font-size:clamp(2rem,5.2vw,3.35rem);letter-spacing:-.03em;line-height:.95;color:#092042}.subtitle{margin-top:10px;color:#516479;font-size:clamp(1rem,2.2vw,1.2rem)}
+.question{max-width:1160px;margin:0 auto 18px;padding:0 20px}.question-inner{background:#fff;border:2px solid var(--line);border-left:8px solid var(--blue);border-radius:18px;padding:13px 18px;font-weight:850;color:#001b32;box-shadow:0 2px 8px rgba(16,33,59,.03)}
+main{max-width:1160px;margin:0 auto 26px;padding:0 20px}.board{background:var(--card);border-radius:24px;box-shadow:var(--shadow);padding:20px}.steps{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.stepbtn{border:0;border-radius:999px;background:#eaf0f5;color:#85909d;font-weight:850;padding:10px 16px;min-height:44px}.stepbtn.active{background:var(--deep);color:#fff}.stepbtn.done{color:#10213b;background:#dfeaf1}.stepbtn:disabled{opacity:.72}
+.slide{display:none}.slide.active{display:block}.panel{border:2px solid var(--line);border-radius:22px;padding:20px;background:#fff}.lumi-row{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:center;margin-bottom:18px}.lumi-face{width:82px;height:82px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:42px;border:3px solid #edca45;background:#fff7d7;box-shadow:0 2px 0 rgba(0,0,0,.04)}.bubble{border:2px solid var(--line);border-radius:18px;background:#fff;padding:16px 18px;font-weight:780;color:#00364d}.bubble small{display:block;color:var(--muted);font-weight:650;margin-top:5px}.headline{font-size:clamp(1.55rem,4vw,2.35rem);line-height:1.05;margin:0 0 14px;color:#003c52;letter-spacing:-.02em}.hint{border:2px solid var(--line);border-radius:14px;background:#fafeff;padding:12px 14px;font-weight:800;color:#003c52;margin:12px 0}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0}.info-card,.choice-card,.method-card{border:2px solid var(--line);border-radius:17px;background:#fff;padding:15px;text-align:left;cursor:pointer;min-height:94px;color:#10213b;box-shadow:0 2px 0 rgba(16,33,59,.03);width:100%}.info-card strong,.choice-card strong,.method-card strong{display:block;color:#001b32;font-size:1.02rem;margin-bottom:6px}.info-card span,.choice-card span,.method-card span{display:block;color:#344055;font-size:.96rem}.info-card.selected,.choice-card.selected,.method-card.selected{border-color:#12213a;box-shadow:0 0 0 3px rgba(18,33,58,.12)}.info-card.placed{background:#f8fbfd}
+.zone-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.bucket{border:2px dashed var(--line2);background:#f9fcff;border-radius:18px;min-height:188px;padding:13px;cursor:pointer}.bucket h3{margin:0 0 10px;color:#003c52;font-size:1.06rem}.bucket.empty::after{content:"Noch keine Karte";display:block;color:#85909d;font-weight:850;margin-top:42px;text-align:center}.mini-card{border:1.5px solid var(--line);border-radius:14px;background:#fff;margin:8px 0;padding:10px;text-align:left;width:100%;cursor:pointer}.mini-card strong{display:block;color:#001b32}.mini-card span{display:block;color:#344055;font-size:.94rem}.mini-card.selected{border-color:#12213a;box-shadow:0 0 0 3px rgba(18,33,58,.12)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.primary,.secondary{border:0;border-radius:999px;padding:11px 18px;font-weight:900;min-height:44px;cursor:pointer}.primary{background:#1d6f8b;color:#fff}.primary:disabled{background:#b9c7d1;color:#fff;cursor:not-allowed}.secondary{background:#e9f0f5;color:#10213b}.feedback{border:2px solid var(--line);border-radius:16px;background:#fbfdff;color:#003c52;font-weight:800;padding:13px 15px;margin-top:14px}.feedback.good{border-color:#9ed6b8;background:#f0fbf4;color:#0d5531}.feedback.try{border-color:#f2c98a;background:#fffaf0;color:#604000}.feedback.no{border-color:#efb0a9;background:#fff6f5;color:#651b15}
+.hypothesis-box{border:2px solid var(--line);border-radius:18px;background:#f8fbfd;padding:16px;margin-top:14px}.hypothesis-box p{margin:0 0 9px}.hypothesis{font-weight:900;color:#003c52}.method-list{display:grid;grid-template-columns:1fr;gap:12px}.summary-box{border:2px solid var(--line);background:#f8fbfd;border-radius:18px;padding:14px 16px;margin:0 0 16px}.summary-box h3{margin:0 0 8px;color:#003c52}.summary-box ul{margin:6px 0 0;padding-left:1.2em}.end-card{border:2px solid var(--line);border-radius:22px;background:#fff;padding:20px}.end-card .big{font-size:48px;text-align:center}.end-card h2{text-align:center}.watch{border:2px solid var(--line);background:#fbfdff;border-radius:16px;padding:14px;margin-top:16px}.watch strong{color:#003c52}.footer{text-align:center;color:#516479;font-size:.85rem;margin:26px auto 18px}
+@media (max-width:760px){header{padding:20px 14px 10px}.question{padding:0 14px}.question-inner{font-size:.95rem;padding:12px 14px}main{padding:0 12px}.board{padding:12px;border-radius:18px}.panel{padding:14px;border-radius:18px}.steps{gap:8px}.stepbtn{font-size:.92rem;padding:9px 12px}.lumi-row{grid-template-columns:58px 1fr;gap:10px}.lumi-face{width:54px;height:54px;font-size:30px}.bubble{padding:12px;font-size:.95rem}.zone-wrap{grid-template-columns:1fr}.card-grid{grid-template-columns:1fr}.actions .primary,.actions .secondary{width:100%}}
+@media print{body{background:#fff}.board{box-shadow:none}.stepbtn:not(.active){display:none}.actions{display:none}.slide{display:block;page-break-after:always}.slide:not(.active){display:block}.footer{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Lumis Vermutungswerkstatt</h1>
+  <div class="subtitle">Vom Alltagskontext zum Petrischalenversuch</div>
+</header>
+<div class="question"><div class="question-inner">Stundenfrage: Wie können aus gelösten Mineralstoffen im Wasser feste Stoffe entstehen?</div></div>
+<main>
+  <section class="board" aria-label="Lumi Vermutungswerkstatt">
+    <nav class="steps" aria-label="Schritte">
+      <button class="stepbtn active" data-step="1">1 Kontext</button>
+      <button class="stepbtn" data-step="2">2 Vermutung</button>
+      <button class="stepbtn" data-step="3">3 Vorgehen</button>
+      <button class="stepbtn" data-step="4">Ende</button>
+    </nav>
+
+    <section class="slide active" data-slide="1">
+      <div class="panel">
+        <div class="lumi-row"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble">Schaut noch einmal auf die Bildcollage aus dem Unterricht. Ich sammle mit euch Hinweise, die zu einer Vermutung passen könnten.</div></div>
+        <h2 class="headline">Welche Informationen helfen bei der Stundenfrage?</h2>
+        <div class="hint">Tippe eine Karte an. Tippe danach auf ein Feld. Die Karten sind noch nicht vorsortiert. Eine Karte im Feld kannst du erneut antippen und in das andere Feld verschieben.</div>
+        <div id="contextPool" class="card-grid" aria-label="Kontextkarten"></div>
+        <div class="zone-wrap">
+          <div class="bucket empty" data-bucket="help"><h3>Passt zur Stundenfrage</h3><div class="bucket-content" id="bucketHelp"></div></div>
+          <div class="bucket empty" data-bucket="less"><h3>Hilft gerade weniger</h3><div class="bucket-content" id="bucketLess"></div></div>
+        </div>
+        <div class="actions"><button class="primary" id="checkContext">Zuordnung prüfen</button><button class="secondary" id="returnSelected">Ausgewählte Karte zurücklegen</button><button class="secondary" id="resetContext">Alle Karten zurücklegen</button><button class="primary" id="toStep2" disabled>Weiter zur Vermutung</button></div>
+        <div class="feedback" id="contextFeedback">Wähle zuerst eine Karte aus und ordne sie einem Feld zu.</div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="2">
+      <div class="panel">
+        <div class="lumi-row"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble">Eine Vermutung muss noch nicht sicher richtig sein. Sie soll eine Idee sein, die zum Kontext passt und die man mit Beobachtungen prüfen kann.</div></div>
+        <h2 class="headline">Welche Vermutung nehmen wir mit?</h2>
+        <div class="hint">Wähle eine oder mehrere Vermutungen aus. Sie dürfen später im Versuch gestützt, verändert oder verworfen werden.</div>
+        <div id="hypothesisCards" class="card-grid" aria-label="Vermutungskarten"></div>
+        <div class="hypothesis-box" id="hypothesisSave" hidden>
+          <p><strong>Ausgewählte Vermutung(en):</strong></p>
+          <ul id="selectedHypList"></ul>
+        </div>
+        <div class="actions"><button class="primary" id="saveHypotheses">Vermutung speichern</button><button class="primary" id="toStep3" disabled>Weiter zum Vorgehen</button></div>
+        <div class="feedback" id="hypothesisFeedback">Tippe eine oder mehrere Vermutungen an.</div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="3">
+      <div class="panel">
+        <div class="lumi-row"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble">Ihr habt jetzt Vermutungen. Nun braucht ihr ein Vorgehen, mit dem man beobachten kann, ob zwei Stoffe im Medium Wasser zusammenfinden und dabei etwas Sichtbares entsteht.</div></div>
+        <h2 class="headline">Wie könnte man diese Vermutung prüfen?</h2>
+        <div class="hint">Wähle das Vorgehen aus, das am besten zur Stundenfrage und zur Vermutung passt.</div>
+        <div id="methodCards" class="method-list" aria-label="Verfahrenskarten"></div>
+        <div class="actions"><button class="primary" id="toEnd" disabled>Weiter zur Zusammenfassung</button></div>
+        <div class="feedback" id="methodFeedback">Wähle ein Vorgehen aus.</div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <div class="panel">
+        <div class="lumi-row"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble">Ihr habt jetzt eine Vermutung und ein passendes Vorgehen. Jetzt endet Lumis Hilfe. Die konkrete Durchführung und die Auswertung folgen im Unterricht.</div></div>
+        <div class="end-card">
+          <div class="big">🧪</div>
+          <h2 class="headline">Bereit für den Versuch</h2>
+          <div class="summary-box"><h3>Ausgewählte Vermutung(en)</h3><ul id="endHypSummary"><li>Noch keine Vermutung gewählt.</li></ul></div>
+          <div class="summary-box"><h3>Gewähltes Vorgehen</h3><p id="endMethodSummary">Noch kein Vorgehen gewählt.</p></div>
+          <div class="watch"><strong>Beobachtungsauftrag:</strong><br>Notiert zuerst nur, was sichtbar wird. Achtet darauf, ob irgendwo ein fester Stoff sichtbar wird, wo etwas sichtbar wird und wie es aussieht.</div>
+          <div class="actions"><button class="primary" id="restart">Von vorn beginnen</button></div>
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
+<div class="footer">Kockar C. 2026</div>
+<script>
+(()=>{
+  const slides=[...document.querySelectorAll('.slide')];
+  const stepBtns=[...document.querySelectorAll('.stepbtn')];
+  let current=1;
+  function go(n){current=n;slides.forEach(s=>s.classList.toggle('active',s.dataset.slide==n));stepBtns.forEach(b=>{const k=+b.dataset.step;b.classList.toggle('active',k===n);b.classList.toggle('done',k<n);});window.scrollTo({top:0,behavior:'smooth'});}
+  document.getElementById('toStep2').addEventListener('click',()=>go(2));
+  document.getElementById('toStep3').addEventListener('click',()=>go(3));
+  document.getElementById('toEnd').addEventListener('click',()=>{renderSummaries();go(4);});
+  document.getElementById('restart').addEventListener('click',()=>go(1));
+
+  const contextCards=[
+    {id:'wasserhahn',target:'help',title:'Am Wasserhahn ist ein grünlicher Bereich sichtbar.',text:'Der Belag sitzt an der Armatur und nicht nur im tropfenden Wasser.'},
+    {id:'automatisch',target:'less',title:'Alle gelösten Ionen werden automatisch fest.',text:''},
+    {id:'mineralwasser',target:'help',title:'Mineralwasser enthält gelöste Mineralstoffe.',text:'Auf dem Etikett stehen zum Beispiel Calcium-, Magnesium- und Hydrogencarbonat-Ionen.'},
+    {id:'gefrieren',target:'less',title:'Feste Stoffe entstehen nur, wenn Wasser gefriert.',text:''},
+    {id:'kalk',target:'help',title:'Kalkbeläge und Tropfsteine sind feste Ablagerungen.',text:'Sie entstehen dort, wo Wasser über längere Zeit beteiligt ist.'},
+    {id:'geloest',target:'help',title:'Gelöste Ionen sind im Wasser verteilt.',text:'Man sieht sie meistens nicht als einzelne Körnchen.'},
+    {id:'verdunstung',target:'help',title:'Feste Rückstände können entstehen, wenn Wasser verdunstet.',text:'Das kann bei manchen Ablagerungen eine Rolle spielen.'},
+    {id:'muschel',target:'help',title:'Muschelschalen sind feste mineralische Materialien.',text:'Viele Muschelschalen enthalten Calciumverbindungen.'},
+    {id:'kupfer',target:'help',title:'Kupferoberflächen können grünliche Beläge bekommen.',text:'Wasser, Luft und gelöste Stoffe können dabei beteiligt sein.'}
+  ];
+  const contextPool=document.getElementById('contextPool');
+  const buckets={help:document.getElementById('bucketHelp'),less:document.getElementById('bucketLess')};
+  let selectedCard=null; let placements={};
+  function cardById(id){return contextCards.find(c=>c.id===id)}
+  function selectCard(id,el){
+    document.querySelectorAll('.info-card,.mini-card').forEach(c=>c.classList.remove('selected'));
+    if(selectedCard===id){selectedCard=null;return;}
+    selectedCard=id; el.classList.add('selected');
+    const fb=document.getElementById('contextFeedback');fb.className='feedback';fb.textContent='Tippe jetzt auf eines der beiden Felder. Die Karte kann auch aus einem Feld in das andere Feld verschoben werden.';
+  }
+  function makeInfoCard(card,mini=false){
+    const el=document.createElement('button'); el.type='button'; el.className=mini?'mini-card':'info-card'; el.dataset.id=card.id;
+    el.innerHTML='<strong>'+card.title+'</strong>'+(card.text?'<span>'+card.text+'</span>':'');
+    el.addEventListener('click',(e)=>{e.stopPropagation();selectCard(card.id,el);});
+    return el;
+  }
+  function renderContext(){
+    contextPool.innerHTML=''; buckets.help.innerHTML=''; buckets.less.innerHTML='';
+    contextCards.forEach(card=>{const where=placements[card.id]; if(!where){contextPool.appendChild(makeInfoCard(card,false));} else {buckets[where].appendChild(makeInfoCard(card,true));}});
+    document.querySelector('[data-bucket="help"]').classList.toggle('empty',!buckets.help.children.length);
+    document.querySelector('[data-bucket="less"]').classList.toggle('empty',!buckets.less.children.length);
+  }
+  renderContext();
+  document.querySelectorAll('.bucket').forEach(bucket=>bucket.addEventListener('click',()=>{
+    if(!selectedCard) return; placements[selectedCard]=bucket.dataset.bucket; selectedCard=null; renderContext();
+    const placedCount=Object.keys(placements).length; const fb=document.getElementById('contextFeedback'); fb.className='feedback';
+    fb.textContent=placedCount<contextCards.length ? 'Karte abgelegt. Du kannst sie erneut antippen und verschieben.' : 'Alle Karten wurden zugeordnet. Prüfe nun deine Zuordnung.';
+  }));
+  document.getElementById('returnSelected').addEventListener('click',()=>{
+    const fb=document.getElementById('contextFeedback');
+    if(!selectedCard){fb.className='feedback try';fb.textContent='Wähle zuerst eine Karte aus.';return;}
+    delete placements[selectedCard]; selectedCard=null; renderContext(); document.getElementById('toStep2').disabled=true; fb.className='feedback'; fb.textContent='Die ausgewählte Karte wurde zurückgelegt.';
+  });
+  document.getElementById('resetContext').addEventListener('click',()=>{placements={};selectedCard=null;renderContext();document.getElementById('toStep2').disabled=true;const fb=document.getElementById('contextFeedback');fb.className='feedback';fb.textContent='Alle Karten wurden zurückgelegt.';});
+  document.getElementById('checkContext').addEventListener('click',()=>{
+    const fb=document.getElementById('contextFeedback');
+    if(Object.keys(placements).length<contextCards.length){fb.className='feedback try';fb.textContent='Es sind noch nicht alle Karten zugeordnet.';return;}
+    const wrong=contextCards.filter(c=>placements[c.id]!==c.target);
+    if(!wrong.length){fb.className='feedback good';fb.textContent='Das passt: Für die Stundenfrage helfen vor allem Hinweise zu gelösten Ionen im Wasser und zu sichtbaren Belägen, Schalen oder Ablagerungen. Manche Ideen sind als Erklärung zu allgemein.';document.getElementById('toStep2').disabled=false;}
+    else{fb.className='feedback try';fb.textContent='Schau noch einmal: Welche Karten helfen wirklich bei der Frage nach gelösten Mineralstoffen im Wasser und festen Stoffen?';}
+  });
+
+  const hypotheses=[
+    {id:'H1',text:'Ein fester Stoff kann entstehen, wenn bestimmte gelöste Stoffe im Wasser zusammenkommen.'},
+    {id:'H2',text:'Nicht jede Kombination gelöster Stoffe führt zu einem sichtbaren festen Stoff.'},
+    {id:'H3',text:'Feste Rückstände können entstehen, wenn Wasser verdunstet.'},
+    {id:'H4',text:'Die grünliche Stelle am Wasserhahn könnte damit zusammenhängen, dass auch die Armatur beteiligt ist.'},
+    {id:'H5',text:'Wasser kann gelöste Mineralstoffe transportieren, die an anderer Stelle sichtbar werden.'}
+  ];
+  const selectedHypotheses=new Set(); let selectedMethodText='Noch kein Vorgehen gewählt.';
+  function selectedHypTexts(){return hypotheses.filter(h=>selectedHypotheses.has(h.id)).map(h=>h.text)}
+  function renderSummaries(){
+    const texts=selectedHypTexts(); const ul=document.getElementById('endHypSummary'); ul.innerHTML='';
+    if(!texts.length){const li=document.createElement('li');li.textContent='Noch keine Vermutung gewählt.';ul.appendChild(li);} else {texts.forEach(t=>{const li=document.createElement('li');li.textContent=t;ul.appendChild(li);});}
+    document.getElementById('endMethodSummary').textContent=selectedMethodText;
+  }
+  const hypWrap=document.getElementById('hypothesisCards');
+  hypotheses.forEach(h=>{
+    const b=document.createElement('button'); b.type='button'; b.className='choice-card'; b.innerHTML='<strong>'+h.id+'</strong><span>'+h.text+'</span>';
+    b.addEventListener('click',()=>{
+      if(selectedHypotheses.has(h.id)){selectedHypotheses.delete(h.id); b.classList.remove('selected');} else {selectedHypotheses.add(h.id); b.classList.add('selected');}
+      const fb=document.getElementById('hypothesisFeedback'); const box=document.getElementById('hypothesisSave'); const ul=document.getElementById('selectedHypList');
+      ul.innerHTML=''; selectedHypTexts().forEach(t=>{const li=document.createElement('li');li.textContent=t;ul.appendChild(li);});
+      if(!selectedHypotheses.size){fb.className='feedback';fb.textContent='Tippe eine oder mehrere Vermutungen an.';box.hidden=true;document.getElementById('toStep3').disabled=true;return;}
+      fb.className='feedback good'; fb.textContent='Die Vermutung(en) sind als prüfbare Ideen gespeichert. Sie müssen noch nicht richtig sein.'; box.hidden=false; document.getElementById('toStep3').disabled=false;
+      renderSummaries();
+    });
+    hypWrap.appendChild(b);
+  });
+  document.getElementById('saveHypotheses').addEventListener('click',()=>{
+    const fb=document.getElementById('hypothesisFeedback');
+    if(!selectedHypotheses.size){fb.className='feedback try';fb.textContent='Wähle zuerst mindestens eine Vermutung aus.';return;}
+    fb.className='feedback good'; fb.textContent='Die Vermutung(en) sind gespeichert.'; document.getElementById('toStep3').disabled=false; renderSummaries();
+  });
+
+  const methods=[
+    {id:'A',ok:false,title:'A: Zwei Stoffe trocken zusammenbringen.',text:'Man beobachtet den Kontakt ohne Wasser.',feedback:'Hier fehlt das Medium Wasser. Die Stundenfrage bezieht sich auf gelöste Mineralstoffe im Wasser.'},
+    {id:'B',ok:false,title:'B: Zwei Stoffe direkt zusammen in Wasser geben.',text:'Die Stoffe kommen sofort zusammen.',feedback:'Hier ist Wasser beteiligt. Für genaue Beobachtungen ist es aber günstiger, wenn die Stoffe nicht sofort direkt vermischt werden.'},
+    {id:'C',ok:true,title:'C: Zwei Stoffe in Wasser zunächst getrennt einbringen.',text:'Die Stoffe können im Medium Wasser zusammenfinden. Man kann beobachten, ob dabei etwas sichtbar wird.'},
+    {id:'D',ok:false,title:'D: Mineralwasser lange stehen lassen.',text:'Man wartet ab, ob etwas sichtbar wird.',feedback:'Das passt zum Alltag, ist aber für die Unterrichtsstunde zu wenig gezielt und dauert zu lange.'},
+    {id:'E',ok:false,title:'E: Wasser vollständig verdunsten lassen.',text:'Man beobachtet, ob nach dem Verdunsten Rückstände bleiben.',feedback:'Verdunstung kann eine eigene Vermutung prüfen. Heute soll aber beobachtet werden, ob schon im Wasser etwas Sichtbares entsteht.'}
+  ];
+  const methodWrap=document.getElementById('methodCards');
+  methods.forEach(m=>{
+    const b=document.createElement('button'); b.type='button'; b.className='method-card'; b.innerHTML='<strong>'+m.title+'</strong><span>'+m.text+'</span>';
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('.method-card').forEach(x=>x.classList.remove('selected')); b.classList.add('selected');
+      const fb=document.getElementById('methodFeedback');
+      if(m.ok){fb.className='feedback good';fb.textContent='Diese Idee passt gut zur Vermutung: Wasser dient als Medium. Die Stoffe kommen nicht sofort direkt zusammen, sondern können im Wasser zusammenfinden.'; selectedMethodText=m.title; document.getElementById('toEnd').disabled=false; renderSummaries();}
+      else{fb.className='feedback try';fb.textContent=m.feedback; selectedMethodText=m.title; document.getElementById('toEnd').disabled=true; renderSummaries();}
+    });
+    methodWrap.appendChild(b);
+  });
+})();
+</script>
+</body>
+</html>

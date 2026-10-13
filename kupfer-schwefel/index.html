@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kupfer und Schwefel – Modellanimation</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #101820;
+      --muted: #4b5563;
+      --frame: #bfbfbf;
+      --panel: #f7f7f7;
+      --border: #d1d5db;
+      --cu: #b87333;
+      --cu-dark: #7a421d;
+      --s: #f2c300;
+      --s-dark: #b68a00;
+      --product: #4b5563;
+      --accent: #2f8fa3;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .page {
+      width: min(1240px, 100vw);
+      margin: 0 auto;
+      padding: 0 14px 24px;
+    }
+
+    header {
+      padding: 4px 0 8px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      letter-spacing: 0.2px;
+    }
+
+    .date {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .stage-wrap {
+      background: var(--frame);
+      padding: 26px 28px;
+      min-height: 610px;
+    }
+
+    #stage {
+      width: 100%;
+      height: 552px;
+      background: white;
+      border-radius: 70px;
+      display: block;
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 14px 24px 18px;
+    }
+
+    button {
+      font-family: inherit;
+      font-size: 16px;
+      padding: 8px 13px;
+      border: 1px solid var(--border);
+      background: #f3f4f6;
+      color: #000;
+      cursor: pointer;
+      min-width: 56px;
+    }
+
+    button:hover { background: #e5e7eb; }
+    button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .radio-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 4px;
+      font-size: 18px;
+    }
+
+    .radio {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .radio input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .fake-radio {
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid #9ca3af;
+      border-radius: 50%;
+      background: white;
+      display: inline-block;
+      position: relative;
+    }
+
+    .radio input:checked + .fake-radio {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(47,143,163,0.18);
+    }
+
+    .radio input:checked + .fake-radio::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .stats {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .pill {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 7px 10px;
+      min-width: 90px;
+      text-align: center;
+    }
+
+    .info {
+      padding: 12px 10px 0;
+      line-height: 1.55;
+      font-size: 16px;
+    }
+
+    .info h2 {
+      margin: 0 0 18px;
+      font-size: 24px;
+    }
+
+    .equation {
+      margin: 12px 0;
+      padding: 12px 14px;
+      background: #f3f4f6;
+      border-left: 5px solid var(--accent);
+      font-size: 20px;
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .atom-label {
+      fill: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-anchor: middle;
+      dominant-baseline: central;
+      pointer-events: none;
+    }
+
+    .product-label {
+      fill: white;
+      font-weight: bold;
+      font-size: 22px;
+      text-anchor: middle;
+      dominant-baseline: central;
+      pointer-events: none;
+    }
+
+    .mini-label {
+      fill: rgba(255,255,255,0.92);
+      font-weight: bold;
+      font-size: 13px;
+      text-anchor: middle;
+      dominant-baseline: central;
+      pointer-events: none;
+    }
+
+    @media (max-width: 760px) {
+      .stage-wrap { padding: 16px; min-height: 420px; }
+      #stage { height: 380px; border-radius: 42px; }
+      h1 { font-size: 21px; }
+      .controls { padding-inline: 6px; }
+      .stats { margin-left: 0; width: 100%; }
+      .radio-group { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <section class="stage-wrap" aria-label="Animationsbereich">
+      <svg id="stage" viewBox="0 0 1180 552" role="img" aria-label="Animation zur Reaktion von Kupfer und Schwefel"></svg>
+    </section>
+
+    <section class="controls" aria-label="Steuerung">
+      <button id="addCu">Cu</button>
+      <button id="addS">S</button>
+      <button id="synthesis">Reagieren lassen</button>
+      <button id="reset">Reset</button>
+
+      <div class="radio-group" aria-label="Darstellungsmodell auswählen">
+        <label class="radio">
+          <input type="radio" name="model" value="atom" checked>
+          <span class="fake-radio"></span>
+          Atommodell
+        </label>
+        <label class="radio">
+          <input type="radio" name="model" value="muffin">
+          <span class="fake-radio"></span>
+          Muffinmodell
+        </label>
+      </div>
+
+      <div class="stats">
+        <div class="pill" id="countCu">Cu: 0</div>
+        <div class="pill" id="countS">S: 0</div>
+        <div class="pill" id="countProduct">Formeleinheiten: 0</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const svg = document.getElementById("stage");
+    const NS = "http://www.w3.org/2000/svg";
+
+    const W = 1180;
+    const H = 552;
+    const padding = 46;
+    const particles = [];
+    let model = "atom";
+    let mode = "idle";
+    let nextId = 1;
+
+    const config = {
+      atom: {
+        Cu: { r: 34, fill: "#b87333", stroke: "#7a421d" },
+        S:  { r: 32, fill: "#f2c300", stroke: "#b68a00" },
+        product: { r: 54, fill: "#4b5563", stroke: "#111827" }
+      },
+      muffin: {
+        Cu: { r: 40, fill: "#d59b55", stroke: "#9a6125" },
+        S:  { r: 36, fill: "#f5d233", stroke: "#b68a00" },
+        product: { r: 58, fill: "#a67c52", stroke: "#62412b" }
+      }
+    };
+
+    function rand(min, max) {
+      return min + Math.random() * (max - min);
+    }
+
+    function clamp(v, min, max) {
+      return Math.max(min, Math.min(max, v));
+    }
+
+    function createEl(name, attrs = {}) {
+      const el = document.createElementNS(NS, name);
+      for (const [key, value] of Object.entries(attrs)) {
+        el.setAttribute(key, value);
+      }
+      return el;
+    }
+
+    function radiusFor(type) {
+      if (type === "product") return config[model].product.r;
+      return config[model][type].r;
+    }
+
+    function addParticle(type, x = rand(160, W - 160), y = rand(130, H - 130)) {
+      const p = {
+        id: nextId++,
+        type,
+        x,
+        y,
+        vx: rand(-0.45, 0.45) || 0.25,
+        vy: rand(-0.45, 0.45) || -0.25,
+        target: null,
+        state: "free",
+        groupId: null,
+        angle: rand(-20, 20),
+        spin: rand(-0.08, 0.08)
+      };
+      particles.push(p);
+      return p;
+    }
+
+    function seed() {
+      particles.length = 0;
+      nextId = 1;
+      addParticle("Cu", 360, 310);
+      addParticle("S", 790, 310);
+      updateStats();
+    }
+
+    function drawAtomParticle(g, p) {
+      const c = config[model][p.type];
+      const r = c.r;
+
+      const circle = createEl("circle", {
+        cx: 0,
+        cy: 0,
+        r,
+        fill: c.fill,
+        stroke: c.stroke,
+        "stroke-width": 2
+      });
+      g.appendChild(circle);
+
+      if (model === "muffin") {
+        const shine = createEl("ellipse", {
+          cx: -10,
+          cy: -12,
+          rx: r * 0.42,
+          ry: r * 0.18,
+          fill: "rgba(255,255,255,0.35)",
+          transform: "rotate(-25)"
+        });
+        g.appendChild(shine);
+
+        for (let i = 0; i < (p.type === "Cu" ? 9 : 5); i++) {
+          const dot = createEl("circle", {
+            cx: rand(-r * 0.55, r * 0.55),
+            cy: rand(-r * 0.45, r * 0.45),
+            r: rand(2, 4),
+            fill: p.type === "Cu" ? "#a96a2a" : "#d6a900",
+            opacity: 0.55
+          });
+          g.appendChild(dot);
+        }
+      }
+
+      const label = createEl("text", { class: "atom-label", x: 0, y: 2 });
+      label.textContent = p.type;
+      if (p.type === "S") label.setAttribute("fill", "#111827");
+      g.appendChild(label);
+    }
+
+    function drawProduct(g, p) {
+      const c = config[model].product;
+      const r = c.r;
+
+      if (model === "atom") {
+        const cu1 = createEl("circle", { cx: -24, cy: 12, r: 31, fill: config.atom.Cu.fill, stroke: config.atom.Cu.stroke, "stroke-width": 2 });
+        const cu2 = createEl("circle", { cx: 24, cy: 12, r: 31, fill: config.atom.Cu.fill, stroke: config.atom.Cu.stroke, "stroke-width": 2 });
+        const s = createEl("circle", { cx: 0, cy: -24, r: 30, fill: config.atom.S.fill, stroke: config.atom.S.stroke, "stroke-width": 2 });
+        g.append(cu1, cu2, s);
+
+        const l1 = createEl("text", { class: "mini-label", x: -24, y: 14 });
+        l1.textContent = "Cu";
+        const l2 = createEl("text", { class: "mini-label", x: 24, y: 14 });
+        l2.textContent = "Cu";
+        const l3 = createEl("text", { class: "mini-label", x: 0, y: -22, fill: "#111827" });
+        l3.textContent = "S";
+        g.append(l1, l2, l3);
+      } else {
+        const base = createEl("ellipse", { cx: 0, cy: 6, rx: r * 1.05, ry: r * 0.72, fill: c.fill, stroke: c.stroke, "stroke-width": 2 });
+        const top = createEl("ellipse", { cx: 0, cy: -18, rx: r * 0.82, ry: r * 0.36, fill: "#d8a66d", opacity: 0.95 });
+        const sulfur = createEl("ellipse", { cx: 0, cy: -20, rx: r * 0.40, ry: r * 0.14, fill: config.muffin.S.fill, transform: "rotate(-18)" });
+        g.append(base, top, sulfur);
+        for (let i = 0; i < 15; i++) {
+          g.appendChild(createEl("circle", {
+            cx: rand(-r * 0.75, r * 0.75),
+            cy: rand(-r * 0.4, r * 0.45),
+            r: rand(2, 4),
+            fill: "#8a5324",
+            opacity: 0.55
+          }));
+        }
+      }
+
+      const label = createEl("text", { class: "product-label", x: 0, y: model === "atom" ? 62 : 68 });
+      label.textContent = "FE Cu₂S";
+      label.setAttribute("fill", model === "atom" ? "#111827" : "#ffffff");
+      g.appendChild(label);
+    }
+
+    function render() {
+      svg.innerHTML = "";
+
+      const free = particles.filter(p => p.state !== "consumed");
+      for (const p of free) {
+        const g = createEl("g", {
+          transform: `translate(${p.x},${p.y}) rotate(${p.angle})`
+        });
+        if (p.type === "product") drawProduct(g, p);
+        else drawAtomParticle(g, p);
+        svg.appendChild(g);
+      }
+    }
+
+    function updateStats() {
+      const countCu = particles.filter(p => p.type === "Cu" && p.state !== "consumed").length;
+      const countS = particles.filter(p => p.type === "S" && p.state !== "consumed").length;
+      const countProduct = particles.filter(p => p.type === "product" && p.state !== "consumed").length;
+      document.getElementById("countCu").textContent = `Cu: ${countCu}`;
+      document.getElementById("countS").textContent = `S: ${countS}`;
+      document.getElementById("countProduct").textContent = `Formeleinheiten: ${countProduct}`;
+    }
+
+    function moveIdle(p) {
+      const r = radiusFor(p.type);
+      p.x += p.vx;
+      p.y += p.vy;
+      p.angle += p.spin;
+
+      if (p.x < padding + r || p.x > W - padding - r) {
+        p.vx *= -1;
+        p.x = clamp(p.x, padding + r, W - padding - r);
+      }
+      if (p.y < padding + r || p.y > H - padding - r) {
+        p.vy *= -1;
+        p.y = clamp(p.y, padding + r, H - padding - r);
+      }
+    }
+
+    function moveTargeted(p) {
+      if (!p.target) return moveIdle(p);
+      const dx = p.target.x - p.x;
+      const dy = p.target.y - p.y;
+      const dist = Math.hypot(dx, dy);
+      if (dist < 2.2) {
+        p.x = p.target.x;
+        p.y = p.target.y;
+        return;
+      }
+      p.x += dx * 0.045;
+      p.y += dy * 0.045;
+      p.angle += p.spin * 0.5;
+    }
+
+    function tick() {
+      for (const p of particles) {
+        if (p.state === "consumed") continue;
+        if (p.state === "moving") moveTargeted(p);
+        else moveIdle(p);
+      }
+
+      finishArrivedGroups();
+      render();
+      requestAnimationFrame(tick);
+    }
+
+    function freeParticles(type) {
+      return particles.filter(p => p.type === type && p.state === "free");
+    }
+
+    function findGroupCenter(group) {
+      const cx = group.reduce((s, p) => s + p.x, 0) / group.length;
+      const cy = group.reduce((s, p) => s + p.y, 0) / group.length;
+      return {
+        x: clamp(cx, 150, W - 150),
+        y: clamp(cy, 120, H - 120)
+      };
+    }
+
+    function synthesize() {
+      const cu = freeParticles("Cu");
+      const s = freeParticles("S");
+      const possible = Math.min(Math.floor(cu.length / 2), s.length);
+      if (possible <= 0) return;
+
+      mode = "synthesis";
+      let cuIndex = 0;
+      let sIndex = 0;
+
+      for (let i = 0; i < possible; i++) {
+        const group = [cu[cuIndex++], cu[cuIndex++], s[sIndex++]];
+        const center = findGroupCenter(group);
+        const groupId = `g${Date.now()}-${i}-${Math.random()}`;
+        const offsets = [
+          { x: -22, y: 16 },
+          { x: 22, y: 16 },
+          { x: 0, y: -20 }
+        ];
+
+        group.forEach((p, idx) => {
+          p.state = "moving";
+          p.groupId = groupId;
+          p.target = {
+            x: center.x + offsets[idx].x,
+            y: center.y + offsets[idx].y
+          };
+          p.vx *= 0.3;
+          p.vy *= 0.3;
+        });
+      }
+    }
+
+    function finishArrivedGroups() {
+      const groups = new Map();
+      for (const p of particles) {
+        if (p.state === "moving" && p.groupId) {
+          if (!groups.has(p.groupId)) groups.set(p.groupId, []);
+          groups.get(p.groupId).push(p);
+        }
+      }
+
+      for (const group of groups.values()) {
+        if (group.length !== 3) continue;
+        const arrived = group.every(p => p.target && Math.hypot(p.target.x - p.x, p.target.y - p.y) < 3);
+        if (!arrived) continue;
+
+        const cx = group.reduce((s, p) => s + p.x, 0) / group.length;
+        const cy = group.reduce((s, p) => s + p.y, 0) / group.length;
+        group.forEach(p => p.state = "consumed");
+
+        const product = addParticle("product", cx, cy);
+        product.vx = rand(-0.22, 0.22) || 0.16;
+        product.vy = rand(-0.22, 0.22) || -0.16;
+        product.spin = rand(-0.035, 0.035);
+        product.state = "free";
+        product.target = null;
+        product.groupId = null;
+        updateStats();
+      }
+    }
+
+    function decompose() {
+      const products = particles.filter(p => p.type === "product" && p.state === "free");
+      if (products.length === 0) return;
+
+      for (const p of products) {
+        p.state = "consumed";
+        const spread = 54;
+        addParticle("Cu", p.x - spread, p.y + 12);
+        addParticle("Cu", p.x + spread, p.y + 12);
+        addParticle("S", p.x, p.y - spread);
+      }
+      updateStats();
+    }
+
+    document.getElementById("addCu").addEventListener("click", () => {
+      addParticle("Cu");
+      updateStats();
+    });
+
+    document.getElementById("addS").addEventListener("click", () => {
+      addParticle("S");
+      updateStats();
+    });
+
+    document.getElementById("synthesis").addEventListener("click", synthesize);
+    document.getElementById("reset").addEventListener("click", seed);
+
+    document.querySelectorAll('input[name="model"]').forEach(input => {
+      input.addEventListener("change", event => {
+        model = event.target.value;
+      });
+    });
+
+    seed();
+    requestAnimationFrame(tick);
+  </script>
+</body>
+</html>

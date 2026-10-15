@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Experimentplanung · Metallgewinnung</title>
+<style>
+:root{--navy:#152239;--ink:#142138;--muted:#52637c;--teal:#047e80;--line:#dbe3ed;--bg:#f4f7fb}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg)}button,textarea{font:inherit}button{cursor:pointer}a{color:#036972}button:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #c99028;outline-offset:3px}
+header{background:var(--navy);color:white;padding:32px 0}.wrap{max-width:1000px;margin:auto;padding:0 22px}header h1{font-size:clamp(1.9rem,4vw,3rem);line-height:1.12;margin:8px 0}header p{color:#d1e0e8;max-width:760px;margin:0}.eyebrow{font-size:.76rem;font-weight:850;letter-spacing:.11em;color:#9ce3d7;text-transform:uppercase}
+main{padding:28px 22px 55px}.sheet{background:white;border:1px solid var(--line);border-radius:24px;padding:25px;box-shadow:0 14px 35px #17283c0c;margin-bottom:19px}h2{color:#12344b;line-height:1.23;margin:0 0 13px}.secondary{color:var(--muted)}.quote{background:#edf9f6;border-left:5px solid #0b8d86;border-radius:12px;padding:15px;margin:14px 0;overflow-wrap:anywhere}
+textarea{display:block;width:100%;min-height:105px;resize:vertical;background:#fbfdff;color:var(--ink);border:2px solid #cadae5;border-radius:12px;padding:12px;margin:8px 0 15px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}label{font-weight:750;display:block}button.primary,.primary{background:#087b7c;color:#fff;border:0;border-radius:11px;font-weight:800;display:inline-block;text-decoration:none;padding:12px 19px}button.secondary-button{background:#e8eff6;color:#1b3750;border:1px solid #cbd8e5;border-radius:11px;font-weight:800;padding:11px 17px}.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.hidden{display:none!important}.control{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:20px}.toggle{display:flex;padding:5px;background:#e5edf3;border-radius:13px;gap:5px}.toggle button{min-width:80px;border:0;border-radius:10px;background:none;padding:10px 14px;font-weight:750;color:#506780}.toggle button.on{color:#046e70;background:white;box-shadow:0 2px 7px #00000013}.visual{border:2px solid var(--line);border-radius:18px;overflow:hidden;background:#f5f9fd;margin-top:14px;padding:15px}.visual svg{display:block;width:100%;max-width:800px;height:auto;margin:auto}.note{color:#526982;font-size:.93rem;margin:10px 0}.warning{background:#fff7e9;border:1px solid #f0dfbb;padding:13px 16px;border-radius:14px;margin-top:17px}.reaction{background:#f0f8f9;color:#164a56;padding:12px 14px;border-radius:11px}.bottom{margin-top:24px}#hypValue:empty::after{content:'Noch keine gespeicherte Vermutung vorhanden.';color:#65768c}#indicator{font-weight:750}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.sheet{padding:17px}.wrap{padding:0 14px}main{padding:17px 14px 35px}}@media print{header,.actions,.toggle,.bottom,.skip-print{display:none!important}body{background:white}.sheet{box-shadow:none;border:0}.hidden{display:block!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="eyebrow">Teil B · nach der Vermutungsbildung</div><h1>Wie lässt sich deine Vermutung überprüfen?</h1><p>Hier beginnt die Experimentplanung. Die vorherige Vermutungswerkstatt enthält bewusst noch keinen fertigen Aufbau.</p></div></header>
+<main class="wrap">
+<section class="sheet"><h2>Deine gesicherte Vermutung</h2><div class="quote" id="hypValue" aria-live="polite"></div><p class="secondary">Verändere deine Vermutung nicht rückwirkend, nur weil du später neue Informationen über den Versuchsaufbau erhältst.</p><a href="./" class="secondary">← Zur Vermutungswerkstatt</a></section>
+<section class="sheet"><h2>1 · Plane zuerst selbst</h2><p>Wir untersuchen eine Zinkiodid-Lösung. Es stehen Graphitelektroden und eine Gleichspannungsquelle zur Verfügung. Überlege, wie du deine Vermutung prüfen kannst – noch ohne einen fertigen Aufbau zu betrachten.</p>
+<div class="grid">
+<div><label for="change">Was veränderst du gezielt?</label><textarea id="change" placeholder="Ich verändere …"></textarea></div>
+<div><label for="same">Was sollte gleich bleiben?</label><textarea id="same" placeholder="Ich halte gleich …"></textarea></div>
+<div><label for="observe">Was willst du beobachten?</label><textarea id="observe" placeholder="Ich achte auf …"></textarea></div>
+</div>
+<div class="actions"><button class="primary" id="showSetup" type="button" aria-expanded="false" aria-controls="setup">Möglichen Versuchsaufbau ansehen</button><span class="secondary">Erst nach deinen Überlegungen öffnen.</span></div>
+</section>
+<section class="sheet hidden" id="setup"><h2>2 · Vergleiche einen möglichen Aufbau</h2><p class="secondary">Die Zeichnung zeigt den Aufbau schematisch. Sie zeigt keine Reaktionsprodukte und macht keine Vorhersage darüber, ob eine Stoffumwandlung auftritt.</p>
+<div class="control"><strong>Gleichspannungsquelle im Schema</strong><div class="toggle" role="group" aria-label="Spannungsquelle aus oder an"><button id="off" class="on" type="button" aria-pressed="true">Aus</button><button id="on" type="button" aria-pressed="false">An</button></div></div>
+<div class="visual">
+<svg viewBox="0 0 780 382" role="img" aria-label="Becherglas mit Zinkiodid-Lösung, frei sichtbaren Zink- und Iodid-Ionen, zwei Graphitelektroden und einer Gleichspannungsquelle. Keine Reaktionsprodukte." xmlns="http://www.w3.org/2000/svg">
+<rect x="267" y="13" width="245" height="70" rx="14" stroke="#839caf" stroke-width="3" fill="#e8eff5" id="supplyRect"/>
+<text x="390" y="41" text-anchor="middle" font-size="18" font-weight="800" fill="#274256">Gleichspannungsquelle</text>
+<text x="302" y="68" font-size="21" font-weight="800" fill="#47778b">−</text><text x="462" y="68" font-size="21" font-weight="800" fill="#986132">+</text>
+<path d="M303 84v43H272v62M467 84v43h40v62" fill="none" stroke="#8395a9" stroke-width="6"/>
+<g id="liveCircuit" opacity="0" style="transition:opacity .25s"><path d="M303 88v39H272v62M467 88v39h40v62" fill="none" stroke="#0a918e" stroke-width="4"/><circle cx="282" cy="127" r="5" fill="#0f898c"/><circle cx="489" cy="127" r="5" fill="#0f898c"/></g>
+<path d="M180 151v173q0 30 30 30h359q30 0 30-30V151" stroke="#5f788b" stroke-width="6" stroke-linecap="round" fill="none"/>
+<path d="M186 223H593v102q0 23-24 23H211q-24 0-24-23Z" fill="#dbeeed"/>
+<rect x="260" y="179" width="24" height="125" rx="3" fill="#3d4b5c"/>
+<rect x="497" y="179" width="24" height="125" rx="3" fill="#3d4b5c"/>
+<g fill="#fff" stroke="#478fa6" stroke-width="2.5"><circle cx="350" cy="265" r="29"/><circle cx="445" cy="308" r="29"/><circle cx="350" cy="327" r="23"/></g>
+<g fill="#27708a" text-anchor="middle" font-size="19" font-weight="800"><text x="350" y="272">Zn²⁺</text><text x="445" y="315">Zn²⁺</text><text x="350" y="334" font-size="15">Zn²⁺</text></g>
+<g fill="#fff9e8" stroke="#b99851" stroke-width="2.5"><circle cx="430" cy="248" r="25"/><circle cx="531" cy="317" r="22"/></g>
+<g fill="#916a20" text-anchor="middle" font-size="19" font-weight="750"><text x="430" y="255">I⁻</text><text x="531" y="324">I⁻</text></g>
+<text x="43" y="235" font-size="18" font-weight="750" fill="#2e5265">Zinkiodid-</text><text x="43" y="257" font-size="18" font-weight="750" fill="#2e5265">Lösung</text><path d="M142 252h50" stroke="#8da8b6" stroke-width="2"/>
+<text x="607" y="185" font-size="18" font-weight="750" fill="#2e5265">Graphit-</text><text x="607" y="208" font-size="18" font-weight="750" fill="#2e5265">elektroden</text><path d="M602 202h-40l-49 18" stroke="#8da8b6" stroke-width="2" fill="none"/>
+</svg>
+</div>
+<p class="note" id="indicator" aria-live="polite">Spannungsquelle aus: Über die Spannungsquelle wird keine elektrische Energie zugeführt.</p>
+<div class="reaction"><strong>Beobachtung ist noch offen:</strong> Die gezeichneten Ionen stehen für Teilchen in der Lösung. Die Darstellung simuliert weder Elektronenübertragungen an den Elektroden noch sichtbare Produkte.</div>
+<p class="warning"><strong>Sicherheit:</strong> Der Aufbau ist nur ein Schema. Der reale Versuch darf ausschließlich nach der freigegebenen Anleitung und Gefährdungsbeurteilung der Lehrkraft durchgeführt werden.</p>
+</section>
+<div class="bottom"><a href="./">← Zurück zur Vermutung</a></div>
+</main>
+<script>
+(()=>{'use strict';const $=id=>document.getElementById(id);const key='metallgewinnung-vermutungswerkstatt-v2';try{const s=JSON.parse(localStorage.getItem(key)||'{}');if(s.guess?.trim()&&s.reason?.trim()){$('hypValue').textContent='Ich vermute, dass '+s.guess.replace(/^ich vermute,? dass\s*/i,'')+', weil '+s.reason.replace(/^(weil|,?\s*weil)\s*/i,'')+'.';}else $('hypValue').textContent='Noch keine Vermutung gespeichert. Kehre zur Vermutungswerkstatt zurück.';}catch{$('hypValue').textContent='Deine Vermutung wurde in diesem Browser nicht gefunden.';}
+['change','same','observe'].forEach(id=>{try{$(id).value=localStorage.getItem('expplan-'+id)||''}catch{};$(id).addEventListener('input',()=>{try{localStorage.setItem('expplan-'+id,$(id).value)}catch{}})});
+$('showSetup').addEventListener('click',()=>{const s=$('setup');const open=s.classList.toggle('hidden')===false;$('showSetup').setAttribute('aria-expanded',String(open));$('showSetup').textContent=open?'Aufbau wieder ausblenden':'Möglichen Versuchsaufbau ansehen';if(open)s.scrollIntoView({behavior:'smooth',block:'start'});});
+function source(active){$('off').classList.toggle('on',!active);$('on').classList.toggle('on',active);$('off').setAttribute('aria-pressed',String(!active));$('on').setAttribute('aria-pressed',String(active));$('liveCircuit').setAttribute('opacity',active?'1':'0');$('supplyRect').setAttribute('fill',active?'#e0f9f0':'#e8eff5');$('indicator').textContent=active?'Spannungsquelle an: Über den geschlossenen Stromkreis kann elektrische Energie übertragen werden. Welche Veränderungen auftreten, muss erst untersucht werden.':'Spannungsquelle aus: Über die Spannungsquelle wird keine elektrische Energie zugeführt.';}
+$('off').addEventListener('click',()=>source(false));$('on').addEventListener('click',()=>source(true));source(false);})();
+</script>
+</body></html>

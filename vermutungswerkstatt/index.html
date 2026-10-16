@@ -35,12 +35,14 @@
 .information-release{border:2px solid #afd7d3;background:#f1faf9;border-radius:16px;padding:19px;margin-top:20px}.information-release p{margin:12px 0}.three-ideas:has(.idea-card:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:760px){.three-ideas:has(.idea-card:nth-child(2):last-child){grid-template-columns:1fr}}
  .concept-bridge{margin:20px 0 8px;padding:16px 18px;border-left:4px solid #409e9e;border-radius:12px;background:#eef8f7}.concept-bridge strong{color:#145a61}.concept-bridge p{margin:7px 0 0;line-height:1.55}
  .energy-reveal{margin-top:15px;padding:20px;border-radius:16px;border:2px solid #add4ce;background:#f1fbf8}.energy-reveal>.section-kicker{display:block;margin-bottom:9px}.energy-reveal>p{margin:9px 0}.energy-reveal .concept-bridge{background:#eaf5f5}.energy-reveal .three-ideas{margin-top:15px}
+
+.version-note{font-size:.7rem;color:#8793a2;text-align:right;margin:5px 0 0;letter-spacing:.01em}.motion-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:18px 0}.motion-panel{border:1px solid var(--line);background:#f9fcfd;border-radius:16px;padding:18px;min-width:0}.motion-panel h3{font-size:1.04rem;margin:0 0 6px;color:#164d62}.motion-panel svg{width:100%;height:auto;display:block}.motion-panel p{font-size:.94rem;margin:8px 0 0;color:#304b5a;line-height:1.55}.electrons-moving{animation:electron-shift-v10 2.9s linear infinite}.energy-arrow{animation:energy-pulse-v10 2.1s ease-in-out infinite}@keyframes electron-shift-v10{from{transform:translateX(0)}to{transform:translateX(80px)}}@keyframes energy-pulse-v10{0%,100%{opacity:.42}50%{opacity:1}}@media(max-width:750px){.motion-grid{grid-template-columns:1fr}}@media(prefers-reduced-motion:reduce){.electrons-moving,.energy-arrow{animation:none!important}}
 </style></head>
 <body>
 <header><div class="wrap top"><div class="eyebrow"><span class="brand-mark" aria-hidden="true">e⁻</span> Chemie · Vermutungswerkstatt</div>
 <h1>Wie kann aus einer Verbindung ein Metall werden?</h1>
 <p>Nutze dein Wissen über Redoxreaktionen und entwickle eine begründete Vermutung zur Gewinnung von Aluminium.</p>
-<div class="headline-meta"><span class="chip">4 Denkschritte</span><span class="chip">vor dem Experiment</span><span class="chip">Fassung 16.10.2026 · V8</span></div></div></header>
+<div class="headline-meta"><span class="chip">4 Denkschritte</span><span class="chip">vor dem Experiment</span></div></div></header>
 <div class="barwrap"><div class="wrap"><div class="progresslabels"><span>Dein Denkweg</span><span id="progressLabel" class="current" aria-live="polite">1 von 4 · Ausgangsproblem</span></div>
 <div class="progressbar" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Denkfortschritt"><div class="progressfill" id="progressfill"></div></div>
 <nav id="stepnav" class="stepnav" aria-label="Denkschritte"></nav></div></div>
@@ -109,27 +111,54 @@
     <p>Zur Gewinnung von Aluminium aus Aluminiumoxid wird in der Industrie <strong>sehr viel elektrische Energie</strong> eingesetzt.</p>
     
   <div class="concept-bridge">
-    <strong>Wie kommt der Strombegriff ins Spiel?</strong>
-    <p>Bei der Aluminiumherstellung wird elektrische Energie über eine elektrische Anlage zugeführt. Dazu gehören auch metallische Leitungen. Was geschieht eigentlich in einem solchen Leiter, wenn elektrischer Strom fließt?</p>
+    <strong>Wie kommt elektrischer Strom ins Spiel?</strong>
+    <p>Bei der Aluminiumherstellung wird elektrische Energie über metallische Leitungen und weitere Teile einer elektrischen Anlage übertragen. Was geschieht dabei in einem metallischen Leiter?</p>
   </div>
-  <p class="prompt">Was bedeuten elektrischer Strom und elektrische Energie?</p>
-  <div class="three-ideas">
-    <div class="idea-card"><div class="electron-flow" aria-hidden="true">e⁻ &nbsp; e⁻ &nbsp; e⁻ <span>→</span></div>
-      <strong>Elektrischer Strom</strong>
-      <p><strong>Elektrischer Strom</strong> ist die gerichtete Bewegung elektrischer Ladungen. In einem metallischen Kabel bewegen sich viele Elektronen gerichtet entlang des Leiters.</p></div>
-    <div class="idea-card"><div class="idea-icon" aria-hidden="true">⚡</div>
-      <strong>Elektrische Energie</strong>
-      <p>Eine Spannungsquelle stellt eine elektrische Spannung bereit. In einem geeigneten geschlossenen Stromkreis kann dadurch <strong>elektrische Energie übertragen</strong> werden.</p></div>
+  <div class="motion-grid">
+    <div class="motion-panel">
+      <h3>Elektronen im Metallleiter</h3>
+      <svg viewBox="0 0 440 170" role="img" aria-label="Modellhafte gerichtete Bewegung vieler Elektronen durch ein metallisches Kabel">
+        <defs>
+          <linearGradient id="cableGradientV10" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8cad8"/><stop offset=".5" stop-color="#f0f5f8"/><stop offset="1" stop-color="#adc1d1"/></linearGradient>
+          <clipPath id="cableClipV10"><rect x="20" y="48" width="400" height="85" rx="13"/></clipPath>
+        </defs>
+        <text x="24" y="26" font-size="15" font-weight="700" fill="#476879">Metallleiter (Ausschnitt)</text>
+        <rect x="20" y="48" width="400" height="85" rx="13" stroke="#809eaf" stroke-width="2" fill="url(#cableGradientV10)"/>
+        <g clip-path="url(#cableClipV10)">
+          <g class="electrons-moving">
+            <g fill="#c4f4e9" stroke="#21897e" stroke-width="2">
+              <circle cx="-60" cy="91" r="19"/><circle cx="20" cy="91" r="19"/><circle cx="100" cy="91" r="19"/><circle cx="180" cy="91" r="19"/><circle cx="260" cy="91" r="19"/><circle cx="340" cy="91" r="19"/><circle cx="420" cy="91" r="19"/><circle cx="500" cy="91" r="19"/>
+            </g>
+            <g fill="#08665e" font-size="17" font-weight="800" text-anchor="middle">
+              <text x="-60" y="97">e⁻</text><text x="20" y="97">e⁻</text><text x="100" y="97">e⁻</text><text x="180" y="97">e⁻</text><text x="260" y="97">e⁻</text><text x="340" y="97">e⁻</text><text x="420" y="97">e⁻</text><text x="500" y="97">e⁻</text>
+            </g>
+          </g>
+        </g>
+        <text x="220" y="157" text-anchor="middle" font-size="14" fill="#416676">Bewegung der Elektronen →</text>
+      </svg>
+      <p>Elektrischer Strom ist die <strong>gerichtete Bewegung elektrischer Ladungen</strong>. In einem Metallleiter wird der Strom durch bewegliche Elektronen getragen.</p>
+    </div>
+    <div class="motion-panel">
+      <h3>Elektrische Energie bereitstellen</h3>
+      <svg viewBox="0 0 440 170" role="img" aria-label="Spannungsquelle, die einem elektrischen Stromkreis Energie bereitstellen kann">
+        <rect x="16" y="42" width="180" height="92" rx="15" fill="#e7f1f8" stroke="#6c98b2" stroke-width="2"/>
+        <text x="106" y="75" text-anchor="middle" font-size="16" font-weight="800" fill="#2b506a">Spannungsquelle</text>
+        <text x="77" y="110" text-anchor="middle" font-size="25" font-weight="850" fill="#bd5d46">+</text>
+        <text x="135" y="110" text-anchor="middle" font-size="25" font-weight="850" fill="#386f9e">−</text>
+        <path class="energy-arrow" d="M213 73H257V58L306 87L257 116V101H213Z" fill="#f2cb75" stroke="#af8532" stroke-width="2"/>
+        <rect x="318" y="42" width="108" height="92" rx="15" fill="#e4f5f1" stroke="#88b9ac" stroke-width="2"/>
+        <text x="372" y="76" font-size="14" font-weight="800" text-anchor="middle" fill="#175e58">Elektrischer</text>
+        <text x="372" y="97" font-size="14" font-weight="800" text-anchor="middle" fill="#175e58">Stromkreis</text>
+        <text x="263" y="147" font-size="14" font-weight="650" text-anchor="middle" fill="#6f612f">Energie</text>
+      </svg>
+      <p>Eine Spannungsquelle stellt eine <strong>elektrische Spannung</strong> bereit. In einem geeigneten geschlossenen Stromkreis kann dadurch <strong>elektrische Energie übertragen</strong> werden.</p>
+    </div>
   </div>
-  <div class="callout warning"><strong>Eine mögliche Fehlvorstellung:</strong> „Strom ist ein einziges Elektron, das Energie ist und beim Fließen verbraucht wird.“</div>
-  <label class="form-label" for="energyLink">Erkläre mithilfe der beiden Begriffserklärungen, weshalb diese Aussage nicht stimmt.</label>
-  <textarea class="free" id="energyLink" placeholder="An der Aussage ist falsch, dass …"></textarea>
-  <details class="disclosure"><summary>Hilfe 1 · Die Begriffe unterscheiden</summary>
-    <p>Ist elektrischer Strom ein einzelnes Teilchen oder eine Bewegung von Ladungen? Was wird durch eine Spannungsquelle bereitgestellt?</p></details>
-  <details class="disclosure"><summary>Hilfe 2 · Die Fehlvorstellung prüfen</summary>
-    <p>Betrachte die Ausdrücke „einziges Elektron“, „Energie ist“ und „verbraucht wird“ nacheinander. Was daran lässt sich mithilfe der beiden Infokarten berichtigen?</p></details>
-  
-  </div>
+  <label class="form-label" for="energyLink">Beschreibe mithilfe der Animationen, was im Metallleiter geschieht und welche Aufgabe die Spannungsquelle hat.</label>
+  <textarea class="free" id="energyLink" placeholder="Im Metallleiter … Die Spannungsquelle …"></textarea>
+  <details class="disclosure"><summary>Hilfe · Bewegung und Energie unterscheiden</summary>
+    <p>Beobachte die e⁻-Symbole im Metallleiter. Was bewegen sie sich entlang? Was wird von der Spannungsquelle bereitgestellt?</p>
+  </details>
 </article></section>
 
 <section class="page" data-step="3"><article class="sheet">
@@ -157,7 +186,8 @@
   <p class="note" id="hypothesisLocked">Zuerst deine eigene Vermutung mit Begründung festhalten; die Experimentplanung folgt danach.</p>
 </article></section>
 <div class="footer-controls"><button class="secondary" id="backBtn" type="button">← Zurück</button><div><button class="secondary mini" id="resetBtn" type="button">Neu beginnen</button> <button class="primary" id="nextBtn" type="button">Weiter →</button></div></div>
-<p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p></main>
+<p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p>
+<p class="version-note">Stand: 16.10.2026 · V10</p></main>
 <div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Aluminiumgewinnung</h1>
 <p>Name: ______________________________ Datum: ______________</p>
 <h2>Ausgangsproblem</h2><div class="print-answer" id="pFirst"></div>

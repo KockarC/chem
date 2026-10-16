@@ -93,30 +93,23 @@
 </article></section>
 
 <section class="page" data-step="2"><article class="sheet">
-  <span class="section-kicker">03 · Die offene Schwierigkeit</span>
-  <h2>Was fehlt uns noch, um Aluminium zu gewinnen?</h2>
-  <p class="intro">Du hast eine mögliche Veränderung auf Teilchenebene erarbeitet. Allein daraus entsteht aber noch kein Stück Aluminium.</p>
-  <div class="simple-process">
-    <div><strong>Bauxit</strong><small>enthält Aluminium in Verbindungen</small></div>
-    <span aria-hidden="true">→</span>
-    <div class="process-question" aria-label="Ungeklärter Weg">?</div>
-    <span aria-hidden="true">→</span>
-    <div><strong>Aluminium</strong><small>elementares Metall</small></div>
-  </div>
-  <label class="form-label" for="gapThought">Überlege: Was ist zwischen deiner Überlegung zur Elektronenübertragung und einer tatsächlichen Metallgewinnung noch ungeklärt?</label>
-  <textarea class="free" id="gapThought" placeholder="Wir wissen noch nicht, …"></textarea>
-  <details class="disclosure"><summary>Hilfe · Überlege, was eine Reaktionsgleichung aussagt</summary>
-    <p>Eine Teilgleichung kann beschreiben, welche Veränderung nötig wäre. Erklärt sie damit auch schon, wie man den Vorgang praktisch herbeiführt?</p>
+  <span class="section-kicker">03 · Die offene Frage</span>
+  <h2>Woher kommen die Elektronen?</h2>
+  <p class="intro">Auf der vorherigen Seite hast du überlegt, welche Elektronenübertragung nötig wäre, damit aus Aluminium in einer Verbindung metallisches Aluminium wird.</p>
+  <div class="equation" role="img" aria-label="Dreifach positiv geladenes Aluminium nimmt drei Elektronen auf und wird zu elementarem Aluminium">Al³⁺ + 3 e⁻ <span class="part">→</span> Al</div>
+  <label class="form-label" for="gapThought">Die Aluminium-Teilchen müssten Elektronen aufnehmen. <strong>Woher könnten diese Elektronen kommen?</strong> Notiere einen ersten Gedanken.</label>
+  <textarea class="free" id="gapThought" placeholder="Die Elektronen könnten …"></textarea>
+  <p class="note">Hier gibt es noch keine fertige Lösung. Dein Gedanke dient dazu, die nächste Frage zu entwickeln.</p>
+  <details class="disclosure"><summary>Hilfe · An Redoxreaktionen erinnern</summary>
+    <p>Bei einer Redoxreaktion gehören Elektronenaufnahme und Elektronenabgabe zusammen. Was ist in unserem Aluminiumproblem bislang noch nicht geklärt?</p>
   </details>
-  <div class="actions"><button class="primary" id="showIndustry" type="button" disabled>Neue Information ansehen</button>
-    <span class="note">Notiere zunächst deinen eigenen Gedanken.</span></div>
+  <div class="actions"><button class="primary" id="showIndustry" type="button" disabled aria-expanded="false" aria-controls="industryFact">Neue Information ansehen</button>
+    <span class="note">Notiere zuerst deinen eigenen Gedanken.</span></div>
   <div class="information-release hidden" id="industryFact">
-    <span class="section-kicker">Neue Information · industrielle Herstellung</span>
-    <p>Aus Bauxit wird zunächst <strong>Aluminiumoxid</strong> gewonnen. Für die anschließende Herstellung von Aluminium aus diesem Stoff werden in der Industrie <strong>große Mengen elektrischer Energie</strong> eingesetzt.</p>
-    <p class="prompt">Welche neue Frage ergibt sich daraus für dich?</p>
-    <label class="form-label" for="energyQuestion">Formuliere eine Frage, die du mit deinem Redoxwissen noch nicht beantworten kannst.</label>
-    <textarea id="energyQuestion" class="free small" placeholder="Warum …? / Wie könnte …?"></textarea>
-    <p class="note">Die Information nennt eine verwendete Energieform, aber noch <strong>keine Erklärung</strong>, welche Aufgabe sie bei der chemischen Veränderung übernimmt.</p>
+    <span class="section-kicker">Neue Information · Aluminiumherstellung</span>
+    <p>Bei der industriellen Herstellung wird aus Bauxit zunächst <strong>Aluminiumoxid</strong> gewonnen. Um daraus anschließend metallisches Aluminium herzustellen, wird <strong>sehr viel elektrische Energie</strong> eingesetzt.</p>
+    <div class="thought"><strong>Neue Frage:</strong> Welche Rolle könnte diese elektrische Energie bei der Gewinnung des Metalls spielen?</div>
+    <p class="note">Die Information verrät noch nicht, wie die Energie mit der Elektronenübertragung zusammenhängt. Darüber denkst du in den nächsten Schritten weiter nach.</p>
   </div>
 </article></section>
 
@@ -170,7 +163,7 @@
 <p>Name: ______________________________ Datum: ______________</p>
 <h2>Ausgangsproblem</h2><div class="print-answer" id="pFirst"></div>
 <h2>Redoxüberlegung zu Aluminium</h2><div class="print-answer" id="pAl"></div>
-<h2>Offene Frage und neue Information</h2><div class="print-answer" id="pGap"></div>
+<h2>Elektronenfrage und neue Information</h2><div class="print-answer" id="pGap"></div>
 <h2>Strom und Energie unterscheiden</h2><div class="print-answer" id="pCircuit"></div>
 <h2>Meine begründete Vermutung</h2><div class="print-answer" id="pHypothesis"></div></div>
 <script>
@@ -179,7 +172,7 @@ const names=['Ausgangsproblem','Redoxwissen','Offene Frage','Strom & Energie','V
 const $=id=>document.getElementById(id),KEY='aluminium-vermutungswerkstatt-v5';
 const initial={step:0,furthest:0,transfer:'',count:'',industrySeen:false,hypothesisChecked:false};
 let state={...initial};
-const textFields=['firstThought','gapThought','energyQuestion','energyLink','guess','reason'];
+const textFields=['firstThought','gapThought','energyLink','guess','reason'];
 try{const saved=JSON.parse(localStorage.getItem(KEY)||'{}');for(const key of Object.keys(initial))if(Object.prototype.hasOwnProperty.call(saved,key))state[key]=saved[key];for(const id of textFields)if(typeof saved[id]==='string')$(id).value=saved[id]}catch{}
 state.step=Math.max(0,Math.min(4,Number(state.step)||0));state.furthest=Math.max(0,Math.min(4,Number(state.furthest)||0));
 function save(){try{localStorage.setItem(KEY,JSON.stringify({...state,...Object.fromEntries(textFields.map(id=>[id,$(id).value]))}))}catch{}}
@@ -201,9 +194,9 @@ function preview(){const a=$('guess').value.trim(),b=$('reason').value.trim();$(
 for(const id of textFields)$(id).addEventListener('input',id==='guess'||id==='reason'?preview:save);
 $('checkHypothesis').addEventListener('click',()=>{if($('guess').value.trim().length<8||$('reason').value.trim().length<8){state.hypothesisChecked=false;$('afterHypothesis').classList.add('hidden');return say('hypothesisFeedback','Schreibe eine eigene Vermutung und eine fachliche Begründung. Beide Teile sollen über ein einzelnes Stichwort hinausgehen.','incorrect')}
 state.hypothesisChecked=true;$('afterHypothesis').classList.remove('hidden');$('hypothesisLocked').classList.add('hidden');say('hypothesisFeedback','Deine Vermutung und Begründung sind notiert. Ob die Aussage fachlich trägt, wird erst im Gespräch und durch die anschließende Untersuchung geprüft.','good');save()});
-function report(){return ['MEIN DENKWEG – ALUMINIUMGEWINNUNG','Ausgangsfrage: '+$('firstThought').value,'Redoxüberlegung: '+(state.transfer==='gain'&&state.count==='3'?'Al³⁺ + 3 e⁻ → Al':'noch offen'),'Was noch fehlt: '+$('gapThought').value,'Neue Frage nach der Industrieinformation: '+$('energyQuestion').value,'Strom und Energie unterscheiden: '+$('energyLink').value,'Meine Vermutung: '+$('previewHypothesis').textContent].join('\n\n')}
+function report(){return ['MEIN DENKWEG – ALUMINIUMGEWINNUNG','Ausgangsfrage: '+$('firstThought').value,'Redoxüberlegung: '+(state.transfer==='gain'&&state.count==='3'?'Al³⁺ + 3 e⁻ → Al':'noch offen'),'Was noch fehlt: '+$('gapThought').value,'Neue Information: Bei der Gewinnung von Aluminium aus Aluminiumoxid wird elektrische Energie eingesetzt.','Strom und Energie unterscheiden: '+$('energyLink').value,'Meine Vermutung: '+$('previewHypothesis').textContent].join('\n\n')}
 $('copyHypothesis').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(report());say('hypothesisFeedback','Der Denkweg wurde kopiert.','good')}catch{const t=document.createElement('textarea');t.value=report();document.body.append(t);t.select();try{document.execCommand('copy');say('hypothesisFeedback','Text kopiert.','good')}catch{say('hypothesisFeedback','Kopieren ist nicht möglich. Nutze die Druckfunktion.')}t.remove()}});
-$('printSheet').addEventListener('click',()=>{$('pFirst').textContent=$('firstThought').value;$('pAl').textContent=state.transfer==='gain'&&state.count==='3'?'Al³⁺ + 3 e⁻ → Al':'Meine Überlegung ist noch offen';$('pGap').textContent='Ungeklärt: '+$('gapThought').value+'\nNeue Frage: '+$('energyQuestion').value;$('pCircuit').textContent=$('energyLink').value;$('pHypothesis').textContent=$('previewHypothesis').textContent;window.print()});
+$('printSheet').addEventListener('click',()=>{$('pFirst').textContent=$('firstThought').value;$('pAl').textContent=state.transfer==='gain'&&state.count==='3'?'Al³⁺ + 3 e⁻ → Al':'Meine Überlegung ist noch offen';$('pGap').textContent='Ungeklärt: '+$('gapThought').value+'\nNeue Information: Bei der Aluminiumherstellung wird elektrische Energie eingesetzt.';$('pCircuit').textContent=$('energyLink').value;$('pHypothesis').textContent=$('previewHypothesis').textContent;window.print()});
 $('resetBtn').addEventListener('click',()=>{if(!confirm('Alle Eingaben dieser Werkstatt löschen?'))return;state={...initial};for(const id of textFields)$(id).value='';document.querySelectorAll('.selected').forEach(e=>e.classList.remove('selected'));document.querySelectorAll('.feedback').forEach(e=>{e.textContent='';e.className='feedback'});$('alEq').classList.add('hidden');$('industryFact').classList.add('hidden');$('showIndustry').disabled=true;$('showIndustry').textContent='Neue Information ansehen';$('showIndustry').setAttribute('aria-expanded','false');$('afterHypothesis').classList.add('hidden');$('hypothesisLocked').classList.remove('hidden');preview();navigate(0)});
 $('showIndustry').disabled=$('gapThought').value.trim().length<12&&!state.industrySeen;$('showIndustry').setAttribute('aria-expanded',String(state.industrySeen));
 if(state.industrySeen){$('industryFact').classList.remove('hidden');$('showIndustry').textContent='Neue Information geöffnet'}

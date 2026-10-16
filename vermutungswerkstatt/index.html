@@ -34,12 +34,13 @@
 .al-case-panel{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:15px;border:1px solid var(--line);background:#f8fbfd;border-radius:18px;padding:19px;margin:20px 0 10px}.al-state{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;padding:14px;gap:10px}.state-caption{font-weight:850;color:#35556f}.state-note{font-size:.82rem;color:var(--muted);max-width:205px}.particle-ion,.particle-metal{display:grid;place-items:center;width:110px;height:110px;border-radius:50%;font-size:2.1rem}.particle-ion{border:3px solid #38819d;background:#e6f3fa;color:#185a78}.particle-metal{border:3px solid #8797a8;background:#e8eef4;color:#47576e}.al-middle{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:7px;max-width:170px}.particle-electron{border:1px solid #367d89;border-radius:50%;font-size:1.2rem;font-weight:850;padding:3px 8px;color:#206877;background:#fff}.question-arrow{width:100%;font-size:1.6rem;color:#507486;font-weight:850;text-align:center}.simple-process{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;background:#f8fbfd;border:1px solid var(--line);border-radius:18px;padding:20px;margin:18px 0}.simple-process>div:not(.process-question){display:flex;flex-direction:column;padding:13px;background:white;border:1px solid var(--line);border-radius:12px;min-width:145px;text-align:center}.simple-process small{color:var(--muted)}.process-question{font-weight:900;font-size:2rem;color:#0b8386}.simple-process>span{color:#507486;font-size:1.6rem}.three-ideas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0}.idea-card{padding:20px 15px;border:1px solid var(--line);border-radius:17px;background:#f9fcfe;min-width:0}.idea-card strong{display:block;margin:8px 0;color:#173f55}.idea-card p{margin:0;color:var(--muted);font-size:.95rem}.idea-icon,.electron-flow{font-weight:900;min-height:48px;font-size:1.65rem;color:#0b737b}.idea-icon span{font-size:1rem;color:#667d8e}.electron-flow{white-space:nowrap;font-size:1.35rem}.after-gate{border:2px solid #a8d7d2;background:#effaf8;padding:20px;border-radius:18px;margin-top:22px}.after-gate p{margin:8px 0 18px}.after-gate a.primary{display:inline-block;text-decoration:none}.hidden{display:none!important}@media(max-width:760px){.three-ideas{grid-template-columns:1fr}.al-case-panel{grid-template-columns:1fr;gap:6px}.al-middle{max-width:none}.question-arrow{width:auto}.particle-ion,.particle-metal{width:82px;height:82px;font-size:1.5rem}.simple-process>div:not(.process-question){min-width:95px;padding:8px}.simple-process{gap:6px;padding:12px}}
 .information-release{border:2px solid #afd7d3;background:#f1faf9;border-radius:16px;padding:19px;margin-top:20px}.information-release p{margin:12px 0}.three-ideas:has(.idea-card:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:760px){.three-ideas:has(.idea-card:nth-child(2):last-child){grid-template-columns:1fr}}
  .concept-bridge{margin:20px 0 8px;padding:16px 18px;border-left:4px solid #409e9e;border-radius:12px;background:#eef8f7}.concept-bridge strong{color:#145a61}.concept-bridge p{margin:7px 0 0;line-height:1.55}
+ .energy-reveal{margin-top:15px;padding:20px;border-radius:16px;border:2px solid #add4ce;background:#f1fbf8}.energy-reveal>.section-kicker{display:block;margin-bottom:9px}.energy-reveal>p{margin:9px 0}.energy-reveal .concept-bridge{background:#eaf5f5}.energy-reveal .three-ideas{margin-top:15px}
 </style></head>
 <body>
 <header><div class="wrap top"><div class="eyebrow"><span class="brand-mark" aria-hidden="true">e⁻</span> Chemie · Vermutungswerkstatt</div>
 <h1>Wie kann aus einer Verbindung ein Metall werden?</h1>
 <p>Nutze dein Wissen über Redoxreaktionen und entwickle einen eigenen Lösungsgedanken. Die Erklärung erarbeiten wir erst nach dem Modellversuch und seiner Auswertung.</p>
-<div class="headline-meta"><span class="chip">4 Denkschritte</span><span class="chip">vor dem Experiment</span><span class="chip">Fassung 16.10.2026 · V7</span></div></div></header>
+<div class="headline-meta"><span class="chip">4 Denkschritte</span><span class="chip">vor dem Experiment</span><span class="chip">Fassung 16.10.2026 · V8</span></div></div></header>
 <div class="barwrap"><div class="wrap"><div class="progresslabels"><span>Dein Denkweg</span><span id="progressLabel" class="current" aria-live="polite">1 von 4 · Ausgangsproblem</span></div>
 <div class="progressbar" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Denkfortschritt"><div class="progressfill" id="progressfill"></div></div>
 <nav id="stepnav" class="stepnav" aria-label="Denkschritte"></nav></div></div>
@@ -95,15 +96,20 @@
 
 <section class="page" data-step="2"><article class="sheet">
   <span class="section-kicker">03 · Neue Information und Begriffsklärung</span>
-  <h2>Was haben elektrische Energie und Elektronen miteinander zu tun?</h2>
-  <p class="intro">Du hast erarbeitet, welche Elektronenübertragung für die Bildung von Aluminium nötig wäre. Die Teilgleichung erklärt aber noch nicht, wie diese Veränderung herbeigeführt werden kann.</p>
-  <div class="information-release">
-    <span class="section-kicker">Information zur Aluminiumherstellung</span>
-    <p>Aus Bauxit wird in der Industrie zunächst <strong>Aluminiumoxid</strong> gewonnen. Bei der anschließenden Herstellung des Metalls wird <strong>sehr viel elektrische Energie</strong> eingesetzt.</p>
-    <p class="note">Das ist eine neue Information, die du für deine Vermutung verwenden kannst. <strong>Welche Aufgabe diese Energie bei der chemischen Veränderung erfüllt, ist noch offen.</strong></p>
-  </div>
+  <h2>Welche Energieform könnte bei der Aluminiumgewinnung helfen?</h2>
+  <p class="intro">Aus Bauxit wird zunächst Aluminiumoxid gewonnen. Um daraus metallisches Aluminium herzustellen, werden <strong>große Mengen Energie</strong> benötigt.</p>
+  <label class="form-label" for="energyIdea">Welche Energieform könnte für die Gewinnung eingesetzt werden? Notiere deine Vermutung.</label>
+  <textarea class="free small" id="energyIdea" placeholder="Ich könnte mir vorstellen, dass …"></textarea>
+  <details class="disclosure"><summary>Hilfe · Welche Energieformen kennst du?</summary>
+    <p>Denke beispielsweise an <strong>Wärmeenergie</strong> (thermische Energie), <strong>elektrische Energie</strong>, <strong>chemische Energie</strong> (etwa in Brennstoffen), <strong>Lichtenergie</strong> und <strong>Bewegungsenergie</strong>. Mehr als eine Energieform könnte eine Rolle spielen.</p>
+  </details>
+  <div class="actions"><button class="primary" id="showIndustry" type="button" aria-controls="industryAnswer" aria-expanded="false">Welche Energie wird tatsächlich eingesetzt?</button></div>
+  <div class="energy-reveal hidden" id="industryAnswer">
+    <span class="section-kicker">Information zur industriellen Herstellung</span>
+    <p>Zur Gewinnung von Aluminium aus Aluminiumoxid wird in der Industrie <strong>sehr viel elektrische Energie</strong> eingesetzt.</p>
+    <p class="note">Vergleiche diese Information mit deiner Vermutung. Du musst die eingesetzte Energieform nicht vorher richtig erraten haben.</p>
   <div class="concept-bridge">
-    <strong>Warum sprechen wir jetzt von Strom?</strong>
+    <strong>Wie kommt der Strombegriff ins Spiel?</strong>
     <p>Bei der Aluminiumherstellung wird elektrische Energie über eine elektrische Anlage zugeführt. Dazu gehören auch metallische Leitungen. Was geschieht eigentlich in einem solchen Leiter, wenn elektrischer Strom fließt?</p>
   </div>
   <p class="prompt">Lies die beiden Begriffserklärungen. Sie helfen dir, Strom und elektrische Energie nicht miteinander zu verwechseln.</p>
@@ -123,6 +129,7 @@
   <details class="disclosure"><summary>Hilfe 2 · Die Fehlvorstellung prüfen</summary>
     <p>Betrachte die Ausdrücke „einziges Elektron“, „Energie ist“ und „verbraucht wird“ nacheinander. Was daran lässt sich mithilfe der beiden Infokarten berichtigen?</p></details>
   <p class="note">Du musst hier noch nicht erklären, wie Aluminium hergestellt wird. Im nächsten Schritt entwickelst du dazu deine eigene Vermutung.</p>
+  </div>
 </article></section>
 
 <section class="page" data-step="3"><article class="sheet">
@@ -161,9 +168,9 @@
 (()=>{'use strict';
 const names=['Ausgangsproblem','Redoxwissen','Strom & Energie','Vermutung'];
 const $=id=>document.getElementById(id),KEY='aluminium-vermutungswerkstatt-v6';
-const initial={step:0,furthest:0,transfer:'',count:'',hypothesisChecked:false};
+const initial={step:0,furthest:0,transfer:'',count:'',industrySeen:false,hypothesisChecked:false};
 let state={...initial};
-const textFields=['firstThought','energyLink','guess','reason'];
+const textFields=['firstThought','energyIdea','energyLink','guess','reason'];
 try{const old=localStorage.getItem(KEY)?null:JSON.parse(localStorage.getItem('aluminium-vermutungswerkstatt-v5')||'null');const saved=JSON.parse(localStorage.getItem(KEY)||'null')||old||{};for(const key of Object.keys(initial))if(Object.prototype.hasOwnProperty.call(saved,key))state[key]=saved[key];if(old){const remap=n=>n>=4?3:n>=2?2:Math.max(0,n);state.step=remap(Number(saved.step)||0);state.furthest=remap(Number(saved.furthest)||0)}for(const id of textFields)if(typeof saved[id]==='string')$(id).value=saved[id]}catch{}
 state.step=Math.max(0,Math.min(3,Number(state.step)||0));state.furthest=Math.max(0,Math.min(3,Number(state.furthest)||0));
 function save(){try{localStorage.setItem(KEY,JSON.stringify({...state,...Object.fromEntries(textFields.map(id=>[id,$(id).value]))}))}catch{}}
@@ -174,7 +181,9 @@ function navigate(to){state.step=Math.max(0,Math.min(3,to));state.furthest=Math.
 names.forEach((name,i)=>{const b=document.createElement('button');b.type='button';b.textContent=(i+1)+' · '+name;b.className='step-dot'+(i===state.step?' active':i<=state.furthest?' visited':'');b.disabled=i>state.furthest;b.addEventListener('click',()=>navigate(i));n.append(b)});
 document.querySelectorAll('.page').forEach(e=>e.classList.toggle('active',Number(e.dataset.step)===state.step));$('progressLabel').textContent=(state.step+1)+' von 4 · '+names[state.step];$('progressfill').style.width=((state.step+1)/4*100)+'%';document.querySelector('.progressbar').setAttribute('aria-valuenow',state.step+1);$('backBtn').disabled=state.step===0;$('nextBtn').textContent=state.step===3?'Zum Anfang ↺':'Weiter →';save();window.scrollTo({top:0,behavior:'smooth'})}
 $('backBtn').addEventListener('click',()=>navigate(state.step-1));
-$('nextBtn').addEventListener('click',()=>navigate(state.step===3?0:state.step+1));
+$('nextBtn').addEventListener('click',()=>{if(state.step===2&&!state.industrySeen){showIndustry();$('industryAnswer').scrollIntoView({block:'start',behavior:'smooth'});return}navigate(state.step===3?0:state.step+1)});
+function showIndustry(){state.industrySeen=true;$('industryAnswer').classList.remove('hidden');$('showIndustry').setAttribute('aria-expanded','true');$('showIndustry').textContent='Information zur Energieform geöffnet';save()}
+$('showIndustry').addEventListener('click',showIndustry);
 $('checkAl').addEventListener('click',()=>{if(!state.transfer||!state.count)return say('alFeedback','Wähle erst die Art der Elektronenänderung und die Elektronenzahl.');
 if(state.transfer==='gain'&&state.count==='3'){$('alEq').classList.remove('hidden');say('alFeedback','Die Elektronenbilanz stimmt. Sie beschreibt, was sich auf Teilchenebene ändern müsste – noch nicht, wie das praktisch gelingt.','good')}
 else{$('alEq').classList.add('hidden');say('alFeedback','Vergleiche die Ladung von Al³⁺ mit derjenigen eines neutralen Aluminium-Atoms. Welche Änderung ist dafür nötig?','incorrect')}});
@@ -182,10 +191,11 @@ function preview(){const a=$('guess').value.trim(),b=$('reason').value.trim();$(
 for(const id of textFields)$(id).addEventListener('input',id==='guess'||id==='reason'?preview:save);
 $('checkHypothesis').addEventListener('click',()=>{if($('guess').value.trim().length<8||$('reason').value.trim().length<8){state.hypothesisChecked=false;$('afterHypothesis').classList.add('hidden');return say('hypothesisFeedback','Schreibe eine eigene Vermutung und eine fachliche Begründung. Beide Teile sollen über ein einzelnes Stichwort hinausgehen.','incorrect')}
 state.hypothesisChecked=true;$('afterHypothesis').classList.remove('hidden');$('hypothesisLocked').classList.add('hidden');say('hypothesisFeedback','Deine Vermutung und Begründung sind notiert. Ob die Aussage fachlich trägt, wird erst im Gespräch und durch die anschließende Untersuchung geprüft.','good');save()});
-function report(){return ['MEIN DENKWEG – ALUMINIUMGEWINNUNG','Ausgangsfrage: '+$('firstThought').value,'Redoxüberlegung: '+(state.transfer==='gain'&&state.count==='3'?'Al³⁺ + 3 e⁻ → Al':'noch offen'),'Neue Information: Bei der Gewinnung von Aluminium aus Aluminiumoxid wird elektrische Energie eingesetzt.','Strom und Energie unterscheiden: '+$('energyLink').value,'Meine Vermutung: '+$('previewHypothesis').textContent].join('\n\n')}
+function report(){return ['MEIN DENKWEG – ALUMINIUMGEWINNUNG','Ausgangsfrage: '+$('firstThought').value,'Redoxüberlegung: '+(state.transfer==='gain'&&state.count==='3'?'Al³⁺ + 3 e⁻ → Al':'noch offen'),'Meine erste Energievermutung: '+$('energyIdea').value,'Neue Information: Bei der Gewinnung von Aluminium aus Aluminiumoxid wird elektrische Energie eingesetzt.','Strom und Energie unterscheiden: '+$('energyLink').value,'Meine Vermutung: '+$('previewHypothesis').textContent].join('\n\n')}
 $('copyHypothesis').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(report());say('hypothesisFeedback','Der Denkweg wurde kopiert.','good')}catch{const t=document.createElement('textarea');t.value=report();document.body.append(t);t.select();try{document.execCommand('copy');say('hypothesisFeedback','Text kopiert.','good')}catch{say('hypothesisFeedback','Kopieren ist nicht möglich. Nutze die Druckfunktion.')}t.remove()}});
-$('printSheet').addEventListener('click',()=>{$('pFirst').textContent=$('firstThought').value;$('pAl').textContent=state.transfer==='gain'&&state.count==='3'?'Al³⁺ + 3 e⁻ → Al':'Meine Überlegung ist noch offen';$('pCircuit').textContent=$('energyLink').value;$('pHypothesis').textContent=$('previewHypothesis').textContent;window.print()});
-$('resetBtn').addEventListener('click',()=>{if(!confirm('Alle Eingaben dieser Werkstatt löschen?'))return;state={...initial};for(const id of textFields)$(id).value='';document.querySelectorAll('.selected').forEach(e=>e.classList.remove('selected'));document.querySelectorAll('.feedback').forEach(e=>{e.textContent='';e.className='feedback'});$('alEq').classList.add('hidden');$('afterHypothesis').classList.add('hidden');$('hypothesisLocked').classList.remove('hidden');preview();navigate(0)});
+$('printSheet').addEventListener('click',()=>{$('pFirst').textContent=$('firstThought').value;$('pAl').textContent=state.transfer==='gain'&&state.count==='3'?'Al³⁺ + 3 e⁻ → Al':'Meine Überlegung ist noch offen';$('pCircuit').textContent='Vermutete Energieform: '+$('energyIdea').value+'\nStrom und Energie: '+$('energyLink').value;$('pHypothesis').textContent=$('previewHypothesis').textContent;window.print()});
+$('resetBtn').addEventListener('click',()=>{if(!confirm('Alle Eingaben dieser Werkstatt löschen?'))return;state={...initial};for(const id of textFields)$(id).value='';document.querySelectorAll('.selected').forEach(e=>e.classList.remove('selected'));document.querySelectorAll('.feedback').forEach(e=>{e.textContent='';e.className='feedback'});$('alEq').classList.add('hidden');$('industryAnswer').classList.add('hidden');$('showIndustry').textContent='Welche Energie wird tatsächlich eingesetzt?';$('showIndustry').setAttribute('aria-expanded','false');$('afterHypothesis').classList.add('hidden');$('hypothesisLocked').classList.remove('hidden');preview();navigate(0)});
+if(state.industrySeen){$('industryAnswer').classList.remove('hidden');$('showIndustry').setAttribute('aria-expanded','true');$('showIndustry').textContent='Information zur Energieform geöffnet'}
 if(state.transfer==='gain'&&state.count==='3')$('alEq').classList.remove('hidden');
 $('afterHypothesis').classList.toggle('hidden',!state.hypothesisChecked);$('hypothesisLocked').classList.toggle('hidden',state.hypothesisChecked);
 $('previewHypothesis').textContent='Ich vermute, dass '+($('guess').value.trim()||'…')+', weil '+($('reason').value.trim()||'…')+'.';

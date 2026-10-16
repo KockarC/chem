@@ -30,174 +30,209 @@
 .planning-next p{margin:8px 0 16px}.next-link{display:inline-block;text-decoration:none}
 @media(max-width:760px){.thought-visual{grid-template-columns:1fr}.thought-unit{min-height:auto}}
 .case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0}.case-card{min-width:0}.case-symbol{font-size:2rem;line-height:1.3;margin-bottom:7px}.case-flow{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:12px 0;font-weight:800;color:#0f5663}.case-flow span:first-child,.case-flow span:last-child{padding:6px 11px;border:1px solid #c6d8df;border-radius:9px;background:#f4fafb}@media(max-width:670px){.case-grid{grid-template-columns:1fr}}
+
+.al-case-panel{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:15px;border:1px solid var(--line);background:#f8fbfd;border-radius:18px;padding:19px;margin:20px 0 10px}.al-state{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;padding:14px;gap:10px}.state-caption{font-weight:850;color:#35556f}.state-note{font-size:.82rem;color:var(--muted);max-width:205px}.particle-ion,.particle-metal{display:grid;place-items:center;width:110px;height:110px;border-radius:50%;font-size:2.1rem}.particle-ion{border:3px solid #38819d;background:#e6f3fa;color:#185a78}.particle-metal{border:3px solid #8797a8;background:#e8eef4;color:#47576e}.al-middle{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:7px;max-width:170px}.particle-electron{border:1px solid #367d89;border-radius:50%;font-size:1.2rem;font-weight:850;padding:3px 8px;color:#206877;background:#fff}.question-arrow{width:100%;font-size:1.6rem;color:#507486;font-weight:850;text-align:center}.simple-process{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;background:#f8fbfd;border:1px solid var(--line);border-radius:18px;padding:20px;margin:18px 0}.simple-process>div:not(.process-question){display:flex;flex-direction:column;padding:13px;background:white;border:1px solid var(--line);border-radius:12px;min-width:145px;text-align:center}.simple-process small{color:var(--muted)}.process-question{font-weight:900;font-size:2rem;color:#0b8386}.simple-process>span{color:#507486;font-size:1.6rem}.three-ideas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0}.idea-card{padding:20px 15px;border:1px solid var(--line);border-radius:17px;background:#f9fcfe;min-width:0}.idea-card strong{display:block;margin:8px 0;color:#173f55}.idea-card p{margin:0;color:var(--muted);font-size:.95rem}.idea-icon,.electron-flow{font-weight:900;min-height:48px;font-size:1.65rem;color:#0b737b}.idea-icon span{font-size:1rem;color:#667d8e}.electron-flow{white-space:nowrap;font-size:1.35rem}.after-gate{border:2px solid #a8d7d2;background:#effaf8;padding:20px;border-radius:18px;margin-top:22px}.after-gate p{margin:8px 0 18px}.after-gate a.primary{display:inline-block;text-decoration:none}.hidden{display:none!important}@media(max-width:760px){.three-ideas{grid-template-columns:1fr}.al-case-panel{grid-template-columns:1fr;gap:6px}.al-middle{max-width:none}.question-arrow{width:auto}.particle-ion,.particle-metal{width:82px;height:82px;font-size:1.5rem}.simple-process>div:not(.process-question){min-width:95px;padding:8px}.simple-process{gap:6px;padding:12px}}
 </style></head>
 <body>
 <header><div class="wrap top"><div class="eyebrow"><span class="brand-mark" aria-hidden="true">e⁻</span> Chemie · Vermutungswerkstatt</div>
 <h1>Wie kann aus einer Verbindung ein Metall werden?</h1>
 <p>Nutze dein Wissen über Redoxreaktionen und entwickle einen eigenen Lösungsgedanken. Die Erklärung erarbeiten wir erst nach dem Experiment.</p>
-<div class="headline-meta"><span class="chip">6 Denkschritte</span><span class="chip">vor dem Experiment</span><span class="chip">keine fertige Lösung</span></div></div></header>
-<div class="barwrap"><div class="wrap"><div class="progresslabels"><span>Dein Denkweg</span><span id="progressLabel" class="current" aria-live="polite">1 von 6 · Ausgangsproblem</span></div>
-<div class="progressbar" role="progressbar" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-label="Denkfortschritt"><div class="progressfill" id="progressfill"></div></div>
+<div class="headline-meta"><span class="chip">5 Denkschritte</span><span class="chip">vor dem Experiment</span><span class="chip">keine fertige Lösung</span></div></div></header>
+<div class="barwrap"><div class="wrap"><div class="progresslabels"><span>Dein Denkweg</span><span id="progressLabel" class="current" aria-live="polite">1 von 5 · Ausgangsproblem</span></div>
+<div class="progressbar" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" aria-label="Denkfortschritt"><div class="progressfill" id="progressfill"></div></div>
 <nav id="stepnav" class="stepnav" aria-label="Denkschritte"></nav></div></div>
 <main class="wrap">
 <section class="page active" data-step="0"><article class="sheet"><span class="section-kicker">01 · Das Problem</span><h2>Alufolie – aber woher stammt das Metall?</h2>
-<p class="intro">Aluminium begegnet uns im Alltag als metallischer Werkstoff. In der Natur ist es jedoch fast nur in chemischen Verbindungen zu finden, beispielsweise in Bauxit.</p>
+<p class="intro">Aluminium begegnet uns im Alltag als metallischer Werkstoff. In Bauxit ist Aluminium chemisch an andere Elemente gebunden. Im Gestein liegt es nicht als glänzendes Metall vor.</p>
 <div class="problem-visual" aria-label="Bauxit als Rohstoff und Aluminium als Metall">
 <div class="specimen"><svg viewBox="0 0 130 90" aria-hidden="true"><path d="M10 64 22 30 46 23 59 35 83 17 111 34 121 64 88 77 40 77Z" fill="#b45f39" stroke="#87452f" stroke-width="3"/><path d="m22 30 29 20-11 27m19-42 10 27 19 15m-5-60-11 23 39-6" fill="none" stroke="#e19a6b" stroke-width="4"/></svg><strong>Bauxit</strong><small>Aluminium in Verbindungen</small></div>
 <div class="midarrow" aria-hidden="true">?</div>
 <div class="specimen"><svg viewBox="0 0 130 90" aria-hidden="true"><path d="M19 46 37 22h71l17 24-15 30H11Z" fill="#a5b6cb" stroke="#7389a5" stroke-width="3"/><path d="m19 46 106 0m-88-24 16 24-7 30m62-54-15 24 17 30" fill="none" stroke="#eaf1f7" stroke-width="3"/></svg><strong>Aluminium</strong><small>Elementarer Stoff</small></div></div>
 <div class="callout"><strong>Unsere Frage:</strong> Wie lässt sich aus einer chemischen Verbindung wieder ein Metall gewinnen?</div>
-<label class="form-label" for="firstThought">Notiere deinen ersten Gedanken: Was müsste sich auf Teilchenebene ändern?</label>
+<label class="form-label" for="firstThought">Was unterscheidet das Erz von dem Metall, das man daraus gewinnen möchte? Halte deinen ersten Gedanken fest.</label>
 <textarea id="firstThought" class="free" placeholder="Ich denke, dass …"></textarea>
-<p class="note">Hier geht es noch nicht um die technische Lösung. Deine Idee darf unvollständig sein.</p>
+<p class="note">Eine technische Lösung musst du noch nicht kennen.</p>
 </article></section>
 
-<section class="page" data-step="1"><article class="sheet"><span class="section-kicker">02 · Bekanntes wiederentdecken</span><h2>Was geschah bei Eisen und Kupfer-Ionen?</h2>
-<p class="intro">Du kennst den Versuch mit einem Eisennagel in Kupfersulfat-Lösung: Auf dem Eisen bildete sich ein rötlicher Belag.</p>
-<div class="columns"><div class="figurebox"><svg viewBox="0 0 390 250" role="img" aria-label="Eisennagel in Kupfersulfat-Lösung mit kupferfarbenem Belag"><path d="M69 55v164q0 14 13 14h222q13 0 13-14V55" stroke="#536985" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M74 92h238v120q0 15-16 15H90q-16 0-16-15Z" fill="#d9f3f4"/><g fill="#75bdc9"><circle cx="129" cy="133" r="13"/><circle cx="251" cy="153" r="12"/></g><path d="M184 18h25v149h-25z" fill="#91a1ad" stroke="#556476" stroke-width="3"/><path d="M184 74h25v93h-25z" fill="#be6b48" stroke="#8b452b" stroke-width="2"/><g fill="#2d7384" font-size="12" font-weight="750"><text x="104" y="137">Cu²⁺</text><text x="239" y="156">Cu²⁺</text></g><text x="217" y="35" font-size="12" fill="#485e77">Fe</text><text x="213" y="101" font-size="11" fill="#8b452b">Belag</text></svg></div>
-<div><p class="prompt" style="margin-top:0">Wie entstanden aus Kupfer-Ionen Kupfer-Atome?</p>
-<div id="recallChoices" class="choicegrid" role="group" aria-label="Elektronenübertragung bei Kupfer-Ionen">
-<button class="option" data-choice="loss" type="button"><span class="radio"></span>Die Kupfer-Ionen gaben Elektronen ab.</button>
-<button class="option" data-choice="gain" type="button"><span class="radio"></span>Die Kupfer-Ionen nahmen Elektronen auf.</button>
-<button class="option" data-choice="dissolve" type="button"><span class="radio"></span>Durch das Lösen der Kupfer-Ionen entstand Kupfer.</button></div>
-<button class="primary" id="checkRecall" type="button" style="margin-top:13px">Gedanken prüfen</button><div id="recallFeedback" class="feedback" role="status" aria-live="polite"></div></div></div>
-<div id="recallEq" class="equation hidden">Cu²⁺ + 2 e⁻ <span class="part">→</span> Cu <div class="note" style="color:#c4d8df;font-weight:400;font-size:.8rem">Reduktion: Elektronenaufnahme</div></div>
-<p class="form-label">Woher kamen die aufgenommenen Elektronen?</p>
-<div id="donorChoices" class="controls-group"><button class="pillchoice" data-donor="water" type="button">Vom Wasser</button><button class="pillchoice" data-donor="fe" type="button">Vom Eisen</button><button class="pillchoice" data-donor="light" type="button">Aus dem Licht</button></div>
-<div id="donorFeedback" class="feedback" role="status"></div><details class="disclosure"><summary>Hilfe: Was geschah gleichzeitig mit Eisen?</summary><p>Bei einer Redoxreaktion gibt ein Reaktionspartner Elektronen ab, während ein anderer sie aufnimmt. Die Oxidation des Eisens kann so beschrieben werden: Fe → Fe²⁺ + 2 e⁻.</p></details>
+
+<section class="page" data-step="1"><article class="sheet">
+  <span class="section-kicker">02 · Redoxwissen nutzen</span>
+  <h2>Was müsste sich beim Aluminium verändern?</h2>
+  <p class="intro">Du weißt bereits: Bei einer <strong>Reduktion</strong> werden Elektronen aufgenommen. Nutze dieses Wissen für unser Ausgangsproblem.</p>
+  <div class="al-case-panel" aria-label="Vom Aluminium in einer Verbindung zum Metall">
+    <div class="al-state">
+      <span class="state-caption">In einer Aluminiumverbindung</span>
+      <strong class="particle-ion">Al³⁺</strong>
+      <span class="state-note">vereinfachte Darstellung des gebundenen Aluminiums</span>
+    </div>
+    <div class="al-middle"><span class="particle-electron">e⁻</span><span class="particle-electron">e⁻</span><span class="particle-electron">e⁻</span><span class="question-arrow">→ ?</span></div>
+    <div class="al-state">
+      <span class="state-caption">Gewünschter Stoff</span>
+      <strong class="particle-metal">Al</strong>
+      <span class="state-note">elementares, elektrisch neutrales Aluminium</span>
+    </div>
+  </div>
+  <p class="note">Das Zeichen Al³⁺ ist hier ein <strong>vereinfachtes Modell</strong> für die Elektronenbilanz. Im festen Bauxit liegen nicht einfach frei bewegliche Al³⁺-Ionen vor.</p>
+  <p class="prompt">Was müsste Aluminium auf Teilchenebene geschehen, damit aus der Verbindung das Metall wird?</p>
+  <div id="transferChoices" class="choicegrid" role="group" aria-label="Elektronenübertragung">
+    <button class="option" type="button" data-transfer="loss"><span class="radio"></span>Aluminium müsste Elektronen abgeben.</button>
+    <button class="option" type="button" data-transfer="gain"><span class="radio"></span>Aluminium müsste Elektronen aufnehmen.</button>
+  </div>
+  <p class="prompt">Wie viele Elektronen müsste Al³⁺ dafür aufnehmen oder abgeben?</p>
+  <div id="countChoices" class="controls-group">
+    <button class="pillchoice" type="button" data-count="1">1 e⁻</button>
+    <button class="pillchoice" type="button" data-count="2">2 e⁻</button>
+    <button class="pillchoice" type="button" data-count="3">3 e⁻</button>
+  </div>
+  <button class="primary" id="checkAl" type="button">Gedanken prüfen</button>
+  <div id="alFeedback" class="feedback" role="status" aria-live="polite"></div>
+  <div id="alEq" class="equation hidden">Al³⁺ + 3 e⁻ <span class="part">→</span> Al</div>
+  <div class="thought"><strong>Offen bleibt:</strong> Woher könnten die Elektronen kommen – und warum entsteht Aluminium aus dem Erz nicht einfach von allein?</div>
+  <details class="disclosure"><summary>Hilfe · Denke an die Ladung</summary><p>Das Symbol Al³⁺ steht für dreifach positive Ladung. Überlege, was mit dieser Ladung geschehen müsste, damit daraus ein neutrales Aluminium-Atom wird.</p></details>
 </article></section>
 
 <section class="page" data-step="2"><article class="sheet">
-<span class="section-kicker">03 · Ein Beispiel aus dem Alltag</span>
-<h2>Warum wird Rost nicht einfach wieder zu Eisen?</h2>
-<p class="intro">Eine Fahrradkette oder ein Gartenzaun aus Eisen kann mit der Zeit rosten. Dabei entstehen neue Stoffe, wenn Eisen mit Sauerstoff und Wasser aus der Umgebung reagiert. <strong>Doch wird aus Rost durch bloßes Warten wieder glänzendes Eisen?</strong></p>
-<div class="case-grid">
-  <div class="logic-card case-card"><div class="case-symbol" aria-hidden="true">🚲</div><strong>Alltag: Ein Fahrrad rostet</strong><div class="case-flow"><span>Eisen</span><span aria-hidden="true">→</span><span>Rost</span></div><p class="reasonline">Das Metall reagiert mit Stoffen aus seiner Umgebung. Es entstehen neue Verbindungen.</p></div>
-  <div class="logic-card case-card"><div class="case-symbol" aria-hidden="true">🪨</div><strong>Unser Problem: Bauxit</strong><div class="case-flow"><span>Bauxit</span><span aria-hidden="true">?</span><span>Aluminium</span></div><p class="reasonline">Bauxit enthält Aluminium in <strong>sauerstoffhaltigen Verbindungen</strong> – nicht als fertiges Metall.</p></div>
-</div>
-<p class="prompt">Was kannst du aus dem Beispiel mit dem Rost schließen?</p>
-<div id="reverseChoices" class="choicegrid" role="group" aria-label="Rost und Metall">
-  <button class="option" type="button" data-reverse="both"><span class="radio"></span>Rost wird nach einiger Zeit ohne weitere Veränderung wieder zu metallischem Eisen.</button>
-  <button class="option" type="button" data-reverse="one"><span class="radio"></span>Rost wird nicht einfach von selbst wieder zu Eisen. Um aus einer Verbindung Metall zu gewinnen, muss sich chemisch etwas ändern.</button>
-</div>
-<button class="primary" id="checkReverse" type="button" style="margin-top:12px">Gedanken prüfen</button><div id="reverseFeedback" class="feedback" role="status" aria-live="polite"></div>
-<div id="energyBridge" class="hidden">
-  <div class="thought"><strong>Die nächste Frage:</strong> Wenn das Metall in einer Verbindung steckt, was könnte nötig sein, um es daraus zu gewinnen?</div>
-  <div class="logic-card" style="margin:16px 0">
-    <div class="case-symbol" aria-hidden="true">🔋</div><strong>Denke an einen aufladbaren Akku.</strong>
-    <p class="reasonline">Beim Benutzen verändert sich sein chemischer Zustand. Er lädt sich nicht allein durch Warten wieder auf. Beim Laden wird ihm <strong>Energie von außen</strong> zugeführt.</p>
-    <p class="note" style="margin:7px 0 0">Das ist nur ein Vergleich: Im Akku laufen andere chemische Reaktionen ab als bei der Metallgewinnung.</p>
+  <span class="section-kicker">03 · Die Energiefrage</span>
+  <h2>Warum reicht es nicht, Bauxit einfach zu zerkleinern?</h2>
+  <p class="intro">Aus einem Gemisch kann man manchmal Bestandteile durch Sortieren oder Sieben trennen. Im Bauxit ist Aluminium aber <strong>chemisch gebunden</strong>. Das macht die Gewinnung schwieriger.</p>
+  <div class="simple-process">
+    <div><strong>Bauxit</strong><small>Aluminium in Verbindungen</small></div>
+    <span aria-hidden="true">→</span>
+    <div class="process-question">?</div>
+    <span aria-hidden="true">→</span>
+    <div><strong>Aluminium</strong><small>elementares Metall</small></div>
   </div>
-  <p class="prompt">Was könnte bei der Gewinnung von Aluminium aus seinen Verbindungen helfen?</p>
-  <div id="energyChoices" class="choicegrid" role="group" aria-label="Mögliche Voraussetzungen für Metallgewinnung">
-    <button class="option" type="button" data-energy="moretime"><span class="radio"></span>Es reicht, das Erz lange liegen zu lassen, bis das Aluminium von selbst entsteht.</button>
-    <button class="option" type="button" data-energy="addenergy"><span class="radio"></span>Vielleicht braucht man einen geeigneten chemischen Vorgang und Energie von außen, um das Metall zu gewinnen.</button>
-    <button class="option" type="button" data-energy="equation"><span class="radio"></span>Wenn wir die Verbindung als Formel aufschreiben, wird sie dadurch zum Metall.</button>
+  <p class="prompt">Warum genügt es nicht, das Gestein einfach in kleine Stücke zu zermahlen?</p>
+  <div id="separateChoices" class="choicegrid" role="group" aria-label="Trennen oder chemisch verändern">
+    <button class="option" type="button" data-separate="grind"><span class="radio"></span>Beim Zerkleinern verwandeln sich die Verbindungen automatisch in reines Aluminium.</button>
+    <button class="option" type="button" data-separate="reaction"><span class="radio"></span>Zerkleinern verändert die Stoffe nicht chemisch. Zur Gewinnung von Aluminium ist eine chemische Umwandlung nötig.</button>
   </div>
-  <button type="button" class="primary" id="checkEnergy" style="margin-top:12px">Überlegung prüfen</button>
-  <div id="energyFeedback" class="feedback" role="status" aria-live="polite"></div>
-  <details class="disclosure"><summary>Hilfe · Was ist an Rost und Bauxit ähnlich?</summary>
-    <p>In beiden Fällen ist ein Metall Bestandteil einer chemischen Verbindung. <strong>Rost ist nicht Bauxit</strong>, und Bauxit entsteht nicht einfach aus Alufolie. Gemeinsam ist die Frage, wie man aus einer Metallverbindung elementares Metall gewinnen kann.</p>
-  </details>
-</div>
+  <button class="primary" id="checkSeparate" type="button">Gedanken prüfen</button>
+  <div id="separateFeedback" class="feedback" role="status" aria-live="polite"></div>
+  <div id="energyBridge" class="hidden">
+    <div class="thought"><strong>Nächste Frage:</strong> Die Aluminiumverbindungen im Bauxit sind beständig. Was könnte helfen, die gewünschte chemische Veränderung anzutreiben?</div>
+    <div id="energyChoices" class="choicegrid" role="group" aria-label="Gedanken zur Energie">
+      <button class="option" type="button" data-energy="wait"><span class="radio"></span>Man lässt das Erz nur lange genug liegen, bis reines Aluminium entsteht.</button>
+      <button class="option" type="button" data-energy="add"><span class="radio"></span>Man könnte für eine geeignete chemische Umwandlung Energie von außen benötigen.</button>
+      <button class="option" type="button" data-energy="cut"><span class="radio"></span>Jeder kleine Stein enthält schon ein Stück reines Aluminium, das nur freigelegt werden muss.</button>
+    </div>
+    <button class="primary" id="checkEnergy" type="button">Überlegung prüfen</button>
+    <div id="energyFeedback" class="feedback" role="status" aria-live="polite"></div>
+  </div>
+  <details class="disclosure"><summary>Hilfe · Trennen und umwandeln</summary><p>Eine Mischung aus groben und feinen Steinchen lässt sich sortieren. Wenn Aluminium jedoch Bestandteil einer chemischen Verbindung ist, reicht eine rein mechanische Trennung nicht aus. Ein chemischer Vorgang müsste die Bindungsverhältnisse und die Elektronenverteilung verändern.</p></details>
 </article></section>
 
-<section class="page" data-step="3"><article class="sheet"><span class="section-kicker">04 · Bekanntes auf neue Teilchen übertragen</span><h2>Was müsste bei Zink-Ionen geschehen?</h2>
-<p class="intro">Wir werden als Modellfall eine Zinkiodid-Lösung untersuchen. Sie enthält gelöste Zink-Ionen (Zn²⁺) und Iodid-Ionen (I⁻). Noch wissen wir nicht, welche Veränderungen im Versuch auftreten.</p>
-<div class="columns"><div class="figurebox"><svg viewBox="0 0 390 245" role="img" aria-label="Zinkiodid-Lösung mit eingezeichneten Zink- und Iodid-Ionen"><path d="M65 24v176q0 24 25 24h211q25 0 25-24V24" fill="none" stroke="#7a8c9d" stroke-width="6" stroke-linecap="round"/><path d="M69 64h253v135q0 21-22 21H92q-23 0-23-21Z" fill="#dcefee"/><g font-size="15" font-weight="700" text-anchor="middle"><g fill="#eff8ff" stroke="#367d9d" stroke-width="2"><circle cx="112" cy="106" r="26"/><circle cx="249" cy="143" r="26"/><circle cx="168" cy="179" r="26"/></g><g fill="#367d9d"><text x="112" y="111">Zn²⁺</text><text x="249" y="148">Zn²⁺</text><text x="168" y="184">Zn²⁺</text></g><g fill="#fdf6dc" stroke="#ab8738" stroke-width="2"><circle cx="193" cy="102" r="22"/><circle cx="293" cy="190" r="22"/></g><g fill="#9e762e"><text x="193" y="108">I⁻</text><text x="293" y="196">I⁻</text></g></g></svg></div>
-<div><p class="prompt" style="margin-top:0">Welche Änderung wäre <em>notwendig</em>, damit aus Zn²⁺ ein neutrales Zink-Atom werden könnte?</p>
-<div class="smallhead">Elektronen …</div><div id="transferChoices" class="controls-group" style="margin:9px 0 20px"><button class="pillchoice" type="button" data-transfer="gain">aufnehmen</button><button class="pillchoice" type="button" data-transfer="loss">abgeben</button></div>
-<div class="smallhead">Wie viele Elektronen?</div><div id="countChoices" class="controls-group" style="margin:9px 0 16px"><button class="pillchoice" type="button" data-count="1">1 e⁻</button><button class="pillchoice" type="button" data-count="2">2 e⁻</button><button class="pillchoice" type="button" data-count="3">3 e⁻</button></div>
-<button class="primary" type="button" id="checkZn">Gedanken prüfen</button><div id="znFeedback" class="feedback" role="status" aria-live="polite"></div></div></div>
-<div id="znEq" class="equation hidden">Zn²⁺ + 2 e⁻ <span class="part">→</span> Zn</div>
-<div class="callout warning"><strong>Denke an die beiden bisherigen Schritte:</strong> Wir können eine mögliche Elektronenaufnahme formulieren. Damit ist noch nicht geklärt, woher die Elektronen kommen und was den Vorgang möglicherweise antreiben könnte.</div>
+<section class="page" data-step="3"><article class="sheet">
+  <span class="section-kicker">04 · Elektrizität als mögliche Hilfe</span>
+  <h2>Wie könnten Elektronen und elektrische Energie zusammenhängen?</h2>
+  <p class="intro">Für die Metallgewinnung sind damit zwei Fragen entstanden: <strong>Wie kann Aluminium Elektronen aufnehmen?</strong> Und <strong>woher könnte die nötige Energie kommen?</strong></p>
+  <div class="three-ideas">
+    <div class="idea-card"><div class="idea-icon">Al³⁺ <span>+ e⁻ ?</span></div><strong>Teilchen</strong><p>Aus gebundenem Aluminium soll ein neutrales Metall-Atom entstehen.</p></div>
+    <div class="idea-card"><div class="electron-flow" aria-label="Mehrere Elektronen bewegen sich im Leiter">e⁻ &nbsp; e⁻ &nbsp; e⁻ <span aria-hidden="true">→</span></div><strong>Elektrischer Strom</strong><p>In metallischen Leitern bewegen sich viele Elektronen gerichtet.</p></div>
+    <div class="idea-card"><div class="idea-icon">⚡ <span>?</span></div><strong>Elektrische Energie</strong><p>Eine Spannungsquelle kann Energie an einen geeigneten Stromkreis übertragen.</p></div>
+  </div>
+  <p class="note">Dies ist <strong>kein Versuchsaufbau</strong>. Die drei Denkfelder sollen helfen, die Begriffe auseinanderzuhalten.</p>
+  <p class="prompt">Ordne den beiden Begriffen die passenden Aussagen zu.</p>
+  <div class="concept-row">
+    <div class="logic-card"><label for="wireCarrier">Elektrischer Strom in einem metallischen Kabel bedeutet …</label><select id="wireCarrier" class="choice-select">
+      <option value="">Bitte auswählen</option><option value="single">ein einziges wanderndes Elektron</option><option value="electrons">gerichtete Bewegung vieler Elektronen</option><option value="energy">eine besondere Art von Energie-Teilchen</option>
+    </select></div>
+    <div class="logic-card"><label for="sourceRole">Eine Spannungsquelle kann …</label><select id="sourceRole" class="choice-select">
+      <option value="">Bitte auswählen</option><option value="create">Elektronen aus dem Nichts erschaffen</option><option value="energy">elektrische Energie bereitstellen</option><option value="same">Strom und Energie zum selben Stoff machen</option>
+    </select></div>
+  </div>
+  <button class="primary" id="checkCircuit" type="button">Begriffe prüfen</button>
+  <div id="circuitFeedback" class="feedback" role="status" aria-live="polite"></div>
+  <div class="thought"><strong>Der mögliche Zusammenhang:</strong> Könnte eine Spannungsquelle Energie bereitstellen und damit eine Elektronenübertragung unterstützen, die bei der Gewinnung von Aluminium nötig wäre?</div>
+  <label class="form-label" for="energyLink">Halte deine erste Überlegung fest – noch ohne fertige Erklärung.</label>
+  <textarea class="free small" id="energyLink" placeholder="Vielleicht könnte elektrische Energie …"></textarea>
+  <details class="disclosure"><summary>Hilfe · Strom ist nicht dasselbe wie Energie</summary><p>Elektrischer Strom bedeutet gerichtete Bewegung elektrischer Ladungen. Im Metallleiter sind die beweglichen Ladungsträger Elektronen. Eine Spannungsquelle stellt eine elektrische Spannung bereit und kann dadurch Energie auf Ladungsträger übertragen. In einem Elektrolyten tragen dagegen Ionen den Strom – wie genau, wird später untersucht.</p></details>
 </article></section>
 
-<section class="page" data-step="4"><article class="sheet"><span class="section-kicker">05 · Elektrizität verstehen</span><h2>Wie hängen Elektronenbewegung und Energiezufuhr zusammen?</h2>
-<p class="intro">Du kennst nun zwei Fragen: <strong>Wie gelangen Elektronen zu einem Metall-Ion?</strong> Und <strong>was könnte helfen, eine Metallverbindung zu verändern?</strong> Kläre zunächst die Begriffe, bevor du eine eigene Vermutung formulierst.</p>
-<div class="thought-visual" role="group" aria-label="Drei unterschiedliche Ideen: Teilchen, elektrischer Strom und Energie">
-  <div class="thought-unit">
-    <div class="thought-icon" aria-hidden="true"><span class="atom-zn">Zn²⁺</span><span class="question-gap">?</span><span class="electron">e⁻</span><span class="electron">e⁻</span></div>
-    <h3>1 · Die Teilchenfrage</h3>
-    <p>Ein positiv geladenes Metall-Ion könnte durch <strong>Elektronenaufnahme</strong> neutral werden. Doch woher könnten die Elektronen kommen?</p>
+<section class="page" data-step="4"><article class="sheet">
+  <span class="section-kicker">05 · Meine begründete Vermutung</span>
+  <h2>Wie könnte aus Aluminiumverbindungen Aluminium werden?</h2>
+  <p class="intro">Jetzt entwickelst du deinen eigenen Lösungsgedanken zum <strong>Ausgangsproblem Bauxit → Aluminium</strong>. Du brauchst weder einen Versuchsaufbau noch eine fertige Erklärung.</p>
+  <label class="form-label" for="guess">Ich vermute, dass … <span class="optional-label">(Deine qualitative Idee)</span></label>
+  <textarea id="guess" class="free" placeholder="Ich vermute, dass …"></textarea>
+  <label class="form-label" for="reason">…, weil … <span class="optional-label">(Beziehe dich auf die Elektronenübertragung und den möglichen Energiebedarf)</span></label>
+  <textarea id="reason" class="free" placeholder="Das könnte so sein, weil …"></textarea>
+  <div class="hypothesis" role="region" aria-live="polite" aria-label="Deine Vermutung">
+    <div class="label">Meine Vermutung</div>
+    <blockquote id="previewHypothesis">Ich vermute, dass …, weil …</blockquote>
   </div>
-  <div class="thought-unit">
-    <div class="thought-icon electron-track" aria-hidden="true"><span class="moving-electron">e⁻</span><span class="moving-electron">e⁻</span><span class="moving-electron">e⁻</span><span class="direction-arrow">→</span></div>
-    <h3>2 · Die Stromfrage</h3>
-    <p>In einem Metallleiter bedeutet elektrischer Strom die <strong>gerichtete Bewegung vieler Elektronen</strong>. Ein Strom ist kein einzelnes Elektron.</p>
+  <details class="disclosure"><summary>Hilfe 1 · Redoxwissen nutzen</summary><p>Damit aus Aluminium in einer Verbindung elementares Aluminium wird, muss Aluminium im vereinfachten Modell Elektronen aufnehmen.</p></details>
+  <details class="disclosure"><summary>Hilfe 2 · Energie mitdenken</summary><p>Beständige chemische Verbindungen werden nicht durch bloßes Warten zu elementaren Metallen. Überlege, wie zugeführte Energie eine chemische Veränderung ermöglichen könnte.</p></details>
+  <details class="disclosure"><summary>Hilfe 3 · Satzgerüst</summary><p>Ich vermute, dass man Aluminium aus seinen Verbindungen gewinnen könnte, indem __________, weil für die Bildung von Metall-Atomen __________ und möglicherweise __________ nötig sind.</p></details>
+  <div class="actions">
+    <button class="primary" id="checkHypothesis" type="button">Vermutung festhalten</button>
+    <button class="secondary" id="copyHypothesis" type="button">Text kopieren</button>
+    <button class="secondary" id="printSheet" type="button">Denkweg ausdrucken</button>
   </div>
-  <div class="thought-unit">
-    <div class="thought-icon energy-icon" aria-hidden="true"><span class="battery-shape"><span>+</span><span>−</span></span><span class="energy-signal">⚡</span><span class="question-gap">?</span></div>
-    <h3>3 · Die Energiefrage</h3>
-    <p>Eine Spannungsquelle kann <strong>elektrische Energie bereitstellen</strong>. Könnte diese Energie helfen, aus einer Metallverbindung Metall zu gewinnen?</p>
-  </div>
-</div>
-<p class="note">Dies sind nur Denkbilder – <strong>noch kein Versuchsaufbau</strong> und keine Vorhersage eines Reaktionsprodukts. Die Versuchsanordnung kommt erst nach deiner Vermutung.</p>
-<p class="prompt">Prüfe an drei Begriffen, was du über Strom und Energie weißt.</p>
-<div class="concept-row">
-<div class="logic-card"><label for="wireCarrier">In einem metallischen Kabel fließt elektrischer Strom durch …</label><select id="wireCarrier" class="choice-select"><option value="">Bitte auswählen</option><option value="ions">wandernde Metall-Ionen</option><option value="electrons">gerichtete Bewegung vieler Elektronen</option><option value="energy">ein einzelnes „Energie-Elektron“</option></select></div>
-<div class="logic-card"><label for="solutionCarrier">In einer Salzlösung erfolgt der Ladungstransport durch …</label><select id="solutionCarrier" class="choice-select"><option value="">Bitte auswählen</option><option value="electrons">frei fliegende Elektronen</option><option value="ions">wandernde positiv und negativ geladene Ionen</option><option value="atoms">ausschließlich neutrale Atome</option></select></div>
-<div class="logic-card"><label for="sourceRole">Eine Spannungsquelle kann …</label><select id="sourceRole" class="choice-select"><option value="">Bitte auswählen</option><option value="make">Elektronen aus dem Nichts erzeugen</option><option value="energy">elektrische Energie bereitstellen</option><option value="same">Strom und Energie zu demselben Stoff machen</option></select></div>
-</div><button class="primary" id="checkCircuit" type="button">Zuordnung prüfen</button><div class="feedback" id="circuitFeedback" role="status" aria-live="polite"></div>
-<div class="bridge-line"><span class="badge-char">?</span><div><strong>Bringe deine Gedanken zusammen</strong><p style="margin:5px 0 0">Wenn für eine mögliche Elektronenübertragung Energie nötig ist: Wie könnten eine Spannungsquelle und bewegte Ladungen dabei eine Rolle spielen?</p></div></div>
-<label class="form-label" for="energyLink">Formuliere mit eigenen Worten einen Zusammenhang. Es reicht zunächst eine Idee.</label>
-<textarea id="energyLink" class="free small" placeholder="Elektronen könnten … und elektrische Energie könnte …"></textarea>
-<details class="disclosure"><summary>Hilfe: Strom ist nicht selbst die Energie</summary><p>Elektrischer Strom bezeichnet die gerichtete Bewegung elektrischer Ladungen. In metallischen Leitern tragen Elektronen, in einer Salzlösung Ionen den Strom. Über einen geeigneten geschlossenen Stromkreis kann eine Spannungsquelle elektrische Energie an den Versuchsaufbau übertragen. Elektronen sind Ladungsträger, nicht selbst eine Energieform. Auch die Bewegung der Ionen in einer Lösung kann zum Stromkreis gehören.</p></details>
-</article></section>
-
-<section class="page" data-step="5"><article class="sheet"><span class="section-kicker">06 · Meine begründete Vermutung</span><h2>Was vermutest du – und wie begründest du es?</h2>
-<p class="intro">Bisher hast du bekannte Elektronenübertragungen, die mögliche Energiezufuhr und den Stromkreis untersucht. <strong>Jetzt denkst du selbst weiter.</strong> Deine Vermutung muss nicht richtig sein, aber fachlich nachvollziehbar begründet.</p>
-<div class="callout"><strong>Versuchssituation:</strong> Wir wollen herausfinden, ob sich aus einer Zinkiodid-Lösung durch zusätzliche elektrische Energie neue Stoffe gewinnen lassen. Welche Veränderung hältst du für möglich? Den Versuchsaufbau planen wir erst danach.</div>
-<label class="form-label" for="guess">Ich vermute, dass … <span class="optional-label">(Deine qualitative Vorstellung)</span></label><textarea id="guess" class="free" placeholder="Ich vermute, dass …"></textarea>
-<label class="form-label" for="reason">…, weil … <span class="optional-label">(Fachliche Folgerung aus deinem Wissen)</span></label><textarea id="reason" class="free" placeholder="Das könnte so sein, weil …"></textarea>
-<div class="hypothesis" aria-live="polite" role="region" aria-label="Meine fertige Vermutung"><div class="label">Meine Vermutung</div><blockquote id="previewHypothesis">Ich vermute, dass …, weil …</blockquote></div>
-<details class="disclosure"><summary>Hilfe 1 · Fachliches Vorwissen erinnern</summary><p>Bei der bekannten Reaktion nahmen Cu²⁺-Ionen Elektronen auf. Wenn man Metall-Ionen in neutrale Metall-Atome umwandeln möchte, spielt die Elektronenaufnahme eine Rolle.</p></details>
-<details class="disclosure"><summary>Hilfe 2 · Den energetischen Gedanken ergänzen</summary><p>Beim Laden eines Akkus wird Energie von außen zugeführt. Könnte Energie von außen auch für die Gewinnung eines Metalls wichtig sein?</p></details>
-<details class="disclosure"><summary>Hilfe 3 · Satzgerüst</summary><p>Ich vermute, dass __________ passieren könnte, weil __________ Elektronen __________ und die Spannungsquelle möglicherweise __________.</p></details>
-<div class="actions"><button class="primary" type="button" id="checkHypothesis">Meine Vermutung prüfen</button><button class="secondary" type="button" id="copyHypothesis">Text kopieren</button><button class="secondary" type="button" id="printSheet">Denkweg ausdrucken</button></div><div class="feedback" id="hypothesisFeedback" role="status" aria-live="polite"></div>
-<div id="afterHypothesis" class="planning-next hidden" aria-live="polite"><strong>Vermutung notiert – nächster Schritt:</strong><p>Jetzt kannst du gesondert überlegen, wie du deine Vermutung experimentell prüfst. Erst auf der nächsten Seite erscheint ein möglicher Versuchsaufbau.</p><a class="primary next-link" href="./experimentplanung.html">Zur Experimentplanung →</a></div>
-<div class="callout warning"><strong>Zuerst die Vermutung sichern:</strong> Deine Idee muss vor der Planung des Versuchs feststehen. Erst danach wird über einen geeigneten Aufbau entschieden.</div>
+  <div id="hypothesisFeedback" class="feedback" role="status" aria-live="polite"></div>
+  <div class="after-gate hidden" id="afterHypothesis"><strong>Deine Vermutung ist notiert.</strong><p>Als Nächstes kannst du einen Modellversuch planen, mit dem du den Gedanken der Metallgewinnung untersuchst. Der Versuch arbeitet mit einem anderen Stoffsystem. Die Übertragung auf Aluminium muss später noch geprüft werden.</p><a class="primary" href="./experimentplanung.html">Zur Experimentplanung →</a></div>
+  <p class="note" id="hypothesisLocked">Zuerst deine eigene Vermutung mit Begründung festhalten; die Experimentplanung folgt danach.</p>
 </article></section>
 <div class="footer-controls"><button class="secondary" id="backBtn" type="button">← Zurück</button><div><button class="secondary mini" id="resetBtn" type="button">Neu beginnen</button> <button class="primary" id="nextBtn" type="button">Weiter →</button></div></div>
 <p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p></main>
-<div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Metalle gewinnen</h1><p>Name: ______________________________ Datum: ______________</p>
+<div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Aluminiumgewinnung</h1>
+<p>Name: ______________________________ Datum: ______________</p>
 <h2>Ausgangsproblem</h2><div class="print-answer" id="pFirst"></div>
-<h2>Bekannte Redoxreaktion</h2><div class="print-answer" id="pRecall"></div>
-<h2>Richtung einer Redoxreaktion und Energiefrage</h2><div class="print-answer" id="pEnergy"></div>
-<h2>Überlegung zu Zink-Ionen</h2><div class="print-answer" id="pZn"></div>
-<h2>Strom und Energie</h2><div class="print-answer" id="pCircuit"></div>
+<h2>Redoxüberlegung zu Aluminium</h2><div class="print-answer" id="pAl"></div>
+<h2>Chemische Umwandlung und Energie</h2><div class="print-answer" id="pEnergy"></div>
+<h2>Strom und elektrische Energie</h2><div class="print-answer" id="pCircuit"></div>
 <h2>Meine begründete Vermutung</h2><div class="print-answer" id="pHypothesis"></div></div>
 <script>
 (()=>{'use strict';
-const NAMES=['Ausgangsproblem','Redox erinnern','Alltag & Energie','Zink-Ionen','Strom & Energie','Vermutung'];
-const $=id=>document.getElementById(id),STORE='metallgewinnung-vermutungswerkstatt-v2';
-const state={step:0,furthest:0,recall:'',donor:'',reverse:'',energy:'',transfer:'',count:'',hypothesisChecked:false};
-const textIDs=['firstThought','energyLink','guess','reason'];const selectIDs=['wireCarrier','solutionCarrier','sourceRole'];
-try{const saved=JSON.parse(localStorage.getItem(STORE)||'{}');Object.keys(state).forEach(k=>{if(saved[k]!==undefined)state[k]=saved[k]});[...textIDs,...selectIDs].forEach(id=>{if(typeof saved[id]==='string')$(id).value=saved[id]});}catch{}
-state.step=Math.max(0,Math.min(5,state.step||0));state.furthest=Math.max(0,Math.min(5,state.furthest||0));
-function persist(){try{localStorage.setItem(STORE,JSON.stringify({...state,...Object.fromEntries([...textIDs,...selectIDs].map(id=>[id,$(id).value]))}))}catch{}}
-function feedback(id,body,tone='neutral'){$(id).textContent=body;$(id).className='feedback show '+tone}
-function pick(group,key,value){state[key]=value;document.querySelectorAll('#'+group+' [data-'+key+']').forEach(el=>{const yes=el.dataset[key]===value;el.classList.toggle('selected',yes);el.setAttribute('aria-pressed',String(yes))});persist()}
-for(const [id,key] of [['donorChoices','donor'],['reverseChoices','reverse'],['energyChoices','energy'],['transferChoices','transfer'],['countChoices','count']]){const stateKey=key==='choice'?'recall':key;document.querySelectorAll('#'+id+' [data-'+key+']').forEach(el=>el.addEventListener('click',()=>pick(id,key,el.dataset[key]) ));}
-function restoreChoices(){for(const [id,key,storeKey] of [['recallChoices','choice','recall'],['donorChoices','donor','donor'],['reverseChoices','reverse','reverse'],['energyChoices','energy','energy'],['transferChoices','transfer','transfer'],['countChoices','count','count']]){if(state[storeKey])document.querySelectorAll('#'+id+' [data-'+key+']').forEach(el=>{let yes=el.dataset[key]===state[storeKey];el.classList.toggle('selected',yes);el.setAttribute('aria-pressed',String(yes))})}}
-// choice uses a separate state key, to keep page reloads predictable.
-document.querySelectorAll('#recallChoices [data-choice]').forEach(el=>el.addEventListener('click',()=>{state.recall=el.dataset.choice;document.querySelectorAll('#recallChoices [data-choice]').forEach(b=>{const yes=b===el;b.classList.toggle('selected',yes);b.setAttribute('aria-pressed',String(yes))});persist()}));
-function gotoStep(s){state.step=Math.max(0,Math.min(5,s));state.furthest=Math.max(state.furthest,state.step);renderNav();persist()}
-function renderNav(){const nav=$('stepnav');nav.replaceChildren();NAMES.forEach((name,i)=>{const b=document.createElement('button');b.type='button';b.className='step-dot'+(i===state.step?' active':i<=state.furthest?' visited':'');b.textContent=(i+1)+' · '+name;b.disabled=i>state.furthest;b.addEventListener('click',()=>gotoStep(i));nav.append(b)});document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('active',i===state.step));$('progressLabel').textContent=(state.step+1)+' von 6 · '+NAMES[state.step];$('progressfill').style.width=((state.step+1)/6*100)+'%';document.querySelector('.progressbar').setAttribute('aria-valuenow',state.step+1);$('backBtn').disabled=state.step===0;$('nextBtn').textContent=state.step===5?'Zum Beginn ↺':'Weiter →';window.scrollTo({top:0,behavior:'smooth'})}
-$('backBtn').addEventListener('click',()=>gotoStep(state.step-1));$('nextBtn').addEventListener('click',()=>gotoStep(state.step===5?0:state.step+1));
-$('checkRecall').addEventListener('click',()=>{if(!state.recall)return feedback('recallFeedback','Wähle zunächst einen Gedanken aus.');if(state.recall==='gain'){$('recallEq').classList.remove('hidden');feedback('recallFeedback','Passend: Die positiv geladenen Kupfer-Ionen nehmen Elektronen auf. Das ist eine Reduktion.','')}else{$('recallEq').classList.add('hidden');feedback('recallFeedback','Denke an die Ladung: Was müsste zum zweifach positiven Ion hinzukommen, damit daraus ein neutrales Atom wird?','incorrect')}});
-$('donorChoices').querySelectorAll('[data-donor]').forEach(b=>b.addEventListener('click',()=>{feedback('donorFeedback',state.donor==='fe'?'Genau: Eisen gab Elektronen ab (Oxidation). Gleichzeitig nahmen Kupfer-Ionen sie auf.':'Denk an den zweiten Reaktionspartner. Aus welchem Metall entstanden gelöste Ionen?',state.donor==='fe'?'':'incorrect')}));
-$('checkReverse').addEventListener('click',()=>{if(!state.reverse)return feedback('reverseFeedback','Wähle zuerst einen Gedanken aus.');if(state.reverse==='one'){$('energyBridge').classList.remove('hidden');feedback('reverseFeedback','Genau: Rost wird nicht einfach durch Warten wieder zu glänzendem Eisen. Wie könnte man aus einer Metallverbindung das Metall gewinnen?','')}else{$('energyBridge').classList.add('hidden');feedback('reverseFeedback','Denke an eine rostige Fahrradkette: Wird sie durch Liegenlassen wieder metallisch blank?','incorrect')}});
-$('checkEnergy').addEventListener('click',()=>{if(!state.energy)return feedback('energyFeedback','Wähle zuerst einen möglichen Weg.');if(state.energy==='addenergy')feedback('energyFeedback','Gut begründbar: Für die Metallgewinnung könnte eine gezielte chemische Umsetzung und Energie von außen nötig sein. Welche Energieform helfen kann, überlegen wir im nächsten Schritt.','');else feedback('energyFeedback','Warten oder das Aufschreiben einer Formel verwandelt eine Metallverbindung noch nicht in Metall. Überlege, was einem Akku beim Laden zugeführt wird.','incorrect')});
-$('checkZn').addEventListener('click',()=>{if(!state.transfer||!state.count)return feedback('znFeedback','Triff zunächst beide Entscheidungen.');if(state.transfer==='gain'&&state.count==='2'){$('znEq').classList.remove('hidden');feedback('znFeedback','Die Ladungsbilanz stimmt: Zwei Elektronen könnten Zn²⁺ zu einem neutralen Zink-Atom reduzieren. Ob das im Versuch geschieht, ist damit noch offen.','')}else{$('znEq').classList.add('hidden');feedback('znFeedback','Prüfe die Gesamtladung: Ein zweifach positiv geladenes Ion wird erst durch zwei zusätzliche negative Elementarladungen neutral.','incorrect')}});
-$('checkCircuit').addEventListener('click',()=>{const vals=selectIDs.map(id=>$(id).value);if(vals.some(v=>!v))return feedback('circuitFeedback','Wähle für alle drei Bereiche eine Aussage.');if(vals[0]==='electrons'&&vals[1]==='ions'&&vals[2]==='energy')feedback('circuitFeedback','Gut unterschieden: In Kabeln bewegen sich Elektronen gerichtet, in der Lösung tragen Ionen den Strom. Die Spannungsquelle kann über den geschlossenen Stromkreis elektrische Energie bereitstellen. Strom ist nicht selbst die Energie.','');else feedback('circuitFeedback','Prüfe: Welche Ladungsträger sind in Metallen beweglich? Welche in wässrigen Salzlösungen? Und was stellt eine Spannungsquelle bereit?','incorrect')});
-function updateHyp(clearGate=true){if(clearGate&&state.hypothesisChecked){state.hypothesisChecked=false;$('afterHypothesis').classList.add('hidden')} const g=$('guess').value.trim().replace(/^ich vermute,? dass\s*/i,''),r=$('reason').value.trim().replace(/^(weil|,?\s*weil)\s*/i,'');$('previewHypothesis').textContent='Ich vermute, dass '+(g||'…')+(g&&/[.!?]$/.test(g)?' ':', ')+'weil '+(r||'…')+(r&&/[.!?]$/.test(r)?'':'.');persist()}
-textIDs.forEach(id=>$(id).addEventListener('input',updateHyp));selectIDs.forEach(id=>$(id).addEventListener('change',persist));
-$('checkHypothesis').addEventListener('click',()=>{const g=$('guess').value.trim(),r=$('reason').value.trim();if(!g||!r)return feedback('hypothesisFeedback','Formuliere zuerst deine Vermutung und ergänze eine fachliche Begründung.','incorrect');feedback('hypothesisFeedback','Deine Vermutung ist als eigene Aussage mit einer Begründung gesichert. Ob sie fachlich zutrifft, zeigt erst die Untersuchung. Danach kannst du getrennt die Experimentplanung öffnen.','');state.hypothesisChecked=true;$('afterHypothesis').classList.remove('hidden');persist()});
-function report(){return 'MEIN DENKWEG – METALLGEWINNUNG\n\nAusgangsproblem:\n'+$('firstThought').value+'\n\nBekannte Reaktion: Kupfer-Ionen / Eisen\n'+(state.recall==='gain'?'Cu²⁺ nimmt Elektronen auf':'Gedanke noch offen')+'; Elektronendonator: '+(state.donor==='fe'?'Eisen':'noch offen')+'\n\nEnergiefrage:\n'+(state.reverse==='one'?'Rost wird nicht einfach von selbst wieder zu Eisen.':'Überlegung zur Richtung noch offen')+' '+(state.energy==='addenergy'?'Äußere Energiezufuhr könnte erforderlich sein.':'')+'\n\nZink-Ionen:\n'+(state.transfer==='gain'&&state.count==='2'?'Zn²⁺ + 2 e⁻ → Zn':'noch offen')+'\n\nMeine Verbindung von Strom und Energie:\n'+$('energyLink').value+'\n\nBegriffsklärung:\nKabel: '+($('wireCarrier').selectedOptions[0]?.textContent||'')+'; Lösung: '+($('solutionCarrier').selectedOptions[0]?.textContent||'')+'; Spannungsquelle: '+($('sourceRole').selectedOptions[0]?.textContent||'')+'\n\nMeine Vermutung:\n'+$('previewHypothesis').textContent}
-$('copyHypothesis').addEventListener('click',async()=>{const t=report();try{await navigator.clipboard.writeText(t);feedback('hypothesisFeedback','Text kopiert.','')}catch{const e=document.createElement('textarea');e.value=t;e.style.position='fixed';e.style.left='-9999px';document.body.append(e);e.select();try{document.execCommand('copy');feedback('hypothesisFeedback','Text kopiert.','')}catch{feedback('hypothesisFeedback','Automatisches Kopieren ist hier nicht möglich. Du kannst den Text direkt markieren.','neutral')}e.remove()}});
-$('printSheet').addEventListener('click',()=>{$('pFirst').textContent=$('firstThought').value;$('pRecall').textContent='Kupfer-Ionen: '+(state.recall==='gain'?'Elektronenaufnahme':'offen')+'; Elektronen stammen vom '+(state.donor==='fe'?'Eisen':'noch offen');$('pEnergy').textContent='Rost und Metall: '+(state.reverse==='one'?'Rost wird nicht durch Warten wieder Eisen.':'offen')+'; Äußere Energie: '+(state.energy==='addenergy'?'könnte nötig sein':'offen');$('pZn').textContent=state.transfer==='gain'&&state.count==='2'?'Zn²⁺ + 2 e⁻ → Zn':'noch offen';$('pCircuit').textContent='Mein Gedanke: '+$('energyLink').value+'\nKabel: '+$('wireCarrier').selectedOptions[0]?.textContent+'\nLösung: '+$('solutionCarrier').selectedOptions[0]?.textContent+'\nQuelle: '+$('sourceRole').selectedOptions[0]?.textContent;$('pHypothesis').textContent=$('previewHypothesis').textContent;window.print()});
-$('resetBtn').addEventListener('click',()=>{if(!confirm('Alle Eingaben dieser Vermutungswerkstatt löschen?'))return;[...textIDs,...selectIDs].forEach(id=>$(id).value='');Object.assign(state,{step:0,furthest:0,recall:'',donor:'',reverse:'',energy:'',transfer:'',count:'',hypothesisChecked:false});$('afterHypothesis').classList.add('hidden');document.querySelectorAll('.selected').forEach(el=>el.classList.remove('selected'));document.querySelectorAll('.feedback').forEach(el=>{el.textContent='';el.className='feedback'});$('recallEq').classList.add('hidden');$('znEq').classList.add('hidden');$('energyBridge').classList.add('hidden');updateHyp();gotoStep(0)});
-restoreChoices();if(state.reverse==='one')$('energyBridge').classList.remove('hidden');if(state.recall==='gain')$('recallEq').classList.remove('hidden');if(state.transfer==='gain'&&state.count==='2')$('znEq').classList.remove('hidden');updateHyp(false);try{const old=JSON.parse(localStorage.getItem(STORE)||'{}');if(old.hypothesisChecked&&$('guess').value.trim()&&$('reason').value.trim()){state.hypothesisChecked=true;$('afterHypothesis').classList.remove('hidden')}}catch{}renderNav();
+const names=['Ausgangsproblem','Redoxwissen','Energiebedarf','Strom & Energie','Vermutung'];
+const $=id=>document.getElementById(id);
+const KEY='aluminium-vermutungswerkstatt-v4';
+const initial={step:0,furthest:0,transfer:'',count:'',separate:'',energy:'',hypothesisChecked:false};
+let state={...initial};
+const textFields=['firstThought','energyLink','guess','reason'],selectFields=['wireCarrier','sourceRole'];
+try{const o=JSON.parse(localStorage.getItem(KEY)||'{}');for(const k of Object.keys(initial))if(Object.prototype.hasOwnProperty.call(o,k))state[k]=o[k];
+for(const id of [...textFields,...selectFields])if(typeof o[id]==='string')$(id).value=o[id];}catch{}
+state.step=Math.max(0,Math.min(4,Number(state.step)||0));state.furthest=Math.max(0,Math.min(4,Number(state.furthest)||0));
+function save(){try{localStorage.setItem(KEY,JSON.stringify({...state,...Object.fromEntries([...textFields,...selectFields].map(id=>[id,$(id).value]))}))}catch{}}
+function say(id,s,tone='neutral'){$(id).textContent=s;$(id).className='feedback show '+tone;}
+function choose(group,key,value){state[key]=value;document.querySelectorAll('#'+group+' [data-'+key+']').forEach(b=>{const on=b.dataset[key]===value;b.classList.toggle('selected',on);b.setAttribute('aria-pressed',String(on))});save()}
+for(const [group,key] of [['transferChoices','transfer'],['countChoices','count'],['separateChoices','separate'],['energyChoices','energy']]){
+document.querySelectorAll('#'+group+' [data-'+key+']').forEach(b=>b.addEventListener('click',()=>choose(group,key,b.dataset[key])));
+if(state[key])choose(group,key,state[key]);}
+function showStep(x){state.step=Math.max(0,Math.min(4,x));state.furthest=Math.max(state.furthest,state.step);
+const nav=$('stepnav');nav.replaceChildren();
+names.forEach((n,i)=>{const b=document.createElement('button');b.type='button';b.textContent=(i+1)+' · '+n;b.className='step-dot'+(i===state.step?' active':i<=state.furthest?' visited':'');b.disabled=i>state.furthest;b.addEventListener('click',()=>showStep(i));nav.appendChild(b)});
+document.querySelectorAll('.page').forEach(el=>el.classList.toggle('active',Number(el.dataset.step)===state.step));
+$('progressLabel').textContent=(state.step+1)+' von 5 · '+names[state.step];
+$('progressfill').style.width=((state.step+1)/5*100)+'%';document.querySelector('.progressbar').setAttribute('aria-valuenow',state.step+1);
+$('backBtn').disabled=state.step===0;$('nextBtn').textContent=state.step===4?'Zum Anfang ↺':'Weiter →';save();window.scrollTo({top:0,behavior:'smooth'})}
+$('backBtn').addEventListener('click',()=>showStep(state.step-1));
+$('nextBtn').addEventListener('click',()=>showStep(state.step===4?0:state.step+1));
+$('checkAl').addEventListener('click',()=>{if(!state.transfer||!state.count)return say('alFeedback','Wähle die Elektronenänderung und die Anzahl der Elektronen aus.');
+if(state.transfer==='gain'&&state.count==='3'){$('alEq').classList.remove('hidden');say('alFeedback','Die Elektronenbilanz passt: Aluminium müsste drei Elektronen aufnehmen. Ob und wie das praktisch gelingt, bleibt unsere Frage.','good');}
+else{$('alEq').classList.add('hidden');say('alFeedback','Denke an die Ladung: Aus Al³⁺ soll elektrisch neutrales Al entstehen. Was muss mit drei positiven Ladungen passieren?','incorrect')}});
+$('checkSeparate').addEventListener('click',()=>{if(!state.separate)return say('separateFeedback','Wähle zuerst eine Aussage.');
+if(state.separate==='reaction'){$('energyBridge').classList.remove('hidden');say('separateFeedback','Genau: Zerkleinern verändert die chemischen Verbindungen nicht. Für Aluminium ist eine chemische Umwandlung nötig.','good');}else{$('energyBridge').classList.add('hidden');say('separateFeedback','Zerkleinern verändert die Größe der Erzstücke, aber nicht die chemische Bindung des Aluminiums.','incorrect')}});
+$('checkEnergy').addEventListener('click',()=>{if(!state.energy)return say('energyFeedback','Wähle zunächst eine Überlegung.');
+if(state.energy==='add')say('energyFeedback','Das ist eine plausible Überlegung: Zur Gewinnung von Aluminium könnte eine chemische Umwandlung mit Energiezufuhr erforderlich sein. Wie könnte elektrische Energie dabei helfen?','good');
+else say('energyFeedback','Warten und Zerkleinern führen nicht einfach zu elementarem Aluminium. Was könnte eine gezielte chemische Umwandlung unterstützen?','incorrect')});
+$('checkCircuit').addEventListener('click',()=>{if(!$('wireCarrier').value||!$('sourceRole').value)return say('circuitFeedback','Wähle zunächst beide Begriffe aus.');
+if($('wireCarrier').value==='electrons'&&$('sourceRole').value==='energy')say('circuitFeedback','Richtig: Im Metallleiter bewegen sich viele Elektronen gerichtet. Die Spannungsquelle kann elektrische Energie übertragen. Das sind zwei unterschiedliche, zusammenhängende Begriffe.','good');
+else say('circuitFeedback','Strom ist die Bewegung elektrischer Ladungen, nicht ein einzelnes Elektron. Eine Spannungsquelle erzeugt nicht einfach Elektronen aus dem Nichts.','incorrect');save()});
+function preview(){const a=$('guess').value.trim(),b=$('reason').value.trim();$('previewHypothesis').textContent='Ich vermute, dass '+(a||'…')+', weil '+(b||'…')+'.';state.hypothesisChecked=false;$('afterHypothesis').classList.add('hidden');$('hypothesisLocked').classList.remove('hidden');save()}
+for(const id of textFields){$(id).addEventListener('input',id==='guess'||id==='reason'?preview:save)}
+for(const id of selectFields)$(id).addEventListener('change',save);
+$('checkHypothesis').addEventListener('click',()=>{if(!$('guess').value.trim()||!$('reason').value.trim()){state.hypothesisChecked=false;$('afterHypothesis').classList.add('hidden');return say('hypothesisFeedback','Formuliere eine Vermutung und ergänze eine fachliche Begründung.','incorrect');}
+state.hypothesisChecked=true;$('afterHypothesis').classList.remove('hidden');$('hypothesisLocked').classList.add('hidden');say('hypothesisFeedback','Deine Vermutung enthält einen Lösungsgedanken und eine Begründung. Ob sie fachlich zutrifft, wird erst durch die anschließende Untersuchung geklärt.','good');save()});
+function report(){return ['MEIN DENKWEG – ALUMINIUMGEWINNUNG','Ausgangsproblem: '+$('firstThought').value,'Redoxgedanke: '+(state.transfer==='gain'&&state.count==='3'?'Al³⁺ + 3 e⁻ → Al':'noch offen'),'Warum Zerkleinern nicht genügt: '+(state.separate==='reaction'?'Chemische Umwandlung erforderlich':'noch offen'),'Meine Energieüberlegung: '+(state.energy==='add'?'Energie von außen könnte helfen':'noch offen'),'Strom im Metallleiter: '+($('wireCarrier').selectedOptions[0]?.textContent||'offen'),'Spannungsquelle: '+($('sourceRole').selectedOptions[0]?.textContent||'offen'),'Meine Verbindung: '+$('energyLink').value,'Meine Vermutung: '+$('previewHypothesis').textContent].join(String.fromCharCode(10,10))}
+$('copyHypothesis').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(report());say('hypothesisFeedback','Dein Denkweg wurde kopiert.','good')}catch{const x=document.createElement('textarea');x.value=report();document.body.append(x);x.select();try{document.execCommand('copy');say('hypothesisFeedback','Dein Denkweg wurde kopiert.','good')}catch{say('hypothesisFeedback','Kopieren nicht möglich. Du kannst die Druckfunktion verwenden.')}x.remove()}});
+$('printSheet').addEventListener('click',()=>{$('pFirst').textContent=$('firstThought').value;$('pAl').textContent=state.transfer==='gain'&&state.count==='3'?'Al³⁺ + 3 e⁻ → Al':'Mein Redoxgedanke ist noch offen';$('pEnergy').textContent='Chemische Umwandlung: '+(state.separate==='reaction'?'nötig':'noch offen')+'; Energiezufuhr: '+(state.energy==='add'?'möglicherweise nötig':'noch offen');$('pCircuit').textContent='Strom: '+$('wireCarrier').selectedOptions[0]?.textContent+'; Spannungsquelle: '+$('sourceRole').selectedOptions[0]?.textContent+'; Überlegung: '+$('energyLink').value;$('pHypothesis').textContent=$('previewHypothesis').textContent;window.print()});
+$('resetBtn').addEventListener('click',()=>{if(!confirm('Alle Eingaben dieser Werkstatt löschen?'))return;state={...initial};for(const id of textFields)$(id).value='';for(const id of selectFields)$(id).value='';document.querySelectorAll('.selected').forEach(el=>el.classList.remove('selected'));document.querySelectorAll('.feedback').forEach(el=>{el.className='feedback';el.textContent=''});$('energyBridge').classList.add('hidden');$('alEq').classList.add('hidden');$('afterHypothesis').classList.add('hidden');$('hypothesisLocked').classList.remove('hidden');preview();showStep(0)});
+if(state.separate==='reaction')$('energyBridge').classList.remove('hidden');
+if(state.transfer==='gain'&&state.count==='3')$('alEq').classList.remove('hidden');
+$('afterHypothesis').classList.toggle('hidden',!state.hypothesisChecked);
+$('hypothesisLocked').classList.toggle('hidden',state.hypothesisChecked);
+$('previewHypothesis').textContent='Ich vermute, dass '+($('guess').value.trim()||'…')+', weil '+($('reason').value.trim()||'…')+'.';
+showStep(state.step);
 })();
 </script></body></html>

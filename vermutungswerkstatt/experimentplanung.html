@@ -8,23 +8,27 @@
 *{box-sizing:border-box}body{margin:0;color:var(--ink);font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg)}button,textarea{font:inherit}button{cursor:pointer}a{color:#036972}button:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #c99028;outline-offset:3px}
 header{background:var(--navy);color:white;padding:32px 0}.wrap{max-width:1000px;margin:auto;padding:0 22px}header h1{font-size:clamp(1.9rem,4vw,3rem);line-height:1.12;margin:8px 0}header p{color:#d1e0e8;max-width:760px;margin:0}.eyebrow{font-size:.76rem;font-weight:850;letter-spacing:.11em;color:#9ce3d7;text-transform:uppercase}
 main{padding:28px 22px 55px}.sheet{background:white;border:1px solid var(--line);border-radius:24px;padding:25px;box-shadow:0 14px 35px #17283c0c;margin-bottom:19px}h2{color:#12344b;line-height:1.23;margin:0 0 13px}.secondary{color:var(--muted)}.quote{background:#edf9f6;border-left:5px solid #0b8d86;border-radius:12px;padding:15px;margin:14px 0;overflow-wrap:anywhere}
-textarea{display:block;width:100%;min-height:105px;resize:vertical;background:#fbfdff;color:var(--ink);border:2px solid #cadae5;border-radius:12px;padding:12px;margin:8px 0 15px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}label{font-weight:750;display:block}button.primary,.primary{background:#087b7c;color:#fff;border:0;border-radius:11px;font-weight:800;display:inline-block;text-decoration:none;padding:12px 19px}button.secondary-button{background:#e8eff6;color:#1b3750;border:1px solid #cbd8e5;border-radius:11px;font-weight:800;padding:11px 17px}.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.hidden{display:none!important}.control{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:20px}.toggle{display:flex;padding:5px;background:#e5edf3;border-radius:13px;gap:5px}.toggle button{min-width:80px;border:0;border-radius:10px;background:none;padding:10px 14px;font-weight:750;color:#506780}.toggle button.on{color:#046e70;background:white;box-shadow:0 2px 7px #00000013}.visual{border:2px solid var(--line);border-radius:18px;overflow:hidden;background:#f5f9fd;margin-top:14px;padding:15px}.visual svg{display:block;width:100%;max-width:800px;height:auto;margin:auto}.note{color:#526982;font-size:.93rem;margin:10px 0}.warning{background:#fff7e9;border:1px solid #f0dfbb;padding:13px 16px;border-radius:14px;margin-top:17px}.reaction{background:#f0f8f9;color:#164a56;padding:12px 14px;border-radius:11px}.bottom{margin-top:24px}#hypValue:empty::after{content:'Noch keine gespeicherte Vermutung vorhanden.';color:#65768c}#indicator{font-weight:750}
+textarea{display:block;width:100%;min-height:105px;resize:vertical;background:#fbfdff;color:var(--ink);border:2px solid #cadae5;border-radius:12px;padding:12px;margin:8px 0 15px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}label{font-weight:750;display:block}button.primary,.primary{background:#087b7c;color:#fff;border:0;border-radius:11px;font-weight:800;display:inline-block;text-decoration:none;padding:12px 19px}button:disabled{opacity:.5;cursor:not-allowed}button.secondary-button{background:#e8eff6;color:#1b3750;border:1px solid #cbd8e5;border-radius:11px;font-weight:800;padding:11px 17px}.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.hidden{display:none!important}.control{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:20px}.toggle{display:flex;padding:5px;background:#e5edf3;border-radius:13px;gap:5px}.toggle button{min-width:80px;border:0;border-radius:10px;background:none;padding:10px 14px;font-weight:750;color:#506780}.toggle button.on{color:#046e70;background:white;box-shadow:0 2px 7px #00000013}.visual{border:2px solid var(--line);border-radius:18px;overflow:hidden;background:#f5f9fd;margin-top:14px;padding:15px}.visual svg{display:block;width:100%;max-width:800px;height:auto;margin:auto}.note{color:#526982;font-size:.93rem;margin:10px 0}.warning{background:#fff7e9;border:1px solid #f0dfbb;padding:13px 16px;border-radius:14px;margin-top:17px}.reaction{background:#f0f8f9;color:#164a56;padding:12px 14px;border-radius:11px}.bottom{margin-top:24px}#hypValue:empty::after{content:'Noch keine gespeicherte Vermutung vorhanden.';color:#65768c}#indicator{font-weight:750}
 @media(max-width:720px){.grid{grid-template-columns:1fr}.sheet{padding:17px}.wrap{padding:0 14px}main{padding:17px 14px 35px}}@media print{header,.actions,.toggle,.bottom,.skip-print{display:none!important}body{background:white}.sheet{box-shadow:none;border:0}.hidden{display:block!important}}
 </style>
 </head>
 <body>
 <header><div class="wrap"><div class="eyebrow">Teil B · nach der Vermutungsbildung</div><h1>Wie lässt sich deine Vermutung überprüfen?</h1><p>Hier beginnt die Experimentplanung. Die vorherige Vermutungswerkstatt enthält bewusst noch keinen fertigen Aufbau.</p></div></header>
 <main class="wrap">
-<section class="sheet"><h2>Deine gesicherte Vermutung</h2><div class="quote" id="hypValue" aria-live="polite"></div><p class="secondary">Verändere deine Vermutung nicht rückwirkend, nur weil du später neue Informationen über den Versuchsaufbau erhältst.</p><a href="./" class="secondary">← Zur Vermutungswerkstatt</a></section>
-<section class="sheet"><h2>1 · Plane zuerst selbst</h2><p>Wir untersuchen eine Zinkiodid-Lösung. Es stehen Graphitelektroden und eine Gleichspannungsquelle zur Verfügung. Überlege, wie du deine Vermutung prüfen kannst – noch ohne einen fertigen Aufbau zu betrachten.</p>
+<section class="sheet"><h2>Deine gesicherte Vermutung</h2><div class="quote" id="hypValue" aria-live="polite"></div><p class="secondary">Deine Vermutung aus der Werkstatt bleibt erhalten. Eine neue Erwartung zum Zinkiodid-Modellversuch wird auf dieser Seite getrennt davon notiert.</p><a href="./" class="secondary">← Zur Vermutungswerkstatt</a></section>
+<section class="sheet hidden" id="planningPart"><h2>1 · Vom Aluminiumproblem zum Modellversuch</h2>
+<p>Deine Vermutung bezieht sich auf Aluminium. Im Unterricht steht dafür jedoch zunächst ein <strong>anderer Modellstoff</strong> zur Verfügung: eine Zinkiodid-Lösung. Diese enthält Zink-Ionen (Zn²⁺) und Iodid-Ionen (I⁻). Mit diesem Modellversuch kannst du untersuchen, ob zugeführte elektrische Energie mit chemischen Veränderungen zusammenhängt. <strong>Er beweist nicht unmittelbar, wie Aluminium industriell hergestellt wird.</strong></p>
+<p>Für die Untersuchung stehen zwei Graphitelektroden und eine Gleichspannungsquelle zur Verfügung. Entwickle zuerst selbst eine überprüfbare Erwartung und ein Vorgehen. Einen fertigen Versuchsaufbau siehst du erst danach.</p>
+<label for="modelExpectation">Welche Veränderung würdest du bei diesem anderen Stoffsystem erwarten, wenn deine allgemeine Vermutung zutrifft?</label>
+<textarea id="modelExpectation" placeholder="Ich vermute für die Zinkiodid-Lösung, dass …"></textarea>
 <div class="grid">
 <div><label for="change">Was veränderst du gezielt?</label><textarea id="change" placeholder="Ich verändere …"></textarea></div>
 <div><label for="same">Was sollte gleich bleiben?</label><textarea id="same" placeholder="Ich halte gleich …"></textarea></div>
 <div><label for="observe">Was willst du beobachten?</label><textarea id="observe" placeholder="Ich achte auf …"></textarea></div>
 </div>
-<div class="actions"><button class="primary" id="showSetup" type="button" aria-expanded="false" aria-controls="setup">Möglichen Versuchsaufbau ansehen</button><span class="secondary">Erst nach deinen Überlegungen öffnen.</span></div>
+<div class="actions"><button class="primary" id="showSetup" type="button" aria-expanded="false" aria-controls="setup" disabled>Möglichen Versuchsaufbau ansehen</button><span class="secondary" id="planningStatus" role="status" aria-live="polite">Notiere zuerst eine Erwartung und deine drei Planungsüberlegungen.</span></div>
 </section>
-<section class="sheet hidden" id="setup"><h2>2 · Vergleiche einen möglichen Aufbau</h2><p class="secondary">Die Zeichnung zeigt den Aufbau schematisch. Sie zeigt keine Reaktionsprodukte und macht keine Vorhersage darüber, ob eine Stoffumwandlung auftritt.</p>
+<section class="sheet hidden" id="setup"><h2>2 · Vergleiche einen möglichen Aufbau</h2><p class="secondary">Die Zeichnung zeigt ein mögliches experimentelles Vorgehen. Sie zeigt keine Reaktionsprodukte. Vergleiche den Aufbau zuerst mit deinem eigenen Plan, bevor du experimentierst.</p>
 <div class="control"><strong>Gleichspannungsquelle im Schema</strong><div class="toggle" role="group" aria-label="Spannungsquelle aus oder an"><button id="off" class="on" type="button" aria-pressed="true">Aus</button><button id="on" type="button" aria-pressed="false">An</button></div></div>
 <div class="visual">
 <svg viewBox="0 0 780 382" role="img" aria-label="Becherglas mit Zinkiodid-Lösung, frei sichtbaren Zink- und Iodid-Ionen, zwei Graphitelektroden und einer Gleichspannungsquelle. Keine Reaktionsprodukte." xmlns="http://www.w3.org/2000/svg">
@@ -52,10 +56,42 @@ textarea{display:block;width:100%;min-height:105px;resize:vertical;background:#f
 <div class="bottom"><a href="./">← Zurück zur Vermutung</a></div>
 </main>
 <script>
-(()=>{'use strict';const $=id=>document.getElementById(id);const key='metallgewinnung-vermutungswerkstatt-v2';try{const s=JSON.parse(localStorage.getItem(key)||'{}');if(s.guess?.trim()&&s.reason?.trim()){$('hypValue').textContent='Ich vermute, dass '+s.guess.replace(/^ich vermute,? dass\s*/i,'')+', weil '+s.reason.replace(/^(weil|,?\s*weil)\s*/i,'')+'.';}else $('hypValue').textContent='Noch keine Vermutung gespeichert. Kehre zur Vermutungswerkstatt zurück.';}catch{$('hypValue').textContent='Deine Vermutung wurde in diesem Browser nicht gefunden.';}
-['change','same','observe'].forEach(id=>{try{$(id).value=localStorage.getItem('expplan-'+id)||''}catch{};$(id).addEventListener('input',()=>{try{localStorage.setItem('expplan-'+id,$(id).value)}catch{}})});
-$('showSetup').addEventListener('click',()=>{const s=$('setup');const open=s.classList.toggle('hidden')===false;$('showSetup').setAttribute('aria-expanded',String(open));$('showSetup').textContent=open?'Aufbau wieder ausblenden':'Möglichen Versuchsaufbau ansehen';if(open)s.scrollIntoView({behavior:'smooth',block:'start'});});
-function source(active){$('off').classList.toggle('on',!active);$('on').classList.toggle('on',active);$('off').setAttribute('aria-pressed',String(!active));$('on').setAttribute('aria-pressed',String(active));$('liveCircuit').setAttribute('opacity',active?'1':'0');$('supplyRect').setAttribute('fill',active?'#e0f9f0':'#e8eff5');$('indicator').textContent=active?'Spannungsquelle an: Über den geschlossenen Stromkreis kann elektrische Energie übertragen werden. Welche Veränderungen auftreten, muss erst untersucht werden.':'Spannungsquelle aus: Über die Spannungsquelle wird keine elektrische Energie zugeführt.';}
-$('off').addEventListener('click',()=>source(false));$('on').addEventListener('click',()=>source(true));source(false);})();
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const key='aluminium-vermutungswerkstatt-v5';
+let prior=null;
+try{prior=JSON.parse(localStorage.getItem(key)||'null')}catch{}
+if(prior&&prior.hypothesisChecked&&typeof prior.guess==='string'&&prior.guess.trim()&&typeof prior.reason==='string'&&prior.reason.trim()){
+  $('hypValue').textContent='Ich vermute, dass '+prior.guess.replace(/^ich vermute,? dass\s*/i,'').trim()+', weil '+prior.reason.replace(/^(weil|,?\s*weil)\s*/i,'').trim()+'.';
+  $('planningPart').classList.remove('hidden');
+}else{
+  $('hypValue').textContent='Hier ist noch keine bestätigte Vermutung vorhanden. Öffne zuerst die Vermutungswerkstatt, formuliere deine Vermutung und bestätige sie dort.';
+}
+const fields=['modelExpectation','change','same','observe'];
+function refresh(){
+  const missing=fields.filter(id=>$(id).value.trim().length<8);
+  $('showSetup').disabled=missing.length>0;
+  $('planningStatus').textContent=missing.length===0?'Deine Erwartung und Planungsideen sind notiert. Jetzt kannst du einen möglichen Aufbau vergleichen.':'Noch '+missing.length+' Feld'+(missing.length===1?'':'er')+' ausfüllen, bevor der mögliche Aufbau erscheint.';
+}
+fields.forEach(id=>{try{$(id).value=localStorage.getItem('expplan-v2-'+id)||''}catch{}
+  $(id).addEventListener('input',()=>{try{localStorage.setItem('expplan-v2-'+id,$(id).value)}catch{}refresh()});
+});
+refresh();
+$('showSetup').addEventListener('click',()=>{
+  if(fields.some(id=>$(id).value.trim().length<8))return;
+  const e=$('setup'),open=e.classList.toggle('hidden')===false;
+  $('showSetup').setAttribute('aria-expanded',String(open));
+  $('showSetup').textContent=open?'Aufbau wieder ausblenden':'Möglichen Versuchsaufbau ansehen';
+  if(open)e.scrollIntoView({behavior:'smooth',block:'start'});
+});
+function source(active){
+  $('off').classList.toggle('on',!active);$('on').classList.toggle('on',active);
+  $('off').setAttribute('aria-pressed',String(!active));$('on').setAttribute('aria-pressed',String(active));
+  $('liveCircuit').setAttribute('opacity',active?'1':'0');
+  $('supplyRect').setAttribute('fill',active?'#e0f9f0':'#e8eff5');
+  $('indicator').textContent=active?'Spannungsquelle an: Über den geschlossenen Stromkreis kann elektrische Energie übertragen werden. Welche Veränderungen auftreten, muss erst untersucht werden.':'Spannungsquelle aus: Über die Spannungsquelle wird keine elektrische Energie zugeführt.';
+}
+$('off').addEventListener('click',()=>source(false));$('on').addEventListener('click',()=>source(true));source(false);
+})();
 </script>
 </body></html>

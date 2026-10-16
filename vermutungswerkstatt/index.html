@@ -33,12 +33,13 @@
 
 .al-case-panel{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:15px;border:1px solid var(--line);background:#f8fbfd;border-radius:18px;padding:19px;margin:20px 0 10px}.al-state{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;padding:14px;gap:10px}.state-caption{font-weight:850;color:#35556f}.state-note{font-size:.82rem;color:var(--muted);max-width:205px}.particle-ion,.particle-metal{display:grid;place-items:center;width:110px;height:110px;border-radius:50%;font-size:2.1rem}.particle-ion{border:3px solid #38819d;background:#e6f3fa;color:#185a78}.particle-metal{border:3px solid #8797a8;background:#e8eef4;color:#47576e}.al-middle{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:7px;max-width:170px}.particle-electron{border:1px solid #367d89;border-radius:50%;font-size:1.2rem;font-weight:850;padding:3px 8px;color:#206877;background:#fff}.question-arrow{width:100%;font-size:1.6rem;color:#507486;font-weight:850;text-align:center}.simple-process{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;background:#f8fbfd;border:1px solid var(--line);border-radius:18px;padding:20px;margin:18px 0}.simple-process>div:not(.process-question){display:flex;flex-direction:column;padding:13px;background:white;border:1px solid var(--line);border-radius:12px;min-width:145px;text-align:center}.simple-process small{color:var(--muted)}.process-question{font-weight:900;font-size:2rem;color:#0b8386}.simple-process>span{color:#507486;font-size:1.6rem}.three-ideas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0}.idea-card{padding:20px 15px;border:1px solid var(--line);border-radius:17px;background:#f9fcfe;min-width:0}.idea-card strong{display:block;margin:8px 0;color:#173f55}.idea-card p{margin:0;color:var(--muted);font-size:.95rem}.idea-icon,.electron-flow{font-weight:900;min-height:48px;font-size:1.65rem;color:#0b737b}.idea-icon span{font-size:1rem;color:#667d8e}.electron-flow{white-space:nowrap;font-size:1.35rem}.after-gate{border:2px solid #a8d7d2;background:#effaf8;padding:20px;border-radius:18px;margin-top:22px}.after-gate p{margin:8px 0 18px}.after-gate a.primary{display:inline-block;text-decoration:none}.hidden{display:none!important}@media(max-width:760px){.three-ideas{grid-template-columns:1fr}.al-case-panel{grid-template-columns:1fr;gap:6px}.al-middle{max-width:none}.question-arrow{width:auto}.particle-ion,.particle-metal{width:82px;height:82px;font-size:1.5rem}.simple-process>div:not(.process-question){min-width:95px;padding:8px}.simple-process{gap:6px;padding:12px}}
 .information-release{border:2px solid #afd7d3;background:#f1faf9;border-radius:16px;padding:19px;margin-top:20px}.information-release p{margin:12px 0}.three-ideas:has(.idea-card:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:760px){.three-ideas:has(.idea-card:nth-child(2):last-child){grid-template-columns:1fr}}
+ .concept-bridge{margin:20px 0 8px;padding:16px 18px;border-left:4px solid #409e9e;border-radius:12px;background:#eef8f7}.concept-bridge strong{color:#145a61}.concept-bridge p{margin:7px 0 0;line-height:1.55}
 </style></head>
 <body>
 <header><div class="wrap top"><div class="eyebrow"><span class="brand-mark" aria-hidden="true">e⁻</span> Chemie · Vermutungswerkstatt</div>
 <h1>Wie kann aus einer Verbindung ein Metall werden?</h1>
 <p>Nutze dein Wissen über Redoxreaktionen und entwickle einen eigenen Lösungsgedanken. Die Erklärung erarbeiten wir erst nach dem Modellversuch und seiner Auswertung.</p>
-<div class="headline-meta"><span class="chip">4 Denkschritte</span><span class="chip">vor dem Experiment</span><span class="chip">keine fertige Lösung</span></div></div></header>
+<div class="headline-meta"><span class="chip">4 Denkschritte</span><span class="chip">vor dem Experiment</span><span class="chip">Fassung 16.10.2026 · V7</span></div></div></header>
 <div class="barwrap"><div class="wrap"><div class="progresslabels"><span>Dein Denkweg</span><span id="progressLabel" class="current" aria-live="polite">1 von 4 · Ausgangsproblem</span></div>
 <div class="progressbar" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Denkfortschritt"><div class="progressfill" id="progressfill"></div></div>
 <nav id="stepnav" class="stepnav" aria-label="Denkschritte"></nav></div></div>
@@ -101,17 +102,21 @@
     <p>Aus Bauxit wird in der Industrie zunächst <strong>Aluminiumoxid</strong> gewonnen. Bei der anschließenden Herstellung des Metalls wird <strong>sehr viel elektrische Energie</strong> eingesetzt.</p>
     <p class="note">Das ist eine neue Information, die du für deine Vermutung verwenden kannst. <strong>Welche Aufgabe diese Energie bei der chemischen Veränderung erfüllt, ist noch offen.</strong></p>
   </div>
-  <p class="prompt">Unterscheide zunächst zwei Begriffe, die du für deinen Lösungsgedanken benötigst.</p>
+  <div class="concept-bridge">
+    <strong>Warum sprechen wir jetzt von Strom?</strong>
+    <p>Bei der Aluminiumherstellung wird elektrische Energie über eine elektrische Anlage zugeführt. Dazu gehören auch metallische Leitungen. Was geschieht eigentlich in einem solchen Leiter, wenn elektrischer Strom fließt?</p>
+  </div>
+  <p class="prompt">Lies die beiden Begriffserklärungen. Sie helfen dir, Strom und elektrische Energie nicht miteinander zu verwechseln.</p>
   <div class="three-ideas">
     <div class="idea-card"><div class="electron-flow" aria-hidden="true">e⁻ &nbsp; e⁻ &nbsp; e⁻ <span>→</span></div>
       <strong>Elektrischer Strom</strong>
-      <p>Elektrischer Strom bezeichnet die gerichtete Bewegung elektrischer Ladungen. In einem metallischen Leiter tragen bewegliche Elektronen den Strom.</p></div>
+      <p><strong>Elektrischer Strom</strong> ist die gerichtete Bewegung elektrischer Ladungen. In einem metallischen Kabel bewegen sich viele Elektronen gerichtet entlang des Leiters.</p></div>
     <div class="idea-card"><div class="idea-icon" aria-hidden="true">⚡</div>
       <strong>Elektrische Energie</strong>
-      <p>Eine Spannungsquelle kann einem Stromkreis elektrische Energie zur Verfügung stellen. Strom und Energie sind nicht dasselbe.</p></div>
+      <p>Eine Spannungsquelle stellt eine elektrische Spannung bereit. In einem geeigneten geschlossenen Stromkreis kann dadurch <strong>elektrische Energie übertragen</strong> werden.</p></div>
   </div>
   <div class="callout warning"><strong>Eine mögliche Fehlvorstellung:</strong> „Strom ist ein einziges Elektron, das Energie ist und beim Fließen verbraucht wird.“</div>
-  <label class="form-label" for="energyLink">Welche Teile dieser Aussage sind fachlich unzutreffend? Korrigiere sie mithilfe der Informationen.</label>
+  <label class="form-label" for="energyLink">Erkläre mithilfe der beiden Begriffserklärungen, weshalb diese Aussage nicht stimmt.</label>
   <textarea class="free" id="energyLink" placeholder="An der Aussage ist falsch, dass …"></textarea>
   <details class="disclosure"><summary>Hilfe 1 · Die Begriffe unterscheiden</summary>
     <p>Ist elektrischer Strom ein einzelnes Teilchen oder eine Bewegung von Ladungen? Was wird durch eine Spannungsquelle bereitgestellt?</p></details>

@@ -259,8 +259,9 @@ $('checkAl').addEventListener('click',()=>{
 });
 $('checkCarrier').addEventListener('click',()=>{
   if(!state.carrier)return feedback('carrierFeedback','Wähle eine Aussage aus.');
-  if(state.carrier==='electrons')feedback('carrierFeedback','Richtig. Im metallischen Leiter bewegen sich Elektronen gerichtet.','good');
-  else feedback('carrierFeedback','Die Kupferatome bilden das Metall; die beweglichen Ladungsträger sind Elektronen.','incorrect');
+  if(state.carrier==='electrons')feedback('carrierFeedback','Richtig.','good');
+  else feedback('carrierFeedback','Im Metall werden die beweglichen Ladungen durch Elektronen transportiert.','incorrect');
+  $('wireReveal').open=true;
 });
 $('toggleElectronFlow').addEventListener('click',()=>{
  const paused=$('metalWire').classList.toggle('flow-paused');

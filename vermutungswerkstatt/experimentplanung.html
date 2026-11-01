@@ -13,22 +13,22 @@ textarea{display:block;width:100%;min-height:105px;resize:vertical;background:#f
 </style>
 </head>
 <body>
-<header><div class="wrap"><div class="eyebrow">Teil B · nach der Vermutungsbildung</div><h1>Wie lässt sich deine Vermutung überprüfen?</h1><p>Wie kannst du untersuchen, ob elektrische Energie eine chemische Veränderung bewirken kann?</p></div></header>
+<header><div class="wrap"><div class="eyebrow">Teil B · nach der Vermutungsbildung</div><h1>Experimentplanung mit Zinkiodid</h1><p>Welche Veränderungen könnte zugeführte elektrische Energie bewirken?</p></div></header>
 <main class="wrap">
-<section class="sheet"><h2>Deine gesicherte Vermutung</h2><div class="quote" id="hypValue" aria-live="polite"></div><p class="secondary">Formuliere für den Versuch mit Zinkiodid eine eigene Erwartung.</p><a href="./" class="secondary">← Zur Vermutungswerkstatt</a></section>
-<section class="sheet hidden" id="planningPart"><h2>1 · Vom Aluminiumproblem zum Modellversuch</h2>
-<p>Untersucht wird eine <strong>Zinkiodid-Lösung</strong> mit Zink-Ionen (Zn²⁺) und Iodid-Ionen (I⁻). Dieses Stoffsystem unterscheidet sich von dem der industriellen Aluminiumgewinnung.</p>
-<p>Für die Untersuchung stehen zwei Graphitelektroden und eine Gleichspannungsquelle zur Verfügung. Überlege, welche Veränderung du erwarten würdest und wie du sie überprüfen könntest.</p>
-<label for="modelExpectation">Welche Veränderung würdest du bei diesem anderen Stoffsystem erwarten, wenn deine allgemeine Vermutung zutrifft?</label>
+<section class="sheet"><h2>Deine Vermutung zur Aluminiumgewinnung</h2><div class="quote" id="hypValue" aria-live="polite"></div><a href="./" class="secondary">← Zur Vermutungswerkstatt</a></section>
+<section class="sheet hidden" id="planningPart"><h2>1 · Untersuchung planen</h2>
+<p>Für den Versuch stehen eine <strong>Zinkiodid-Lösung</strong> (Zn²⁺- und I⁻-Ionen), zwei Graphitelektroden und eine Gleichspannungsquelle zur Verfügung. <strong>Der Versuch untersucht nicht direkt die Gewinnung von Aluminium.</strong></p>
+<p></p>
+<label for="modelExpectation">Welche Stoffveränderung erwartest du bei der Zinkiodid-Lösung, wenn elektrische Energie zugeführt wird?</label>
 <textarea id="modelExpectation" placeholder="Ich vermute für die Zinkiodid-Lösung, dass …"></textarea>
 <div class="grid">
 <div><label for="change">Was veränderst du gezielt?</label><textarea id="change" placeholder="Ich verändere …"></textarea></div>
-<div><label for="same">Was sollte gleich bleiben?</label><textarea id="same" placeholder="Ich halte gleich …"></textarea></div>
-<div><label for="observe">Was willst du beobachten?</label><textarea id="observe" placeholder="Ich achte auf …"></textarea></div>
+<div><label for="same">Was sollte zum Vergleich gleich bleiben?</label><textarea id="same" placeholder="Ich halte gleich …"></textarea></div>
+<div><label for="observe">Welche Beobachtungen würdest du festhalten?</label><textarea id="observe" placeholder="Ich achte auf …"></textarea></div>
 </div>
-<div class="actions"><button class="primary" id="showSetup" type="button" aria-expanded="false" aria-controls="setup" disabled>Möglichen Versuchsaufbau ansehen</button><span class="secondary" id="planningStatus" role="status" aria-live="polite">Notiere zuerst eine Erwartung und deine drei Planungsüberlegungen.</span></div>
+<div class="actions"><button class="primary" id="showSetup" type="button" aria-expanded="false" aria-controls="setup" disabled>Möglichen Versuchsaufbau ansehen</button><span class="secondary" id="planningStatus" role="status" aria-live="polite">Notiere deine Erwartung und deinen Untersuchungsplan.</span></div>
 </section>
-<section class="sheet hidden" id="setup"><h2>2 · Vergleiche einen möglichen Aufbau</h2><p class="secondary">Die Zeichnung zeigt ein mögliches experimentelles Vorgehen. Sie zeigt keine Reaktionsprodukte. Vergleiche den Aufbau zuerst mit deinem eigenen Plan, bevor du experimentierst.</p>
+<section class="sheet hidden" id="setup"><h2>2 · Vergleiche einen möglichen Aufbau</h2><p class="secondary">Vergleiche den gezeichneten Aufbau mit deinem Plan. Reaktionsprodukte sind nicht dargestellt.</p>
 <div class="control"><strong>Gleichspannungsquelle im Schema</strong><div class="toggle" role="group" aria-label="Spannungsquelle aus oder an"><button id="off" class="on" type="button" aria-pressed="true">Aus</button><button id="on" type="button" aria-pressed="false">An</button></div></div>
 <div class="visual">
 <svg viewBox="0 0 780 382" role="img" aria-label="Becherglas mit Zinkiodid-Lösung, frei sichtbaren Zink- und Iodid-Ionen, zwei Graphitelektroden und einer Gleichspannungsquelle. Keine Reaktionsprodukte." xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +58,7 @@ textarea{display:block;width:100%;min-height:105px;resize:vertical;background:#f
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
-const key='aluminium-vermutungswerkstatt-v6';
+const key='aluminium-vermutungswerkstatt-v12';
 let prior=null;
 try{prior=JSON.parse(localStorage.getItem(key)||'null')}catch{}
 if(prior&&prior.hypothesisChecked&&typeof prior.guess==='string'&&prior.guess.trim()&&typeof prior.reason==='string'&&prior.reason.trim()){
@@ -69,16 +69,16 @@ if(prior&&prior.hypothesisChecked&&typeof prior.guess==='string'&&prior.guess.tr
 }
 const fields=['modelExpectation','change','same','observe'];
 function refresh(){
-  const missing=fields.filter(id=>$(id).value.trim().length<8);
+  const missing=fields.filter(id=>!$(id).value.trim());
   $('showSetup').disabled=missing.length>0;
-  $('planningStatus').textContent=missing.length===0?'Deine Erwartung und Planungsideen sind notiert. Jetzt kannst du einen möglichen Aufbau vergleichen.':'Noch '+missing.length+' Feld'+(missing.length===1?'':'er')+' ausfüllen, bevor der mögliche Aufbau erscheint.';
+  $('planningStatus').textContent=missing.length===0?'Deine Erwartung und Planungsideen sind notiert. Jetzt kannst du einen möglichen Aufbau vergleichen.':'Notiere die fehlenden Planungsüberlegungen ('+missing.length+').';
 }
 fields.forEach(id=>{try{$(id).value=localStorage.getItem('expplan-v2-'+id)||''}catch{}
   $(id).addEventListener('input',()=>{try{localStorage.setItem('expplan-v2-'+id,$(id).value)}catch{}refresh()});
 });
 refresh();
 $('showSetup').addEventListener('click',()=>{
-  if(fields.some(id=>$(id).value.trim().length<8))return;
+  if(fields.some(id=>!$(id).value.trim()))return;
   const e=$('setup'),open=e.classList.toggle('hidden')===false;
   $('showSetup').setAttribute('aria-expanded',String(open));
   $('showSetup').textContent=open?'Aufbau wieder ausblenden':'Möglichen Versuchsaufbau ansehen';

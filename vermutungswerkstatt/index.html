@@ -305,23 +305,23 @@ state.step=Math.max(0,Math.min(4,Number(state.step)||0));
 state.furthest=Math.max(0,Math.min(4,Number(state.furthest)||0));
 function save(){try{localStorage.setItem(KEY,JSON.stringify({...state,...Object.fromEntries(textIDs.map(id=>[id,$(id).value]))}))}catch{}}
 function feedback(id,message,tone='neutral'){$(id).textContent=message;$(id).className='feedback show '+tone}
-function mark(group,key,value){
+function mark(group,key,value,restoring=false){
  state[key]=value;
  document.querySelectorAll('#'+group+' [data-'+key+']').forEach(b=>{
   const chosen=b.dataset[key]===value;b.classList.toggle('selected',chosen);b.setAttribute('aria-pressed',String(chosen));
  });
- if(key==='transfer'||key==='count'){
+ if(!restoring&&(key==='transfer'||key==='count')){
   state.redoxChecked=false;state.metalChecked=false;
   $('alEq').classList.add('hidden');$('metalQuestion').classList.add('hidden');
   for(const id of ['alFeedback','metalFeedback']){$(id).textContent='';$(id).className='feedback'}
  }
- if(key==='metal'){state.metalChecked=false;$('metalFeedback').textContent='';$('metalFeedback').className='feedback'}
- if(key==='insight'){state.insightChecked=false;$('insightFeedback').textContent='';$('insightFeedback').className='feedback';$('electricalCase').classList.add('hidden')}
+ if(!restoring&&key==='metal'){state.metalChecked=false;$('metalFeedback').textContent='';$('metalFeedback').className='feedback'}
+ if(!restoring&&key==='insight'){state.insightChecked=false;$('insightFeedback').textContent='';$('insightFeedback').className='feedback';$('electricalCase').classList.add('hidden')}
  save();
 }
 for(const [group,key] of [['transferChoices','transfer'],['countChoices','count'],['metalChoices','metal'],['energyInsightChoices','insight']]){
  document.querySelectorAll('#'+group+' [data-'+key+']').forEach(b=>b.addEventListener('click',()=>mark(group,key,b.dataset[key])));
- if(state[key])mark(group,key,state[key]);
+ if(state[key])mark(group,key,state[key],true);
 }
 function go(step){
  state.step=Math.max(0,Math.min(4,step));state.furthest=Math.max(state.furthest,state.step);

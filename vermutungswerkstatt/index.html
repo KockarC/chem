@@ -140,6 +140,9 @@
 .energy-bridge p{margin:10px 0 0;line-height:1.6}
 .bridge-caution{background:white;border-left:3px solid var(--teal);padding:11px 13px;border-radius:7px}
 @media(max-width:600px){.energy-bridge{padding:15px}.bridge-symbol{flex-basis:42px;width:42px;height:42px}}
+.energy-bridge .closed-circuit{margin:14px 0 9px;max-width:100%;background:#f7fbfd}
+.energy-bridge .circuit-instruction{margin-top:14px}
+.energy-bridge .circuit-boundary{font-size:.93rem;color:#34576a;margin:8px 0 13px}
 </style></head>
 <body>
 <header><div class="wrap top"><nav class="site-breadcrumb" aria-label="Seitennavigation"><a href="../">Materialien</a><span aria-hidden="true">›</span><a href="../vermutungswerkstaetten/">Vermutungswerkstätten</a><span aria-hidden="true">›</span><span>Aluminiumgewinnung</span></nav><div class="eyebrow"><span class="brand-mark" aria-hidden="true">L</span> Vermutungswerkstatt · Aluminiumgewinnung</div>
@@ -301,6 +304,49 @@
   <div class="energy-bridge" role="region" aria-label="Informationsimpuls zu einer weiteren Energieform">
     <div class="energy-bridge-head"><span class="bridge-symbol" aria-hidden="true">⚡</span><div><span class="bridge-eyebrow">Ein weiterer Gedanke</span><h3>Elektrische Energie</h3></div></div>
     <p>Neben Wärme und Licht kennen wir auch <strong>elektrische Energie</strong>. Eine Spannungsquelle kann sie bereitstellen. In metallischen Leitern sind Elektronen bereits vorhanden. In einem geschlossenen Stromkreis können sie sich unter der Wirkung einer Spannung gerichtet bewegen.</p>
+    <p class="circuit-instruction"><strong>Untersuche das Modell:</strong> Schließe und öffne den Stromkreis. Beobachte die Elektronen im Leiter und die Lampe.</p>
+    <div class="closed-circuit" id="circuitPanel" role="group" aria-label="Modell eines schaltbaren Stromkreises mit Spannungsquelle und Lampe. Im geschlossenen Kreis bewegen sich viele Elektronen in metallischen Leitern vom Minuspol zum Pluspol.">
+    <svg id="closedCircuitSvg" viewBox="0 0 620 344" role="img" aria-label="Schaltbarer Stromkreis: Elektronen sind in den metallischen Leitern schon bei geöffnetem Schalter vorhanden. Beim Schließen bewegen sie sich zusätzlich gerichtet und die Lampe leuchtet.">
+      <defs><radialGradient id="alLampV15"><stop offset="0" stop-color="#fff2af" stop-opacity=".85"/><stop offset="1" stop-color="#fff2af" stop-opacity="0"/></radialGradient></defs>
+      <path d="M176 250H125V92H180" fill="none" stroke="#637d90" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M220 92H275M345 92H485V250H435" fill="none" stroke="#637d90" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M176 250H125V92H180" fill="none" stroke="#cee0eb" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M220 92H275M345 92H485V250H435" fill="none" stroke="#cee0eb" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="180" cy="92" r="6" fill="#7b96a5"/>
+      <circle cx="220" cy="92" r="6" fill="#7b96a5"/>
+      <path id="circuitSwitch" d="M180 92L219 61" stroke="#c08a42" stroke-width="8" stroke-linecap="round" fill="none"/>
+      <circle id="circuitLampGlow" cx="310" cy="92" r="49" fill="url(#alLampV15)" opacity="0"/>
+      <circle id="circuitLampGlass" cx="310" cy="92" r="35" fill="#e7edf1" stroke="#9caaa7" stroke-width="4"/>
+      <path d="M275 92H285l9-11 9 22 9-22 9 22 9-11h15" stroke="#c47e37" stroke-width="4" fill="none" stroke-linejoin="round"/>
+      <rect x="176" y="223" width="259" height="54" rx="12" fill="#e5f2fa" stroke="#6790a8" stroke-width="3"/>
+      <text x="305" y="245" font-size="16" font-weight="750" fill="#265970" text-anchor="middle">Spannungsquelle</text>
+      <text x="199" y="268" font-size="24" font-weight="800" fill="#246d97" text-anchor="middle">−</text>
+      <text x="414" y="268" font-size="24" font-weight="800" fill="#b85442" text-anchor="middle">+</text>
+      <text x="310" y="38" font-size="15" fill="#486774" font-weight="750" text-anchor="middle">Lampe</text>
+      <text x="310" y="324" font-size="16" fill="#3a6573" font-weight="700" text-anchor="middle">Elektronenbewegung im Leiter: von − nach +</text>
+      <g id="stationaryElectrons" aria-hidden="true">
+        <g class="stationary-electron"><circle cx="153" cy="250" r="14"/><text x="153" y="255" text-anchor="middle">e⁻</text></g>
+        <g class="stationary-electron"><circle cx="125" cy="170" r="14"/><text x="125" y="175" text-anchor="middle">e⁻</text></g>
+        <g class="stationary-electron"><circle cx="150" cy="92" r="14"/><text x="150" y="97" text-anchor="middle">e⁻</text></g>
+        <g class="stationary-electron"><circle cx="247" cy="92" r="14"/><text x="247" y="97" text-anchor="middle">e⁻</text></g>
+        <g class="stationary-electron"><circle cx="382" cy="92" r="14"/><text x="382" y="97" text-anchor="middle">e⁻</text></g>
+        <g class="stationary-electron"><circle cx="485" cy="165" r="14"/><text x="485" y="170" text-anchor="middle">e⁻</text></g>
+        <g class="stationary-electron"><circle cx="485" cy="221" r="14"/><text x="485" y="226" text-anchor="middle">e⁻</text></g>
+        <g class="stationary-electron"><circle cx="460" cy="250" r="14"/><text x="460" y="255" text-anchor="middle">e⁻</text></g>
+      </g>
+      <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-0.0s" repeatCount="indefinite"/></g>
+        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-2.4s" repeatCount="indefinite"/></g>
+        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-4.8s" repeatCount="indefinite"/></g>
+        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-7.2s" repeatCount="indefinite"/></g>
+        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-9.6s" repeatCount="indefinite"/></g>
+        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-12.0s" repeatCount="indefinite"/></g>
+        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-14.4s" repeatCount="indefinite"/></g>
+        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-16.8s" repeatCount="indefinite"/></g>
+    </svg>
+    <button type="button" class="secondary mini" id="toggleCircuitFlow" aria-pressed="false" aria-controls="closedCircuitSvg">Stromkreis schließen</button>
+    <p class="circuit-status" id="circuitStatus" aria-live="polite">Schalter offen · Lampe aus · Elektronen bereits vorhanden</p>
+  </div>
+    <p class="circuit-boundary">Das Modell zeigt Elektronenbewegung und eine leuchtende Lampe, <strong>keine chemische Reaktion</strong>.</p>
     <p class="bridge-caution"><strong>Offene Frage:</strong> Ob und wie sich damit eine chemische Veränderung ermöglichen lässt, haben wir noch nicht untersucht.</p>
   </div>
   <p class="prompt">Welche Möglichkeit würdest du zur Gewinnung von Aluminium untersuchen?</p>
@@ -331,7 +377,7 @@
 <div class="footer-controls"><button class="secondary" id="backBtn" type="button">← Zurück</button><div><button class="secondary mini" id="resetBtn" type="button">Neu beginnen</button> <button class="primary" id="nextBtn" type="button" disabled aria-live="polite">Weiter →</button></div></div>
 <p id="stepCompletionHint" class="step-completion-hint" role="status" aria-live="polite"></p>
 <p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p>
-<p class="version-note">Stand: 04.11.2026 · V36</p></main>
+<p class="version-note">Stand: 04.11.2026 · V37</p></main>
 <div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Aluminiumgewinnung</h1>
 <p>Name: __________________________ Datum: __________</p>
 <h2>Reduktionsgedanke</h2><div class="print-answer" id="pAl"></div>
@@ -468,6 +514,23 @@ $('nextBtn').addEventListener('click',()=>{
  }
  go(step+1);
 });
+// Das Stromkreismodell dient nur der Veranschaulichung von Elektronenbewegung.
+function setCircuit(closed,remember=true){
+ state.circuitClosed=closed;
+ if(closed&&remember)state.circuitExplored=true;
+ $('circuitPanel').classList.toggle('circuit-on',closed);
+ $('circuitSwitch').setAttribute('d',closed?'M180 92L220 92':'M180 92L219 61');
+ $('circuitLampGlow').setAttribute('opacity',closed?'1':'0');
+ $('circuitLampGlass').setAttribute('fill',closed?'#ffe68a':'#e7edf1');
+ const svg=$('closedCircuitSvg');
+ if(closed&&typeof svg.unpauseAnimations==='function')svg.unpauseAnimations();
+ if(!closed&&typeof svg.pauseAnimations==='function')svg.pauseAnimations();
+ $('toggleCircuitFlow').setAttribute('aria-pressed',String(closed));
+ $('toggleCircuitFlow').textContent=closed?'Stromkreis öffnen':'Stromkreis schließen';
+ $('circuitStatus').textContent=closed?'Schalter geschlossen · Lampe leuchtet · Elektronen bewegen sich gerichtet':'Schalter offen · Lampe aus · Elektronen bereits vorhanden';
+ save();
+}
+$('toggleCircuitFlow').addEventListener('click',()=>setCircuit(!state.circuitClosed));
 function preview(){
  const guess=$('guess').value.trim(),reason=$('reason').value.trim();
  $('previewHypothesis').textContent='Ich vermute, dass '+(guess||'…')+', weil '+(reason||'…')+'.';
@@ -503,10 +566,12 @@ $('resetBtn').addEventListener('click',()=>{
  document.querySelectorAll('.selected').forEach(b=>{b.classList.remove('selected');b.setAttribute('aria-pressed','false')});
  lumiDefaults.forEach((message,i)=>lumiSay(i,message));
  $('alEq').classList.add('hidden');
+ setCircuit(false,false);
  preview();go(0);
 });
 $('alEq').classList.toggle('hidden',!state.redoxChecked);
 $('previewHypothesis').textContent='Ich vermute, dass '+($('guess').value.trim()||'…')+', weil '+($('reason').value.trim()||'…')+'.';
+setCircuit(state.circuitClosed,false);
 go(state.step);
 })();
 </script></body></html>

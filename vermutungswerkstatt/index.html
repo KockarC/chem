@@ -377,7 +377,7 @@
 <div class="footer-controls"><button class="secondary" id="backBtn" type="button">← Zurück</button><div><button class="secondary mini" id="resetBtn" type="button">Neu beginnen</button> <button class="primary" id="nextBtn" type="button" disabled aria-live="polite">Weiter →</button></div></div>
 <p id="stepCompletionHint" class="step-completion-hint" role="status" aria-live="polite"></p>
 <p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p>
-<p class="version-note">Stand: 04.11.2026 · V31</p></main>
+<p class="version-note">Stand: 04.11.2026 · V32</p></main>
 <div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Aluminiumgewinnung</h1>
 <p>Name: __________________________ Datum: __________</p>
 <h2>Reduktionsgedanke</h2><div class="print-answer" id="pAl"></div>
@@ -414,7 +414,7 @@ function save(){
  }catch{return false}
 }
 const lumiDefaults=["Schau dir den Unterschied zwischen Bauxit und Alufolie an. Welche Beschreibung passt zu festem Aluminiumoxid?","Jetzt untersuchen wir die Elektronenaufnahme. Was muss mit Al³⁺ passieren, und welches andere Metall könnte die Elektronen abgeben?","Hier stoßen wir an eine Grenze: Lies nach, warum wir nicht immer weitere, noch unedlere Metalle als Reduktionsmittel einsetzen können.","Wärme, Licht und elektrische Energie: Welche Veränderungen beobachtest du, und wann entstehen dabei neue Stoffe?","Nun bist du dran: Wie könnte man die benötigte Elektronenaufnahme bei Aluminium ermöglichen? Formuliere eine begründete Vermutung."];
-const feedbackSteps={compoundFeedback:0,compoundSuccess:1,alFeedback:1,redoxSuccess:2,insightFeedback:3,energySuccess:4,hypothesisFeedback:4};
+const feedbackSteps={compoundFeedback:0,alFeedback:1,insightFeedback:3,hypothesisFeedback:4};
 function lumiSay(step,message,tone='neutral'){
  const bubble=$('lumiSpeech'+step);
  bubble.textContent=message;
@@ -423,18 +423,52 @@ function lumiSay(step,message,tone='neutral'){
 function feedback(id,message,tone='neutral'){lumiSay(feedbackSteps[id],message,tone)}
 function clearFeedback(id){lumiSay(feedbackSteps[id],lumiDefaults[feedbackSteps[id]])}
 function complete(step){
- if(step===0)return Boolean(state.compound);
- if(step===1)return Boolean(state.transfer&&state.count&&state.metal);
+ if(step===0)return state.compound==='ions';
+ if(step===1)return state.transfer==='gain'&&state.count==='3'&&state.metal==='lessnoble';
  if(step===2)return true;
- if(step===3)return Boolean(state.insight&&state.circuitExplored);
+ if(step===3)return state.insight==='change'&&state.circuitExplored;
  if(step===4)return $('guess').value.trim().length>=8&&$('reason').value.trim().length>=8;
  return false;
 }
+function showSelectionFeedback(step){
+ if(step===0){
+  if(!state.compound)lumiSay(0,lumiDefaults[0]);
+  else if(state.compound==='ions')lumiSay(0,'Richtig: Festes Aluminiumoxid lässt sich vereinfacht als Ionengitter aus Al³⁺- und O²⁻-Ionen beschreiben. Du kannst weitergehen.','good');
+  else lumiSay(0,'Prüfe noch einmal: Aluminiumoxid ist eine Verbindung aus einem Metall und einem Nichtmetall. Wie sind die Teilchen in solchen Verbindungen angeordnet?','incorrect');
+ }
+ if(step===1){
+  const chosen=[state.transfer,state.count,state.metal].filter(Boolean).length;
+  const redox=state.transfer==='gain'&&state.count==='3';
+  const metal=state.metal==='lessnoble';
+  state.redoxChecked=chosen===3&&redox;
+  state.metalChecked=chosen===3&&metal;
+  $('alEq').classList.toggle('hidden',!(chosen===3&&redox&&metal));
+  if(chosen===0)lumiSay(1,lumiDefaults[1]);
+  else if(chosen<3)lumiSay(1,'Du hast '+chosen+' von 3 Antworten gewählt. Vervollständige die Kombination, dann prüfen wir sie gemeinsam.');
+  else if(!redox)lumiSay(1,'Noch nicht ganz: Vergleiche die Ladung von Al³⁺ mit der eines neutralen Aluminium-Atoms. Prüfe die Richtung der Elektronenübertragung und die Anzahl.','incorrect');
+  else if(!metal)lumiSay(1,'Die Elektronenaufnahme stimmt schon. Überlege nun, welches Metall in der Redoxreihe leichter Elektronen abgeben kann.','incorrect');
+  else lumiSay(1,'Richtig: Al³⁺ muss drei Elektronen aufnehmen. Als Elektronengeber käme nach diesem Prinzip ein noch unedleres Metall infrage.','good');
+ }
+ if(step===3){
+  state.insightChecked=state.insight==='change';
+  if(!state.insight){
+   if(state.circuitExplored)lumiSay(3,'Du hast den Stromkreis untersucht. Vergleiche jetzt die Beispiele und wähle eine Schlussfolgerung.');
+   else lumiSay(3,lumiDefaults[3]);
+  }else if(state.insight==='change'){
+   if(state.circuitExplored)lumiSay(3,'Richtig: Elektrische Energie kann unter geeigneten Bedingungen auch chemische Veränderungen ermöglichen. Du kannst weitergehen.','good');
+   else lumiSay(3,'Das passt zu den Beispielen. Schließe noch den Stromkreis und beobachte, was sich verändert.','good');
+  }else if(state.insight==='alwaysMetal'){
+   lumiSay(3,'Überlege noch einmal: Eine Lampe leuchtet im Stromkreis, aber dabei entsteht kein neuer Stoff. Wann ist tatsächlich eine chemische Veränderung zu beobachten?','incorrect');
+  }else{
+   lumiSay(3,'Denke an den Leiter: Seine Elektronen sind schon vorhanden, bevor der Stromkreis geschlossen wird. Welche Rolle hat die Spannungsquelle wirklich?','incorrect');
+  }
+ }
+}
 function updateNext(){
- const step=state.step,done=complete(step),b=$('nextBtn');
- b.disabled=!done;
- b.textContent=[0,1,3].includes(step)?'Prüfen & weiter →':step===4?'Vermutung festhalten & weiter →':'Weiter →';
- $('stepCompletionHint').textContent=done?'':step===0?'Wähle die passende Beschreibung.':step===1?'Beantworte alle drei Fragen.':step===3?'Prüfe den Stromkreis und wähle eine Schlussfolgerung.':step===4?'Ergänze deine Vermutung und Begründung.':'';
+ const step=state.step,ready=complete(step),b=$('nextBtn');
+ b.disabled=!ready;
+ b.textContent=step===4?'Vermutung festhalten & weiter →':'Weiter →';
+ $('stepCompletionHint').textContent=ready?'':step===0?(state.compound?'Überarbeite die Auswahl, um fortzufahren.':'Wähle die passende Beschreibung.'):step===1?(!state.transfer||!state.count||!state.metal?'Beantworte alle drei Fragen.':'Überarbeite die Kombination, um fortzufahren.'):step===3?(!state.insight?'Untersuche den Stromkreis und wähle eine Schlussfolgerung.':!state.circuitExplored?'Schließe noch den Stromkreis.':'Überarbeite die Auswahl, um fortzufahren.'):step===4?'Formuliere Vermutung und Begründung vollständig.':'';
 }
 function mark(group,key,value,restoring=false){
  state[key]=value;
@@ -445,12 +479,8 @@ function mark(group,key,value,restoring=false){
  });
  if(!restoring){
   state.furthest=Math.min(state.furthest,state.step);
-  if(key==='compound'){clearFeedback('compoundFeedback');clearFeedback('compoundSuccess');}
-  if(['transfer','count','metal'].includes(key)){
-   state.redoxChecked=false;state.metalChecked=false;
-   $('alEq').classList.add('hidden');clearFeedback('alFeedback');
-  }
-  if(key==='insight'){state.insightChecked=false;clearFeedback('insightFeedback')}
+  const step=key==='compound'?0:key==='insight'?3:1;
+  showSelectionFeedback(step);
  }
  save();updateNext();
 }
@@ -472,49 +502,19 @@ function go(step){
  $('progressfill').style.width=(state.step+1)*20+'%';
  document.querySelector('.progressbar').setAttribute('aria-valuenow',state.step+1);
  $('backBtn').disabled=state.step===0;
- if(state.step===1&&state.compound==='ions'&&state.furthest>=1)
-  feedback('compoundSuccess','Richtig: Aluminiumoxid wird hier als Ionenverband aus Al³⁺- und O²⁻-Ionen betrachtet.','good');
- if(state.step===2&&state.redoxChecked&&state.metalChecked)
-  feedback('redoxSuccess','Richtig: Zur Bildung von Aluminium ist eine Elektronenaufnahme erforderlich. Ein anderes Reduktionsmetall müsste noch unedler sein.','good');
- if(state.step===4&&state.insightChecked)
-  feedback('energySuccess','Richtig: Unter geeigneten Bedingungen kann zugeführte elektrische Energie auch chemische Veränderungen ermöglichen.','good');
+ if([0,1,3].includes(state.step))showSelectionFeedback(state.step);
  updateNext();save();window.scrollTo({top:0,behavior:'smooth'});
 }
 $('backBtn').addEventListener('click',()=>go(state.step-1));
 $('nextBtn').addEventListener('click',()=>{
  const step=state.step;
  if(!complete(step))return;
- if(step===0){
-  if(state.compound!=='ions'){
-   feedback('compoundFeedback','Prüfe deine Auswahl: Aluminiumoxid ist eine Verbindung aus einem Metall und einem Nichtmetall. Erinnere dich an den Aufbau solcher Verbindungen.','incorrect');
-   $('lumiRow0').scrollIntoView({behavior:'smooth',block:'center'});save();return;
-  }
-  clearFeedback('compoundFeedback');
- }
- if(step===1){
-  const redox=state.transfer==='gain'&&state.count==='3',metal=state.metal==='lessnoble';
-  state.redoxChecked=redox;state.metalChecked=metal;
-  $('alEq').classList.toggle('hidden',!redox);
-  if(!redox){
-   feedback('alFeedback','Vergleiche die Ladung von Al³⁺ und Al und prüfe die benötigte Elektronenzahl.','incorrect');
-   $('lumiRow1').scrollIntoView({behavior:'smooth',block:'center'});save();return;
-  }
-  if(!metal){
-   feedback('alFeedback','Die Elektronenbilanz stimmt. Welches Metall kann leichter Elektronen abgeben?','incorrect');
-   $('lumiRow1').scrollIntoView({behavior:'smooth',block:'center'});save();return;
-  }
-  feedback('alFeedback','Die Elektronenbilanz stimmt. Ein anderes Reduktionsmetall müsste noch unedler als Aluminium sein.','good');
- }
- if(step===3){
-  state.insightChecked=state.insight==='change';
-  if(!state.insightChecked){
-   feedback('insightFeedback','Überlege, welche Aussage durch die chemischen Beispiele und den Vergleich von Lampe und Akku gestützt wird.','incorrect');
-   $('lumiRow3').scrollIntoView({behavior:'smooth',block:'center'});save();return;
-  }
- }
  if(step===4){
   state.hypothesisChecked=true;
-  if(!save()){feedback('hypothesisFeedback','Die Vermutung konnte nicht im Browser gespeichert werden. Kopiere oder drucke sie zunächst.','incorrect');return}
+  if(!save()){
+   lumiSay(4,'Die Vermutung konnte nicht im Browser gespeichert werden. Kopiere oder drucke sie zunächst.','incorrect');
+   return;
+  }
   window.location.assign('./experimentplanung.html');
   return;
  }
@@ -534,12 +534,15 @@ function setCircuit(closed,remember=true){
 }
 $('toggleCircuitFlow').addEventListener('click',()=>{
  setCircuit(!state.circuitClosed);
- lumiSay(3,state.circuitClosed?'Im geschlossenen Stromkreis bewegen sich die Elektronen gerichtet, und die Lampe leuchtet. Entsteht dabei schon ein neuer Stoff?':'Der Schalter ist offen. Die Elektronen sind im metallischen Leiter trotzdem vorhanden.');
+ if(state.insight)showSelectionFeedback(3);
+ else lumiSay(3,state.circuitClosed?'Die Lampe leuchtet, und Elektronen bewegen sich gerichtet. Entsteht bei der Lampe auch ein neuer Stoff?':'Die Elektronen sind auch bei offenem Schalter im Leiter vorhanden. Welche Veränderungen zeigen die Beispiele?');
 });
 function preview(){
  const guess=$('guess').value.trim(),reason=$('reason').value.trim();
  $('previewHypothesis').textContent='Ich vermute, dass '+(guess||'…')+', weil '+(reason||'…')+'.';
- state.hypothesisChecked=false;clearFeedback('hypothesisFeedback');save();updateNext();
+ state.hypothesisChecked=false;
+ lumiSay(4,a.length>=8&&b.length>=8?'Deine Vermutung und deine Begründung sind festgehalten. Ob sie sich bewähren, lässt sich erst durch eine Untersuchung prüfen.':lumiDefaults[4]);
+ save();updateNext();
 }
 textIDs.forEach(id=>$(id).addEventListener('input',()=>{
  if(id==='guess'||id==='reason')preview();

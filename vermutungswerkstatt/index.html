@@ -361,7 +361,7 @@
   </div>
   <div class="actions">
     
-    <button class="secondary" id="copyHypothesis" type="button">Text kopieren</button>
+    <button class="secondary" id="copyHypothesis" type="button">Vermutung kopieren</button>
     <button class="secondary" id="printSheet" type="button">Denkweg ausdrucken</button>
   </div>
 
@@ -376,7 +376,7 @@
 <div class="footer-controls"><button class="secondary" id="backBtn" type="button">← Zurück</button><div><button class="secondary mini" id="resetBtn" type="button">Neu beginnen</button> <button class="primary" id="nextBtn" type="button" disabled aria-live="polite">Weiter →</button></div></div>
 <p id="stepCompletionHint" class="step-completion-hint" role="status" aria-live="polite"></p>
 <p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p>
-<p class="version-note">Stand: 04.11.2026 · V38</p></main>
+<p class="version-note">Stand: 04.11.2026 · V39</p></main>
 <div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Aluminiumgewinnung</h1>
 <p>Name: __________________________ Datum: __________</p>
 <h2>Reduktionsgedanke</h2><div class="print-answer" id="pAl"></div>
@@ -534,22 +534,17 @@ function preview(){
  const guess=$('guess').value.trim(),reason=$('reason').value.trim();
  $('previewHypothesis').textContent='Ich vermute, dass '+(guess||'…')+', weil '+(reason||'…')+'.';
  state.hypothesisChecked=false;
- lumiSay(4,a.length>=8&&b.length>=8?'Deine Vermutung und deine Begründung sind festgehalten. Ob sie sich bewähren, lässt sich erst durch eine Untersuchung prüfen.':lumiDefaults[4]);
+ lumiSay(4,guess.length>=8&&reason.length>=8?'Deine Vermutung und deine Begründung sind festgehalten. Ob sie sich bewähren, lässt sich erst durch eine Untersuchung prüfen.':lumiDefaults[4]);
  save();updateNext();
 }
 textIDs.forEach(id=>$(id).addEventListener('input',()=>{
  if(id==='guess'||id==='reason')preview();
  else{state.furthest=Math.min(state.furthest,state.step);save();updateNext()}
 }));
-function report(){return ['MEIN DENKWEG – ALUMINIUMGEWINNUNG',
-'Reduktion: '+(state.redoxChecked?'Al³⁺ + 3 e⁻ → Al':'noch offen'),
- 'Weiteres Reduktionsmetall: '+(state.metalChecked?'müsste unedler als Aluminium sein':'noch offen'),
- 'Grenze des Metallwegs: Auch noch unedlere Metalle müssten zuerst aus Verbindungen gewonnen werden; die Reihe der Elemente ist begrenzt.',
- 'Meine Vermutung: '+$('previewHypothesis').textContent].join('\n\n')}
 $('copyHypothesis').addEventListener('click',async()=>{
- try{await navigator.clipboard.writeText(report());feedback('hypothesisFeedback','Denkweg kopiert.','good')}
- catch{const t=document.createElement('textarea');t.value=report();document.body.append(t);t.select();
- try{document.execCommand('copy');feedback('hypothesisFeedback','Denkweg kopiert.','good')}
+ try{await navigator.clipboard.writeText($('previewHypothesis').textContent.trim());feedback('hypothesisFeedback','Vermutung kopiert.','good')}
+ catch{const t=document.createElement('textarea');t.value=$('previewHypothesis').textContent.trim();document.body.append(t);t.select();
+ try{document.execCommand('copy');feedback('hypothesisFeedback','Vermutung kopiert.','good')}
  catch{feedback('hypothesisFeedback','Kopieren nicht möglich. Nutze die Druckfunktion.','incorrect')}
  t.remove()}
 });

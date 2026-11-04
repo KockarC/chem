@@ -131,9 +131,18 @@
 .bubble.good{border-color:#9ed6b8;background:#f0fbf4;color:#0d5531}
 .bubble.try{border-color:#f2c98a;background:#fffaf0;color:#604000}
 @media(max-width:720px){.lumi-row{grid-template-columns:58px minmax(0,1fr);gap:10px;margin:18px 0 0;padding-top:15px}.lumi-face{width:54px;height:54px;font-size:30px}.bubble{padding:12px;font-size:.95rem;min-height:60px}}
+
+.energy-bridge{background:#eef8fb;border:1px solid #bad7e1;border-radius:17px;padding:20px 22px;margin:22px 0}
+.energy-bridge-head{display:flex;align-items:center;gap:13px;margin-bottom:12px}
+.bridge-symbol{display:grid;place-items:center;flex:0 0 52px;width:52px;height:52px;background:white;border:1px solid #d0e3e8;border-radius:13px;font-size:26px}
+.bridge-eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.11em;font-weight:800;color:#37758a}
+.energy-bridge h3{margin:2px 0 0;font-size:1.17rem;color:#124d69}
+.energy-bridge p{margin:10px 0 0;line-height:1.6}
+.bridge-caution{background:white;border-left:3px solid var(--teal);padding:11px 13px;border-radius:7px}
+@media(max-width:600px){.energy-bridge{padding:15px}.bridge-symbol{flex-basis:42px;width:42px;height:42px}}
 </style></head>
 <body>
-<header><div class="wrap top"><nav class="site-breadcrumb" aria-label="Seitennavigation"><a href="../">Materialien</a><span aria-hidden="true">›</span><a href="../vermutungswerkstaetten/">Vermutungswerkstätten</a><span aria-hidden="true">›</span><span>Aluminiumgewinnung</span></nav><div class="eyebrow"><span class="brand-mark" aria-hidden="true">e⁻</span> Vermutungswerkstatt · Aluminiumgewinnung</div>
+<header><div class="wrap top"><nav class="site-breadcrumb" aria-label="Seitennavigation"><a href="../">Materialien</a><span aria-hidden="true">›</span><a href="../vermutungswerkstaetten/">Vermutungswerkstätten</a><span aria-hidden="true">›</span><span>Aluminiumgewinnung</span></nav><div class="eyebrow"><span class="brand-mark" aria-hidden="true">L</span> Vermutungswerkstatt · Aluminiumgewinnung</div>
 <h1>Wie gewinnen wir das unedle Metall für Alufolie?</h1>
 
 </div></header>
@@ -171,9 +180,6 @@
     <button class="option" type="button" data-compound="ions"><span class="radio"></span>Ein salzartig aufgebautes Ionengitter mit Al³⁺- und O²⁻-Ionen</button>
   </div>
   </div>
-  <details class="disclosure"><summary>Hilfe · Stoffaufbau erkennen</summary>
-    <p>Aluminium gehört zu den Metallen, Sauerstoff zu den Nichtmetallen. Erinnere dich an den Aufbau typischer Metall-Nichtmetall-Verbindungen.</p>
-  </details>
   <div class="lumi-row" id="lumiRow0">
     <div class="lumi-identity">
       <div class="lumi-face" aria-hidden="true">🧑‍🔬</div>
@@ -217,10 +223,6 @@
   </div>
   <div id="alEq" class="equation hidden">Al³⁺ + 3 e⁻ <span class="part">→</span> Al</div>
   </div>
-  <details class="disclosure"><summary>Hilfe · Ladungen und Reduktionsmittel</summary>
-    <p>Vergleiche die Ladung von Al³⁺ mit der von Al. Nutze für die letzte Frage dein Wissen über die Redoxreihe: Welche Metalle geben Elektronen besonders leicht ab?</p>
-  </details>
-
   <div class="lumi-row" id="lumiRow1">
     <div class="lumi-identity">
       <div class="lumi-face" aria-hidden="true">🧑‍🔬</div>
@@ -254,7 +256,7 @@
   <span class="section-kicker">04 · Energie und Stoffumwandlungen</span>
   <h2>Welche Rolle kann Energie bei chemischen Veränderungen spielen?</h2>
   
-  <p class="intro">Nicht jede Stoffveränderung verläuft von selbst. Betrachte zwei Beispiele, bei denen von außen Energie zugeführt wird.</p>
+  <p class="intro">Betrachte zwei chemische Veränderungen, die unter bestimmten Bedingungen stattfinden. Vergleiche, was jeweils auf die Stoffe einwirkt.</p>
   <div class="energy-example-grid">
     <div class="energy-example">
       <div class="energy-example-heading"><span class="energy-emoji" aria-hidden="true">♨</span><strong>Beispiel 1 · Wärme</strong></div>
@@ -273,65 +275,14 @@
       <p>Weißes Silberchlorid dunkelt bei Lichteinwirkung nach. Dabei entstehen sehr kleine Teilchen aus metallischem Silber.</p>
     </div>
   </div>
-  <div id="electricalCase" class="energy-electric">
-    <div class="energy-example-heading"><span class="energy-emoji" aria-hidden="true">⚡</span><strong>Eine weitere Energieform: Elektrische Energie</strong></div>
-    <p>Eine Spannungsquelle kann elektrische Energie bereitstellen. Öffne und schließe den Stromkreis: Was verändert sich bei den Elektronen im Leiter und bei der Lampe?</p>
-      <div class="closed-circuit" id="circuitPanel" role="group" aria-label="Modell eines schaltbaren Stromkreises mit Spannungsquelle und Lampe. Im geschlossenen Kreis bewegen sich viele Elektronen in metallischen Leitern vom Minuspol zum Pluspol.">
-    <svg id="closedCircuitSvg" viewBox="0 0 620 344" role="img" aria-label="Schaltbarer Stromkreis: Elektronen sind in den metallischen Leitern schon bei geöffnetem Schalter vorhanden. Beim Schließen bewegen sie sich zusätzlich gerichtet und die Lampe leuchtet.">
-      <defs><radialGradient id="alLampV15"><stop offset="0" stop-color="#fff2af" stop-opacity=".85"/><stop offset="1" stop-color="#fff2af" stop-opacity="0"/></radialGradient></defs>
-      <path d="M176 250H125V92H180" fill="none" stroke="#637d90" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
-      <path d="M220 92H275M345 92H485V250H435" fill="none" stroke="#637d90" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
-      <path d="M176 250H125V92H180" fill="none" stroke="#cee0eb" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-      <path d="M220 92H275M345 92H485V250H435" fill="none" stroke="#cee0eb" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-      <circle cx="180" cy="92" r="6" fill="#7b96a5"/>
-      <circle cx="220" cy="92" r="6" fill="#7b96a5"/>
-      <path id="circuitSwitch" d="M180 92L219 61" stroke="#c08a42" stroke-width="8" stroke-linecap="round" fill="none"/>
-      <circle id="circuitLampGlow" cx="310" cy="92" r="49" fill="url(#alLampV15)" opacity="0"/>
-      <circle id="circuitLampGlass" cx="310" cy="92" r="35" fill="#e7edf1" stroke="#9caaa7" stroke-width="4"/>
-      <path d="M275 92H285l9-11 9 22 9-22 9 22 9-11h15" stroke="#c47e37" stroke-width="4" fill="none" stroke-linejoin="round"/>
-      <rect x="176" y="223" width="259" height="54" rx="12" fill="#e5f2fa" stroke="#6790a8" stroke-width="3"/>
-      <text x="305" y="245" font-size="16" font-weight="750" fill="#265970" text-anchor="middle">Spannungsquelle</text>
-      <text x="199" y="268" font-size="24" font-weight="800" fill="#246d97" text-anchor="middle">−</text>
-      <text x="414" y="268" font-size="24" font-weight="800" fill="#b85442" text-anchor="middle">+</text>
-      <text x="310" y="38" font-size="15" fill="#486774" font-weight="750" text-anchor="middle">Lampe</text>
-      <text x="310" y="324" font-size="16" fill="#3a6573" font-weight="700" text-anchor="middle">Elektronenbewegung im Leiter: von − nach +</text>
-      <g id="stationaryElectrons" aria-hidden="true">
-        <g class="stationary-electron"><circle cx="153" cy="250" r="14"/><text x="153" y="255" text-anchor="middle">e⁻</text></g>
-        <g class="stationary-electron"><circle cx="125" cy="170" r="14"/><text x="125" y="175" text-anchor="middle">e⁻</text></g>
-        <g class="stationary-electron"><circle cx="150" cy="92" r="14"/><text x="150" y="97" text-anchor="middle">e⁻</text></g>
-        <g class="stationary-electron"><circle cx="247" cy="92" r="14"/><text x="247" y="97" text-anchor="middle">e⁻</text></g>
-        <g class="stationary-electron"><circle cx="382" cy="92" r="14"/><text x="382" y="97" text-anchor="middle">e⁻</text></g>
-        <g class="stationary-electron"><circle cx="485" cy="165" r="14"/><text x="485" y="170" text-anchor="middle">e⁻</text></g>
-        <g class="stationary-electron"><circle cx="485" cy="221" r="14"/><text x="485" y="226" text-anchor="middle">e⁻</text></g>
-        <g class="stationary-electron"><circle cx="460" cy="250" r="14"/><text x="460" y="255" text-anchor="middle">e⁻</text></g>
-      </g>
-      <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-0.0s" repeatCount="indefinite"/></g>
-        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-2.4s" repeatCount="indefinite"/></g>
-        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-4.8s" repeatCount="indefinite"/></g>
-        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-7.2s" repeatCount="indefinite"/></g>
-        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-9.6s" repeatCount="indefinite"/></g>
-        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-12.0s" repeatCount="indefinite"/></g>
-        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-14.4s" repeatCount="indefinite"/></g>
-        <g class="circuit-electron"><circle r="14" fill="#b9f8ea" stroke="#087a73" stroke-width="2.5"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="800" fill="#07524e">e⁻</text><animateMotion path="M176 250H125V92H485V250H435" dur="19.2s" begin="-16.8s" repeatCount="indefinite"/></g>
-    </svg>
-    <button type="button" class="secondary mini" id="toggleCircuitFlow" aria-pressed="false" aria-controls="closedCircuitSvg">Stromkreis schließen</button>
-    <p class="circuit-status" id="circuitStatus" aria-live="polite">Schalter offen · Lampe aus · Elektronen bereits vorhanden</p>
-  </div>
-
-    <div class="simple-fact">Im Metallleiter sind Elektronen bereits vorhanden. Im geschlossenen Stromkreis bewegen sie sich zusätzlich <strong>gerichtet</strong>. Die Spannungsquelle liefert <strong>elektrische Energie</strong>, erzeugt aber keine Elektronen. Bei der Lampe wird Energie in Licht und Wärme umgewandelt – dabei entsteht <strong>kein neuer Stoff</strong>.</div>
-  </div>
-  <div class="electrochemical-hint">
-    <div class="energy-example-heading"><span class="energy-emoji" aria-hidden="true">↻</span><strong>Was ist beim Aufladen eines Akkus anders?</strong></div>
-    <p>Beim Aufladen eines wiederaufladbaren Akkus wird elektrische Energie zugeführt. Im Inneren laufen dadurch <strong>chemische Reaktionen</strong> ab. Anders als bei der Lampe verändern sich dabei Stoffe.</p>
-  </div>
-  <div class="task-panel" role="group" aria-label="Aufgabe: Energie und chemische Veränderungen verknüpfen">
+  <div class="task-panel" role="group" aria-label="Gemeinsamkeit der Energiebeispiele erkennen">
     <div class="task-kicker">Deine Aufgabe</div>
-  <p class="prompt">Welche Schlussfolgerung lässt sich aus diesen Beispielen ziehen?</p>
-  <div id="energyInsightChoices" class="choicegrid" role="group" aria-label="Elektrische Energie und chemische Reaktionen">
-    <button class="option" type="button" data-insight="change"><span class="radio"></span>Auch elektrische Energie kann unter geeigneten Bedingungen chemische Veränderungen ermöglichen.</button>
-    <button class="option" type="button" data-insight="alwaysMetal"><span class="radio"></span>Immer wenn elektrischer Strom fließt, entsteht ein neuer Stoff.</button>
-    <button class="option" type="button" data-insight="energyElectron"><span class="radio"></span>Eine Spannungsquelle erzeugt die Elektronen, die für chemische Reaktionen benötigt werden.</button>
-  </div>
+    <p class="prompt">Welche Schlussfolgerung wird durch beide Beispiele gestützt?</p>
+    <div id="energyInsightChoices" class="choicegrid" role="group" aria-label="Bedeutung der Energiezufuhr für chemische Reaktionen">
+      <button class="option" type="button" data-insight="change"><span class="radio"></span>Die Zufuhr von Energie kann bestimmte chemische Reaktionen ermöglichen.</button>
+      <button class="option" type="button" data-insight="always"><span class="radio"></span>Jede chemische Reaktion benötigt ständig Energie von außen.</button>
+      <button class="option" type="button" data-insight="onlythese"><span class="radio"></span>Nur Wärme und Licht können chemische Reaktionen ermöglichen.</button>
+    </div>
   </div>
   <div class="lumi-row" id="lumiRow3">
     <div class="lumi-identity">
@@ -346,7 +297,13 @@
   <span class="section-kicker">05 · Eigene Vermutung</span>
   <h2>Welche Möglichkeit könnte bei der Aluminiumgewinnung helfen?</h2>
   
-  <p class="intro">Um aus Aluminiumverbindungen das Metall zu gewinnen, ist eine Elektronenaufnahme erforderlich. Du hast verschiedene Möglichkeiten kennengelernt, mit zugeführter Energie Stoffveränderungen zu ermöglichen. <strong>Welchen Weg würdest du für Aluminium untersuchen?</strong></p>
+  <p class="intro">Um Aluminium aus seiner Verbindung zu gewinnen, müssen Aluminium-Ionen Elektronen aufnehmen. Die Beispiele aus dem vorherigen Abschnitt zeigen, dass Energiezufuhr bestimmte chemische Reaktionen ermöglichen kann.</p>
+  <div class="energy-bridge" role="region" aria-label="Informationsimpuls zu einer weiteren Energieform">
+    <div class="energy-bridge-head"><span class="bridge-symbol" aria-hidden="true">⚡</span><div><span class="bridge-eyebrow">Ein weiterer Gedanke</span><h3>Elektrische Energie</h3></div></div>
+    <p>Neben Wärme und Licht kennen wir auch <strong>elektrische Energie</strong>. Eine Spannungsquelle kann sie bereitstellen. In metallischen Leitern sind Elektronen bereits vorhanden. In einem geschlossenen Stromkreis können sie sich unter der Wirkung einer Spannung gerichtet bewegen.</p>
+    <p class="bridge-caution"><strong>Offene Frage:</strong> Ob und wie sich damit eine chemische Veränderung ermöglichen lässt, haben wir noch nicht untersucht.</p>
+  </div>
+  <p class="prompt">Welche Möglichkeit würdest du zur Gewinnung von Aluminium untersuchen?</p>
   <div class="task-panel" role="group" aria-label="Aufgabe: Begründete Vermutung formulieren">
     <div class="task-kicker">Deine Aufgabe</div>
   <label class="form-label" for="guess">Ich vermute, dass …</label>
@@ -357,9 +314,6 @@
     <div class="label">Meine Vermutung</div><blockquote id="previewHypothesis">Ich vermute, dass …, weil …</blockquote>
   </div>
   </div>
-  <details class="disclosure"><summary>Hilfe 1 · Elektronenaufnahme</summary><p>Wie verändert sich die Ladung von Al³⁺ bei der Bildung metallischen Aluminiums?</p></details>
-  <details class="disclosure"><summary>Hilfe 2 · Energieformen vergleichen</summary><p>Welche Energieform könnte die erforderliche Elektronenaufnahme ermöglichen? Welche Rolle könnte dabei die Spannungsquelle spielen?</p></details>
-  <details class="disclosure"><summary>Hilfe 3 · Satzgerüst</summary><p>Ich vermute, dass man __________ einsetzen könnte, um __________ zu ermöglichen, weil __________.</p></details>
   <div class="actions">
     
     <button class="secondary" id="copyHypothesis" type="button">Text kopieren</button>
@@ -377,7 +331,7 @@
 <div class="footer-controls"><button class="secondary" id="backBtn" type="button">← Zurück</button><div><button class="secondary mini" id="resetBtn" type="button">Neu beginnen</button> <button class="primary" id="nextBtn" type="button" disabled aria-live="polite">Weiter →</button></div></div>
 <p id="stepCompletionHint" class="step-completion-hint" role="status" aria-live="polite"></p>
 <p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p>
-<p class="version-note">Stand: 04.11.2026 · V32</p></main>
+<p class="version-note">Stand: 04.11.2026 · V36</p></main>
 <div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Aluminiumgewinnung</h1>
 <p>Name: __________________________ Datum: __________</p>
 <h2>Reduktionsgedanke</h2><div class="print-answer" id="pAl"></div>
@@ -413,7 +367,7 @@ function save(){
   return true;
  }catch{return false}
 }
-const lumiDefaults=["Schau dir den Unterschied zwischen Bauxit und Alufolie an. Welche Beschreibung passt zu festem Aluminiumoxid?","Jetzt untersuchen wir die Elektronenaufnahme. Was muss mit Al³⁺ passieren, und welches andere Metall könnte die Elektronen abgeben?","Hier stoßen wir an eine Grenze: Lies nach, warum wir nicht immer weitere, noch unedlere Metalle als Reduktionsmittel einsetzen können.","Wärme, Licht und elektrische Energie: Welche Veränderungen beobachtest du, und wann entstehen dabei neue Stoffe?","Nun bist du dran: Wie könnte man die benötigte Elektronenaufnahme bei Aluminium ermöglichen? Formuliere eine begründete Vermutung."];
+const lumiDefaults=["Schau dir den Unterschied zwischen Bauxit und Alufolie an. Welche Beschreibung passt zu festem Aluminiumoxid?","Jetzt untersuchen wir die Elektronenaufnahme. Was muss mit Al³⁺ passieren, und welches andere Metall könnte die Elektronen abgeben?","Hier stoßen wir an eine Grenze: Lies nach, warum wir nicht immer weitere, noch unedlere Metalle als Reduktionsmittel einsetzen können.","Vergleiche die beiden chemischen Veränderungen: Was ist bei beiden Vorgängen gemeinsam, und welche Rolle spielt dabei die Energiezufuhr?","Nun bist du dran: Wie könnte man die benötigte Elektronenaufnahme bei Aluminium ermöglichen? Formuliere eine begründete Vermutung."];
 const feedbackSteps={compoundFeedback:0,alFeedback:1,insightFeedback:3,hypothesisFeedback:4};
 function lumiSay(step,message,tone='neutral'){
  const bubble=$('lumiSpeech'+step);
@@ -426,7 +380,7 @@ function complete(step){
  if(step===0)return state.compound==='ions';
  if(step===1)return state.transfer==='gain'&&state.count==='3'&&state.metal==='lessnoble';
  if(step===2)return true;
- if(step===3)return state.insight==='change'&&state.circuitExplored;
+ if(step===3)return state.insight==='change';
  if(step===4)return $('guess').value.trim().length>=8&&$('reason').value.trim().length>=8;
  return false;
 }
@@ -451,24 +405,18 @@ function showSelectionFeedback(step){
  }
  if(step===3){
   state.insightChecked=state.insight==='change';
-  if(!state.insight){
-   if(state.circuitExplored)lumiSay(3,'Du hast den Stromkreis untersucht. Vergleiche jetzt die Beispiele und wähle eine Schlussfolgerung.');
-   else lumiSay(3,lumiDefaults[3]);
-  }else if(state.insight==='change'){
-   if(state.circuitExplored)lumiSay(3,'Richtig: Elektrische Energie kann unter geeigneten Bedingungen auch chemische Veränderungen ermöglichen. Du kannst weitergehen.','good');
-   else lumiSay(3,'Das passt zu den Beispielen. Schließe noch den Stromkreis und beobachte, was sich verändert.','good');
-  }else if(state.insight==='alwaysMetal'){
-   lumiSay(3,'Überlege noch einmal: Eine Lampe leuchtet im Stromkreis, aber dabei entsteht kein neuer Stoff. Wann ist tatsächlich eine chemische Veränderung zu beobachten?','incorrect');
-  }else{
-   lumiSay(3,'Denke an den Leiter: Seine Elektronen sind schon vorhanden, bevor der Stromkreis geschlossen wird. Welche Rolle hat die Spannungsquelle wirklich?','incorrect');
-  }
+  if(!state.insight)lumiSay(3,lumiDefaults[3]);
+  else if(state.insight==='change')lumiSay(3,'Richtig: Die Beispiele zeigen, dass zugeführte Energie bestimmte chemische Veränderungen ermöglichen kann. Das gilt nicht automatisch für jede Reaktion.','good');
+  else if(state.insight==='always')lumiSay(3,'Nicht jede chemische Reaktion benötigt ständig Energie von außen. Was zeigen die beiden Beispiele tatsächlich?','incorrect');
+  else lumiSay(3,'Aus zwei Beispielen lässt sich nicht schließen, dass nur Wärme und Licht chemische Reaktionen ermöglichen können.','incorrect');
  }
+
 }
 function updateNext(){
  const step=state.step,ready=complete(step),b=$('nextBtn');
  b.disabled=!ready;
  b.textContent=step===4?'Vermutung festhalten & weiter →':'Weiter →';
- $('stepCompletionHint').textContent=ready?'':step===0?(state.compound?'Überarbeite die Auswahl, um fortzufahren.':'Wähle die passende Beschreibung.'):step===1?(!state.transfer||!state.count||!state.metal?'Beantworte alle drei Fragen.':'Überarbeite die Kombination, um fortzufahren.'):step===3?(!state.insight?'Untersuche den Stromkreis und wähle eine Schlussfolgerung.':!state.circuitExplored?'Schließe noch den Stromkreis.':'Überarbeite die Auswahl, um fortzufahren.'):step===4?'Formuliere Vermutung und Begründung vollständig.':'';
+ $('stepCompletionHint').textContent=ready?'':step===0?(state.compound?'Überarbeite die Auswahl, um fortzufahren.':'Wähle die passende Beschreibung.'):step===1?(!state.transfer||!state.count||!state.metal?'Beantworte alle drei Fragen.':'Überarbeite die Kombination, um fortzufahren.'):step===3?(!state.insight?'Wähle die durch beide Beispiele gestützte Schlussfolgerung.':'Überarbeite die Auswahl, um fortzufahren.'):step===4?'Formuliere Vermutung und Begründung vollständig.':'';
 }
 function mark(group,key,value,restoring=false){
  state[key]=value;
@@ -520,23 +468,6 @@ $('nextBtn').addEventListener('click',()=>{
  }
  go(step+1);
 });
-function setCircuit(closed,remember=true){
- state.circuitClosed=closed;if(closed&&remember)state.circuitExplored=true;
- $('circuitPanel').classList.toggle('circuit-on',closed);
- $('circuitSwitch').setAttribute('d',closed?'M180 92L220 92':'M180 92L219 61');
- $('circuitLampGlow').setAttribute('opacity',closed?'1':'0');
- $('circuitLampGlass').setAttribute('fill',closed?'#ffe68a':'#e7edf1');
- if(closed)$('closedCircuitSvg').unpauseAnimations();else $('closedCircuitSvg').pauseAnimations();
- $('toggleCircuitFlow').setAttribute('aria-pressed',String(closed));
- $('toggleCircuitFlow').textContent=closed?'Stromkreis öffnen':'Stromkreis schließen';
- $('circuitStatus').textContent=closed?'Schalter geschlossen · Lampe leuchtet · Elektronen bewegen sich gerichtet':'Schalter offen · Lampe aus · Elektronen bereits vorhanden';
- save();updateNext();
-}
-$('toggleCircuitFlow').addEventListener('click',()=>{
- setCircuit(!state.circuitClosed);
- if(state.insight)showSelectionFeedback(3);
- else lumiSay(3,state.circuitClosed?'Die Lampe leuchtet, und Elektronen bewegen sich gerichtet. Entsteht bei der Lampe auch ein neuer Stoff?':'Die Elektronen sind auch bei offenem Schalter im Leiter vorhanden. Welche Veränderungen zeigen die Beispiele?');
-});
 function preview(){
  const guess=$('guess').value.trim(),reason=$('reason').value.trim();
  $('previewHypothesis').textContent='Ich vermute, dass '+(guess||'…')+', weil '+(reason||'…')+'.';
@@ -571,11 +502,11 @@ $('resetBtn').addEventListener('click',()=>{
  state={...initial};textIDs.forEach(id=>$(id).value='');
  document.querySelectorAll('.selected').forEach(b=>{b.classList.remove('selected');b.setAttribute('aria-pressed','false')});
  lumiDefaults.forEach((message,i)=>lumiSay(i,message));
- $('alEq').classList.add('hidden');setCircuit(false,false);
+ $('alEq').classList.add('hidden');
  preview();go(0);
 });
 $('alEq').classList.toggle('hidden',!state.redoxChecked);
 $('previewHypothesis').textContent='Ich vermute, dass '+($('guess').value.trim()||'…')+', weil '+($('reason').value.trim()||'…')+'.';
-setCircuit(state.circuitClosed,false);go(state.step);
+go(state.step);
 })();
 </script></body></html>

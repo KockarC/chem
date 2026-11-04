@@ -117,6 +117,10 @@
 .page .sheet>.feedback.show{margin:0 0 19px}
 .page .sheet>.actions{margin-top:18px}
 @media(max-width:650px){.task-panel{padding:15px 14px;margin:20px 0 14px}}
+.info-panel{margin:23px 0 17px;border:1px solid #b9d9db;border-left:4px solid #168c8a;border-radius:14px;padding:18px 20px;background:#f3faf9;color:#264e5b}
+.info-panel p{margin:9px 0 0;line-height:1.65}.info-panel p+p{margin-top:14px}
+.info-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;font-weight:790;color:#14777a}
+.transition-note{font-size:.98rem;color:#38576a;line-height:1.65;margin:16px 0 0}
 </style></head>
 <body>
 <header><div class="wrap top"><nav class="site-breadcrumb" aria-label="Seitennavigation"><a href="../">Materialien</a><span aria-hidden="true">›</span><a href="../vermutungswerkstaetten/">Vermutungswerkstätten</a><span aria-hidden="true">›</span><span>Aluminiumgewinnung</span></nav><div class="eyebrow"><span class="brand-mark" aria-hidden="true">e⁻</span> Vermutungswerkstatt · Aluminiumgewinnung</div>
@@ -205,18 +209,16 @@
 </article></section>
 
 <section class="page" data-step="2"><article class="sheet">
-  <span class="section-kicker">03 · Schwierigkeit</span>
-  <h2>Woher bekommen wir ein noch unedleres Metall?</h2>
-  <p class="intro">Ein Beispiel wäre <strong>Lithium (Li)</strong>. Es ist noch unedler als Aluminium und kann grundsätzlich Elektronen abgeben. Aufgrund seiner hohen Reaktivität kommt es in der Natur jedoch nur in chemischen Verbindungen vor.</p>
+  <span class="section-kicker">03 · Grenze des bekannten Weges</span>
+  <h2>Warum können wir nicht immer unedlere Metalle verwenden?</h2>
+  <p class="intro">Ein Metall, das noch unedler als Aluminium ist, wäre zum Beispiel <strong>Lithium (Li)</strong>. Es kann grundsätzlich Elektronen abgeben. Allerdings findet man Lithium in der Natur nicht als reines Metall: Auch dieses muss erst aus seinen Verbindungen gewonnen werden.</p>
   <div id="redoxSuccess" class="feedback" role="status" aria-live="polite"></div>
-  <div class="thought"><strong>Die Schwierigkeit:</strong> Um Lithium als Reduktionsmittel einzusetzen, müssten wir zunächst metallisches Lithium aus seinen Verbindungen gewinnen. Damit wäre das ursprüngliche Problem nur verlagert.</div>
-  <p>Dennoch gibt es sowohl Aluminium als auch Lithium als hergestellte reine Metalle. Es muss also einen Weg geben, Metalle ohne ein noch unedleres Metall als Reduktionsmittel zu gewinnen.</p>
-  <div class="task-panel" role="group" aria-label="Aufgabe: Anforderung an einen anderen Gewinnungsweg">
-    <div class="task-kicker">Deine Aufgabe</div>
-  <label class="form-label" for="newPathRequirement">Was müsste ein solcher Gewinnungsweg bei Aluminium ermöglichen?</label>
-  <textarea class="free small" id="newPathRequirement" placeholder="Ein anderer Weg müsste …"></textarea>
+  <div class="info-panel" aria-label="Information zur Grenze des Reduktionswegs">
+    <div class="info-kicker">Wichtige Information</div>
+    <p><strong>Wir können nicht unbegrenzt nach einem noch unedleren Metall suchen.</strong> Das Periodensystem enthält nur eine begrenzte Zahl von Elementen. Außerdem müssten wir ein besonders unedles Metall wie Lithium zunächst selbst herstellen, bevor wir es als Reduktionsmittel einsetzen könnten.</p>
+    <p>Die Suche nach einem immer weiteren Reduktionsmetall führt uns deshalb nicht zu einer allgemeinen Lösung für die Metallgewinnung.</p>
   </div>
-  <details class="disclosure"><summary>Hilfe · Zur Elektronenaufnahme</summary><p>Welche Änderung der Elektronenzahl müsste beim Aluminium stattfinden?</p></details>
+  <p class="transition-note">Für die Gewinnung von Aluminium brauchen wir also einen anderen Ansatz. Im nächsten Abschnitt betrachten wir, welche Rolle die Zufuhr von Energie bei chemischen Veränderungen spielen kann.</p>
 </article></section>
 
 <section class="page" data-step="3"><article class="sheet">
@@ -333,7 +335,7 @@
 <div class="footer-controls"><button class="secondary" id="backBtn" type="button">← Zurück</button><div><button class="secondary mini" id="resetBtn" type="button">Neu beginnen</button> <button class="primary" id="nextBtn" type="button" disabled aria-live="polite">Weiter →</button></div></div>
 <p id="stepCompletionHint" class="step-completion-hint" role="status" aria-live="polite"></p>
 <p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p>
-<p class="version-note">Stand: 04.11.2026 · V28</p></main>
+<p class="version-note">Stand: 04.11.2026 · V29</p></main>
 <div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Aluminiumgewinnung</h1>
 <p>Name: __________________________ Datum: __________</p>
 <h2>Reduktionsgedanke</h2><div class="print-answer" id="pAl"></div>
@@ -344,10 +346,10 @@
 const $=id=>document.getElementById(id);
 const KEY='aluminium-vermutungswerkstatt-v25';
 const OLD_KEY='aluminium-vermutungswerkstatt-v24';
-const names=['Ausgangsproblem','Redoxwissen','Neue Schwierigkeit','Energieformen','Vermutung'];
+const names=['Ausgangsproblem','Redoxwissen','Grenze des Metallwegs','Energieformen','Vermutung'];
 const initial={step:0,furthest:0,compound:'',transfer:'',count:'',redoxChecked:false,metal:'',metalChecked:false,insight:'',insightChecked:false,circuitClosed:false,circuitExplored:false,hypothesisChecked:false};
 let state={...initial};
-const textIDs=['newPathRequirement','guess','reason'];
+const textIDs=['guess','reason'];
 try{
  const current=JSON.parse(localStorage.getItem(KEY)||'null');
  if(current){
@@ -376,7 +378,7 @@ function clearFeedback(id){$(id).textContent='';$(id).className='feedback'}
 function complete(step){
  if(step===0)return Boolean(state.compound);
  if(step===1)return Boolean(state.transfer&&state.count&&state.metal);
- if(step===2)return $('newPathRequirement').value.trim().length>=3;
+ if(step===2)return true;
  if(step===3)return Boolean(state.insight&&state.circuitExplored);
  if(step===4)return $('guess').value.trim().length>=8&&$('reason').value.trim().length>=8;
  return false;
@@ -385,7 +387,7 @@ function updateNext(){
  const step=state.step,done=complete(step),b=$('nextBtn');
  b.disabled=!done;
  b.textContent=[0,1,3].includes(step)?'Prüfen & weiter →':step===4?'Vermutung festhalten & weiter →':'Weiter →';
- $('stepCompletionHint').textContent=done?'':step===0?'Wähle das passende Teilchenmodell.':step===1?'Beantworte alle drei Fragen.':step===3?'Prüfe den Stromkreis und wähle eine Schlussfolgerung.':step===4?'Ergänze deine Vermutung und Begründung.':'Notiere deinen Gedanken, um fortzufahren.';
+ $('stepCompletionHint').textContent=done?'':step===0?'Wähle die passende Beschreibung.':step===1?'Beantworte alle drei Fragen.':step===3?'Prüfe den Stromkreis und wähle eine Schlussfolgerung.':step===4?'Ergänze deine Vermutung und Begründung.':'';
 }
 function mark(group,key,value,restoring=false){
  state[key]=value;
@@ -496,7 +498,7 @@ textIDs.forEach(id=>$(id).addEventListener('input',()=>{
 function report(){return ['MEIN DENKWEG – ALUMINIUMGEWINNUNG',
 'Reduktion: '+(state.redoxChecked?'Al³⁺ + 3 e⁻ → Al':'noch offen'),
  'Weiteres Reduktionsmetall: '+(state.metalChecked?'müsste unedler als Aluminium sein':'noch offen'),
- 'Anforderung an einen anderen Weg: '+$('newPathRequirement').value,
+ 'Grenze des Metallwegs: Auch noch unedlere Metalle müssten zuerst aus Verbindungen gewonnen werden; die Reihe der Elemente ist begrenzt.',
  'Meine Vermutung: '+$('previewHypothesis').textContent].join('\n\n')}
 $('copyHypothesis').addEventListener('click',async()=>{
  try{await navigator.clipboard.writeText(report());feedback('hypothesisFeedback','Denkweg kopiert.','good')}
@@ -507,7 +509,7 @@ $('copyHypothesis').addEventListener('click',async()=>{
 });
 $('printSheet').addEventListener('click',()=>{
 $('pAl').textContent=state.redoxChecked?'Al³⁺ + 3 e⁻ → Al':'noch offen';
- $('pAlternative').textContent=$('newPathRequirement').value;
+ $('pAlternative').textContent='Ein anderes Reduktionsmetall wie Lithium müsste zunächst selbst gewonnen werden. Die Zahl möglicher Elemente ist begrenzt.';
  $('pHypothesis').textContent=$('previewHypothesis').textContent;
  window.print();
 });

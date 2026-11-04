@@ -97,19 +97,22 @@
 .electrochemical-hint p{margin:9px 0 0;color:#315667;line-height:1.58}
 .step-completion-hint{margin:9px 0 0;font-size:.84rem;color:var(--muted);min-height:1.1em}
 #nextBtn:disabled{opacity:.42;cursor:not-allowed}
+
+.recap-question{margin:6px 0 18px;color:#264b5c;background:#f0f8fa;border-left:4px solid #168c8a;border-radius:9px;padding:12px 15px}
+.recap-divider{border-top:1px solid var(--line);margin:22px 0}
 </style></head>
 <body>
 <header><div class="wrap top"><nav class="site-breadcrumb" aria-label="Seitennavigation"><a href="../">Materialien</a><span aria-hidden="true">›</span><a href="../vermutungswerkstaetten/">Vermutungswerkstätten</a><span aria-hidden="true">›</span><span>Aluminiumgewinnung</span></nav><div class="eyebrow"><span class="brand-mark" aria-hidden="true">e⁻</span> Vermutungswerkstatt · Aluminiumgewinnung</div>
 <h1>Wie gewinnen wir das unedle Metall für Alufolie?</h1>
 
 </div></header>
-<div class="barwrap"><div class="wrap"><div class="progresslabels"><span>Dein Denkweg</span><span id="progressLabel" class="current" aria-live="polite">1 von 5 · Ausgangsproblem</span></div>
-<div class="progressbar" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" aria-label="Denkfortschritt"><div class="progressfill" id="progressfill"></div></div>
+<div class="barwrap"><div class="wrap"><div class="progresslabels"><span>Dein Denkweg</span><span id="progressLabel" class="current" aria-live="polite">1 von 4 · Rückblick & Redoxwissen</span></div>
+<div class="progressbar" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Denkfortschritt"><div class="progressfill" id="progressfill"></div></div>
 <nav id="stepnav" class="stepnav" aria-label="Denkschritte"></nav></div></div>
 <main class="wrap">
 <section class="page active" data-step="0"><article class="sheet">
-  <span class="section-kicker">01 · Ausgangsproblem</span>
-  <h2>Aluminium im Erz – Aluminium als Folie</h2>
+  <span class="section-kicker">01 · Ausgangsproblem und Redoxwissen</span>
+    <h2>Aluminium im Erz – Aluminium als Folie</h2>
   <p class="intro">In der Natur findet man Aluminium überwiegend in chemischen Verbindungen, etwa im Rohstoff Bauxit. Alufolie besteht dagegen aus metallischem Aluminium.</p>
   <div class="problem-visual" aria-label="Gegenüberstellung von Bauxit und metallischem Aluminium">
     <div class="specimen">
@@ -122,14 +125,10 @@
       <strong>Alufolie</strong><small>Metallisches Aluminium</small>
     </div>
   </div>
-  <p class="prompt">Wie könnte aus dem Aluminium im Bauxit das Metall in der Folie werden?</p>
-  <textarea class="free small" id="firstThought" placeholder="Mein erster Gedanke …"></textarea>
-</article></section>
 
-
-<section class="page" data-step="1"><article class="sheet">
-  <span class="section-kicker">02 · Redoxwissen</span>
-  <h2>Welche Elektronenübertragung benötigt Aluminium?</h2>
+  <p class="recap-question"><strong>Unsere Ausgangsfrage:</strong> Wie lässt sich das im Bauxit chemisch gebundene Aluminium als Metall gewinnen?</p>
+  <div class="recap-divider"></div>
+  <h2>Welche Elektronenübertragung ist dafür notwendig?</h2>
   <div class="al-case-panel" aria-label="Vereinfachtes Modell der Elektronenbilanz von Aluminium">
     <div class="al-state"><span class="state-caption">Aluminium in der Verbindung</span><strong class="particle-ion">Al³⁺</strong></div>
     <div class="al-middle"><span class="question-arrow">→ ?</span></div>
@@ -163,8 +162,8 @@
   </details>
 </article></section>
 
-<section class="page" data-step="2"><article class="sheet">
-  <span class="section-kicker">03 · Schwierigkeit</span>
+<section class="page" data-step="1"><article class="sheet">
+  <span class="section-kicker">02 · Schwierigkeit</span>
   <h2>Woher bekommen wir ein noch unedleres Metall?</h2>
   <p class="intro">Ein Beispiel wäre <strong>Lithium (Li)</strong>. Es ist noch unedler als Aluminium und kann grundsätzlich Elektronen abgeben. Aufgrund seiner hohen Reaktivität kommt es in der Natur jedoch nur in chemischen Verbindungen vor.</p>
   <div class="thought"><strong>Die Schwierigkeit:</strong> Um Lithium als Reduktionsmittel einzusetzen, müssten wir zunächst metallisches Lithium aus seinen Verbindungen gewinnen. Damit wäre das ursprüngliche Problem nur verlagert.</div>
@@ -174,8 +173,8 @@
   <details class="disclosure"><summary>Hilfe · Zur Elektronenaufnahme</summary><p>Welche Änderung der Elektronenzahl müsste beim Aluminium stattfinden?</p></details>
 </article></section>
 
-<section class="page" data-step="3"><article class="sheet">
-  <span class="section-kicker">04 · Energie und Stoffumwandlungen</span>
+<section class="page" data-step="2"><article class="sheet">
+  <span class="section-kicker">03 · Energie und Stoffumwandlungen</span>
   <h2>Welche Rolle kann Energie bei chemischen Veränderungen spielen?</h2>
   <p class="intro">Nicht jede Stoffveränderung verläuft von selbst. Betrachte zwei Beispiele, bei denen von außen Energie zugeführt wird.</p>
   <div class="energy-example-grid">
@@ -256,8 +255,8 @@
   <div id="insightFeedback" class="feedback" role="status" aria-live="polite"></div>
 </article></section>
 
-<section class="page" data-step="4"><article class="sheet">
-  <span class="section-kicker">05 · Eigene Vermutung</span>
+<section class="page" data-step="3"><article class="sheet">
+  <span class="section-kicker">04 · Eigene Vermutung</span>
   <h2>Welche Möglichkeit könnte bei der Aluminiumgewinnung helfen?</h2>
   <p class="intro">Um aus Aluminiumverbindungen das Metall zu gewinnen, ist eine Elektronenaufnahme erforderlich. Du hast verschiedene Möglichkeiten kennengelernt, mit zugeführter Energie Stoffveränderungen zu ermöglichen. <strong>Welchen Weg würdest du für Aluminium untersuchen?</strong></p>
   <label class="form-label" for="guess">Ich vermute, dass …</label>
@@ -281,22 +280,21 @@
 <div class="footer-controls"><button class="secondary" id="backBtn" type="button">← Zurück</button><div><button class="secondary mini" id="resetBtn" type="button">Neu beginnen</button> <button class="primary" id="nextBtn" type="button" disabled aria-live="polite">Weiter →</button></div></div>
 <p id="stepCompletionHint" class="step-completion-hint" role="status" aria-live="polite"></p>
 <p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p>
-<p class="version-note">Stand: 04.11.2026 · V23</p></main>
+<p class="version-note">Stand: 04.11.2026 · V24</p></main>
 <div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Aluminiumgewinnung</h1>
 <p>Name: __________________________ Datum: __________</p>
-<h2>Ausgangsproblem</h2><div class="print-answer" id="pFirst"></div>
 <h2>Reduktionsgedanke</h2><div class="print-answer" id="pAl"></div>
 <h2>Eine andere Möglichkeit</h2><div class="print-answer" id="pAlternative"></div>
 <h2>Meine Vermutung</h2><div class="print-answer" id="pHypothesis"></div></div>
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
-const KEY='aluminium-vermutungswerkstatt-v23';
-const OLD_KEY='aluminium-vermutungswerkstatt-v20';
-const names=['Ausgangsproblem','Redoxwissen','Neue Schwierigkeit','Energieformen','Vermutung'];
+const KEY='aluminium-vermutungswerkstatt-v24';
+const OLD_KEY='aluminium-vermutungswerkstatt-v23';
+const names=['Rückblick & Redoxwissen','Neue Schwierigkeit','Energieformen','Vermutung'];
 const initial={step:0,furthest:0,transfer:'',count:'',redoxChecked:false,metal:'',metalChecked:false,insight:'',insightChecked:false,circuitClosed:false,circuitExplored:false,hypothesisChecked:false};
 let state={...initial};
-const textIDs=['firstThought','newPathRequirement','guess','reason'];
+const textIDs=['newPathRequirement','guess','reason'];
 try{
  const current=JSON.parse(localStorage.getItem(KEY)||'null');
  if(current){
@@ -305,11 +303,16 @@ try{
  }else{
   const old=JSON.parse(localStorage.getItem(OLD_KEY)||'null')||{};
   for(const id of textIDs)if(typeof old[id]==='string')$(id).value=old[id];
-  for(const key of ['transfer','count','metal'])if(typeof old[key]==='string')state[key]=old[key];
+  for(const key of ['transfer','count','metal','insight'])if(typeof old[key]==='string')state[key]=old[key];
+  for(const key of ['redoxChecked','metalChecked','insightChecked','circuitClosed','circuitExplored','hypothesisChecked'])if(typeof old[key]==='boolean')state[key]=old[key];
+  const oldStep=Math.max(0,Math.min(4,Number(old.step)||0));
+  const oldFurthest=Math.max(0,Math.min(4,Number(old.furthest)||0));
+  state.step=Math.max(0,oldStep-1);
+  state.furthest=Math.max(0,oldFurthest-1);
  }
 }catch{}
-state.step=Math.max(0,Math.min(4,Number(state.step)||0));
-state.furthest=Math.max(state.step,Math.min(4,Number(state.furthest)||0));
+state.step=Math.max(0,Math.min(3,Number(state.step)||0));
+state.furthest=Math.max(state.step,Math.min(3,Number(state.furthest)||0));
 function save(){
  try{
   localStorage.setItem(KEY,JSON.stringify({...state,...Object.fromEntries(textIDs.map(id=>[id,$(id).value]))}));
@@ -321,18 +324,17 @@ function feedback(id,message,tone='neutral'){
 }
 function clearFeedback(id){$(id).textContent='';$(id).className='feedback'}
 function complete(step){
- if(step===0)return $('firstThought').value.trim().length>=3;
- if(step===1)return Boolean(state.transfer&&state.count&&state.metal);
- if(step===2)return $('newPathRequirement').value.trim().length>=3;
- if(step===3)return Boolean(state.insight&&state.circuitExplored);
- if(step===4)return $('guess').value.trim().length>=8&&$('reason').value.trim().length>=8;
+ if(step===0)return Boolean(state.transfer&&state.count&&state.metal);
+ if(step===1)return $('newPathRequirement').value.trim().length>=3;
+ if(step===2)return Boolean(state.insight&&state.circuitExplored);
+ if(step===3)return $('guess').value.trim().length>=8&&$('reason').value.trim().length>=8;
  return false;
 }
 function updateNext(){
  const step=state.step,done=complete(step),b=$('nextBtn');
  b.disabled=!done;
- b.textContent=step===1||step===3?'Prüfen & weiter →':step===4?'Vermutung festhalten & weiter →':'Weiter →';
- $('stepCompletionHint').textContent=done?'':step===1?'Beantworte alle drei Fragen.':step===3?'Prüfe den Stromkreis und wähle eine Schlussfolgerung.':step===4?'Ergänze deine Vermutung und Begründung.':'Notiere deinen Gedanken, um fortzufahren.';
+ b.textContent=step===0||step===2?'Prüfen & weiter →':step===3?'Vermutung festhalten & weiter →':'Weiter →';
+ $('stepCompletionHint').textContent=done?'':step===0?'Beantworte alle drei Fragen.':step===2?'Prüfe den Stromkreis und wähle eine Schlussfolgerung.':step===3?'Ergänze deine Vermutung und Begründung.':'Notiere deinen Gedanken, um fortzufahren.';
 }
 function mark(group,key,value,restoring=false){
  state[key]=value;
@@ -356,7 +358,7 @@ for(const [group,key] of [['transferChoices','transfer'],['countChoices','count'
  if(state[key])mark(group,key,state[key],true);
 }
 function go(step){
- state.step=Math.max(0,Math.min(4,step));state.furthest=Math.max(state.furthest,state.step);
+ state.step=Math.max(0,Math.min(3,step));state.furthest=Math.max(state.furthest,state.step);
  $('stepnav').replaceChildren();
  names.forEach((name,i)=>{
   const b=document.createElement('button');b.type='button';
@@ -365,8 +367,8 @@ function go(step){
   b.addEventListener('click',()=>go(i));$('stepnav').append(b);
  });
  document.querySelectorAll('.page').forEach(el=>el.classList.toggle('active',Number(el.dataset.step)===state.step));
- $('progressLabel').textContent=(state.step+1)+' von 5 · '+names[state.step];
- $('progressfill').style.width=(state.step+1)*20+'%';
+ $('progressLabel').textContent=(state.step+1)+' von 4 · '+names[state.step];
+ $('progressfill').style.width=(state.step+1)*25+'%';
  document.querySelector('.progressbar').setAttribute('aria-valuenow',state.step+1);
  $('backBtn').disabled=state.step===0;
  updateNext();save();window.scrollTo({top:0,behavior:'smooth'});
@@ -375,7 +377,7 @@ $('backBtn').addEventListener('click',()=>go(state.step-1));
 $('nextBtn').addEventListener('click',()=>{
  const step=state.step;
  if(!complete(step))return;
- if(step===1){
+ if(step===0){
   const redox=state.transfer==='gain'&&state.count==='3',metal=state.metal==='lessnoble';
   state.redoxChecked=redox;state.metalChecked=metal;
   $('alEq').classList.toggle('hidden',!redox);
@@ -389,14 +391,14 @@ $('nextBtn').addEventListener('click',()=>{
   }
   feedback('alFeedback','Die Elektronenbilanz stimmt. Ein anderes Reduktionsmetall müsste noch unedler als Aluminium sein.','good');
  }
- if(step===3){
+ if(step===2){
   state.insightChecked=state.insight==='change';
   if(!state.insightChecked){
    feedback('insightFeedback','Überlege, welche Aussage durch die chemischen Beispiele und den Vergleich von Lampe und Akku gestützt wird.','incorrect');
    $('insightFeedback').scrollIntoView({behavior:'smooth',block:'center'});save();return;
   }
  }
- if(step===4){
+ if(step===3){
   state.hypothesisChecked=true;
   if(!save()){feedback('hypothesisFeedback','Die Vermutung konnte nicht im Browser gespeichert werden. Kopiere oder drucke sie zunächst.','incorrect');return}
   window.location.assign('./experimentplanung.html');
@@ -427,8 +429,7 @@ textIDs.forEach(id=>$(id).addEventListener('input',()=>{
  else{state.furthest=Math.min(state.furthest,state.step);save();updateNext()}
 }));
 function report(){return ['MEIN DENKWEG – ALUMINIUMGEWINNUNG',
- 'Ausgangsproblem: '+$('firstThought').value,
- 'Reduktion: '+(state.redoxChecked?'Al³⁺ + 3 e⁻ → Al':'noch offen'),
+'Reduktion: '+(state.redoxChecked?'Al³⁺ + 3 e⁻ → Al':'noch offen'),
  'Weiteres Reduktionsmetall: '+(state.metalChecked?'müsste unedler als Aluminium sein':'noch offen'),
  'Anforderung an einen anderen Weg: '+$('newPathRequirement').value,
  'Meine Vermutung: '+$('previewHypothesis').textContent].join('\n\n')}
@@ -440,8 +441,7 @@ $('copyHypothesis').addEventListener('click',async()=>{
  t.remove()}
 });
 $('printSheet').addEventListener('click',()=>{
- $('pFirst').textContent=$('firstThought').value;
- $('pAl').textContent=state.redoxChecked?'Al³⁺ + 3 e⁻ → Al':'noch offen';
+$('pAl').textContent=state.redoxChecked?'Al³⁺ + 3 e⁻ → Al':'noch offen';
  $('pAlternative').textContent=$('newPathRequirement').value;
  $('pHypothesis').textContent=$('previewHypothesis').textContent;
  window.print();

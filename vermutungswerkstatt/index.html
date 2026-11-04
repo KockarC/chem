@@ -121,6 +121,14 @@
 .info-panel p{margin:9px 0 0;line-height:1.65}.info-panel p+p{margin-top:14px}
 .info-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;font-weight:790;color:#14777a}
 .transition-note{font-size:.98rem;color:#38576a;line-height:1.65;margin:16px 0 0}
+
+/* Die Figur und die Sprechblase entsprechen Lumis Gestaltung im Ionen-Modul. */
+.lumi-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:16px;align-items:center;margin:16px 0 22px}
+.lumi-face{width:82px;height:82px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:42px;border:3px solid #edca45;background:#fff7d7;box-shadow:0 2px 0 rgba(0,0,0,.04)}
+.bubble{border:2px solid var(--line);border-radius:18px;background:#fff;padding:16px 18px;font-weight:780;color:#00364d;line-height:1.5;min-height:76px}
+.bubble.good{border-color:#9ed6b8;background:#f0fbf4;color:#0d5531}
+.bubble.try{border-color:#f2c98a;background:#fffaf0;color:#604000}
+@media(max-width:720px){.lumi-row{grid-template-columns:58px minmax(0,1fr);gap:10px;margin:13px 0 18px}.lumi-face{width:54px;height:54px;font-size:30px}.bubble{padding:12px;font-size:.95rem;min-height:60px}}
 </style></head>
 <body>
 <header><div class="wrap top"><nav class="site-breadcrumb" aria-label="Seitennavigation"><a href="../">Materialien</a><span aria-hidden="true">›</span><a href="../vermutungswerkstaetten/">Vermutungswerkstätten</a><span aria-hidden="true">›</span><span>Aluminiumgewinnung</span></nav><div class="eyebrow"><span class="brand-mark" aria-hidden="true">e⁻</span> Vermutungswerkstatt · Aluminiumgewinnung</div>
@@ -134,6 +142,7 @@
 <section class="page active" data-step="0"><article class="sheet">
   <span class="section-kicker">01 · Ausgangsproblem</span>
   <h2>Aluminium im Erz – Aluminium als Metall</h2>
+  <div class="lumi-row" id="lumiRow0"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble" id="lumiSpeech0" role="status" aria-live="polite" aria-atomic="true">Ich bin Lumi! Schau dir den Unterschied zwischen Bauxit und Alufolie an. Welche Beschreibung passt zu festem Aluminiumoxid?</div></div>
   <p class="intro"><strong>Bauxit</strong> ist ein Gemisch aluminiumhaltiger Minerale. Aus ihm wird Aluminiumoxid (Al₂O₃) gewonnen. Alufolie besteht dagegen aus metallischem Aluminium.</p>
   <div class="problem-visual" aria-label="Gegenüberstellung von Bauxit und metallischem Aluminium">
     <div class="specimen">
@@ -159,7 +168,6 @@
     <button class="option" type="button" data-compound="metal"><span class="radio"></span>Ein Metallgitter aus neutralen Aluminium-Atomen</button>
     <button class="option" type="button" data-compound="ions"><span class="radio"></span>Ein salzartig aufgebautes Ionengitter mit Al³⁺- und O²⁻-Ionen</button>
   </div>
-  <div class="feedback" id="compoundFeedback" role="status" aria-live="polite"></div>
   </div>
   <details class="disclosure"><summary>Hilfe · Stoffaufbau erkennen</summary>
     <p>Aluminium gehört zu den Metallen, Sauerstoff zu den Nichtmetallen. Erinnere dich an den Aufbau typischer Metall-Nichtmetall-Verbindungen.</p>
@@ -169,8 +177,8 @@
 <section class="page" data-step="1"><article class="sheet">
   <span class="section-kicker">02 · Redoxwissen</span>
   <h2>Welche Elektronenübertragung ist dafür notwendig?</h2>
+  <div class="lumi-row" id="lumiRow1"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble" id="lumiSpeech1" role="status" aria-live="polite" aria-atomic="true">Jetzt untersuchen wir die Elektronenaufnahme. Was muss mit Al³⁺ passieren, und welches andere Metall könnte die Elektronen abgeben?</div></div>
   <p class="intro">Aluminiumoxid enthält im vereinfachten Teilchenmodell Al³⁺- und O²⁻-Ionen. Wie könnte aus dem gebundenen Aluminium das Metall entstehen?</p>
-  <div id="compoundSuccess" class="feedback" role="status" aria-live="polite"></div>
   <div class="al-case-panel" aria-label="Vereinfachtes Modell der Elektronenbilanz von Aluminium">
     <div class="al-state"><span class="state-caption">Aluminium in der Verbindung</span><strong class="particle-ion">Al³⁺</strong></div>
     <div class="al-middle"><span class="question-arrow">→ ?</span></div>
@@ -198,8 +206,6 @@
       <button class="option" type="button" data-metal="lessnoble"><span class="radio"></span>Unedler als Aluminium</button>
     </div>
   </div>
-  
-  <div id="alFeedback" class="feedback" role="status" aria-live="polite"></div>
   <div id="alEq" class="equation hidden">Al³⁺ + 3 e⁻ <span class="part">→</span> Al</div>
   </div>
   <details class="disclosure"><summary>Hilfe · Ladungen und Reduktionsmittel</summary>
@@ -211,8 +217,8 @@
 <section class="page" data-step="2"><article class="sheet">
   <span class="section-kicker">03 · Grenze des bekannten Weges</span>
   <h2>Warum können wir nicht immer unedlere Metalle verwenden?</h2>
+  <div class="lumi-row" id="lumiRow2"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble" id="lumiSpeech2" role="status" aria-live="polite" aria-atomic="true">Hier stoßen wir an eine Grenze: Lies nach, warum wir nicht immer weitere, noch unedlere Metalle als Reduktionsmittel einsetzen können.</div></div>
   <p class="intro">Ein Metall, das noch unedler als Aluminium ist, wäre zum Beispiel <strong>Lithium (Li)</strong>. Es kann grundsätzlich Elektronen abgeben. Allerdings findet man Lithium in der Natur nicht als reines Metall: Auch dieses muss erst aus seinen Verbindungen gewonnen werden.</p>
-  <div id="redoxSuccess" class="feedback" role="status" aria-live="polite"></div>
   <div class="info-panel" aria-label="Information zur Grenze des Reduktionswegs">
     <div class="info-kicker">Wichtige Information</div>
     <p><strong>Wir können nicht unbegrenzt nach einem noch unedleren Metall suchen.</strong> Das Periodensystem enthält nur eine begrenzte Zahl von Elementen. Außerdem müssten wir ein besonders unedles Metall wie Lithium zunächst selbst herstellen, bevor wir es als Reduktionsmittel einsetzen könnten.</p>
@@ -224,6 +230,7 @@
 <section class="page" data-step="3"><article class="sheet">
   <span class="section-kicker">04 · Energie und Stoffumwandlungen</span>
   <h2>Welche Rolle kann Energie bei chemischen Veränderungen spielen?</h2>
+  <div class="lumi-row" id="lumiRow3"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble" id="lumiSpeech3" role="status" aria-live="polite" aria-atomic="true">Wärme, Licht und elektrische Energie: Welche Veränderungen beobachtest du, und wann entstehen dabei neue Stoffe?</div></div>
   <p class="intro">Nicht jede Stoffveränderung verläuft von selbst. Betrachte zwei Beispiele, bei denen von außen Energie zugeführt wird.</p>
   <div class="energy-example-grid">
     <div class="energy-example">
@@ -302,15 +309,14 @@
     <button class="option" type="button" data-insight="alwaysMetal"><span class="radio"></span>Immer wenn elektrischer Strom fließt, entsteht ein neuer Stoff.</button>
     <button class="option" type="button" data-insight="energyElectron"><span class="radio"></span>Eine Spannungsquelle erzeugt die Elektronen, die für chemische Reaktionen benötigt werden.</button>
   </div>
-  <div id="insightFeedback" class="feedback" role="status" aria-live="polite"></div>
   </div>
 </article></section>
 
 <section class="page" data-step="4"><article class="sheet">
   <span class="section-kicker">05 · Eigene Vermutung</span>
   <h2>Welche Möglichkeit könnte bei der Aluminiumgewinnung helfen?</h2>
+  <div class="lumi-row" id="lumiRow4"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble" id="lumiSpeech4" role="status" aria-live="polite" aria-atomic="true">Nun bist du dran: Wie könnte man die benötigte Elektronenaufnahme bei Aluminium ermöglichen? Formuliere eine begründete Vermutung.</div></div>
   <p class="intro">Um aus Aluminiumverbindungen das Metall zu gewinnen, ist eine Elektronenaufnahme erforderlich. Du hast verschiedene Möglichkeiten kennengelernt, mit zugeführter Energie Stoffveränderungen zu ermöglichen. <strong>Welchen Weg würdest du für Aluminium untersuchen?</strong></p>
-  <div id="energySuccess" class="feedback" role="status" aria-live="polite"></div>
   <div class="task-panel" role="group" aria-label="Aufgabe: Begründete Vermutung formulieren">
     <div class="task-kicker">Deine Aufgabe</div>
   <label class="form-label" for="guess">Ich vermute, dass …</label>
@@ -329,13 +335,12 @@
     <button class="secondary" id="copyHypothesis" type="button">Text kopieren</button>
     <button class="secondary" id="printSheet" type="button">Denkweg ausdrucken</button>
   </div>
-  <div class="feedback" id="hypothesisFeedback" role="status" aria-live="polite"></div>
 
 </article></section>
 <div class="footer-controls"><button class="secondary" id="backBtn" type="button">← Zurück</button><div><button class="secondary mini" id="resetBtn" type="button">Neu beginnen</button> <button class="primary" id="nextBtn" type="button" disabled aria-live="polite">Weiter →</button></div></div>
 <p id="stepCompletionHint" class="step-completion-hint" role="status" aria-live="polite"></p>
 <p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p>
-<p class="version-note">Stand: 04.11.2026 · V29</p></main>
+<p class="version-note">Stand: 04.11.2026 · V30</p></main>
 <div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Aluminiumgewinnung</h1>
 <p>Name: __________________________ Datum: __________</p>
 <h2>Reduktionsgedanke</h2><div class="print-answer" id="pAl"></div>
@@ -371,10 +376,15 @@ function save(){
   return true;
  }catch{return false}
 }
-function feedback(id,message,tone='neutral'){
- $(id).textContent=message;$(id).className='feedback show '+tone;
+const lumiDefaults=["Ich bin Lumi! Schau dir den Unterschied zwischen Bauxit und Alufolie an. Welche Beschreibung passt zu festem Aluminiumoxid?","Jetzt untersuchen wir die Elektronenaufnahme. Was muss mit Al³⁺ passieren, und welches andere Metall könnte die Elektronen abgeben?","Hier stoßen wir an eine Grenze: Lies nach, warum wir nicht immer weitere, noch unedlere Metalle als Reduktionsmittel einsetzen können.","Wärme, Licht und elektrische Energie: Welche Veränderungen beobachtest du, und wann entstehen dabei neue Stoffe?","Nun bist du dran: Wie könnte man die benötigte Elektronenaufnahme bei Aluminium ermöglichen? Formuliere eine begründete Vermutung."];
+const feedbackSteps={compoundFeedback:0,compoundSuccess:1,alFeedback:1,redoxSuccess:2,insightFeedback:3,energySuccess:4,hypothesisFeedback:4};
+function lumiSay(step,message,tone='neutral'){
+ const bubble=$('lumiSpeech'+step);
+ bubble.textContent=message;
+ bubble.className='bubble'+(tone==='good'?' good':tone==='incorrect'?' try':'');
 }
-function clearFeedback(id){$(id).textContent='';$(id).className='feedback'}
+function feedback(id,message,tone='neutral'){lumiSay(feedbackSteps[id],message,tone)}
+function clearFeedback(id){lumiSay(feedbackSteps[id],lumiDefaults[feedbackSteps[id]])}
 function complete(step){
  if(step===0)return Boolean(state.compound);
  if(step===1)return Boolean(state.transfer&&state.count&&state.metal);
@@ -440,7 +450,7 @@ $('nextBtn').addEventListener('click',()=>{
  if(step===0){
   if(state.compound!=='ions'){
    feedback('compoundFeedback','Prüfe deine Auswahl: Aluminiumoxid ist eine Verbindung aus einem Metall und einem Nichtmetall. Erinnere dich an den Aufbau solcher Verbindungen.','incorrect');
-   $('compoundFeedback').scrollIntoView({behavior:'smooth',block:'center'});save();return;
+   $('lumiRow0').scrollIntoView({behavior:'smooth',block:'center'});save();return;
   }
   clearFeedback('compoundFeedback');
  }
@@ -450,11 +460,11 @@ $('nextBtn').addEventListener('click',()=>{
   $('alEq').classList.toggle('hidden',!redox);
   if(!redox){
    feedback('alFeedback','Vergleiche die Ladung von Al³⁺ und Al und prüfe die benötigte Elektronenzahl.','incorrect');
-   $('alFeedback').scrollIntoView({behavior:'smooth',block:'center'});save();return;
+   $('lumiRow1').scrollIntoView({behavior:'smooth',block:'center'});save();return;
   }
   if(!metal){
    feedback('alFeedback','Die Elektronenbilanz stimmt. Welches Metall kann leichter Elektronen abgeben?','incorrect');
-   $('alFeedback').scrollIntoView({behavior:'smooth',block:'center'});save();return;
+   $('lumiRow1').scrollIntoView({behavior:'smooth',block:'center'});save();return;
   }
   feedback('alFeedback','Die Elektronenbilanz stimmt. Ein anderes Reduktionsmetall müsste noch unedler als Aluminium sein.','good');
  }
@@ -462,7 +472,7 @@ $('nextBtn').addEventListener('click',()=>{
   state.insightChecked=state.insight==='change';
   if(!state.insightChecked){
    feedback('insightFeedback','Überlege, welche Aussage durch die chemischen Beispiele und den Vergleich von Lampe und Akku gestützt wird.','incorrect');
-   $('insightFeedback').scrollIntoView({behavior:'smooth',block:'center'});save();return;
+   $('lumiRow3').scrollIntoView({behavior:'smooth',block:'center'});save();return;
   }
  }
  if(step===4){
@@ -485,11 +495,14 @@ function setCircuit(closed,remember=true){
  $('circuitStatus').textContent=closed?'Schalter geschlossen · Lampe leuchtet · Elektronen bewegen sich gerichtet':'Schalter offen · Lampe aus · Elektronen bereits vorhanden';
  save();updateNext();
 }
-$('toggleCircuitFlow').addEventListener('click',()=>setCircuit(!state.circuitClosed));
+$('toggleCircuitFlow').addEventListener('click',()=>{
+ setCircuit(!state.circuitClosed);
+ lumiSay(3,state.circuitClosed?'Im geschlossenen Stromkreis bewegen sich die Elektronen gerichtet, und die Lampe leuchtet. Entsteht dabei schon ein neuer Stoff?':'Der Schalter ist offen. Die Elektronen sind im metallischen Leiter trotzdem vorhanden.');
+});
 function preview(){
  const guess=$('guess').value.trim(),reason=$('reason').value.trim();
  $('previewHypothesis').textContent='Ich vermute, dass '+(guess||'…')+', weil '+(reason||'…')+'.';
- state.hypothesisChecked=false;save();updateNext();
+ state.hypothesisChecked=false;clearFeedback('hypothesisFeedback');save();updateNext();
 }
 textIDs.forEach(id=>$(id).addEventListener('input',()=>{
  if(id==='guess'||id==='reason')preview();
@@ -517,7 +530,7 @@ $('resetBtn').addEventListener('click',()=>{
  if(!confirm('Alle Eingaben dieser Werkstatt löschen?'))return;
  state={...initial};textIDs.forEach(id=>$(id).value='');
  document.querySelectorAll('.selected').forEach(b=>{b.classList.remove('selected');b.setAttribute('aria-pressed','false')});
- document.querySelectorAll('.feedback').forEach(b=>{b.textContent='';b.className='feedback'});
+ lumiDefaults.forEach((message,i)=>lumiSay(i,message));
  $('alEq').classList.add('hidden');setCircuit(false,false);
  preview();go(0);
 });

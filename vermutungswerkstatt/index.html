@@ -123,26 +123,28 @@
 .transition-note{font-size:.98rem;color:#38576a;line-height:1.65;margin:16px 0 0}
 
 /* Die Figur und die Sprechblase entsprechen Lumis Gestaltung im Ionen-Modul. */
-.lumi-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:16px;align-items:center;margin:16px 0 22px}
+.lumi-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:16px;align-items:center;margin:24px 0 0;padding-top:18px;border-top:1px solid var(--line)}
+.lumi-identity{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.lumi-name{font-size:.79rem;font-weight:780;color:#52637c;letter-spacing:.01em}
 .lumi-face{width:82px;height:82px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:42px;border:3px solid #edca45;background:#fff7d7;box-shadow:0 2px 0 rgba(0,0,0,.04)}
 .bubble{border:2px solid var(--line);border-radius:18px;background:#fff;padding:16px 18px;font-weight:780;color:#00364d;line-height:1.5;min-height:76px}
 .bubble.good{border-color:#9ed6b8;background:#f0fbf4;color:#0d5531}
 .bubble.try{border-color:#f2c98a;background:#fffaf0;color:#604000}
-@media(max-width:720px){.lumi-row{grid-template-columns:58px minmax(0,1fr);gap:10px;margin:13px 0 18px}.lumi-face{width:54px;height:54px;font-size:30px}.bubble{padding:12px;font-size:.95rem;min-height:60px}}
+@media(max-width:720px){.lumi-row{grid-template-columns:58px minmax(0,1fr);gap:10px;margin:18px 0 0;padding-top:15px}.lumi-face{width:54px;height:54px;font-size:30px}.bubble{padding:12px;font-size:.95rem;min-height:60px}}
 </style></head>
 <body>
 <header><div class="wrap top"><nav class="site-breadcrumb" aria-label="Seitennavigation"><a href="../">Materialien</a><span aria-hidden="true">›</span><a href="../vermutungswerkstaetten/">Vermutungswerkstätten</a><span aria-hidden="true">›</span><span>Aluminiumgewinnung</span></nav><div class="eyebrow"><span class="brand-mark" aria-hidden="true">e⁻</span> Vermutungswerkstatt · Aluminiumgewinnung</div>
 <h1>Wie gewinnen wir das unedle Metall für Alufolie?</h1>
 
 </div></header>
-<div class="barwrap"><div class="wrap"><div class="progresslabels"><span>Dein Denkweg</span><span id="progressLabel" class="current" aria-live="polite">1 von 5 · Ausgangsproblem</span></div>
-<div class="progressbar" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" aria-label="Denkfortschritt"><div class="progressfill" id="progressfill"></div></div>
+<div class="barwrap"><div class="wrap"><div class="progresslabels"><span>Dein Fortschritt</span><span id="progressLabel" class="current" aria-live="polite">1 von 5 · Ausgangsproblem</span></div>
+<div class="progressbar" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" aria-label="Dein Fortschritt"><div class="progressfill" id="progressfill"></div></div>
 <nav id="stepnav" class="stepnav" aria-label="Denkschritte"></nav></div></div>
 <main class="wrap">
 <section class="page active" data-step="0"><article class="sheet">
   <span class="section-kicker">01 · Ausgangsproblem</span>
   <h2>Aluminium im Erz – Aluminium als Metall</h2>
-  <div class="lumi-row" id="lumiRow0"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble" id="lumiSpeech0" role="status" aria-live="polite" aria-atomic="true">Ich bin Lumi! Schau dir den Unterschied zwischen Bauxit und Alufolie an. Welche Beschreibung passt zu festem Aluminiumoxid?</div></div>
+  
   <p class="intro"><strong>Bauxit</strong> ist ein Gemisch aluminiumhaltiger Minerale. Aus ihm wird Aluminiumoxid (Al₂O₃) gewonnen. Alufolie besteht dagegen aus metallischem Aluminium.</p>
   <div class="problem-visual" aria-label="Gegenüberstellung von Bauxit und metallischem Aluminium">
     <div class="specimen">
@@ -172,12 +174,19 @@
   <details class="disclosure"><summary>Hilfe · Stoffaufbau erkennen</summary>
     <p>Aluminium gehört zu den Metallen, Sauerstoff zu den Nichtmetallen. Erinnere dich an den Aufbau typischer Metall-Nichtmetall-Verbindungen.</p>
   </details>
+  <div class="lumi-row" id="lumiRow0">
+    <div class="lumi-identity">
+      <div class="lumi-face" aria-hidden="true">🧑‍🔬</div>
+      <span class="lumi-name">Lumi</span>
+    </div>
+    <div class="bubble" id="lumiSpeech0" role="status" aria-live="polite" aria-atomic="true">Schau dir den Unterschied zwischen Bauxit und Alufolie an. Welche Beschreibung passt zu festem Aluminiumoxid?</div>
+  </div>
 </article></section>
 
 <section class="page" data-step="1"><article class="sheet">
   <span class="section-kicker">02 · Redoxwissen</span>
   <h2>Welche Elektronenübertragung ist dafür notwendig?</h2>
-  <div class="lumi-row" id="lumiRow1"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble" id="lumiSpeech1" role="status" aria-live="polite" aria-atomic="true">Jetzt untersuchen wir die Elektronenaufnahme. Was muss mit Al³⁺ passieren, und welches andere Metall könnte die Elektronen abgeben?</div></div>
+  
   <p class="intro">Aluminiumoxid enthält im vereinfachten Teilchenmodell Al³⁺- und O²⁻-Ionen. Wie könnte aus dem gebundenen Aluminium das Metall entstehen?</p>
   <div class="al-case-panel" aria-label="Vereinfachtes Modell der Elektronenbilanz von Aluminium">
     <div class="al-state"><span class="state-caption">Aluminium in der Verbindung</span><strong class="particle-ion">Al³⁺</strong></div>
@@ -212,12 +221,19 @@
     <p>Vergleiche die Ladung von Al³⁺ mit der von Al. Nutze für die letzte Frage dein Wissen über die Redoxreihe: Welche Metalle geben Elektronen besonders leicht ab?</p>
   </details>
 
+  <div class="lumi-row" id="lumiRow1">
+    <div class="lumi-identity">
+      <div class="lumi-face" aria-hidden="true">🧑‍🔬</div>
+      <span class="lumi-name">Lumi</span>
+    </div>
+    <div class="bubble" id="lumiSpeech1" role="status" aria-live="polite" aria-atomic="true">Jetzt untersuchen wir die Elektronenaufnahme. Was muss mit Al³⁺ passieren, und welches andere Metall könnte die Elektronen abgeben?</div>
+  </div>
 </article></section>
 
 <section class="page" data-step="2"><article class="sheet">
   <span class="section-kicker">03 · Grenze des bekannten Weges</span>
   <h2>Warum können wir nicht immer unedlere Metalle verwenden?</h2>
-  <div class="lumi-row" id="lumiRow2"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble" id="lumiSpeech2" role="status" aria-live="polite" aria-atomic="true">Hier stoßen wir an eine Grenze: Lies nach, warum wir nicht immer weitere, noch unedlere Metalle als Reduktionsmittel einsetzen können.</div></div>
+  
   <p class="intro">Ein Metall, das noch unedler als Aluminium ist, wäre zum Beispiel <strong>Lithium (Li)</strong>. Es kann grundsätzlich Elektronen abgeben. Allerdings findet man Lithium in der Natur nicht als reines Metall: Auch dieses muss erst aus seinen Verbindungen gewonnen werden.</p>
   <div class="info-panel" aria-label="Information zur Grenze des Reduktionswegs">
     <div class="info-kicker">Wichtige Information</div>
@@ -225,12 +241,19 @@
     <p>Die Suche nach einem immer weiteren Reduktionsmetall führt uns deshalb nicht zu einer allgemeinen Lösung für die Metallgewinnung.</p>
   </div>
   <p class="transition-note">Für die Gewinnung von Aluminium brauchen wir also einen anderen Ansatz. Im nächsten Abschnitt betrachten wir, welche Rolle die Zufuhr von Energie bei chemischen Veränderungen spielen kann.</p>
+  <div class="lumi-row" id="lumiRow2">
+    <div class="lumi-identity">
+      <div class="lumi-face" aria-hidden="true">🧑‍🔬</div>
+      <span class="lumi-name">Lumi</span>
+    </div>
+    <div class="bubble" id="lumiSpeech2" role="status" aria-live="polite" aria-atomic="true">Hier stoßen wir an eine Grenze: Lies nach, warum wir nicht immer weitere, noch unedlere Metalle als Reduktionsmittel einsetzen können.</div>
+  </div>
 </article></section>
 
 <section class="page" data-step="3"><article class="sheet">
   <span class="section-kicker">04 · Energie und Stoffumwandlungen</span>
   <h2>Welche Rolle kann Energie bei chemischen Veränderungen spielen?</h2>
-  <div class="lumi-row" id="lumiRow3"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble" id="lumiSpeech3" role="status" aria-live="polite" aria-atomic="true">Wärme, Licht und elektrische Energie: Welche Veränderungen beobachtest du, und wann entstehen dabei neue Stoffe?</div></div>
+  
   <p class="intro">Nicht jede Stoffveränderung verläuft von selbst. Betrachte zwei Beispiele, bei denen von außen Energie zugeführt wird.</p>
   <div class="energy-example-grid">
     <div class="energy-example">
@@ -310,12 +333,19 @@
     <button class="option" type="button" data-insight="energyElectron"><span class="radio"></span>Eine Spannungsquelle erzeugt die Elektronen, die für chemische Reaktionen benötigt werden.</button>
   </div>
   </div>
+  <div class="lumi-row" id="lumiRow3">
+    <div class="lumi-identity">
+      <div class="lumi-face" aria-hidden="true">🧑‍🔬</div>
+      <span class="lumi-name">Lumi</span>
+    </div>
+    <div class="bubble" id="lumiSpeech3" role="status" aria-live="polite" aria-atomic="true">Wärme, Licht und elektrische Energie: Welche Veränderungen beobachtest du, und wann entstehen dabei neue Stoffe?</div>
+  </div>
 </article></section>
 
 <section class="page" data-step="4"><article class="sheet">
   <span class="section-kicker">05 · Eigene Vermutung</span>
   <h2>Welche Möglichkeit könnte bei der Aluminiumgewinnung helfen?</h2>
-  <div class="lumi-row" id="lumiRow4"><div class="lumi-face" aria-hidden="true">🧑‍🔬</div><div class="bubble" id="lumiSpeech4" role="status" aria-live="polite" aria-atomic="true">Nun bist du dran: Wie könnte man die benötigte Elektronenaufnahme bei Aluminium ermöglichen? Formuliere eine begründete Vermutung.</div></div>
+  
   <p class="intro">Um aus Aluminiumverbindungen das Metall zu gewinnen, ist eine Elektronenaufnahme erforderlich. Du hast verschiedene Möglichkeiten kennengelernt, mit zugeführter Energie Stoffveränderungen zu ermöglichen. <strong>Welchen Weg würdest du für Aluminium untersuchen?</strong></p>
   <div class="task-panel" role="group" aria-label="Aufgabe: Begründete Vermutung formulieren">
     <div class="task-kicker">Deine Aufgabe</div>
@@ -336,11 +366,18 @@
     <button class="secondary" id="printSheet" type="button">Denkweg ausdrucken</button>
   </div>
 
+  <div class="lumi-row" id="lumiRow4">
+    <div class="lumi-identity">
+      <div class="lumi-face" aria-hidden="true">🧑‍🔬</div>
+      <span class="lumi-name">Lumi</span>
+    </div>
+    <div class="bubble" id="lumiSpeech4" role="status" aria-live="polite" aria-atomic="true">Nun bist du dran: Wie könnte man die benötigte Elektronenaufnahme bei Aluminium ermöglichen? Formuliere eine begründete Vermutung.</div>
+  </div>
 </article></section>
 <div class="footer-controls"><button class="secondary" id="backBtn" type="button">← Zurück</button><div><button class="secondary mini" id="resetBtn" type="button">Neu beginnen</button> <button class="primary" id="nextBtn" type="button" disabled aria-live="polite">Weiter →</button></div></div>
 <p id="stepCompletionHint" class="step-completion-hint" role="status" aria-live="polite"></p>
 <p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p>
-<p class="version-note">Stand: 04.11.2026 · V30</p></main>
+<p class="version-note">Stand: 04.11.2026 · V31</p></main>
 <div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Aluminiumgewinnung</h1>
 <p>Name: __________________________ Datum: __________</p>
 <h2>Reduktionsgedanke</h2><div class="print-answer" id="pAl"></div>
@@ -376,7 +413,7 @@ function save(){
   return true;
  }catch{return false}
 }
-const lumiDefaults=["Ich bin Lumi! Schau dir den Unterschied zwischen Bauxit und Alufolie an. Welche Beschreibung passt zu festem Aluminiumoxid?","Jetzt untersuchen wir die Elektronenaufnahme. Was muss mit Al³⁺ passieren, und welches andere Metall könnte die Elektronen abgeben?","Hier stoßen wir an eine Grenze: Lies nach, warum wir nicht immer weitere, noch unedlere Metalle als Reduktionsmittel einsetzen können.","Wärme, Licht und elektrische Energie: Welche Veränderungen beobachtest du, und wann entstehen dabei neue Stoffe?","Nun bist du dran: Wie könnte man die benötigte Elektronenaufnahme bei Aluminium ermöglichen? Formuliere eine begründete Vermutung."];
+const lumiDefaults=["Schau dir den Unterschied zwischen Bauxit und Alufolie an. Welche Beschreibung passt zu festem Aluminiumoxid?","Jetzt untersuchen wir die Elektronenaufnahme. Was muss mit Al³⁺ passieren, und welches andere Metall könnte die Elektronen abgeben?","Hier stoßen wir an eine Grenze: Lies nach, warum wir nicht immer weitere, noch unedlere Metalle als Reduktionsmittel einsetzen können.","Wärme, Licht und elektrische Energie: Welche Veränderungen beobachtest du, und wann entstehen dabei neue Stoffe?","Nun bist du dran: Wie könnte man die benötigte Elektronenaufnahme bei Aluminium ermöglichen? Formuliere eine begründete Vermutung."];
 const feedbackSteps={compoundFeedback:0,compoundSuccess:1,alFeedback:1,redoxSuccess:2,insightFeedback:3,energySuccess:4,hypothesisFeedback:4};
 function lumiSay(step,message,tone='neutral'){
  const bubble=$('lumiSpeech'+step);

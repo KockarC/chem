@@ -71,6 +71,9 @@
 .stationary-electron text{font-size:13px;font-weight:800;fill:#07524e}
 #circuitPanel:not(.circuit-on) .circuit-electron{display:none}
 #circuitPanel.circuit-on #stationaryElectrons{display:none}
+
+.energy-context{margin:23px 0 16px;padding:15px 18px;border:1px solid #c7dce3;border-radius:13px;background:#f2f8fa;color:#244959;line-height:1.55}
+.energy-context strong{font-weight:760}
 </style></head>
 <body>
 <header><div class="wrap top"><nav class="site-breadcrumb" aria-label="Seitennavigation"><a href="../">Materialien</a><span aria-hidden="true">›</span><a href="../vermutungswerkstaetten/">Vermutungswerkstätten</a><span aria-hidden="true">›</span><span>Aluminiumgewinnung</span></nav><div class="eyebrow"><span class="brand-mark" aria-hidden="true">e⁻</span> Vermutungswerkstatt · Aluminiumgewinnung</div>
@@ -103,7 +106,7 @@
 
 <section class="page" data-step="1"><article class="sheet">
   <span class="section-kicker">02 · Redoxwissen</span>
-  <h2>Woher stammen die Elektronen bei einer Reduktion?</h2>
+  <h2>Welche Veränderung braucht Aluminium?</h2>
   <div class="al-case-panel" aria-label="Vereinfachtes Modell der Elektronenbilanz von Aluminium">
     <div class="al-state"><span class="state-caption">Aluminium in der Verbindung</span><strong class="particle-ion">Al³⁺</strong></div>
     <div class="al-middle"><span class="question-arrow">→ ?</span></div>
@@ -124,43 +127,31 @@
   <button class="primary" id="checkAl" type="button">Prüfen</button>
   <div id="alFeedback" class="feedback" role="status" aria-live="polite"></div>
   <div id="alEq" class="equation hidden">Al³⁺ + 3 e⁻ <span class="part">→</span> Al</div>
-  <div class="recall-block">
-    <h3>Erinnere dich an den Eisennagel in Kupfersulfatlösung.</h3>
-    <div class="reaction-compact" aria-label="Eisen reagiert mit Kupfer-Ionen zu Eisen-Ionen und metallischem Kupfer">Fe + Cu²⁺ <span>→</span> Fe²⁺ + Cu</div>
-    <p class="prompt">Welcher Stoff gibt bei dieser Reaktion Elektronen ab?</p>
-    <div class="choicegrid" id="donorChoices" role="group" aria-label="Elektronendonator bestimmen">
-      <button class="option" data-donor="fe" type="button"><span class="radio"></span>Eisen (Fe)</button>
-      <button class="option" data-donor="cu" type="button"><span class="radio"></span>Kupfer-Ionen (Cu²⁺)</button>
-    </div>
-    <button class="secondary" id="checkDonor" type="button">Prüfen</button>
-    <div class="feedback" id="donorFeedback" role="status" aria-live="polite"></div>
-  </div>
-  <details class="disclosure"><summary>Hilfe · Elektronenübergang erkennen</summary>
-    <p>Vergleiche die Ladungen vor und nach der Reaktion. Wer gibt Elektronen ab, wer nimmt sie auf?</p>
-  </details>
+  <details class="disclosure"><summary>Hilfe · Ladung vergleichen</summary><p>Al³⁺ ist dreifach positiv geladen; ein Aluminium-Atom ist neutral. Welche Änderung der Elektronenzahl würde das ermöglichen?</p></details>
 </article></section>
 
 <section class="page" data-step="2"><article class="sheet">
-  <span class="section-kicker">03 · Grenze des bekannten Verfahrens</span>
-  <h2>Welches Metall könnte Aluminium-Ionen reduzieren?</h2>
-  <p class="intro">Beim Eisen-Kupfer-Versuch gibt das unedlere Eisen Elektronen an Kupfer-Ionen ab. Stell dir vor, wir wollten auch Aluminium-Ionen mithilfe eines anderen Metalls reduzieren.</p>
-  <p class="prompt">Wie müsste dieses Metall im Vergleich zu Aluminium sein?</p>
-  <div id="metalChoices" class="choicegrid" role="group" aria-label="Wahl eines geeigneten Reduktionsmetalls">
-    <button class="option" type="button" data-metal="nobler"><span class="radio"></span>Edler als Aluminium</button>
-    <button class="option" type="button" data-metal="lessnoble"><span class="radio"></span>Unedler als Aluminium</button>
+  <span class="section-kicker">03 · Energie bei Reaktionen</span>
+  <h2>Welche Rolle spielt Energie bei chemischen Reaktionen?</h2>
+  <p class="intro">Erinnere dich an chemische Reaktionen aus dem Unterricht.</p>
+  <p class="prompt">Welche Aussage über Energie bei Reaktionen trifft zu?</p>
+  <div id="energyChoices" class="choicegrid" role="group" aria-label="Aussagen über die Energie bei chemischen Reaktionen">
+    <button class="option" type="button" data-energy="either"><span class="radio"></span>Reaktionen können Energie abgeben oder aufnehmen.</button>
+    <button class="option" type="button" data-energy="release"><span class="radio"></span>Jede chemische Reaktion gibt Energie ab.</button>
+    <button class="option" type="button" data-energy="none"><span class="radio"></span>Energie spielt bei chemischen Reaktionen keine Rolle.</button>
   </div>
-  <button class="primary" id="checkMetal" type="button">Prüfen</button>
-  <div id="metalFeedback" class="feedback" role="status" aria-live="polite"></div>
-  <div id="metalObstacle" class="energy-reveal hidden" aria-live="polite">
-    <h3>Ein mögliches Beispiel: Natrium</h3>
-    <p>Natrium ist <strong>noch unedler als Aluminium</strong> und sehr reaktiv. Deshalb findet man Natrium in der Natur nicht als Metall, sondern nur chemisch gebunden. Um es als Reduktionsmittel zu verwenden, müsste man <strong>zuerst Natriummetall gewinnen</strong>.</p>
-    <p><strong>Trotzdem:</strong> Sowohl Natrium als auch Aluminium gibt es als hergestellte reine Metalle. <strong>Wie lassen sie sich gewinnen, ohne das Problem nur auf ein anderes unedles Metall zu verlagern?</strong></p>
-  </div>
+  <button class="primary" type="button" id="checkEnergy">Prüfen</button>
+  <div class="feedback" id="energyFeedback" role="status" aria-live="polite"></div>
+  <div class="energy-context"><strong>Bei der technischen Gewinnung von Aluminium aus Aluminiumoxid wird viel Energie benötigt.</strong> Welche Energieformen könnten grundsätzlich von außen zugeführt werden?</div>
+  <label class="form-label" for="energyExamples">Notiere mindestens zwei Energieformen, die du kennst.</label>
+  <textarea class="free small" id="energyExamples" placeholder="Zum Beispiel …"></textarea>
+  <details class="disclosure"><summary>Hilfe · Energieformen erinnern</summary><p>Denke an Erwärmen, Beleuchten und elektrische Geräte. Wie heißen die jeweils zugehörigen Energieformen?</p></details>
 </article></section>
+
 <section class="page" data-step="3"><article class="sheet">
-  <span class="section-kicker">04 · Ein weiterer Ansatz</span>
-  <h2>Wann fließt elektrischer Strom?</h2>
-  <p class="intro">Öffne und schließe den Stromkreis. Beobachte, was sich bei den Elektronen und der Lampe verändert.</p>
+  <span class="section-kicker">04 · Strom und elektrische Energie</span>
+  <h2>Was haben Elektronen mit elektrischem Strom zu tun?</h2>
+  <p class="intro">Schließe den Stromkreis und beobachte die Elektronen im Leiter sowie die Lampe.</p>
   <div class="closed-circuit" id="circuitPanel" role="group" aria-label="Modell eines schaltbaren Stromkreises mit Spannungsquelle und Lampe. Im geschlossenen Kreis bewegen sich viele Elektronen in metallischen Leitern vom Minuspol zum Pluspol.">
     <svg id="closedCircuitSvg" viewBox="0 0 620 344" role="img" aria-label="Schaltbarer Stromkreis: Elektronen sind in den metallischen Leitern schon bei geöffnetem Schalter vorhanden. Beim Schließen bewegen sie sich zusätzlich gerichtet und die Lampe leuchtet.">
       <defs><radialGradient id="alLampV15"><stop offset="0" stop-color="#fff2af" stop-opacity=".85"/><stop offset="1" stop-color="#fff2af" stop-opacity="0"/></radialGradient></defs>
@@ -179,7 +170,7 @@
       <text x="199" y="268" font-size="24" font-weight="800" fill="#246d97" text-anchor="middle">−</text>
       <text x="414" y="268" font-size="24" font-weight="800" fill="#b85442" text-anchor="middle">+</text>
       <text x="310" y="38" font-size="15" fill="#486774" font-weight="750" text-anchor="middle">Lampe</text>
-      <text x="310" y="324" font-size="16" fill="#3a6573" font-weight="700" text-anchor="middle">Metallischer Leiter · Elektronen bewegen sich von − nach +</text>
+      <text x="310" y="324" font-size="16" fill="#3a6573" font-weight="700" text-anchor="middle">Elektronenbewegung im Leiter: von − nach +</text>
       <g id="stationaryElectrons" aria-hidden="true">
         <g class="stationary-electron"><circle cx="153" cy="250" r="14"/><text x="153" y="255" text-anchor="middle">e⁻</text></g>
         <g class="stationary-electron"><circle cx="125" cy="170" r="14"/><text x="125" y="175" text-anchor="middle">e⁻</text></g>
@@ -202,12 +193,12 @@
     <button type="button" class="secondary mini" id="toggleCircuitFlow" aria-pressed="false" aria-controls="closedCircuitSvg">Stromkreis schließen</button>
     <p class="circuit-status" id="circuitStatus" aria-live="polite">Schalter offen · Lampe aus · Elektronen bereits vorhanden</p>
   </div>
-  <div class="simple-fact">In metallischen Leitern gibt es <strong>bereits vor dem Schließen</strong> bewegliche Elektronen. Im geschlossenen Stromkreis kommt eine <strong>gerichtete Bewegung</strong> hinzu: Es fließt Strom, und die Lampe leuchtet. Die Spannungsquelle stellt elektrische Energie bereit. <strong>Die Elektronen werden dabei nicht verbraucht.</strong></div>
+  <div class="simple-fact">In einem Metallleiter sind Elektronen bereits vorhanden. Bei geschlossenem Stromkreis bewegen sie sich zusätzlich <strong>gerichtet</strong>: Es fließt elektrischer Strom. Die <strong>Spannungsquelle stellt elektrische Energie bereit</strong>; sie erzeugt keine Elektronen. Die Lampe wandelt elektrische Energie in Licht und Wärme um.</div>
 </article></section>
 <section class="page" data-step="4"><article class="sheet">
   <span class="section-kicker">05 · Eigene Vermutung</span>
-  <h2>Wie könnte man Aluminium ohne ein anderes Reduktionsmetall gewinnen?</h2>
-  <p class="intro">Welche neue Möglichkeit ergibt sich aus den Informationen über den Stromkreis?</p>
+  <h2>Welche Energieform könnte bei der Aluminiumgewinnung helfen?</h2>
+  <p class="intro">Aluminium muss Elektronen aufnehmen. Du hast über Energie bei Reaktionen und den elektrischen Stromkreis nachgedacht. <strong>Wie könnte man diese Überlegungen für die Gewinnung von Aluminium verbinden?</strong></p>
   <label class="form-label" for="guess">Ich vermute, dass …</label>
   <textarea id="guess" class="free" placeholder="Meine Idee …"></textarea>
   <label class="form-label" for="reason">…, weil …</label>
@@ -215,9 +206,9 @@
   <div class="hypothesis" role="region" aria-live="polite" aria-label="Deine Vermutung">
     <div class="label">Meine Vermutung</div><blockquote id="previewHypothesis">Ich vermute, dass …, weil …</blockquote>
   </div>
-  <details class="disclosure"><summary>Hilfe 1 · Bekannte Reduktion</summary><p>Was leistet beim Eisen-Kupfer-Versuch das Eisen?</p></details>
-  <details class="disclosure"><summary>Hilfe 2 · Neue Möglichkeit</summary><p>Was können metallische Leiter transportieren, und was kann eine Spannungsquelle bereitstellen? Könnte das bei einer Reduktion helfen?</p></details>
-  <details class="disclosure"><summary>Hilfe 3 · Satzanfang</summary><p>Man könnte versuchen, __________ zu nutzen, damit __________. Das halte ich für möglich, weil __________.</p></details>
+  <details class="disclosure"><summary>Hilfe 1 · Elektronenaufnahme</summary><p>Was muss mit Al³⁺ geschehen, damit elementares Aluminium entsteht?</p></details>
+  <details class="disclosure"><summary>Hilfe 2 · Energie und Stromkreis</summary><p>Welche Energieform nutzt der Stromkreis? Was kann die Spannungsquelle bereitstellen, und welche Teilchen bewegen sich im Metallleiter?</p></details>
+  <details class="disclosure"><summary>Hilfe 3 · Satzgerüst</summary><p>Ich vermute, dass man __________ einsetzen könnte, um __________ zu ermöglichen, weil __________.</p></details>
   <div class="actions">
     <button class="primary" id="checkHypothesis" type="button">Vermutung festhalten</button>
     <button class="secondary" id="copyHypothesis" type="button">Text kopieren</button>
@@ -231,26 +222,30 @@
 </article></section>
 <div class="footer-controls"><button class="secondary" id="backBtn" type="button">← Zurück</button><div><button class="secondary mini" id="resetBtn" type="button">Neu beginnen</button> <button class="primary" id="nextBtn" type="button">Weiter →</button></div></div>
 <p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p>
-<p class="version-note">Stand: 01.11.2026 · V17</p></main>
+<p class="version-note">Stand: 04.11.2026 · V18</p></main>
 <div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Aluminiumgewinnung</h1>
-<p>Name: __________________________ Datum: __________</p><h2>Erster Gedanke</h2><div class="print-answer" id="pFirst"></div>
-<h2>Reduktion</h2><div class="print-answer" id="pAl"></div><h2>Ein unedleres Metall?</h2><div class="print-answer" id="pMetal"></div>
+<p>Name: __________________________ Datum: __________</p>
+<h2>Ausgangsproblem</h2><div class="print-answer" id="pFirst"></div>
+<h2>Reduktionsgedanke</h2><div class="print-answer" id="pAl"></div>
+<h2>Energieformen</h2><div class="print-answer" id="pEnergy"></div>
 <h2>Meine Vermutung</h2><div class="print-answer" id="pHypothesis"></div></div>
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
-const KEY='aluminium-vermutungswerkstatt-v15';
-const names=['Ausgangsproblem','Redoxwissen','Unedleres Metall','Stromkreis','Vermutung'];
-const initial={step:0,furthest:0,transfer:'',count:'',donor:'',metal:'',metalShown:false,circuitClosed:false,hypothesisChecked:false};
+const KEY='aluminium-vermutungswerkstatt-v18';
+const names=['Ausgangsproblem','Redoxwissen','Energie bei Reaktionen','Strom und Energie','Vermutung'];
+const initial={step:0,furthest:0,transfer:'',count:'',redoxChecked:false,energy:'',energyChecked:false,circuitClosed:false,circuitExplored:false,hypothesisChecked:false};
 let state={...initial};
-const textIDs=['firstThought','guess','reason'];
+const textIDs=['firstThought','energyExamples','guess','reason'];
 try{
- const saved=JSON.parse(localStorage.getItem(KEY)||'null');
- const old=JSON.parse(localStorage.getItem('aluminium-vermutungswerkstatt-v14')||'null')||{};
- const data=saved||old;
- for(const k of Object.keys(initial))if(Object.prototype.hasOwnProperty.call(data,k))state[k]=data[k];
- if(!saved){state.step=0;state.furthest=0;state.hypothesisChecked=false}
- for(const id of textIDs)if(typeof data[id]==='string')$(id).value=data[id];
+ const current=JSON.parse(localStorage.getItem(KEY)||'null');
+ if(current){
+  for(const k of Object.keys(initial))if(Object.prototype.hasOwnProperty.call(current,k))state[k]=current[k];
+  for(const id of textIDs)if(typeof current[id]==='string')$(id).value=current[id];
+ }else{
+  const previous=JSON.parse(localStorage.getItem('aluminium-vermutungswerkstatt-v15')||'null')||{};
+  for(const id of ['firstThought','guess','reason'])if(typeof previous[id]==='string')$(id).value=previous[id];
+ }
 }catch{}
 state.step=Math.max(0,Math.min(4,Number(state.step)||0));
 state.furthest=Math.max(0,Math.min(4,Number(state.furthest)||0));
@@ -261,48 +256,50 @@ function mark(group,key,value){
  document.querySelectorAll('#'+group+' [data-'+key+']').forEach(b=>{
   const chosen=b.dataset[key]===value;b.classList.toggle('selected',chosen);b.setAttribute('aria-pressed',String(chosen));
  });
+ if(key==='transfer'||key==='count'){state.redoxChecked=false;$('alEq').classList.add('hidden');$('alFeedback').className='feedback';$('alFeedback').textContent='';}
+ if(key==='energy'){state.energyChecked=false;$('energyFeedback').className='feedback';$('energyFeedback').textContent='';}
  save();
 }
-for(const [group,key] of [['transferChoices','transfer'],['countChoices','count'],['donorChoices','donor'],['metalChoices','metal']]){
+for(const [group,key] of [['transferChoices','transfer'],['countChoices','count'],['energyChoices','energy']]){
  document.querySelectorAll('#'+group+' [data-'+key+']').forEach(b=>b.addEventListener('click',()=>mark(group,key,b.dataset[key])));
  if(state[key])mark(group,key,state[key]);
 }
 function go(step){
  state.step=Math.max(0,Math.min(4,step));state.furthest=Math.max(state.furthest,state.step);
  $('stepnav').replaceChildren();
- names.forEach((name,i)=>{const b=document.createElement('button');b.type='button';
- b.className='step-dot'+(i===state.step?' active':i<=state.furthest?' visited':'');
- b.textContent=(i+1)+' · '+name;b.disabled=i>state.furthest;b.addEventListener('click',()=>go(i));$('stepnav').append(b)});
+ names.forEach((name,i)=>{
+  const b=document.createElement('button');b.type='button';
+  b.className='step-dot'+(i===state.step?' active':i<=state.furthest?' visited':'');
+  b.textContent=(i+1)+' · '+name;b.disabled=i>state.furthest;b.addEventListener('click',()=>go(i));$('stepnav').append(b);
+ });
  document.querySelectorAll('.page').forEach(el=>el.classList.toggle('active',Number(el.dataset.step)===state.step));
  $('progressLabel').textContent=(state.step+1)+' von 5 · '+names[state.step];
  $('progressfill').style.width=(state.step+1)*20+'%';
  document.querySelector('.progressbar').setAttribute('aria-valuenow',state.step+1);
- $('backBtn').disabled=state.step===0;$('nextBtn').textContent=state.step===4?'Zum Anfang ↺':'Weiter →';save();
- window.scrollTo({top:0,behavior:'smooth'});
+ $('backBtn').disabled=state.step===0;$('nextBtn').textContent=state.step===4?'Zum Anfang ↺':'Weiter →';
+ save();window.scrollTo({top:0,behavior:'smooth'});
 }
-function showMetal(){state.metalShown=true;$('metalObstacle').classList.remove('hidden');save()}
 $('backBtn').addEventListener('click',()=>go(state.step-1));
 $('nextBtn').addEventListener('click',()=>{
- if(state.step===2&&!state.metalShown){showMetal();$('metalObstacle').scrollIntoView({block:'start',behavior:'smooth'});return;}
- go(state.step===4?0:state.step+1)
+ if(state.step===1&&!state.redoxChecked){feedback('alFeedback','Prüfe zunächst, welche Elektronenänderung notwendig ist.','incorrect');return;}
+ if(state.step===2&&!state.energyChecked){feedback('energyFeedback','Prüfe zunächst die Aussage zur Energie bei Reaktionen.','incorrect');return;}
+ if(state.step===3&&!state.circuitExplored){$('circuitStatus').textContent='Schließe zunächst den Stromkreis und beobachte die Veränderung.';return;}
+ go(state.step===4?0:state.step+1);
 });
 $('checkAl').addEventListener('click',()=>{
  if(!state.transfer||!state.count)return feedback('alFeedback','Wähle die Elektronenänderung und die Elektronenzahl.');
- if(state.transfer==='gain'&&state.count==='3'){$('alEq').classList.remove('hidden');feedback('alFeedback','Die Elektronenbilanz stimmt.','good')}
- else{$('alEq').classList.add('hidden');feedback('alFeedback','Vergleiche die Ladung von Al³⁺ mit der von Al.','incorrect')}
+ state.redoxChecked=state.transfer==='gain'&&state.count==='3';
+ $('alEq').classList.toggle('hidden',!state.redoxChecked);
+ feedback('alFeedback',state.redoxChecked?'Die Elektronenbilanz stimmt.':'Vergleiche die Ladung von Al³⁺ und Al.',state.redoxChecked?'good':'incorrect');save();
 });
-$('checkDonor').addEventListener('click',()=>{
- if(!state.donor)return feedback('donorFeedback','Wähle zuerst einen Stoff.');
- if(state.donor==='fe')feedback('donorFeedback','Richtig: Eisen gibt Elektronen ab. Kupfer-Ionen nehmen sie auf.','good');
- else feedback('donorFeedback','Vergleiche Fe mit Fe²⁺ und Cu²⁺ mit Cu.','incorrect');
+$('checkEnergy').addEventListener('click',()=>{
+ if(!state.energy)return feedback('energyFeedback','Wähle zuerst eine Aussage.');
+ state.energyChecked=state.energy==='either';
+ feedback('energyFeedback',state.energyChecked?'Richtig. Eine Reaktion kann Energie freisetzen oder aufnehmen.':'Erinnere dich an exotherme und endotherme Reaktionen.',state.energyChecked?'good':'incorrect');save();
 });
-$('checkMetal').addEventListener('click',()=>{
- if(!state.metal)return feedback('metalFeedback','Wähle eine Möglichkeit.');
- if(state.metal==='lessnoble'){feedback('metalFeedback','Richtig. Nach dem bekannten Prinzip müsste ein noch unedleres Metall Elektronen abgeben.','good');showMetal()}
- else feedback('metalFeedback','Überlege: Beim Eisen-Kupfer-Versuch gab das unedlere Metall Elektronen ab.','incorrect')
-});
-function setCircuit(closed){
+function setCircuit(closed,remember=true){
  state.circuitClosed=closed;
+ if(closed&&remember)state.circuitExplored=true;
  $('circuitPanel').classList.toggle('circuit-on',closed);
  $('circuitSwitch').setAttribute('d',closed?'M180 92L220 92':'M180 92L219 61');
  $('circuitLampGlow').setAttribute('opacity',closed?'1':'0');
@@ -321,15 +318,14 @@ function preview(){
 }
 textIDs.forEach(id=>$(id).addEventListener('input',id==='guess'||id==='reason'?preview:save));
 $('checkHypothesis').addEventListener('click',()=>{
- if($('guess').value.trim().length<8||$('reason').value.trim().length<8)return feedback('hypothesisFeedback','Ergänze eine Vermutung und eine fachliche Begründung.','incorrect');
+ if($('guess').value.trim().length<8||$('reason').value.trim().length<8)return feedback('hypothesisFeedback','Formuliere eine Vermutung und eine fachliche Begründung.','incorrect');
  state.hypothesisChecked=true;$('afterHypothesis').classList.remove('hidden');
  feedback('hypothesisFeedback','Vermutung gespeichert.','good');save();
 });
 function report(){return ['MEIN DENKWEG – ALUMINIUMGEWINNUNG',
  'Erster Gedanke: '+$('firstThought').value,
- 'Reduktion: '+(state.transfer==='gain'&&state.count==='3'?'Al³⁺ + 3 e⁻ → Al':'noch offen'),
- 'Eisen-Kupfer: '+(state.donor==='fe'?'Eisen gibt Elektronen ab.':'noch offen'),
- 'Gewinnung mit einem anderen Metall: '+(state.metal==='lessnoble'?'Ein noch unedleres Metall wäre nötig.':'noch offen'),
+ 'Reduktion: '+(state.redoxChecked?'Al³⁺ + 3 e⁻ → Al':'noch offen'),
+ 'Energieformen: '+$('energyExamples').value,
  'Meine Vermutung: '+$('previewHypothesis').textContent].join('\n\n')}
 $('copyHypothesis').addEventListener('click',async()=>{
  try{await navigator.clipboard.writeText(report());feedback('hypothesisFeedback','Denkweg kopiert.','good')}
@@ -337,8 +333,8 @@ $('copyHypothesis').addEventListener('click',async()=>{
 });
 $('printSheet').addEventListener('click',()=>{
  $('pFirst').textContent=$('firstThought').value;
- $('pAl').textContent=(state.transfer==='gain'&&state.count==='3'?'Al³⁺ + 3 e⁻ → Al':'noch offen')+'\nEisen-Kupfer: '+(state.donor==='fe'?'Eisen gibt Elektronen ab.':'noch offen');
- $('pMetal').textContent=state.metal==='lessnoble'?'Ein noch unedleres Metall wäre nötig.':'noch offen';
+ $('pAl').textContent=state.redoxChecked?'Al³⁺ + 3 e⁻ → Al':'noch offen';
+ $('pEnergy').textContent=$('energyExamples').value;
  $('pHypothesis').textContent=$('previewHypothesis').textContent;window.print();
 });
 $('resetBtn').addEventListener('click',()=>{
@@ -346,15 +342,12 @@ $('resetBtn').addEventListener('click',()=>{
  state={...initial};for(const id of textIDs)$(id).value='';
  document.querySelectorAll('.selected').forEach(b=>{b.classList.remove('selected');b.setAttribute('aria-pressed','false')});
  document.querySelectorAll('.feedback').forEach(b=>{b.textContent='';b.className='feedback'});
- $('alEq').classList.add('hidden');$('metalObstacle').classList.add('hidden');$('afterHypothesis').classList.add('hidden');
- setCircuit(false);
- preview();go(0);
+ $('alEq').classList.add('hidden');$('afterHypothesis').classList.add('hidden');
+ setCircuit(false,false);preview();go(0);
 });
-if(state.transfer==='gain'&&state.count==='3')$('alEq').classList.remove('hidden');
-if(state.metalShown)showMetal();
+$('alEq').classList.toggle('hidden',!state.redoxChecked);
 $('afterHypothesis').classList.toggle('hidden',!state.hypothesisChecked);
 $('previewHypothesis').textContent='Ich vermute, dass '+($('guess').value.trim()||'…')+', weil '+($('reason').value.trim()||'…')+'.';
-setCircuit(state.circuitClosed);
-go(state.step);
+setCircuit(state.circuitClosed,false);go(state.step);
 })();
 </script></body></html>

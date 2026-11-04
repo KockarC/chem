@@ -101,6 +101,22 @@
 .recap-question{margin:6px 0 18px;color:#264b5c;background:#f0f8fa;border-left:4px solid #168c8a;border-radius:9px;padding:12px 15px}
 .recap-divider{border-top:1px solid var(--line);margin:22px 0}
 .oxide-context{display:flex;flex-direction:column;gap:4px;margin:22px 0 16px;padding:16px 20px;background:#f0f7f9;border:1px solid #c5dce1;border-radius:14px;color:#25495a}.oxide-context strong{font-size:1.3rem;color:#12394f}.oxide-sample-label{font-size:.83rem;font-weight:650;color:#548093}.recap-reference{color:#365768;line-height:1.6;margin:0 0 20px;font-weight:500}
+
+/* Gleiche sichtbare Seitenhierarchie: Abschnittstitel – Einstieg – Material – Aufgabe – Hilfe. */
+.page .sheet>.section-kicker{display:block;margin-bottom:9px}
+.page .sheet>h2{margin:0 0 15px;max-width:850px}
+.page .sheet>.intro{margin:0 0 21px;line-height:1.62;color:#365367}
+.page .sheet>.note{margin:9px 0 16px}
+.task-panel{background:#f8fafc;border:1px solid #d5e1eb;border-radius:16px;padding:20px 22px;margin:24px 0 16px}
+.task-kicker{font-size:.77rem;color:#35737d;text-transform:uppercase;letter-spacing:.09em;font-weight:790;margin-bottom:13px}
+.task-panel>.prompt:first-of-type{margin-top:0}
+.task-panel>.form-label:first-of-type{margin-top:0}
+.task-panel .metal-question{border-color:#d7e1ea}
+.task-panel .feedback{margin-top:15px}
+.page .sheet>.disclosure{margin-top:14px}
+.page .sheet>.feedback.show{margin:0 0 19px}
+.page .sheet>.actions{margin-top:18px}
+@media(max-width:650px){.task-panel{padding:15px 14px;margin:20px 0 14px}}
 </style></head>
 <body>
 <header><div class="wrap top"><nav class="site-breadcrumb" aria-label="Seitennavigation"><a href="../">Materialien</a><span aria-hidden="true">›</span><a href="../vermutungswerkstaetten/">Vermutungswerkstätten</a><span aria-hidden="true">›</span><span>Aluminiumgewinnung</span></nav><div class="eyebrow"><span class="brand-mark" aria-hidden="true">e⁻</span> Vermutungswerkstatt · Aluminiumgewinnung</div>
@@ -127,12 +143,13 @@
     </div>
   </div>
 
-
   <p class="recap-question"><strong>Unsere Ausgangsfrage:</strong> Wie lässt sich das chemisch gebundene Aluminium als Metall gewinnen?</p>
   <div class="oxide-context">
     <span class="oxide-sample-label">Ein Stoff aus der Bauxit-Aufbereitung</span>
     <strong>Aluminiumoxid · Al₂O₃</strong>
   </div>
+  <div class="task-panel" role="group" aria-label="Aufgabe: Teilchenmodell bestimmen">
+    <div class="task-kicker">Deine Aufgabe</div>
   <p class="prompt">Welches Teilchenmodell passt zu festem Aluminiumoxid?</p>
   <div class="choicegrid" id="compoundChoices" role="group" aria-label="Teilchenmodell von Aluminiumoxid">
     <button class="option" type="button" data-compound="metal"><span class="radio"></span>Ein Metallgitter aus neutralen Aluminium-Atomen</button>
@@ -140,6 +157,7 @@
     <button class="option" type="button" data-compound="molecules"><span class="radio"></span>Einzelne Al₂O₃-Moleküle (wie bei CO₂: einzelne, abgegrenzte Teilchengruppen)</button>
   </div>
   <div class="feedback" id="compoundFeedback" role="status" aria-live="polite"></div>
+  </div>
   <details class="disclosure"><summary>Hilfe · Stoffaufbau erkennen</summary>
     <p>Aluminium gehört zu den Metallen, Sauerstoff zu den Nichtmetallen. Erinnere dich an den Aufbau typischer Metall-Nichtmetall-Verbindungen.</p>
   </details>
@@ -147,14 +165,17 @@
 
 <section class="page" data-step="1"><article class="sheet">
   <span class="section-kicker">02 · Redoxwissen</span>
-  <p class="recap-reference">Aluminiumoxid wurde im vereinfachten Teilchenmodell durch Al³⁺- und O²⁻-Ionen beschrieben. Wie kann daraus das Metall Aluminium entstehen?</p>
   <h2>Welche Elektronenübertragung ist dafür notwendig?</h2>
+  <p class="intro">Aluminiumoxid enthält im vereinfachten Teilchenmodell Al³⁺- und O²⁻-Ionen. Wie könnte aus dem gebundenen Aluminium das Metall entstehen?</p>
+  <div id="compoundSuccess" class="feedback" role="status" aria-live="polite"></div>
   <div class="al-case-panel" aria-label="Vereinfachtes Modell der Elektronenbilanz von Aluminium">
     <div class="al-state"><span class="state-caption">Aluminium in der Verbindung</span><strong class="particle-ion">Al³⁺</strong></div>
     <div class="al-middle"><span class="question-arrow">→ ?</span></div>
     <div class="al-state"><span class="state-caption">Metallisches Aluminium</span><strong class="particle-metal">Al</strong></div>
   </div>
   <p class="note">Vereinfachte Betrachtung der Elektronenaufnahme: In festem Aluminiumoxid sind die Ionen nicht frei beweglich.</p>
+  <div class="task-panel" role="group" aria-label="Aufgabe: Elektronenaufnahme erschließen">
+    <div class="task-kicker">Deine Aufgabe</div>
   <p class="prompt">Was muss geschehen, damit aus Al³⁺ ein neutrales Aluminium-Atom wird?</p>
   <div id="transferChoices" class="choicegrid" role="group" aria-label="Elektronenänderung">
     <button class="option" type="button" data-transfer="loss"><span class="radio"></span>Elektronen abgeben</button>
@@ -177,6 +198,7 @@
   
   <div id="alFeedback" class="feedback" role="status" aria-live="polite"></div>
   <div id="alEq" class="equation hidden">Al³⁺ + 3 e⁻ <span class="part">→</span> Al</div>
+  </div>
   <details class="disclosure"><summary>Hilfe · Ladungen und Reduktionsmittel</summary>
     <p>Vergleiche die Ladung von Al³⁺ mit der von Al. Nutze für die letzte Frage dein Wissen über die Redoxreihe: Welche Metalle geben Elektronen besonders leicht ab?</p>
   </details>
@@ -187,10 +209,14 @@
   <span class="section-kicker">03 · Schwierigkeit</span>
   <h2>Woher bekommen wir ein noch unedleres Metall?</h2>
   <p class="intro">Ein Beispiel wäre <strong>Lithium (Li)</strong>. Es ist noch unedler als Aluminium und kann grundsätzlich Elektronen abgeben. Aufgrund seiner hohen Reaktivität kommt es in der Natur jedoch nur in chemischen Verbindungen vor.</p>
+  <div id="redoxSuccess" class="feedback" role="status" aria-live="polite"></div>
   <div class="thought"><strong>Die Schwierigkeit:</strong> Um Lithium als Reduktionsmittel einzusetzen, müssten wir zunächst metallisches Lithium aus seinen Verbindungen gewinnen. Damit wäre das ursprüngliche Problem nur verlagert.</div>
   <p>Dennoch gibt es sowohl Aluminium als auch Lithium als hergestellte reine Metalle. Es muss also einen Weg geben, Metalle ohne ein noch unedleres Metall als Reduktionsmittel zu gewinnen.</p>
+  <div class="task-panel" role="group" aria-label="Aufgabe: Anforderung an einen anderen Gewinnungsweg">
+    <div class="task-kicker">Deine Aufgabe</div>
   <label class="form-label" for="newPathRequirement">Was müsste ein solcher Gewinnungsweg bei Aluminium ermöglichen?</label>
   <textarea class="free small" id="newPathRequirement" placeholder="Ein anderer Weg müsste …"></textarea>
+  </div>
   <details class="disclosure"><summary>Hilfe · Zur Elektronenaufnahme</summary><p>Welche Änderung der Elektronenzahl müsste beim Aluminium stattfinden?</p></details>
 </article></section>
 
@@ -267,6 +293,8 @@
     <div class="energy-example-heading"><span class="energy-emoji" aria-hidden="true">↻</span><strong>Was ist beim Aufladen eines Akkus anders?</strong></div>
     <p>Beim Aufladen eines wiederaufladbaren Akkus wird elektrische Energie zugeführt. Im Inneren laufen dadurch <strong>chemische Reaktionen</strong> ab. Anders als bei der Lampe verändern sich dabei Stoffe.</p>
   </div>
+  <div class="task-panel" role="group" aria-label="Aufgabe: Energie und chemische Veränderungen verknüpfen">
+    <div class="task-kicker">Deine Aufgabe</div>
   <p class="prompt">Welche Schlussfolgerung lässt sich aus diesen Beispielen ziehen?</p>
   <div id="energyInsightChoices" class="choicegrid" role="group" aria-label="Elektrische Energie und chemische Reaktionen">
     <button class="option" type="button" data-insight="change"><span class="radio"></span>Auch elektrische Energie kann unter geeigneten Bedingungen chemische Veränderungen ermöglichen.</button>
@@ -274,18 +302,23 @@
     <button class="option" type="button" data-insight="energyElectron"><span class="radio"></span>Eine Spannungsquelle erzeugt die Elektronen, die für chemische Reaktionen benötigt werden.</button>
   </div>
   <div id="insightFeedback" class="feedback" role="status" aria-live="polite"></div>
+  </div>
 </article></section>
 
 <section class="page" data-step="4"><article class="sheet">
   <span class="section-kicker">05 · Eigene Vermutung</span>
   <h2>Welche Möglichkeit könnte bei der Aluminiumgewinnung helfen?</h2>
   <p class="intro">Um aus Aluminiumverbindungen das Metall zu gewinnen, ist eine Elektronenaufnahme erforderlich. Du hast verschiedene Möglichkeiten kennengelernt, mit zugeführter Energie Stoffveränderungen zu ermöglichen. <strong>Welchen Weg würdest du für Aluminium untersuchen?</strong></p>
+  <div id="energySuccess" class="feedback" role="status" aria-live="polite"></div>
+  <div class="task-panel" role="group" aria-label="Aufgabe: Begründete Vermutung formulieren">
+    <div class="task-kicker">Deine Aufgabe</div>
   <label class="form-label" for="guess">Ich vermute, dass …</label>
   <textarea id="guess" class="free" placeholder="Meine Idee …"></textarea>
   <label class="form-label" for="reason">…, weil …</label>
   <textarea id="reason" class="free" placeholder="Meine Begründung …"></textarea>
   <div class="hypothesis" role="region" aria-live="polite" aria-label="Deine Vermutung">
     <div class="label">Meine Vermutung</div><blockquote id="previewHypothesis">Ich vermute, dass …, weil …</blockquote>
+  </div>
   </div>
   <details class="disclosure"><summary>Hilfe 1 · Elektronenaufnahme</summary><p>Wie verändert sich die Ladung von Al³⁺ bei der Bildung metallischen Aluminiums?</p></details>
   <details class="disclosure"><summary>Hilfe 2 · Energieformen vergleichen</summary><p>Welche Energieform könnte die erforderliche Elektronenaufnahme ermöglichen? Welche Rolle könnte dabei die Spannungsquelle spielen?</p></details>
@@ -301,7 +334,7 @@
 <div class="footer-controls"><button class="secondary" id="backBtn" type="button">← Zurück</button><div><button class="secondary mini" id="resetBtn" type="button">Neu beginnen</button> <button class="primary" id="nextBtn" type="button" disabled aria-live="polite">Weiter →</button></div></div>
 <p id="stepCompletionHint" class="step-completion-hint" role="status" aria-live="polite"></p>
 <p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p>
-<p class="version-note">Stand: 04.11.2026 · V26</p></main>
+<p class="version-note">Stand: 04.11.2026 · V27</p></main>
 <div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Aluminiumgewinnung</h1>
 <p>Name: __________________________ Datum: __________</p>
 <h2>Reduktionsgedanke</h2><div class="print-answer" id="pAl"></div>
@@ -364,7 +397,7 @@ function mark(group,key,value,restoring=false){
  });
  if(!restoring){
   state.furthest=Math.min(state.furthest,state.step);
-  if(key==='compound')clearFeedback('compoundFeedback');
+  if(key==='compound'){clearFeedback('compoundFeedback');clearFeedback('compoundSuccess');}
   if(['transfer','count','metal'].includes(key)){
    state.redoxChecked=false;state.metalChecked=false;
    $('alEq').classList.add('hidden');clearFeedback('alFeedback');
@@ -391,15 +424,24 @@ function go(step){
  $('progressfill').style.width=(state.step+1)*20+'%';
  document.querySelector('.progressbar').setAttribute('aria-valuenow',state.step+1);
  $('backBtn').disabled=state.step===0;
+ if(state.step===1&&state.compound==='ions'&&state.furthest>=1)
+  feedback('compoundSuccess','Richtig: Aluminiumoxid wird hier als Ionenverband aus Al³⁺- und O²⁻-Ionen betrachtet.','good');
+ if(state.step===2&&state.redoxChecked&&state.metalChecked)
+  feedback('redoxSuccess','Richtig: Zur Bildung von Aluminium ist eine Elektronenaufnahme erforderlich. Ein anderes Reduktionsmetall müsste noch unedler sein.','good');
+ if(state.step===4&&state.insightChecked)
+  feedback('energySuccess','Richtig: Unter geeigneten Bedingungen kann zugeführte elektrische Energie auch chemische Veränderungen ermöglichen.','good');
  updateNext();save();window.scrollTo({top:0,behavior:'smooth'});
 }
 $('backBtn').addEventListener('click',()=>go(state.step-1));
 $('nextBtn').addEventListener('click',()=>{
  const step=state.step;
  if(!complete(step))return;
- if(step===0&&state.compound!=='ions'){
-  feedback('compoundFeedback','Prüfe, welche Teilchen in festem Aluminiumoxid vorliegen: Es ist weder reines Metall noch aus einzelnen Al₂O₃-Molekülen aufgebaut.','incorrect');
-  $('compoundFeedback').scrollIntoView({behavior:'smooth',block:'center'});save();return;
+ if(step===0){
+  if(state.compound!=='ions'){
+   feedback('compoundFeedback','Prüfe, welche Teilchen in festem Aluminiumoxid vorliegen: Es ist weder reines Metall noch aus einzelnen Al₂O₃-Molekülen aufgebaut.','incorrect');
+   $('compoundFeedback').scrollIntoView({behavior:'smooth',block:'center'});save();return;
+  }
+  clearFeedback('compoundFeedback');
  }
  if(step===1){
   const redox=state.transfer==='gain'&&state.count==='3',metal=state.metal==='lessnoble';

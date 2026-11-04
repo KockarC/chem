@@ -148,13 +148,12 @@
     <span class="oxide-sample-label">Ein Stoff aus der Bauxit-Aufbereitung</span>
     <strong>Aluminiumoxid · Al₂O₃</strong>
   </div>
-  <div class="task-panel" role="group" aria-label="Aufgabe: Teilchenmodell bestimmen">
+  <div class="task-panel" role="group" aria-label="Aufgabe: passende Beschreibung erkennen">
     <div class="task-kicker">Deine Aufgabe</div>
-  <p class="prompt">Welches Teilchenmodell passt zu festem Aluminiumoxid?</p>
-  <div class="choicegrid" id="compoundChoices" role="group" aria-label="Teilchenmodell von Aluminiumoxid">
+  <p class="prompt">Welche Beschreibung passt zu festem Aluminiumoxid?</p>
+  <div class="choicegrid" id="compoundChoices" role="group" aria-label="Beschreibung von festem Aluminiumoxid">
     <button class="option" type="button" data-compound="metal"><span class="radio"></span>Ein Metallgitter aus neutralen Aluminium-Atomen</button>
     <button class="option" type="button" data-compound="ions"><span class="radio"></span>Ein salzartig aufgebautes Ionengitter mit Al³⁺- und O²⁻-Ionen</button>
-    <button class="option" type="button" data-compound="molecules"><span class="radio"></span>Einzelne Al₂O₃-Moleküle (wie bei CO₂: einzelne, abgegrenzte Teilchengruppen)</button>
   </div>
   <div class="feedback" id="compoundFeedback" role="status" aria-live="polite"></div>
   </div>
@@ -334,7 +333,7 @@
 <div class="footer-controls"><button class="secondary" id="backBtn" type="button">← Zurück</button><div><button class="secondary mini" id="resetBtn" type="button">Neu beginnen</button> <button class="primary" id="nextBtn" type="button" disabled aria-live="polite">Weiter →</button></div></div>
 <p id="stepCompletionHint" class="step-completion-hint" role="status" aria-live="polite"></p>
 <p class="footer-note">Deine Eingaben werden nur lokal in diesem Browser gespeichert, sofern der Browser dies erlaubt. Die Seite sendet keine Daten an einen Server.</p>
-<p class="version-note">Stand: 04.11.2026 · V27</p></main>
+<p class="version-note">Stand: 04.11.2026 · V28</p></main>
 <div class="print-only print-sheet" aria-hidden="true"><h1>Mein Denkweg – Aluminiumgewinnung</h1>
 <p>Name: __________________________ Datum: __________</p>
 <h2>Reduktionsgedanke</h2><div class="print-answer" id="pAl"></div>
@@ -438,7 +437,7 @@ $('nextBtn').addEventListener('click',()=>{
  if(!complete(step))return;
  if(step===0){
   if(state.compound!=='ions'){
-   feedback('compoundFeedback','Prüfe, welche Teilchen in festem Aluminiumoxid vorliegen: Es ist weder reines Metall noch aus einzelnen Al₂O₃-Molekülen aufgebaut.','incorrect');
+   feedback('compoundFeedback','Prüfe deine Auswahl: Aluminiumoxid ist eine Verbindung aus einem Metall und einem Nichtmetall. Erinnere dich an den Aufbau solcher Verbindungen.','incorrect');
    $('compoundFeedback').scrollIntoView({behavior:'smooth',block:'center'});save();return;
   }
   clearFeedback('compoundFeedback');
